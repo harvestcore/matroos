@@ -29,7 +29,7 @@ jobs:
         run: cd ${{ matrix.project }} && ls -lah
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: ls -lah && dotnet restore
 
       - name: Build project
         run: dotnet build --no-restore
