@@ -6,13 +6,13 @@ on:
       - "**"
       - "!skip-ci/**"
     paths:
-      - "!!frontend/**"
+      - "!frontend/**"
   pull_request:
     branches:
       - "**"
       - "!skip-ci/**"
     paths:
-      - "!!frontend/**"
+      - "!frontend/**"
 
 jobs:
   build:
