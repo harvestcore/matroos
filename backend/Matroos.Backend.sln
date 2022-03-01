@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Matroos.Backend", "src\Matroos.Backend\Matroos.Backend.csproj", "{3E5756ED-2B2F-4E5B-A2EA-EBF64DE33884}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Matroos.Backend.Tests", "tests\Matroos.Backend.Tests\Matroos.Backend.Tests.csproj", "{E20EB06B-86C7-441F-8CAB-C8D969442C84}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Matroos.Resources", "..\resources\src\Matroos.Resources\Matroos.Resources.csproj", "{79785F5E-C614-404D-860F-5E9E7A70DC1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AB62B8E2-AB3F-4EBD-8550-DA57EE943922}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{63D2FA29-193B-4880-B4F3-4E8AF0DF78E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E5756ED-2B2F-4E5B-A2EA-EBF64DE33884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E5756ED-2B2F-4E5B-A2EA-EBF64DE33884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E5756ED-2B2F-4E5B-A2EA-EBF64DE33884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E5756ED-2B2F-4E5B-A2EA-EBF64DE33884}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E20EB06B-86C7-441F-8CAB-C8D969442C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E20EB06B-86C7-441F-8CAB-C8D969442C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E20EB06B-86C7-441F-8CAB-C8D969442C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E20EB06B-86C7-441F-8CAB-C8D969442C84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79785F5E-C614-404D-860F-5E9E7A70DC1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79785F5E-C614-404D-860F-5E9E7A70DC1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79785F5E-C614-404D-860F-5E9E7A70DC1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79785F5E-C614-404D-860F-5E9E7A70DC1B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3E5756ED-2B2F-4E5B-A2EA-EBF64DE33884} = {AB62B8E2-AB3F-4EBD-8550-DA57EE943922}
+		{E20EB06B-86C7-441F-8CAB-C8D969442C84} = {63D2FA29-193B-4880-B4F3-4E8AF0DF78E1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E1688458-1126-45BD-94B1-D4A7C229E306}
+	EndGlobalSection
+EndGlobal
