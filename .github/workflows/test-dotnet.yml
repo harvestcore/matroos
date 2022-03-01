@@ -1,0 +1,45 @@
+name: Test .NET features
+
+on:
+  push:
+    branches:
+      - "**"
+      - "!skip-ci/**"
+    paths:
+      - "!!frontend/**"
+  pull_request:
+    branches:
+      - "**"
+      - "!skip-ci/**"
+    paths:
+      - "!!frontend/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      DOTNET_VERSION: "6.0.x"
+
+    strategy:
+      matrix:
+        project: ["resources", "backend", "worker"]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Change project directory
+        run: cd ${{ matrix.project }}
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build project
+        run: dotnet build --no-restore
+
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
