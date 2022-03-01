@@ -11,12 +11,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      DOTNET_VERSION: '6.0.x'
-
     strategy:
       matrix:
         project: ['resources', 'backend', 'worker']
+
+    env:
+      DOTNET_VERSION: '6.0.x'
+      WORKING_DIR: ./${{ matrix.project }}
 
     steps:
       - uses: actions/checkout@v2
@@ -25,14 +26,17 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Change project directory
+      - name: Show project directory
         run: cd ${{ matrix.project }} && ls -lah
 
       - name: Restore dependencies
-        run: ls -lah && dotnet restore
+        run: dotnet restore
+        working-directory: ${{ env.WORKING_DIR }}
 
       - name: Build project
         run: dotnet build --no-restore
+        working-directory: ${{ env.WORKING_DIR }}
 
       - name: Test
         run: dotnet test --no-build --verbosity normal
+        working-directory: ${{ env.WORKING_DIR }}
