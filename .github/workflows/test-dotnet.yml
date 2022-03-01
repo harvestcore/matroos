@@ -2,28 +2,21 @@ name: Test .NET features
 
 on:
   push:
-    branches:
-      - "**"
-      - "!skip-ci/**"
-    paths:
-      - "!frontend/**"
-  pull_request:
-    branches:
-      - "**"
-      - "!skip-ci/**"
-    paths:
-      - "!frontend/**"
+    branches-ignore:
+      - 'skip-ci/**'
+    paths-ignore:
+      - 'frontend/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     env:
-      DOTNET_VERSION: "6.0.x"
+      DOTNET_VERSION: '6.0.x'
 
     strategy:
       matrix:
-        project: ["resources", "backend", "worker"]
+        project: ['resources', 'backend', 'worker']
 
     steps:
       - uses: actions/checkout@v2
