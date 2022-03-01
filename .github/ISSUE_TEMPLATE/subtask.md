@@ -2,7 +2,7 @@
 name: Subtask
 about: A subtask
 title: "[DEV] "
-labels: task
+labels: subtask
 assignees: ''
 
 ---
