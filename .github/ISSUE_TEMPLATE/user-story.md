@@ -9,6 +9,10 @@ assignees: ''
 
 **Summary:**
 
+**Goal:**
+
+**User profile:**
+
 **Scenario:**
 - Given: ...
 - When: ...
