@@ -2,13 +2,12 @@
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Matroos.Resources.Services
+namespace Matroos.Resources.Services;
+
+public static class ServiceCollectionExtensions
 {
-    public static class ServiceCollectionExtensions
+    public static IServiceCollection AddResourcesServices(this IServiceCollection services)
     {
-        public static IServiceCollection AddResourcesServices(this IServiceCollection services)
-        {
-            return services.AddSingleton<IConfigurationService, ConfigurationService>();
-        }
+        return services.AddSingleton<IConfigurationService, ConfigurationService>();
     }
 }
