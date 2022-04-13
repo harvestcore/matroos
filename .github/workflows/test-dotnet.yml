@@ -14,10 +14,11 @@ jobs:
     strategy:
       matrix:
         project: ['resources', 'backend', 'worker']
+        configuration: ['Debug', 'Release']
 
     env:
       DOTNET_VERSION: '6.0.x'
-      DOTNET_CONFIGURATION: 'Release'
+      DOTNET_CONFIGURATION: ${{ matrix.configuration }}
       WORKING_DIR: ./${{ matrix.project }}
 
     steps:
