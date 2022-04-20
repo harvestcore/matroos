@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Matroos.Backend.Core.Classes;
-
 using MongoDB.Driver;
 
 using Xunit;

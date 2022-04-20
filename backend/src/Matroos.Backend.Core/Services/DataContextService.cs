@@ -101,7 +101,7 @@ public class DataContextService : IDataContextService
 
             if (!string.IsNullOrEmpty(queryFilter.SearchTerm) && queryFilter.SearchFields.Count > 0)
             {
-                // Create ethe different queries using a case insensitive regex based on the search term.
+                // Create the different queries using a case insensitive regex based on the search term.
                 FilterDefinition<TValue>[] queries = queryFilter.SearchFields
                     .Select(field => Builders<TValue>.Filter.Regex(field, $"/{queryFilter.SearchTerm}/isg"))
                     .ToArray();

@@ -33,7 +33,7 @@ public class ConfigurationService : IConfigurationService
         }
 
         // Try to get the variable from the environment.
-        object? fromEnvironment = Environment.GetEnvironmentVariable(key);
+        object? fromEnvironment = Environment.GetEnvironmentVariable(key, EnvironmentVariableTarget.User);
         if (fromEnvironment != null)
         {
             _configurationPool.Add(key, fromEnvironment);

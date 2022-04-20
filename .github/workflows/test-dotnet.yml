@@ -21,6 +21,8 @@ jobs:
       DOTNET_CONFIGURATION: ${{ matrix.configuration }}
       MONGODB_VERSION: '5.0'
       WORKING_DIR: ./${{ matrix.project }}
+      TestMongoDBConnectionString: 'mongodb://127.0.0.1:27017/matroos-test'
+      TestMongoDBDatabaseName: 'matroos-test'
 
     steps:
       - uses: actions/checkout@v2
