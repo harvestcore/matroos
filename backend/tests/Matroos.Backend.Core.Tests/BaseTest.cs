@@ -23,12 +23,12 @@ public class BaseTest
         _configurationService = new ConfigurationService(configuration);
 
         // The default values can be overwriten via Environment Variables.
-        string? connectionString = _configurationService.Get<string>("TestMongoDBConnectionString");
-        string? databaseName = _configurationService.Get<string>("TestMongoDBDatabaseName");
+        string connectionString = _configurationService.Get<string>("TestMongoDBConnectionString") ?? "";
+        string databaseName = _configurationService.Get<string>("TestMongoDBDatabaseName") ?? "";
 
         // Configure the testing database.
-        _configurationService.Set("MongoDBConnectionString", connectionString ?? "");
-        _configurationService.Set("MongoDBDatabaseName", databaseName ?? "");
+        _configurationService.Set("MongoDBConnectionString", connectionString);
+        _configurationService.Set("MongoDBDatabaseName", databaseName);
 
         _dataContextService = new DataContextService(_configurationService);
     }
