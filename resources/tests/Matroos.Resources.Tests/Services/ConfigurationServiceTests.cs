@@ -48,7 +48,7 @@ public class ConfigurationServiceTests
     public void GetValuesFromBaseEnvironment(string key, string value)
     {
         // Set the environment variable.
-        Environment.SetEnvironmentVariable(key, value, EnvironmentVariableTarget.User);
+        Environment.SetEnvironmentVariable(key, value);
 
         // Assert the value.
         Assert.Equal(value, _configurationService.Get<string>(key));

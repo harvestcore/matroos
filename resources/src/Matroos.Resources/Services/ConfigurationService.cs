@@ -18,7 +18,11 @@ public class ConfigurationService : IConfigurationService
 
     public ConfigurationService(IConfiguration configuration)
     {
-        _baseConfiguration = configuration;
+        _baseConfiguration = new ConfigurationBuilder()
+            .AddConfiguration(configuration)
+            .AddEnvironmentVariables()
+            .Build();
+
         _configurationPool = new();
     }
 
@@ -33,7 +37,7 @@ public class ConfigurationService : IConfigurationService
         }
 
         // Try to get the variable from the environment.
-        object? fromEnvironment = Environment.GetEnvironmentVariable(key, EnvironmentVariableTarget.User);
+        object? fromEnvironment = Environment.GetEnvironmentVariable(key);
         if (fromEnvironment != null)
         {
             _configurationPool.Add(key, fromEnvironment);

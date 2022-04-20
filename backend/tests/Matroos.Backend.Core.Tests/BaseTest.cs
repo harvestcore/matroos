@@ -16,6 +16,7 @@ public class BaseTest
     {
         // Create the base configuration object.
         IConfiguration configuration = new ConfigurationBuilder()
+            .AddEnvironmentVariables()
             .AddInMemoryCollection()
             .Build();
 
