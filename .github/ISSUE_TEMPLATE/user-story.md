@@ -11,24 +11,32 @@ assignees: ''
 
 **Goal:**
 
+**Benefit:**
+
 **User profile:**
 
 **Scenario:**
+
 - Given: ...
 - When: ...
 - Then: ...
 
 **Functional notes:**
+
 - ...
 
 **Technical notes:**
+
 - ...
 
 **Dependencies:**
+
 - ...
 
 **Follow-up tasks:**
+
 - [ ] ...
 
 **Acceptance criteria:**
+
 - ...
