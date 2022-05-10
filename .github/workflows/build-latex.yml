@@ -1,4 +1,4 @@
-name: Spellcheck and build LaTeX project
+name: Spellcheck + build PDF
 on:
   push:
     paths:
