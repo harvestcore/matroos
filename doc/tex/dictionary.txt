@@ -1,5 +1,10 @@
+personal_ws-1.1 es 0 utf-8
+
 biblio
 colorlinks
 linkcolor
 urlcolor
 Matroos
+Ángel
+Gómez
+Martín
