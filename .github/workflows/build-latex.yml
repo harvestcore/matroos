@@ -2,6 +2,7 @@ name: Spellcheck + build PDF
 on:
   push:
     paths:
+      - '.github/workflows/**'
       - 'doc/tex/**'
 
 jobs:
