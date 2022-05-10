@@ -6,6 +6,7 @@ on:
       - 'skip-ci/**'
     paths-ignore:
       - 'frontend/**'
+      - 'doc/**'
 
 jobs:
   build:

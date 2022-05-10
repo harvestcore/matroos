@@ -1,0 +1,48 @@
+name: Spellcheck + build PDF
+on:
+  push:
+    paths:
+      - '.github/workflows/**'
+      - 'doc/tex/**'
+
+jobs:
+  spellcheck:
+    runs-on: ubuntu-latest
+    name: Spellchecking
+
+    steps:
+    - name: Checkout branch
+      uses: actions/checkout@v2
+
+    - name: Install aspell
+      run: sudo apt install aspell aspell-es aspell-en
+
+    - name: Check spelling
+      working-directory: ./doc/tex
+      run: |
+        make spellrights
+        make spell
+
+  build:
+    runs-on: ubuntu-latest
+    name: Build project and push artifact
+
+    container:
+      image: danteev/texlive:latest
+
+    steps:
+    - name: Checkout branch
+      uses: actions/checkout@v2
+
+    - name: Build project
+      working-directory: ./doc/tex
+      run: make doc
+
+    - name: Set date
+      run: echo "datetime=$(date +"%Y%m%d-%H%M%S")" >> $GITHUB_ENV
+
+    - name: Upload project artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: proyecto_${{ env.datetime }}
+        path: ./doc/tex/proyecto.pdf
