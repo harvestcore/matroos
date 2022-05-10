@@ -2,13 +2,11 @@
 
 SpellCheck() {
     filename=$1.spellcheck
-    cat $1 | aspell --lang=en --mode=tex list | aspell --lang=es --mode=tex --extra-dicts=./dictionary.rws list | sort > $filename
+    cat $1 | aspell --lang=en --mode=tex list | aspell --lang=es --mode=tex --personal=./dictionary.txt list | sort > $filename
     output=$(cat $filename | wc -l)
 }
 
 errors=false
-
-aspell --lang=es create master ./dictionary.rws < dictionary.txt
 
 for file in $(find . -name "*.tex"); do
     SpellCheck $file
