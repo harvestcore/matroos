@@ -9,3 +9,6 @@ Gómez
 Martín
 API
 personalización
+Slack
+TeamSpeak
+Discord
