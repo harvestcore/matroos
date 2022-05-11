@@ -1,0 +1,13 @@
+\begin{thebibliography}{1}
+
+\bibitem{gplv3}
+Free~Software Foundation.
+\newblock {GNU} {G}eneral {P}ublic {L}icense.
+\newblock \url{http://www.gnu.org/licenses/gpl.html}.
+
+\bibitem{matroos}
+Ángel Gómez~Martín.
+\newblock Matroos.
+\newblock \url{https://github.com/harvestcore/matroos}.
+
+\end{thebibliography}

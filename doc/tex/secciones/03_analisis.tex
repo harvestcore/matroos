@@ -1,0 +1,458 @@
+\chapter{Análisis}
+
+\section{Actores}
+
+En el sistema hay dos actores.
+
+\begin{itemize}
+	\item Administrador
+	\item Usuario de \textit{Discord}
+\end{itemize}
+
+\section{Casos de uso}
+
+\subsection{Usuario de \textit{Discord}}
+
+En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso.
+
+\begin{enumerate}
+	\item Usar comando.
+\end{enumerate}
+
+\subsection{Administrador}
+
+\begin{enumerate}
+	\item Crear bot.
+	\item Editar bot.
+	\item Eliminar bot.
+	\item Crear comando.
+	\item Editar comando.
+	\item Eliminar comando.
+	\item Agregar comando a bot.
+	\item Eliminar comando de bot.
+	\item Desplegar bot.
+	\item Cancelar despliegue de un bot.
+\end{enumerate}
+
+
+\section{Requisitos del sistema}
+
+\subsection{Requisitos funcionales}
+
+\begin{enumerate}
+	\item El \textit{backend} proveerá una \textit{API} capaz de funcionar sin la necesidad de una interfaz de usuario.
+	\item La visualización de datos en la interfaz de usuario deberá ser en forma de listados.
+	\item El sistema permitirá la creación y administración de distintos bots de \textit{Discord}.
+	\item El sistema permitirá la creación y administración de comandos de bots de \textit{Discord}.
+	\item Un usuario administrador podrá crear bots de \textit{Discord} y administrarlos.
+	\item Los bots contarán con comandos por defecto para conocer el estado de los mismos.
+\end{enumerate}
+
+\subsection{Requisitos no funcionales}
+
+\begin{enumerate}
+	\item El software estará compuesto por un \textit{backend}, por una serie de \textit{workers} y una interfaz de usuario.
+	\item La interfaz de usuario será sencilla.
+	\item El sistema funcionará para sistemas basados en \textit{GNU Linux}.
+	\item El sistema deberá ser escalable, esto incluye \textit{backend}, \textit{workers} e interfaz de usuario.
+	\item La interfaz de usuario del sistema será mediante una aplicación web.
+\end{enumerate}
+
+\subsection{Requisitos de información}
+
+\begin{enumerate}
+	\item El sistema almacenará los detalles de los comandos de los bots de \textit{Discord}.
+	\item El sistema almacenará los detalles de los bots de \textit{Discord} que despliega.
+	\item El sistema almacenará para cada bot un identificador único, un nombre, una descripción, una \textit{key}, un prefijo y una lista de comandos.
+	\item El sistema almacenará para cada comando, un identificador único, un nombre, una descripción, el tipo de comando, el modo de ejecución del comando y una lista de argumentos.
+\end{enumerate}
+
+
+\section{Personas}
+
+\subsection{Administrador}
+\label{sec:personaAdmin}
+
+\begin{table}[H]
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    	\hline
+        Nombre & David Infante \\ \hline
+        Rol & Administrador \\ \hline
+        Descripción & 24 años.\linebreak Disfruta de las tardes con sus amigos en \textit{Discord} jugando a sus videojuegos favoritos. \\ \hline
+        Intereses & \textit{Discord}, ya que le parece una herramienta muy potente.\linebreak Videojuegos, le encantan los \textit{shooters}.\linebreak Automatización de tareas repetitivas, ya que odia hacer lo mismo continuamente.\linebreak Programación, ya que disfruta creando software para facilitar su día a día.\linebreak Monitorización, le gusta saber que todo el software que despliega funciona correctamente.\linebreak Creación de servidores de juegos, para jugar con sus amigos y no tener que depender de servidores de terceros. \\ \hline
+        Formación & Ingeniero informático.\linebreak Tiene conocimientos avanzados en:\linebreak - Configuración de \textit{Discord}.\linebreak - Administración de sistemas.\linebreak - Despliegue de software y sistemas. \\ \hline
+        Frustraciones & Tener que realizar tareas repetitivas. \\ \hline
+        Necesidades & Un software o sistema que le permita programar las tareas repetitivas de monitorización y automatización que tanto odia. Usa mucho \textit{Discord}, por lo que piensa que sería útil que el software estuviera integrado con esa herramienta. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+\label{sec:personaUsuarioDiscord}
+\begin{table}[H]
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        Nombre & Jorge Pulido \\ \hline
+        Rol & Usuario de \textit{Discord} \\ \hline
+        Descripción & 25 años.\linebreak Amigo de Jorge Cancho. No tiene conocimientos de programación ni de temas relacionados con la ingeniería o la informática. Le gusta disfrutar de las tardes con sus amigos en \textit{Discord}. \\ \hline
+        Intereses & Videojuegos, dedica la mayor parte de su tiempo a jugar con sus amigos.\linebreak La facilidad de las cosas, no le gusta complicarse la vida.\linebreak \textit{Discord}, le parece una herramienta muy útil, ya que la usa con sus amigos y para temas laborales. \\ \hline
+        Formación & Magisterio de educación primaria. \\ \hline
+        Frustraciones & No le gusta nada tener que indagar en detalles técnicos al jugar a videojuegos con sus amigos. Entiende que en ocasiones es necesaria alguna configuración para poder jugar (como acceder a un servidor), pero quiere que ese proceso sea lo más fácil posible. No le gusta tener que recordar esos detalles. \\ \hline
+        Necesidades & Una herramienta que le permita acceder a esos detalles sin preocuparse de recordarlos o de consultarlos de manera extraña. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\label{sec:personaMiembroTribunal}
+\begin{table}[H]
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        Nombre & Blanca Casado \\ \hline
+        Rol & Miembro del tribunal \\ \hline
+        Descripción & 52 años.\linebreak Su conocimiento en informática es muy elevado, pero no tiene tanta destreza con las distintas aplicaciones de mensajería instantánea que han surgido en los últimos años. \\ \hline
+        Intereses & Procesamiento en segundo plano.\linebreak Redes neuronales.\linebreak Desarrollo ágil. \\ \hline
+        Formación & Catedrática en informática. \\ \hline
+        Frustraciones & No le gusta enfrentarse a documentaciones poco precisas o de dudosa credibilidad. \\ \hline
+        Necesidades & Una documentación y una presentación acorde a los criterios de evaluación de TFM que le permita evaluar al estudiante. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\section{Historias de usuario}
+
+Para la creación de las historias de usuarios se ha usado la siguiente estructura.
+
+\begin{table}[H]
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        Sección & Significado \\ \hline
+        Resumen & Breve resumen de la historia de usuario. \\ \hline
+        Meta & Qué se quiere conseguir. \\ \hline
+        Beneficio & El beneficio de la historia de usuario. \\ \hline
+        Perfil de usuario & Perfil del usuario que genera la historia de usuario. \\ \hline
+        Escenario & Escenario de la historia de usuario. Se deben especificar detalles más concretos.\linebreak - Dado …\linebreak - Cuando …\linebreak - Entonces … \\ \hline
+        Notas funcionales & Notas adicionales de carácter funcional que ayudan a comprender mejor el alcance de la historia de usuario. \\ \hline
+        Notas técnicas & Notas adicionales de carácter técnico que ayudan a comprender mejor este tipo de detalles a la hora de desarrollar la historia de usuario. \\ \hline
+        Dependencias & Posibles dependencias que tenga la historia de usuario. Éstas pueden ser otras historias de usuario, tareas que se estén llevando a cabo, etc. \\ \hline
+        Tareas de seguimiento & Una vez analizada la historia de usuario, las tareas que se deben realizar a continuación. \\ \hline
+        Criterio de aceptación & Criterio por el cual se va a determinar que la historia de usuario ha sido completada con éxito y por tanto finalizada. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\bigskip
+
+Por otro lado, se han creado las siguientes historias de usuario. Estas se encuentran en el repositorio\cite{matroos} de \textit{GitHub} del proyecto, en la sección \href{https://github.com/harvestcore/matroos/labels/US}{\textit{Issues}}.
+
+\begin{enumerate}
+	\item \href{https://github.com/harvestcore/matroos/issues/1}{Crear diferentes bots de Discord}
+	\item \href{https://github.com/harvestcore/matroos/issues/2}{Consultar datos de un bot}
+	\item \href{https://github.com/harvestcore/matroos/issues/3}{Editar un bot}
+	\item \href{https://github.com/harvestcore/matroos/issues/4}{Eliminar un bot}
+	\item \href{https://github.com/harvestcore/matroos/issues/5}{Crear diferentes comandos de Discord}
+	\item \href{https://github.com/harvestcore/matroos/issues/6}{Consultar datos de un comando}
+	\item \href{https://github.com/harvestcore/matroos/issues/7}{Editar un comando}
+	\item \href{https://github.com/harvestcore/matroos/issues/8}{Eliminar un comando}
+	\item \href{https://github.com/harvestcore/matroos/issues/9}{Lanzar bots}
+	\item \href{https://github.com/harvestcore/matroos/issues/10}{Cancelar ejecución de bots}
+	\item \href{https://github.com/harvestcore/matroos/issues/11}{Consultar estado de los despliegues}
+	\item \href{https://github.com/harvestcore/matroos/issues/25}{Interfaz de usuario}
+	\item \href{https://github.com/harvestcore/matroos/issues/39}{Criterios de evaluación}
+\end{enumerate}
+
+
+\subsection{Crear diferentes bots de \textit{Discord}}
+
+\begin{table}[H]
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        Sección & Contenido \\ \hline
+        Resumen & Como usuario administrador quiero crear distintos bots de Discord en el sistema para poder configurarlos con los comandos que yo quiera para que éstos realicen las tareas que deseo al ejecutar los comandos en los canales donde he agregado los bots. \\ \hline
+        Meta & Creación de bots para que más tarde puedan ser configurados y desplegados y para que puedan ejecutar los comandos configurados en ellos. \\ \hline
+        Beneficio & De este modo, cada bot puede tener una funcionalidad específica configurada, sin tener que compartir un bot con funcionalidades de distintos ámbitos. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
+        Escenario & - Dado: que quiero crear un bot de Discord y configurar sus funcionalidades,\linebreak - Cuando: proveo al sistema de una KEY de bot de Discord y de un nombre para el bot,\linebreak - Entonces: el sistema crea un bot para que pueda empezar a configurarlo. \\ \hline
+        Notas funcionales & - No se debe permitir la creación de bots con el mismo nombre.\linebreak - No se debe permitir la creación de bots con la misma *key*. \\ \hline
+        Notas técnicas & Elementos necesarios para la creación del bot:\linebreak - *key: str [req]*. Key del bot, proporcionada en el panel de control de Discord.\linebreak - *name: str [req]*. Nombre del bot.\linebreak \linebreak Parámetros extra necesarios para crear un bot:\linebreak - *id: Guid [req]*. Identificador único para cada bot. \\ \hline
+        Dependencias & – \\ \hline
+        Tareas de seguimiento & – \\ \hline
+        Criterio de aceptación & - Los bots se pueden crear correctamente.\linebreak - El usuario es avisado en caso de error al crear un bot.\linebreak - Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+\subsection{Consultar datos de un bot}
+
+\begin{table}[H]
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        Sección & Contenido \\ \hline
+        Resumen & Como usuario administrador quiero consultar los detalles de los bots de Discord creados en el sistema, para poder ver sus características y su configuración. \\ \hline
+        Meta & Obtener todos los datos de un bot en concreto o de todos los bots creados en el sistema para consultar sus características y configuración. \\ \hline
+        Beneficio & Consultar la configuración única y específica de cada uno de los bots. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
+        Escenario & - Dado: que quiero consultar los detalles de los bots creados en el sistema,\linebreak - Cuando: hago una petición al sistema para ello,\linebreak - Entonces: el sistema me devuelve los detalles y datos de los bots. \\ \hline
+        Notas funcionales & - Se debe permitir obtener los detalles de todos los bots.\linebreak - Se debe permitir obtener los detalles de un bot en específico. \\ \hline
+        Notas técnicas & Parámetros necesarios para obtener los detalles de un bot específico:\linebreak - *id: Guid [req]*. Identificador único para cada bot. \\ \hline
+        Dependencias & – \\ \hline
+        Tareas de seguimiento & – \\ \hline
+        Criterio de aceptación & - Todos los datos de los bots son devueltos.\linebreak - El usuario es avisado en caso de error al obtener los detalles de los bots.\linebreak - Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{Editar un bot}
+
+\begin{table}[H]
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        Sección & Contenido \\ \hline
+        Resumen & Como usuario administrador quiero poder editar los detalles de un bot de Discord, para configurarle comandos nuevos, eliminar existentes o cambiar sus parámetros. \\ \hline
+        Meta & Permitir la edición de los parámetros de los bots (comandos, nombre, key, etc). \\ \hline
+        Beneficio & Ampliar, reducir o modificar las funcionalidades específicas de los bots. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
+        Escenario & - Dado: que quiero modificar los datos de un bot,\linebreak - Cuando: proveo al sistema del identificador del bot a editar y los datos que se deben modificar,\linebreak - Entonces: el sistema modifica los datos del bot. \\ \hline
+        Notas funcionales & - No se debe permitir la existencia de bots con el mismo nombre.\linebreak - No se debe permitir la existencia de bots con la misma *key*.\linebreak - En caso de agregar un comando a un bot, el comando debe estar creado previamente en el sistema.\linebreak - No se debe permitir la existencia comandos iguales en un mismo bot.\linebreak - En caso de que el bot se encuentre desplegado, debe reiniciarse el despliegue una vez la edición finaliza. \\ \hline
+        Notas técnicas & Parámetros necesarios para obtener los detalles de un bot específico y para modificarlo:\linebreak - *id: Guid [req]*. Identificador único para cada bot.\linebreak - *key: str*. Key del bot, proporcionada en el panel de control de Discord.\linebreak - *name: str*. Nombre del bot.\linebreak - *command\_id: Guid*. Identificador único para cada comando. \\ \hline
+        Dependencias & - HU-01 \\ \hline
+        Tareas de seguimiento & – \\ \hline
+        Criterio de aceptación & - El bot es modificado correctamente.\linebreak - El usuario es avisado en caso de error al modificar los datos del bot.\linebreak - Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{Eliminar un bot}
+
+\begin{table}[H]
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        Sección & Contenido \\ \hline
+        Resumen & Como usuario administrador quiero poder eliminar un bot de Discord. \\ \hline
+        Meta & Permitir el borrado de bots. \\ \hline
+        Beneficio & Cuando ya no es necesario un bot, se puede eliminar. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
+        Escenario & - Dado: que quiero eliminar un bot,\linebreak - Cuando: proveo al sistema del identificador del bot a eliminar,\linebreak - Entonces: el sistema elimina el bot y sus datos asociados. \\ \hline
+        Notas funcionales & -  En caso de que el bot se encuentre desplegado, éste despliegue debe cancelarse. \\ \hline
+        Notas técnicas & Parámetros necesarios para eliminar un bot:\linebreak - *id: Guid [req]*. Identificador único para cada bot. \\ \hline
+        Dependencias & - HU-01 \\ \hline
+        Tareas de seguimiento & – \\ \hline
+        Criterio de aceptación & - El bot es eliminado correctamente.\linebreak - El usuario es avisado en caso de error al eliminar los datos del bot.\linebreak - Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+\subsection{Crear diferentes comandos de \textit{Discord}}
+
+\begin{table}[H]
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        Sección & Contenido \\ \hline
+        Resumen & Como usuario administrador quiero crear distintos comandos para los bots de Discord para que éstos realicen las tareas que deseo tras ejecutarlos en los canales de Discord. \\ \hline
+        Meta & Creación de distintos comandos que posteriormente puedan ser asignados a bots. \\ \hline
+        Beneficio & De este modo, cada comando puede tener una tarea específica configurada y accesible (y ejecutable) dentro de un servidor de Discord. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
+        Escenario & - Dado: que quiero crear un comando de Discord y configurar sus funcionalidades,\linebreak - Cuando: proveo al sistema de un nombre para el comando y de un prefijo,\linebreak - Entonces: el sistema crea un comando para que pueda empezar a configurarlo. \\ \hline
+        Notas funcionales & - No se debe permitir la creación de comandos con el mismo nombre. \\ \hline
+        Notas técnicas & Elementos necesarios para la creación del comando:\linebreak - *name: str [req]*. Nombre del comando.\linebreak - *prefix: str [req]*. Prefijo del comando. \\ \hline
+        Dependencias & – \\ \hline
+        Tareas de seguimiento & – \\ \hline
+        Criterio de aceptación & - Los comandos se crean correctamente.\linebreak - El usuario es avisado en caso de error al crear un comando.\linebreak - Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{Consultar datos de un comando}
+
+\begin{table}[H]
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        Sección & Contenido \\ \hline
+        Resumen & Como usuario administrador quiero consultar los detalles de los comandos creados en el sistema. \\ \hline
+        Meta & Obtener todos los datos de un comando en concreto o de todos los comandos creados en el sistema. \\ \hline
+        Beneficio & Consultar la configuración única y específica de cada uno de los comandos. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
+        Escenario & - Dado: que quiero consultar los detalles de los comandos creados en el sistema,\linebreak - Cuando: hago una petición al sistema para ello,\linebreak - Entonces: el sistema me devuelve los datos de los comandos. \\ \hline
+        Notas funcionales & - Se debe permitir obtener los detalles de todos los comandos.\linebreak - Se debe permitir obtener los detalles de un comando en específico. \\ \hline
+        Notas técnicas & Parámetros necesarios para obtener los detalles de un comando específico:\linebreak - *id: Guid [req]*. Identificador único para cada comando. \\ \hline
+        Dependencias & - HU-05 \\ \hline
+        Tareas de seguimiento & – \\ \hline
+        Criterio de aceptación & - Todos los datos de los comandos son devueltos.\linebreak - El usuario es avisado en caso de error al obtener los detalles de los comandos.\linebreak - Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{Editar un comando}
+
+\begin{table}[H]
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        Sección & Contenido \\ \hline
+        Resumen & Como usuario administrador quiero poder editar los detalles de un comando para . \\ \hline
+        Meta & La edición de los parámetros de los comandos (nombre, prefijo, parámetros, etc). \\ \hline
+        Beneficio & Modificar la configuración de la tarea que ejecuta dicho comando. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
+        Escenario & - Dado: que quiero modificar los datos de un comando,\linebreak - Cuando: proveo al sistema del identificador del comando a editar y los datos que se deben modificar,\linebreak - Entonces: el sistema modifica los datos del comando. \\ \hline
+        Notas funcionales & - No se debe permitir la existencia de comandos con el mismo nombre.\linebreak - En caso de que el comando esté siendo usado por un bot que se encuentre desplegado, este debe ser reiniciado. \\ \hline
+        Notas técnicas & Parámetros necesarios para obtener los detalles de un bot específico y para modificarlo:\linebreak - *id: Guid [req]*. Identificador único para cada bot.\linebreak - *prefix: str*. Prefijo del comando.\linebreak - *params: dict*. Parámetros adicionales del comando. \\ \hline
+        Dependencias & - HU-05 \\ \hline
+        Tareas de seguimiento & – \\ \hline
+        Criterio de aceptación & - El comando es modificado correctamente.\linebreak - El usuario es avisado en caso de error al modificar los datos del comando.\linebreak - Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{Eliminar un comando}
+
+\begin{table}[H]
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        Sección & Contenido \\ \hline
+        Resumen & Como usuario administrador quiero poder eliminar un comando para que deje de estar disponible en el sistema. \\ \hline
+        Meta & El borrado de comandos en el sistema. \\ \hline
+        Beneficio & Cuando ya no es necesario un comando, se puede eliminar. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
+        Escenario & - Dado: que quiero eliminar un comando,\linebreak - Cuando: proveo al sistema del identificador del comando a eliminar,\linebreak - Entonces: el sistema elimina el comando y sus datos asociados. \\ \hline
+        Notas funcionales & - En caso de que el comando esté en uso por un bot desplegado, éste debe reiniciarse. \\ \hline
+        Notas técnicas & Parámetros necesarios para eliminar un bot:\linebreak - *id: Guid [req]*. Identificador único para cada bot. \\ \hline
+        Dependencias & - HU-05 \\ \hline
+        Tareas de seguimiento & – \\ \hline
+        Criterio de aceptación & - El comando es eliminado correctamente.\linebreak - El usuario es avisado en caso de error al eliminar los datos del comando.\linebreak - Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{Lanzar bots}
+
+\begin{table}[H]
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        Sección & Contenido \\ \hline
+        Resumen & Como usuario administrador quiero poder ejecutar los bots de Discord que he creado y configurado previamente en el sistema para poder hacer uso de los comandos de los que disponen en los servidores de Discord. \\ \hline
+        Meta & Desplegar bots en los workers para que puedan usarse desde los servidores de Discord. \\ \hline
+        Beneficio & La ejecución de los bots permite que los comandos estén disponibles en los servidores de Discord para los usuarios (una vez los bots se agreguen a esos servidores). \\ \hline
+        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
+        Escenario & - Dado: que quiero desplegar un bot de Discord,\linebreak - Cuando: proveo al sistema de un identificador de bot de Discord existente,\linebreak - Entonces: el sistema despliega el bot automáticamente, lo que me permite empezar a hacer uso de sus comandos. \\ \hline
+        Notas funcionales & - No se debe permitir el despliegue de un bot varias veces.\linebreak - No se debe permitir el despliegue de un bot que no tiene comandos configurados. \\ \hline
+        Notas técnicas & Elementos necesarios para el despliegue del bot:\linebreak - *id: Guid [req]*. Identificador único para cada bot. \\ \hline
+        Dependencias & - HU-01\linebreak - HU-03\linebreak - HU-05\linebreak - HU-07 \\ \hline
+        Tareas de seguimiento & – \\ \hline
+        Criterio de aceptación & - El bot queda desplegado correctamente.\linebreak - El usuario es avisado en caso de error al desplegar un bot.\linebreak - Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{Cancelar ejecución de bots}
+
+\begin{table}[H]
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        Sección & Contenido \\ \hline
+        Resumen & Como usuario administrador quiero terminar la ejecución de un bot de Discord en el sistema para que deje de estar disponible. \\ \hline
+        Meta & Terminar la ejecución de bots en los workers para que dejen de poder usarse desde los servidores de Discord. \\ \hline
+        Beneficio & Cuando sea necesario realizar mantenimiento a un bot (o cuando ya no sea necesario que esté en activo), se puede cancelar su ejecución. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
+        Escenario & - Dado: que quiero cancelar el despliegue de un bot para realizar algún tipo de tarea de mantenimiento,\linebreak - Cuando: proveo al sistema de un identificador de bot de Discord que se encuentre desplegado,\linebreak - Entonces: el sistema termina la ejecución del bot. \\ \hline
+        Notas funcionales & - No se debe permitir cancelar el despliegue de un bot que no se encuentra desplegado. \\ \hline
+        Notas técnicas & Parámetros necesarios para cancelar el despliegue de un bot:\linebreak - *id: Guid [req]*. Identificador único para cada bot. \\ \hline
+        Dependencias & - HU-01\linebreak - HU-03\linebreak - HU-05\linebreak - HU-07\linebreak - HU-09 \\ \hline
+        Tareas de seguimiento & – \\ \hline
+        Criterio de aceptación & - El despliegue del bot es cancelado.\linebreak - El usuario es avisado en caso de error al cancelar el despliegue del bot.\linebreak - Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{Consultar estado de los despliegues}
+
+\begin{table}[H]
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        Sección & Contenido \\ \hline
+        Resumen & Como usuario administrador quiero conocer el estado de los despliegues de los bots de Discord en el sistema. \\ \hline
+        Meta & Obtener detalles de los workers y de los bots que se encuentran desplegados en los workers. \\ \hline
+        Beneficio & Consultar cuales de los bots están activos y cuales no, para tareas de monitorización del sistema. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
+        Escenario & - Dado: que quiero conocer el estado de los despliegues de los bots,\linebreak - Cuando: hago una petición al sistema para ello,\linebreak - Entonces: el sistema me devuelve los datos de los bots que se encuentran desplegados. \\ \hline
+        Notas funcionales & - No se deben devolver datos de configuración del bot.\linebreak - Se debe devolver información de los workers que ejecutan los bots. \\ \hline
+        Notas técnicas & Datos a devolver:\linebreak - *workers: []Worker, [req]*. Todos los workers que hay disponibles en el sistema.\linebreak \linebreak Worker:\linebreak - *id: Guid [req]*. Identificador único para cada worker.\linebreak - *uptime: DateTime*. El tiempo de actividad del worker.\linebreak - *location: str*. La URL donde se encuentra el worker.\linebreak - *bots: []Bot*. Los bots que están desplegados en el worker.\linebreak \linebreak Bot:\linebreak - *id: Guid [req]*. Identificador único para cada bot.\linebreak - *uptime: DateTime*. El tiempo de actividad del bot.\linebreak - ... \\ \hline
+        Dependencias & - HU-01\linebreak - HU-03\linebreak - HU-05\linebreak - HU-07\linebreak - HU-09\linebreak - HU-10 \\ \hline
+        Tareas de seguimiento & – \\ \hline
+        Criterio de aceptación & - Los datos de los bots de Discord que se encuentran desplegados son devueltos al usuario.\linebreak - El usuario es avisado en caso de error al obtener los datos de despliegue.\linebreak - Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{Interfaz de usuario}
+
+\begin{table}[H]
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        Sección & Contenido \\ \hline
+        Resumen & Como usuario administrador quiero disponer de una interfaz gráfica para poder crear, configurar, desplegar y conocer el estado de los bots de Discord que hay en el sistema. \\ \hline
+        Meta & Disponer de una interfaz gráfica que permita realizar las tareas de creación, configuración y despliegue de bots de Discord. \\ \hline
+        Beneficio & Realizar todas las tareas de gestión de comandos y bots de manera sencilla en una interfaz de usuario, en lugar de hacerlas mediante el uso de una API. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
+        Escenario & - Dado: que quiero administrar los bots de Discord,\linebreak - Cuando: accedo a la interfaz gráfica,\linebreak - Entonces: el sistema me permite realizar todas las tareas de administración de bots y comandos. \\ \hline
+        Notas funcionales & – \\ \hline
+        Notas técnicas & – \\ \hline
+        Dependencias & - HU-01\linebreak - HU-02\linebreak - HU-03\linebreak - HU-04\linebreak - HU-05\linebreak - HU-06\linebreak - HU-07\linebreak - HU-08\linebreak - HU-09\linebreak - HU-10\linebreak - HU-11 \\ \hline
+        Tareas de seguimiento & – \\ \hline
+        Criterio de aceptación & - La interfaz permite realizar las tareas de gestión de bots y comandos.\linebreak - El usuario es avisado en caso de producirse algún error.\linebreak - Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{Criterios de evaluación}
+
+\begin{table}[H]
+    \centering
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        Sección & Contenido \\ \hline
+        Resumen & Como miembro del tribunal, quisiera disponer de una documentación, una presentación y un informe acordes a los criterios de evaluación para comprobar que éstos se han cumplido correctamente. \\ \hline
+        Meta & Disponer de una documentación que recoja claramente toda la información referente al desarrollo del TFM. \\ \hline
+        Beneficio & De este modo es más sencillo evaluar todo el trabajo que el alumno ha realizado para desarrollar el TFM. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaMiembroTribunal]{Miembro del tribunal} \\ \hline
+        Escenario & - Dado: que quiero evaluar el trabajo realizado por el alumno,\linebreak - Cuando: éste me de acceso a dicha documentación acorde a los criterios de evaluación,\linebreak - Entonces: podré evaluar el trabajo del alumno. \\ \hline
+        Notas funcionales & Los criterios de evaluación son:\linebreak \linebreak El estudiante…\linebreak - Utiliza fuentes de información variadas, válidas y fiables y selecciona la relevante para el objetivo del trabajo.\linebreak - Toma decisiones adecuadas al contexto y propone soluciones utilizando el conocimiento adquirido.\linebreak - Detecta y analiza oportunidades para hacer nuevas propuestas.\linebreak - Propone soluciones adecuadas y justifica las decisiones tomadas para resolver problemas complejos.\linebreak - Utiliza recursos formales e informales para documentar adecuadamente el proceso de desarrollo: concepción, planificación, análisis, diseño, implementación, pruebas, etc.\linebreak - Muestra claridad y comprensión en la redacción,organizando la información adecuadamente y utilizando los recursos adecuados para el discurso escrito. Muestra claridad y comprensión en la expresión oral, organizando la información adecuadamente y utilizando los recursos adecuados para el discurso oral. \\ \hline
+        Notas técnicas & – \\ \hline
+        Dependencias & – \\ \hline
+        Tareas de seguimiento & – \\ \hline
+        Criterio de aceptación & - La documentación cumple con los criterios de evaluación. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
