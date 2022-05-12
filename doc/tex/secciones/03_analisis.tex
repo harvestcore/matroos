@@ -167,11 +167,11 @@ Para la creación de las historias de usuarios se ha usado la siguiente estructu
 Por otro lado, se han creado las siguientes historias de usuario. Estas se encuentran en el repositorio\cite{matroos} de \textit{GitHub} del proyecto, en la sección \href{https://github.com/harvestcore/matroos/labels/US}{\textit{Issues}}.
 
 \begin{enumerate}
-	\item \href{https://github.com/harvestcore/matroos/issues/1}{Crear diferentes bots de Discord}
+	\item \href{https://github.com/harvestcore/matroos/issues/1}{Crear diferentes bots de \textit{Discord}}
 	\item \href{https://github.com/harvestcore/matroos/issues/2}{Consultar datos de un bot}
 	\item \href{https://github.com/harvestcore/matroos/issues/3}{Editar un bot}
 	\item \href{https://github.com/harvestcore/matroos/issues/4}{Eliminar un bot}
-	\item \href{https://github.com/harvestcore/matroos/issues/5}{Crear diferentes comandos de Discord}
+	\item \href{https://github.com/harvestcore/matroos/issues/5}{Crear diferentes comandos de \textit{Discord}}
 	\item \href{https://github.com/harvestcore/matroos/issues/6}{Consultar datos de un comando}
 	\item \href{https://github.com/harvestcore/matroos/issues/7}{Editar un comando}
 	\item \href{https://github.com/harvestcore/matroos/issues/8}{Eliminar un comando}
@@ -199,7 +199,7 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
         Escenario & - Dado: que quiero crear un bot de \textit{Discord} y configurar sus funcionalidades,\linebreak - Cuando: proveo al sistema de una \textit{key} de bot de \textit{Discord} y de un nombre para el bot,\linebreak - Entonces: el sistema crea un bot para que pueda empezar a configurarlo. \\ \hline
         Notas funcionales & - No se debe permitir la creación de bots con el mismo nombre.\linebreak - No se debe permitir la creación de bots con la misma \textit{key}. \\ \hline
-        Notas técnicas & Elementos necesarios para la creación del bot:\linebreak - \verb|key: str|. Key del bot, proporcionada en el panel de control de Discord.\linebreak - \verb|name: str|. Nombre del bot.\linebreak \linebreak Parámetros extra necesarios para crear un bot:\linebreak - \verb|id: Guid|. Identificador único para cada bot. \\ \hline
+        Notas técnicas & Elementos necesarios para la creación del bot:\linebreak - \verb|key: str|. Key del bot, proporcionada en el panel de control de \textit{Discord}.\linebreak - \verb|name: str|. Nombre del bot.\linebreak \linebreak Parámetros extra necesarios para crear un bot:\linebreak - \verb|id: Guid|. Identificador único para cada bot. \\ \hline
         Dependencias & – \\ \hline
         Tareas de seguimiento & – \\ \hline
         Criterio de aceptación & - Los bots se pueden crear correctamente.\linebreak - El usuario es avisado en caso de error al crear un bot.\linebreak - Tests unitarios y integración son creados dentro de lo posible. \\ \hline
@@ -250,7 +250,7 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
         Escenario & - Dado: que quiero modificar los datos de un bot,\linebreak - Cuando: proveo al sistema del identificador del bot a editar y los datos que se deben modificar,\linebreak - Entonces: el sistema modifica los datos del bot. \\ \hline
         Notas funcionales & - No se debe permitir la existencia de bots con el mismo nombre.\linebreak - No se debe permitir la existencia de bots con la misma \textit{key}.\linebreak - En caso de agregar un comando a un bot, el comando debe estar creado previamente en el sistema.\linebreak - No se debe permitir la existencia comandos iguales en un mismo bot.\linebreak - En caso de que el bot se encuentre desplegado, debe reiniciarse el despliegue una vez la edición finaliza. \\ \hline
-        Notas técnicas & Parámetros necesarios para obtener los detalles de un bot específico y para modificarlo:\linebreak - \verb|id: Guid|. Identificador único para cada bot.\linebreak - key: str. Key del bot, proporcionada en el panel de control de Discord.\linebreak - \verb|name: str|. Nombre del bot.\linebreak - \verb|command_id: Guid|. Identificador único para cada comando. \\ \hline
+        Notas técnicas & Parámetros necesarios para obtener los detalles de un bot específico y para modificarlo:\linebreak - \verb|id: Guid|. Identificador único para cada bot.\linebreak - key: str. Key del bot, proporcionada en el panel de control de \textit{Discord}.\linebreak - \verb|name: str|. Nombre del bot.\linebreak - \verb|command_id: Guid|. Identificador único para cada comando. \\ \hline
         Dependencias & HU-01 \\ \hline
         Tareas de seguimiento & – \\ \hline
         Criterio de aceptación & - El bot es modificado correctamente.\linebreak - El usuario es avisado en caso de error al modificar los datos del bot.\linebreak - Tests unitarios y integración son creados dentro de lo posible. \\ \hline
@@ -269,7 +269,7 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero poder eliminar un bot de Discord. \\ \hline
+        Resumen & Como usuario administrador quiero poder eliminar un bot de \textit{Discord}. \\ \hline
         Meta & Permitir el borrado de bots. \\ \hline
         Beneficio & Cuando ya no es necesario un bot, se puede eliminar. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
@@ -295,11 +295,11 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero crear distintos comandos para los bots de Discord para que éstos realicen las tareas que deseo tras ejecutarlos en los canales de Discord. \\ \hline
+        Resumen & Como usuario administrador quiero crear distintos comandos para los bots de \textit{Discord} para que éstos realicen las tareas que deseo tras ejecutarlos en los canales de \textit{Discord}. \\ \hline
         Meta & Creación de distintos comandos que posteriormente puedan ser asignados a bots. \\ \hline
-        Beneficio & De este modo, cada comando puede tener una tarea específica configurada y accesible (y ejecutable) dentro de un servidor de Discord. \\ \hline
+        Beneficio & De este modo, cada comando puede tener una tarea específica configurada y accesible (y ejecutable) dentro de un servidor de \textit{Discord}. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
-        Escenario & - Dado: que quiero crear un comando de Discord y configurar sus funcionalidades,\linebreak - Cuando: proveo al sistema de un nombre para el comando y de un prefijo,\linebreak - Entonces: el sistema crea un comando para que pueda empezar a configurarlo. \\ \hline
+        Escenario & - Dado: que quiero crear un comando de \textit{Discord} y configurar sus funcionalidades,\linebreak - Cuando: proveo al sistema de un nombre para el comando y de un prefijo,\linebreak - Entonces: el sistema crea un comando para que pueda empezar a configurarlo. \\ \hline
         Notas funcionales & - No se debe permitir la creación de comandos con el mismo nombre. \\ \hline
         Notas técnicas & Elementos necesarios para la creación del comando:\linebreak - \verb|name: str|. Nombre del comando.\linebreak - \verb|prefix: str|. Prefijo del comando. \\ \hline
         Dependencias & – \\ \hline
@@ -395,11 +395,11 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero poder ejecutar los bots de Discord que he creado y configurado previamente en el sistema para poder hacer uso de los comandos de los que disponen en los servidores de Discord. \\ \hline
-        Meta & Desplegar bots en los workers para que puedan usarse desde los servidores de Discord. \\ \hline
-        Beneficio & La ejecución de los bots permite que los comandos estén disponibles en los servidores de Discord para los usuarios (una vez los bots se agreguen a esos servidores). \\ \hline
+        Resumen & Como usuario administrador quiero poder ejecutar los bots de \textit{Discord} que he creado y configurado previamente en el sistema para poder hacer uso de los comandos de los que disponen en los servidores de \textit{Discord}. \\ \hline
+        Meta & Desplegar bots en los workers para que puedan usarse desde los servidores de \textit{Discord}. \\ \hline
+        Beneficio & La ejecución de los bots permite que los comandos estén disponibles en los servidores de \textit{Discord} para los usuarios (una vez los bots se agreguen a esos servidores). \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
-        Escenario & - Dado: que quiero desplegar un bot de Discord,\linebreak - Cuando: proveo al sistema de un identificador de bot de Discord existente,\linebreak - Entonces: el sistema despliega el bot automáticamente, lo que me permite empezar a hacer uso de sus comandos. \\ \hline
+        Escenario & - Dado: que quiero desplegar un bot de \textit{Discord},\linebreak - Cuando: proveo al sistema de un identificador de bot de \textit{Discord} existente,\linebreak - Entonces: el sistema despliega el bot automáticamente, lo que me permite empezar a hacer uso de sus comandos. \\ \hline
         Notas funcionales & - No se debe permitir el despliegue de un bot varias veces.\linebreak - No se debe permitir el despliegue de un bot que no tiene comandos configurados. \\ \hline
         Notas técnicas & Elementos necesarios para el despliegue del bot:\linebreak - \verb|id: Guid|. Identificador único para cada bot. \\ \hline
         Dependencias & HU-01, HU-03, HU-05, HU-07 \\ \hline
@@ -420,11 +420,11 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero terminar la ejecución de un bot de Discord en el sistema para que deje de estar disponible. \\ \hline
-        Meta & Terminar la ejecución de bots en los workers para que dejen de poder usarse desde los servidores de Discord. \\ \hline
+        Resumen & Como usuario administrador quiero terminar la ejecución de un bot de \textit{Discord} en el sistema para que deje de estar disponible. \\ \hline
+        Meta & Terminar la ejecución de bots en los workers para que dejen de poder usarse desde los servidores de \textit{Discord}. \\ \hline
         Beneficio & Cuando sea necesario realizar mantenimiento a un bot (o cuando ya no sea necesario que esté en activo), se puede cancelar su ejecución. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
-        Escenario & - Dado: que quiero cancelar el despliegue de un bot para realizar algún tipo de tarea de mantenimiento,\linebreak - Cuando: proveo al sistema de un identificador de bot de Discord que se encuentre desplegado,\linebreak - Entonces: el sistema termina la ejecución del bot. \\ \hline
+        Escenario & - Dado: que quiero cancelar el despliegue de un bot para realizar algún tipo de tarea de mantenimiento,\linebreak - Cuando: proveo al sistema de un identificador de bot de \textit{Discord} que se encuentre desplegado,\linebreak - Entonces: el sistema termina la ejecución del bot. \\ \hline
         Notas funcionales & - No se debe permitir cancelar el despliegue de un bot que no se encuentra desplegado. \\ \hline
         Notas técnicas & Parámetros necesarios para cancelar el despliegue de un bot:\linebreak - \verb|id: Guid|. Identificador único para cada bot. \\ \hline
         Dependencias & HU-01, HU-03, HU-05, HU-07, HU-09 \\ \hline
@@ -445,7 +445,7 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero conocer el estado de los despliegues de los bots de Discord en el sistema. \\ \hline
+        Resumen & Como usuario administrador quiero conocer el estado de los despliegues de los bots de \textit{Discord} en el sistema. \\ \hline
         Meta & Obtener detalles de los workers y de los bots que se encuentran desplegados en los workers. \\ \hline
         Beneficio & Consultar cuales de los bots están activos y cuales no, para tareas de monitorización del sistema. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
@@ -454,7 +454,7 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
         Notas técnicas & Datos a devolver:\linebreak - \verb|workers: []Worker|. Todos los workers que hay disponibles en el sistema.\linebreak \linebreak Worker:\linebreak - \verb|id: Guid|. Identificador único para cada worker.\linebreak - \verb|uptime: DateTime|. El tiempo de actividad del worker.\linebreak - \verb|location: str|. La URL donde se encuentra el worker.\linebreak - \verb|bots: []Bot|. Los bots que están desplegados en el worker.\linebreak \linebreak Bot:\linebreak - \verb|id: Guid|. Identificador único para cada bot.\linebreak - \verb|uptime: DateTime|. El tiempo de actividad del bot.\linebreak - ... \\ \hline
         Dependencias & HU-01, HU-03, HU-05, HU-07, HU-09, HU-10 \\ \hline
         Tareas de seguimiento & – \\ \hline
-        Criterio de aceptación & - Los datos de los bots de Discord que se encuentran desplegados son devueltos al usuario.\linebreak - El usuario es avisado en caso de error al obtener los datos de despliegue.\linebreak - Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+        Criterio de aceptación & - Los datos de los bots de \textit{Discord} que se encuentran desplegados son devueltos al usuario.\linebreak - El usuario es avisado en caso de error al obtener los datos de despliegue.\linebreak - Tests unitarios y integración son creados dentro de lo posible. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{HU-11. Consultar estado de los despliegues.}
@@ -470,11 +470,11 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero disponer de una interfaz gráfica para poder crear, configurar, desplegar y conocer el estado de los bots de Discord que hay en el sistema. \\ \hline
-        Meta & Disponer de una interfaz gráfica que permita realizar las tareas de creación, configuración y despliegue de bots de Discord. \\ \hline
+        Resumen & Como usuario administrador quiero disponer de una interfaz gráfica para poder crear, configurar, desplegar y conocer el estado de los bots de \textit{Discord} que hay en el sistema. \\ \hline
+        Meta & Disponer de una interfaz gráfica que permita realizar las tareas de creación, configuración y despliegue de bots de \textit{Discord}. \\ \hline
         Beneficio & Realizar todas las tareas de gestión de comandos y bots de manera sencilla en una interfaz de usuario, en lugar de hacerlas mediante el uso de una API. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
-        Escenario & - Dado: que quiero administrar los bots de Discord,\linebreak - Cuando: accedo a la interfaz gráfica,\linebreak - Entonces: el sistema me permite realizar todas las tareas de administración de bots y comandos. \\ \hline
+        Escenario & - Dado: que quiero administrar los bots de \textit{Discord},\linebreak - Cuando: accedo a la interfaz gráfica,\linebreak - Entonces: el sistema me permite realizar todas las tareas de administración de bots y comandos. \\ \hline
         Notas funcionales & – \\ \hline
         Notas técnicas & – \\ \hline
         Dependencias & HU-01, HU-02, HU-03, HU-04, HU-05, HU-06, HU-07, HU-08, HU-09, HU-10, HU-11 \\ \hline
