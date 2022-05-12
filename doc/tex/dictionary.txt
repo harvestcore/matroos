@@ -72,3 +72,4 @@ personaAdmin
 personaMiembroTribunal
 req
 uptime
+str
