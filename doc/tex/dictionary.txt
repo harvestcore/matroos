@@ -12,3 +12,4 @@ personalización
 Slack
 TeamSpeak
 Discord
+multiplataforma
