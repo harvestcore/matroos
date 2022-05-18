@@ -1,50 +1,58 @@
 \chapter{Introducción}
 
-Los bots permiten automatizar tareas en sistemas conversacionales. Sin embargo, su creación en muchas ocasiones es compleja y no está al alcance de todos los usuarios. Existen tareas que son sencillas de realizar de manera manual, pero que pueden requerir un tiempo y dedicación considerable, y sería mucho más cómodo automatizarlas de alguna manera. Por otra parte, tomando como ejemplo un gran volumen de datos sobre el que realizar estas tareas, automatizarlas otorgaría grandes beneficios ya que no dependerían de la disponibilidad de una persona para realizarlas. Además, se eliminaría la necesidad de realizar en un gran número de ocasiones un proceso que podría ser corto pero muy repetitivo. Estos procesos pueden ser de muchos tipos y sobre muchos ámbitos diferentes dependiendo del entorno en que sean necesarios, y como al fin y al cabo son procesos específicos, el sistema de automatización también debería ser así, pero desarrollarlo requiere de una experiencia técnica determinada. Esto no esta al alcance de todos.
+El uso bots se ha popularizado mucho recientemente, tanto es así que es raro no encontrarlos integrados en cualquier aplicación, ya sea de mensajería o de otros ámbitos. Éstos permiten automatizar cualquier tipo de tarea haciendo uso de comandos, que son órdenes que puede ejecutar el bot a voluntad del usuario en cualquier momento.
 
-El uso de estos bots se ha popularizado mucho recientemente, tanto es así que es raro no encontrarlos integrados en cualquier aplicación, ya sea de mensajería o de otros ámbitos. En el caso de los sistemas conversacionales existen comunidades construidas en torno a multitud de ámbitos, como videojuegos, deportes, cine o incluso en el mundo profesional. Estas comunidades pueden crecer mucho, y del mismo modo crecen las necesidades de moderación y funcionalidades adicionales que pueden ser útiles para facilitar ciertas tareas en función del ámbito de la comunidad. Un ejemplo de esto podría ser la automatización de mensajes para anunciar los estrenos de cartelera semanal de un cine en concreto o la monitorización de sistemas en una una pequeña empresa. Para esto, se utilizan comandos, que son órdenes que puede ejecutar el bot a voluntad del usuario en cualquier momento.
+En el caso de los sistemas conversacionales existen comunidades construidas en torno a multitud de ámbitos, como videojuegos, deportes, cine o incluso en el mundo profesional. Estas comunidades pueden crecer mucho, y del mismo modo crecen las necesidades de moderación y funcionalidades adicionales que pueden ser útiles para facilitar ciertas tareas en cada comunidad. Sin embargo, su creación en muchas ocasiones es compleja y no está al alcance de todos los usuarios.
 
-Sin embargo, como se mencionaba anteriormente, la creación es compleja. Cada plataforma integra los bots de una manera única, utilizando procedimientos, tecnologías y herramientas diferentes. En ocasiones estas plataformas ofrecen recursos diversos para facilitar esta integración, como pueden librerías para distintos lenguajes de programación, pero estas requieren de unos conocimientos adicionales que la mayoría de usuarios no tienen. Para solucionar este problema han surgido herramientas que facilitan el proceso de creación y configuración de los bots, de sus comandos y de los distintos parámetros de configuración adicionales que se requieran.
+De estos sistemas conversacionales destaca \textit{Discord}\cite{discord}, una aplicación de mensajería instantánea multiplataforma. Es semejante a otras herramientas que se usan en ámbitos similares, como \textit{Slack}\cite{slack} o \textit{TeamSpeak}\cite{teamspeak}, y ofrece distintos servicios de comunicación, como mensajería instantánea, chat de voz e integración con bots y videojuegos.
 
-Estas herramientas, aunque cumplen con lo que prometen, tienen una gran carencia, y es que las posibilidades de configuración de los bots son muy limitadas. Están pensadas para un público muy general, y las posibilidades son también muy generales, tendiendo a ser escasas, con funcionalidades muy simples que en ocasiones no son suficientes o no cumplen con las necesidades de comunidades que requieren funcionalidades más complejas.
+Estos bots son bastante importantes, ya que junto con la integración con videojuegos, han hecho que \textit{Discord} gane visibilidad en los últimos años y se haya hecho muy popular incluso en ámbitos profesionales. 
 
-Un ejemplo de esto son los bots de moderación de conocidas aplicaciones de mensajería instantánea, donde las funcionalidades incluyen una moderación de usuarios muy básica, pero no incluyen características extra para poder modificar las reglas de moderación. Este ejemplo sirve para ver el segundo gran problema de estas herramientas, los costes. En la gran mayoría de casos estas herramientas tienen una modalidad gratuita, con esas características muy básicas, y aparte cuentan con modalidades de pago o \textit{premium} que incluyen funcionalidades extendidas, pero que aún así pueden quedarse cortas en algunos ámbitos concretos.
+En el caso de esta aplicación, y de igual manera ocurre en muchas otras, existen distintas maneras de crear bots:
 
-Otro ejemplo podría ser una pequeña empresa que hace uso de alguna aplicación de mensajería interna, para la que existe una herramienta online que permite crear y desplegar bots con algunos comandos. Si bien la herramienta permite crear bots, sólo permite crear uno en su paquete gratuito, y los comandos son muy básicos, ya que sólo les permite realizar moderación de mensajes y de usuarios. Dado el caso en el que esta empresa quiera incluir un bot para obtener información de cierto departamento de la misma, la mencionada herramienta deja de ser útil. Como se mencionaba anteriormente es ahora necesario de un conocimiento experto extra para poder desarrollar e implementar ese bot concreto.
+\begin{enumerate}
+	\item \textbf{Alto nivel}. Mediante el uso de herramientas \textit{no-code} que permite la creación sencilla de bots y comandos, obviando todos los detalles técnicos.
+	\item \textbf{Bajo nivel}. Haciendo uso de recursos más complejos, como librerías y herramientas de programación, para la creación de los bots desde cero.
+\end{enumerate}
 
-En resumen, cuando se trata de integrar bots con funcionalidades muy concretas, las posibilidades son escasas. Resolver este problema puede ayudar a todos aquellos usuarios y comunidades que buscan automatizar tareas específicas de manera individual sin tener que recurrir a terceros con los conocimientos específicos. Por otro lado, tener que recurrir a conocimiento experto externo conlleva una serie de costes que en algunos casos puede ser inadmisible.
+En el primer caso las herramientas son correctas y cumplen lo que prometen, pero son muy básicas, no pudiendo adaptarse a las necesidades más complejas que podría tener un usuario más avanzado. Además suelen basarse en planes de pago, donde los gratuitos ofrecen funcionalidades muy reducidas y los de pago las herramientas extra.
 
-Este problema suele ser general para todas las herramientas que permiten la integración con bots, pero dado que en cada plataforma los bots se crean con tecnologías y procedimientos diferentes, este proyecto se centra en \textit{Discord}\cite{discord} pues es la plataforma que probablemente podría beneficiarse más de esta nueva herramienta dada la gran cantidad de usuarios que hace uso de ella. \textit{Discord} es un servicio de mensajería instantánea gratuito de chat de voz, video y texto, que ha ganado mucha popularidad en los últimos años gracias a la integración que tiene con videojuegos y los ya mencionados bots.
+Por otro lado, no son nada ampliables. En caso de necesitar ampliar las funcionalidades, como podría ser una ligera modificación de un comando existente, no es posible realizar ese cambio. En este caso sería preciso recurrir a las herramientas del segundo caso para crear un bot desde cero con las características deseadas.
+
+Otro aspecto a tener en cuenta es que no se tiene el control de los despliegues con este sistema. Casi en la totalidad de casos estas herramientas ofrecen un único bot al que se le configuran una serie de comandos específicos para cada comunidad, por lo que no es posible crear distintos bots y menos reutilizar los comandos entre estos.
+
+Un ejemplo de esto podría ser una pequeña empresa que utiliza \textit{Discord} como método de comunicación interna. Además, quieren utilizar bots como herramienta de alertas y para el control de aspectos técnicos de los departamentos de la empresa.
+
+Usar las herramientas actuales es muy limitante, pues no cubre las necesidades del ámbito del ejemplo. Esta empresa tendría que usar bots únicos, con comandos no reutilizables y poco concretos. Asimismo, si quisieran aislar funcionalidades en distintos bots no sería posible, y si lo fuera no estarían bajo su control.
+
+Volviendo al segundo punto de la lista anterior, existen multitud de librerías para crear bots, para multitud de lenguajes de programación. Algunas tienen más o menos popularidad, y otras tienen mayor o menor cantidad de características.
+
+En general todas ellas proveen las herramientas necesarias para crear tanto bots como comandos, pero estas herramientas son en ocasiones algo confusas e incluso ineficientes. Esto se debe a que cada una tiene una estructura distinta, e implementan los procedimientos de una manera concreta. También, cuando los usuarios hacen uso de estas librerías y herramientas se comete un error muy habitual, ya que no reutiliza el código generado todo lo que se podría y debería.
+
+En concreto, el lenguaje de programación C\# cuenta con dos principales librerías que permiten interactuar con la API de Discord, ambas actualizadas regularmente y con una comunidad de usuarios bastante importante. Sin embargo, estas dos herramientas se centran en la creación de bots únicos, un detalle que es importante, ya que como se ha visto puede ser un aspecto limitante. En el caso de este proyecto se utiliza Discord.NET, ya que es más sencilla de utilizar y porque ofrece mayor versatilidad, además de ser la más usada por la comunidad de usuarios.
+
+Por tanto, en este proyecto se desarrolla un sistema que actúa como capa de abstracción sobre Discord.NET, haciendo uso de C\# como lenguaje de desarrollo, que:
+
+\begin{itemize}
+	\item Permite crear bots y comandos de \textit{Discord} configurables y reutilizables de manera agnóstica a las librerías y tecnologías que hay por debajo.
+	\item Posibilita el despliegue de los bots de manera sencilla e independiente de los demás, pudiendo ejecutar distintos bots en el mismo sistema, o en remotos.
+	\item Centraliza los procesos de creación y despliegue en un mismo sistema, a través de una interfaz de usuario.
+	\item Facilita lampliación del software fácilmente, para adaptarlo a cualquier ámbito. De esta manera se pueden crear distintos tipos de comandos reutilizables acordes a las necesidades de cada usuario.
+	\item Permite las configuraciones de los bots y los comandos.
+	\item Incluye una serie de comandos básicos listos para ser utilizados.
+\end{itemize}
+
+Resolver este problema puede ayudar a dos principales grupos de usuarios, aunque estos deben tener unos conocimientos mínimos previos de las herramientas que se utilizan.
+
+\begin{itemize}
+	\item Usuarios que no tienen un conocimiento técnico muy extenso pero que buscan una herramienta con la que crear bots de Discord fácilmente sin limitaciones.
+	\item Usuarios con conocimiento más avanzado que buscan crear bots específicos y personalizados, sin tener que preocuparse por toda la infraestructura necesaria para crear y desplegar los bots.
+\end{itemize}
 
 \section{Motivación}
 
-La principal motivación para realizar este proyecto es que crear bots con funcionalidades de estas características con las herramientas actuales es una tarea compleja. En concreto, para desarrollar bots \textit{Discord} existen una gran multitud de librerías para lenguajes de programación, pero las herramientas de creación de bots, y especialmente comandos, tienen las características anterior mencionadas, son demasiado básicas.
+La principal motivación para realizar este proyecto es que crear bots con funcionalidades de las características mencionadas con las herramientas actuales es una tarea compleja que se puede simplificar. Crear una herramienta de este tipo puede favorecer la comunidad de desarrollo de bots y de herramientas de creación de bots, aparte de facilitar el acercamiento de los usuarios con menor conocimiento técnico a la creación de bots.
 
-Por otro lado, cuando se trata de aspectos como reproducibilidad, las herramientas actuales apenas cuentan con esta característica, por lo que éste es otro motivo por el que desarrollar este proyecto. Para ilustrar este caso, se podría ser crear un comando básico (que por ejemplo devuelva un mensaje que ayude a comprender cómo usar el bot), y este comando configurarlo en distintos bots, estando cada bot desplegado de manera independiente a los demás.
+Aunque este problema suele ser general para todas las herramientas que permiten la integración con bots, este proyecto se centra en \textit{Discord}, pues es la plataforma que probablemente podría beneficiarse más de un software de este tipo dada la gran cantidad de usuarios que hace uso de ella y por el éxito\cite{enlyft} que está teniendo en multitud de ámbitos.
 
-En definitiva, no existen \textit{frameworks} o sistemas que permitan crear fácilmente comandos que se ajusten a necesidades específicas, y menos que sean reproducibles o configurables de alguna manera con distintos datos. Además, cuando se trata de crear y alojar distintos bots en un mismo sistema, las actuales soluciones requieren que cada uno de estos bots sea una instancia independiente. Esto imposibilita la configuración de todos estos bots de una manera sencilla dentro de un mismo sistema. De nuevo, algunos de estos conceptos requieren de conocimientos experto extra necesarios para crear estas herramientas no están al alcance de todos.
-
-
-\section{Problema y solución}
-
-Como se indicaba en la sección anterior, usuarios con necesidades específicas (como por ejemplo podría ser un administrador de sistemas de una pequeña empresa, o incluso un usuario entusiasta al que le gusta automatizar tareas en su comunidad de \textit{Discord}) que quieren hacer uso de este software y de su sistema de bots se ven obligados a crear distintos bots muy específicos y en ocasiones poco reutilizables. Si bien se podrían programar comandos más concretos en un único bot, sería una tarea tediosa la reutilización entre diferentes ámbitos. Por ejemplo, dos comunidades de juegos de mesa, donde se comparten muchas funcionalidades, pero dependiendo del juego los detalles son distintos.
-
-Incidiendo en el aspecto de la creación de bots forma más técnica, se observa que actualmente hay tres maneras de usar bots en \textit{Discord}:
-
-\begin{enumerate}
-	\item \textbf{Usar bots ya existentes}. El bot ya se encuentra creado, configurado y desplegado, y solo es necesario agregarlo al servidor para poder disfrutar de sus funcionalidades.
-	\item \textbf{Crear un bot a alto nivel}. Este caso es similar al anterior, ya que se trata de un bot genérico, que es configurable en cierta medida para cada servidor. Esta configuración se hace a través de algún tipo de herramienta (generalmente una aplicación web) que permite configurar los comandos deseados. Por otro lado, ya que están pensados para un público general, las posibilidades de configuración son escasas. Suelen tener algunas plantillas de comandos básicos, como temporizadores o respuestas automáticas.
-	\item \textbf{Crear un bot a bajo nivel}. En este caso el bot se crea haciendo uso de las diferentes \textit{API} que ofrece \textit{Discord} para ello y la personalización es máxima. En cambio, es más tedioso, y requiere conocimientos extra que algunos usuarios pueden no tener (como programación). Además hay que tener en cuenta que el bot debe ser desplegado manualmente, por lo que requiere un esfuerzo extra.
-\end{enumerate}
-
-Como se observa, en el primer caso la capacidad de configuración del bot es nula y en el segundo las funcionalidades son muy reducidas. En el último caso, aunque permite realizar cualquier configuración, se pierde el aspecto de la administración central, ya que se crean bots independientes. 
-
-Por tanto, en este proyecto se desarrolla un \textit{framework}, que podría situarse entre las categorías dos y tres, que permite:
-
-\begin{itemize}
-	\item Crear bots y comandos de \textit{Discord} completamente configurables y reutilizables de manera agnóstica a las librerías y tecnologías que hay por debajo.
-	\item Desplegar los bots de manera sencilla e independiente de los demás, pudiendo ejecutar distintos bots en el mismo sistema, o en remotos.
-	\item Centralizar los procesos de creación y despliegue en un mismo sistema, a través de una interfaz de usuario.
-	\item La ampliación del software fácilmente, para adaptarlo a cualquier ámbito.
-	\item Almacenar las configuraciones de los bots y los comandos.
-\end{itemize}
+Finalmente, la elección de C\# no es arbitraria. Se fundamenta en el creciente número de bots que se están creando con este lenguaje y con las librerías existentes, además de la carencia de funcionalidades extra para facilitar esta creación. También, las últimas versiones del lenguaje, junto con las mejoras a su framework estrella, .NET, están haciendo que C\# sea cada vez más popular y una buena opción para desarrollar una aplicación.
