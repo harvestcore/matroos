@@ -16,4 +16,4 @@ spell:
 	./check-spelling.sh
 
 clean:
-	rm -f **/*.pdf **/*.out **/*.lot **/*.log **/*.lof **/*.aux **/*.toc **/*.spellcheck **/*.toc **/*.rws
+	rm -f **/*.pdf **/*.out **/*.lot **/*.log **/*.lof **/*.aux **/*.toc **/*.spellcheck **/*.toc **/*.rws **/*.bbl **/*.blg **/*.gz
