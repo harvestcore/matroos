@@ -6,3 +6,6 @@
 *.aux
 *.spellcheck
 *.rws
+*.bbl
+*.blg
+*.gz
