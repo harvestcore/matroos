@@ -73,3 +73,7 @@ personaMiembroTribunal
 req
 uptime
 str
+hu
+Precondición
+Postcondición
+GPLv

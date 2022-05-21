@@ -55,7 +55,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
         Propósito & Usar un comando configurado en un bot dentro de un servidor de \textit{Discord}. \\ \hline
         Referencias & -- \\ \hline
         Precondición & El bot tiene comandos configurados y se encuentra desplegado y disponible en un servidor de \textit{Discord}. \\ \hline
-        Poscondición & El comando se ejecuta y el usuario obtiene el resultado esperado. \\ \hline
+        Postcondición & El comando se ejecuta y el usuario obtiene el resultado esperado. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Caso de uso 01. Usar un comando.}
@@ -76,7 +76,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
         Propósito & Crear un bot para después configurarlos y desplegarlos. \\ \hline
         Referencias & \hyperref[sec:hu01]{HU-01} \\ \hline
         Precondición & El usuario provee al sistema de los datos necesarios para crear el bot. \\ \hline
-        Poscondición & El bot es creado y queda disponible para ser configurado y desplegado. \\ \hline
+        Postcondición & El bot es creado y queda disponible para ser configurado y desplegado. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Caso de uso 02. Crear un bot.}
@@ -94,7 +94,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
         Propósito & Editar los parámetros y comandos de un bot. \\ \hline
         Referencias & \hyperref[sec:hu03]{HU-03}\\ \hline
         Precondición & El usuario provee al sistema de los nuevos parámetros del bot, o de los comandos que quiere modificar. \\ \hline
-        Poscondición & El bot queda modificado. \\ \hline
+        Postcondición & El bot queda modificado. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Caso de uso 03. Editar un bot.}
@@ -112,7 +112,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
         Propósito & Eliminar un bot cuando no es necesario. \\ \hline
         Referencias & \hyperref[sec:hu04]{HU-04} \\ \hline
         Precondición & El usuario provee al sistema de los datos necesarios del bot que quiere eliminar. \\ \hline
-        Poscondición & El bot queda eliminado. \\ \hline
+        Postcondición & El bot queda eliminado. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Caso de uso 04. Eliminar un bot.}
@@ -130,7 +130,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
         Propósito & Crear un comando para después configurarlo en un bot. \\ \hline
         Referencias & \hyperref[sec:hu05]{HU-05} \\ \hline
         Precondición & El usuario provee al sistema de los datos necesarios para crear el comando. \\ \hline
-        Poscondición & El comando es creado y queda disponible para ser configurado en bots. \\ \hline
+        Postcondición & El comando es creado y queda disponible para ser configurado en bots. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Caso de uso 05. Crear un comando.}
@@ -148,7 +148,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
         Propósito & Editar los parámetros de un comando. \\ \hline
         Referencias & \hyperref[sec:hu07]{HU-07} \\ \hline
         Precondición & El usuario provee al sistema de los nuevos parámetros del bot, o de los comandos que quiere modificar. \\ \hline
-        Poscondición & El bot queda modificado. \\ \hline
+        Postcondición & El bot queda modificado. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Caso de uso 06. Editar un comando.}
@@ -166,7 +166,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
         Propósito & Eliminar un comando cuando no es necesario. \\ \hline
         Referencias & \hyperref[sec:hu08]{HU-08} \\ \hline
         Precondición & El usuario provee al sistema de los datos necesarios del comando que quiere eliminar. \\ \hline
-        Poscondición & El comando queda eliminado. \\ \hline
+        Postcondición & El comando queda eliminado. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Caso de uso 07. Eliminar un comando.}
@@ -184,7 +184,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
         Propósito & Desplegar un bot para que esté disponible en los servidores de \textit{Discord}. \\ \hline
         Referencias & \hyperref[sec:hu10]{HU-10} \\ \hline
         Precondición & El usuario provee al sistema de los datos necesarios del bot que quiere desplegar. \\ \hline
-        Poscondición & El bot queda desplegado y disponible en los servidores de \textit{Discord}. \\ \hline
+        Postcondición & El bot queda desplegado y disponible en los servidores de \textit{Discord}. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Caso de uso 08. Desplegar un bot.}
@@ -202,7 +202,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
         Propósito & Parar la ejecución de un bot para que deje de estar disponible en los servidores de \textit{Discord}. \\ \hline
         Referencias & \hyperref[sec:hu11]{HU-11} \\ \hline
         Precondición & El usuario provee al sistema de los datos necesarios del bot del que quiere cancelar el despliegue. \\ \hline
-        Poscondición & El bot deja de ejecutarse y deja de estar disponible en los servidores de \textit{Discord}. \\ \hline
+        Postcondición & El bot deja de ejecutarse y deja de estar disponible en los servidores de \textit{Discord}. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Caso de uso 09. Cancelar el despliegue de un bot.}
@@ -220,7 +220,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
         Propósito & Realizar las tareas de gestión de bots y comandos mediante una interfaz de usuario. \\ \hline
         Referencias & \hyperref[sec:hu12]{HU-12} \\ \hline
         Precondición & El sistema provee a la interfaz de usuario de toda la información referente a los bots y comandos. \\ \hline
-        Poscondición & El usuario realiza las tareas de gestión de estos bots y comandos. \\ \hline
+        Postcondición & El usuario realiza las tareas de gestión de estos bots y comandos. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Caso de uso 09. Cancelar el despliegue de un bot.}
@@ -231,10 +231,10 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
 \subsection{Requisitos funcionales}
 
 \begin{itemize}
-	\item \textbf{R.F. 1} El sistema permitirá la administración de bots de \textit{Discord}. Ésto incluye creación, modificación y eliminación de estos bots.
-	\item \textbf{R.F. 2} El sistema permitirá la administración de comandos para bots de \textit{Discord}. Ésto incluye creación, modificación y eliminación de estos comandos.
+	\item \textbf{R.F. 1} El sistema permitirá la administración de bots de \textit{Discord}. Esto incluye creación, modificación y eliminación de estos bots.
+	\item \textbf{R.F. 2} El sistema permitirá la administración de comandos para bots de \textit{Discord}. Esto incluye creación, modificación y eliminación de estos comandos.
 	\item \textbf{R.F. 3} Los comandos podrán reutilizarse con distintos parámetros, pudiendo ser asignados a distintos bots.
-	\item \textbf{R.F. 4} El sistema permitirá la administración del despliegue de los bots. Ésto incluye la ejecución de los bots, la detención de la ejecución de un bot y la consulta del estado de éstos.
+	\item \textbf{R.F. 4} El sistema permitirá la administración del despliegue de los bots. Esto incluye la ejecución de los bots, la detención de la ejecución de un bot y la consulta del estado de Estos.
 	\item \textbf{R.F. 5} La visualización de datos en la interfaz de usuario deberá ser en forma de listados.
 \end{itemize}
 
@@ -244,7 +244,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
 	\item \textbf{R.N.F. 1} El sistema debe ser capaz de operar correctamente con al menos 50 bots concurrentes.
 	\item \textbf{R.N.F. 2} El sistema debe ser capaz de operar correctamente con al menos 100 comandos configurados en cada bot.
 	\item \textbf{R.N.F. 3} El sistema funcionará para cualquier tipo de sistema, ya sea \textit{Windows}, \textit{Mac} o \textit{GNU Linux}.
-	\item \textbf{R.N.F. 4} El sistema deberá ser escalable horizontalmente. Ésto incluye todos los subsistemas que componen el sistema general.
+	\item \textbf{R.N.F. 4} El sistema deberá ser escalable horizontalmente. Esto incluye todos los subsistemas que componen el sistema general.
 	\item \textbf{R.N.F. 5} La interfaz de usuario del sistema será mediante una aplicación web.
 	\item \textbf{R.N.F. 6} La interfaz de usuario será sencilla.
 	\item \textbf{R.N.F. 7} El sistema se encontrará bajo la licencia \textit{GNU GPLv3}.
@@ -386,7 +386,7 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero crear distintos bots de \textit{Discord} en el sistema para poder configurarlos con los comandos que yo quiera para que éstos realicen las tareas que deseo al ejecutar los comandos en los canales donde he agregado los bots. \\ \hline
+        Resumen & Como usuario administrador quiero crear distintos bots de \textit{Discord} en el sistema para poder configurarlos con los comandos que yo quiera para que Estos realicen las tareas que deseo al ejecutar los comandos en los canales donde he agregado los bots. \\ \hline
         Meta & Creación de bots para que más tarde puedan ser configurados y desplegados y para que puedan ejecutar los comandos configurados en ellos. \\ \hline
         Beneficio & De este modo, cada bot puede tener una funcionalidad específica configurada, sin tener que compartir un bot con funcionalidades de distintos ámbitos. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
@@ -492,7 +492,7 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero crear distintos comandos para los bots de \textit{Discord} para que éstos realicen las tareas que deseo tras ejecutarlos en los canales de \textit{Discord}. \\ \hline
+        Resumen & Como usuario administrador quiero crear distintos comandos para los bots de \textit{Discord} para que Estos realicen las tareas que deseo tras ejecutarlos en los canales de \textit{Discord}. \\ \hline
         Meta & Creación de distintos comandos que posteriormente puedan ser asignados a bots. \\ \hline
         Beneficio & De este modo, cada comando puede tener una tarea específica configurada y accesible (y ejecutable) dentro de un servidor de \textit{Discord}. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
@@ -700,7 +700,7 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como miembro del tribunal, quisiera disponer de una documentación, una presentación y un informe acordes a los criterios de evaluación para comprobar que éstos se han cumplido correctamente. \\ \hline
+        Resumen & Como miembro del tribunal, quisiera disponer de una documentación, una presentación y un informe acordes a los criterios de evaluación para comprobar que Estos se han cumplido correctamente. \\ \hline
         Meta & Disponer de una documentación que recoja claramente toda la información referente al desarrollo del TFM. \\ \hline
         Beneficio & De este modo es más sencillo evaluar todo el trabajo que el alumno ha realizado para desarrollar el TFM. \\ \hline
         Perfil de usuario & \hyperref[sec:personaMiembroTribunal]{Miembro del tribunal} \\ \hline
