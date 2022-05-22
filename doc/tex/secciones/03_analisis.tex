@@ -1,10 +1,10 @@
 \chapter{Análisis}
 
-En este capítulo se profundiza en el análisis del problema planteado en capítulos anteriores, describiendo los diferentes actores, casos de uso, requisitos del sistema e historias de usuario.
+En este capítulo se profundiza en el análisis del problema planteado en capítulos anteriores, describiendo los diferentes actores, casos de uso, historias de usuario y los \textit{user journeys} asociados a estas HU.
 
 \section{Actores}
 
-En el sistema hay dos actores, son los siguientes:
+En el sistema hay un único actor, es el siguiente:
 
 \begin{table}[H]
     \centering
@@ -14,34 +14,18 @@ En el sistema hay dos actores, son los siguientes:
     \hline
         \textbf{Actor} & \textbf{Administrador} \\ \hline
     \hline
-        Descripción & Crea los bots y los comandos. Tiene poder de configuración y de despliegue. Puede ser también usuario del bot. Agrega los bots a los servidores de \textit{Discord}. \\ \hline
+        Descripción & Crea los bots y los comandos. Tiene poder de configuración y de despliegue. Puede ser también usuario del bot haciendo uso de sus comandos. Agrega los bots a los servidores de \textit{Discord}. \\ \hline
+        Beneficio & Obtiene un software que le permite crear bots y comandos de forma sencilla sin tener que usar herramientas de programación, a la vez que puede ampliar los comandos disponibles usando estas herramientas. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Actor 1. Administrador.}
 \end{table}
 
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Actor} & \textbf{Usuario de \textit{Discord}} \\ \hline
-    \hline
-        Descripción & No realiza ningún tipo de configuración de los bots o comandos. Interactúa con los bots una vez ya han sido configurados y desplegados haciendo uso de los comandos. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{Actor 2. Usuario de \textit{Discord}.}
-\end{table}
 
 
 \section{Casos de uso}
 
-En esta sección se presentan los diferentes casos de uso, separados por los actores que los generan.
-
-\subsection{Usuario de \textit{Discord}}
-
-En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso.
+En esta sección se presentan de manera detallada los diferentes casos de uso.
 
 \begin{table}[H]
     \centering
@@ -49,37 +33,17 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
     \begin{adjustbox}{max width=\textwidth}
     \begin{tabularx}{\textwidth}{|l|L|}
     \hline
-        \textbf{Caso de uso} & \textbf{01 - Usar un comando} \\ \hline
+        \textbf{Caso de uso} & \textbf{01 - Crear un bot} \\ \hline
     \hline
         Tipo & Primario \\ \hline
-        Propósito & Usar un comando configurado en un bot dentro de un servidor de \textit{Discord}. \\ \hline
-        Referencias & -- \\ \hline
-        Precondición & El bot tiene comandos configurados y se encuentra desplegado y disponible en un servidor de \textit{Discord}. \\ \hline
-        Postcondición & El comando se ejecuta y el usuario obtiene el resultado esperado. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{Caso de uso 01. Usar un comando.}
-\end{table}
-
-
-\subsection{Administrador}
-
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Caso de uso} & \textbf{02 - Crear un bot} \\ \hline
-    \hline
-        Tipo & Primario \\ \hline
-        Propósito & Crear un bot para después configurarlos y desplegarlos. \\ \hline
+        Propósito & Crear un bot para después configurarlos y desplegarlos en distintos \textit{workers}. \\ \hline
         Referencias & \hyperref[sec:hu01]{HU-01} \\ \hline
-        Precondición & El usuario provee al sistema de los datos necesarios para crear el bot. \\ \hline
+        Precondición & El usuario provee al sistema de los datos necesarios para crear el bot. El sistema se encuentra disponible, instalado en una máquina administrada por el usuario.\\ \hline
         Postcondición & El bot es creado y queda disponible para ser configurado y desplegado. \\ \hline
+        Comentarios adicionales & El usuario ha instalado previamente 
     \end{tabularx}
     \end{adjustbox}
-    \caption{Caso de uso 02. Crear un bot.}
+    \caption{Caso de uso 01. Crear un bot.}
 \end{table}
 
 \begin{table}[H]
@@ -88,7 +52,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
     \begin{adjustbox}{max width=\textwidth}
     \begin{tabularx}{\textwidth}{|l|L|}
     \hline
-        \textbf{Caso de uso} & \textbf{03 - Editar un bot} \\ \hline
+        \textbf{Caso de uso} & \textbf{02 - Editar un bot} \\ \hline
     \hline
         Tipo & Primario \\ \hline
         Propósito & Editar los parámetros y comandos de un bot. \\ \hline
@@ -97,7 +61,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
         Postcondición & El bot queda modificado. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{Caso de uso 03. Editar un bot.}
+    \caption{Caso de uso 02. Editar un bot.}
 \end{table}
 
 \begin{table}[H]
@@ -106,7 +70,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
     \begin{adjustbox}{max width=\textwidth}
     \begin{tabularx}{\textwidth}{|l|L|}
     \hline
-        \textbf{Caso de uso} & \textbf{04 - Eliminar un bot} \\ \hline
+        \textbf{Caso de uso} & \textbf{03 - Eliminar un bot} \\ \hline
     \hline
         Tipo & Primario \\ \hline
         Propósito & Eliminar un bot cuando no es necesario. \\ \hline
@@ -115,7 +79,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
         Postcondición & El bot queda eliminado. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{Caso de uso 04. Eliminar un bot.}
+    \caption{Caso de uso 03. Eliminar un bot.}
 \end{table}
 
 \begin{table}[H]
@@ -124,7 +88,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
     \begin{adjustbox}{max width=\textwidth}
     \begin{tabularx}{\textwidth}{|l|L|}
     \hline
-        \textbf{Caso de uso} & \textbf{05 - Crear un comando} \\ \hline
+        \textbf{Caso de uso} & \textbf{04 - Crear un comando} \\ \hline
     \hline
         Tipo & Primario \\ \hline
         Propósito & Crear un comando para después configurarlo en un bot. \\ \hline
@@ -133,7 +97,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
         Postcondición & El comando es creado y queda disponible para ser configurado en bots. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{Caso de uso 05. Crear un comando.}
+    \caption{Caso de uso 04. Crear un comando.}
 \end{table}
 
 \begin{table}[H]
@@ -142,7 +106,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
     \begin{adjustbox}{max width=\textwidth}
     \begin{tabularx}{\textwidth}{|l|L|}
     \hline
-        \textbf{Caso de uso} & \textbf{06 - Editar un comando} \\ \hline
+        \textbf{Caso de uso} & \textbf{05 - Editar un comando} \\ \hline
     \hline
         Tipo & Primario \\ \hline
         Propósito & Editar los parámetros de un comando. \\ \hline
@@ -151,7 +115,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
         Postcondición & El bot queda modificado. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{Caso de uso 06. Editar un comando.}
+    \caption{Caso de uso 05. Editar un comando.}
 \end{table}
 
 \begin{table}[H]
@@ -160,7 +124,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
     \begin{adjustbox}{max width=\textwidth}
     \begin{tabularx}{\textwidth}{|l|L|}
     \hline
-        \textbf{Caso de uso} & \textbf{07 - Eliminar un comando} \\ \hline
+        \textbf{Caso de uso} & \textbf{06 - Eliminar un comando} \\ \hline
     \hline
         Tipo & Primario \\ \hline
         Propósito & Eliminar un comando cuando no es necesario. \\ \hline
@@ -169,7 +133,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
         Postcondición & El comando queda eliminado. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{Caso de uso 07. Eliminar un comando.}
+    \caption{Caso de uso 06. Eliminar un comando.}
 \end{table}
 
 \begin{table}[H]
@@ -178,16 +142,16 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
     \begin{adjustbox}{max width=\textwidth}
     \begin{tabularx}{\textwidth}{|l|L|}
     \hline
-        \textbf{Caso de uso} & \textbf{08 - Desplegar un bot} \\ \hline
+        \textbf{Caso de uso} & \textbf{07 - Desplegar un bot} \\ \hline
     \hline
         Tipo & Primario \\ \hline
         Propósito & Desplegar un bot para que esté disponible en los servidores de \textit{Discord}. \\ \hline
         Referencias & \hyperref[sec:hu10]{HU-10} \\ \hline
-        Precondición & El usuario provee al sistema de los datos necesarios del bot que quiere desplegar. \\ \hline
-        Postcondición & El bot queda desplegado y disponible en los servidores de \textit{Discord}. \\ \hline
+        Precondición & El usuario provee al sistema de los datos necesarios del bot que quiere desplegar. Al menos un \textit{worker} se encuentra activo. \\ \hline
+        Postcondición & El bot es desplegado en uno de los workers y queda disponible en los servidores de \textit{Discord}. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{Caso de uso 08. Desplegar un bot.}
+    \caption{Caso de uso 07. Desplegar un bot.}
 \end{table}
 
 \begin{table}[H]
@@ -196,7 +160,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
     \begin{adjustbox}{max width=\textwidth}
     \begin{tabularx}{\textwidth}{|l|L|}
     \hline
-        \textbf{Caso de uso} & \textbf{09 - Cancelar el despliegue de un bot} \\ \hline
+        \textbf{Caso de uso} & \textbf{08 - Cancelar el despliegue de un bot} \\ \hline
     \hline
         Tipo & Primario \\ \hline
         Propósito & Parar la ejecución de un bot para que deje de estar disponible en los servidores de \textit{Discord}. \\ \hline
@@ -205,7 +169,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
         Postcondición & El bot deja de ejecutarse y deja de estar disponible en los servidores de \textit{Discord}. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{Caso de uso 09. Cancelar el despliegue de un bot.}
+    \caption{Caso de uso 08. Cancelar el despliegue de un bot.}
 \end{table}
 
 \begin{table}[H]
@@ -214,7 +178,7 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
     \begin{adjustbox}{max width=\textwidth}
     \begin{tabularx}{\textwidth}{|l|L|}
     \hline
-        \textbf{Caso de uso} & \textbf{10 - Interfaz de usuario} \\ \hline
+        \textbf{Caso de uso} & \textbf{09 - Interfaz de usuario} \\ \hline
     \hline
         Tipo & Primario \\ \hline
         Propósito & Realizar las tareas de gestión de bots y comandos mediante una interfaz de usuario. \\ \hline
@@ -225,39 +189,6 @@ En este caso, el usuario regular de \textit{Discord} tiene un único caso de uso
     \end{adjustbox}
     \caption{Caso de uso 09. Cancelar el despliegue de un bot.}
 \end{table}
-
-\section{Requisitos del sistema}
-
-\subsection{Requisitos funcionales}
-
-\begin{itemize}
-	\item \textbf{R.F. 1} El sistema permitirá la administración de bots de \textit{Discord}. Esto incluye creación, modificación y eliminación de estos bots.
-	\item \textbf{R.F. 2} El sistema permitirá la administración de comandos para bots de \textit{Discord}. Esto incluye creación, modificación y eliminación de estos comandos.
-	\item \textbf{R.F. 3} Los comandos podrán reutilizarse con distintos parámetros, pudiendo ser asignados a distintos bots.
-	\item \textbf{R.F. 4} El sistema permitirá la administración del despliegue de los bots. Esto incluye la ejecución de los bots, la detención de la ejecución de un bot y la consulta del estado de Estos.
-	\item \textbf{R.F. 5} La visualización de datos en la interfaz de usuario deberá ser en forma de listados.
-\end{itemize}
-
-\subsection{Requisitos no funcionales}
-
-\begin{itemize}
-	\item \textbf{R.N.F. 1} El sistema debe ser capaz de operar correctamente con al menos 50 bots concurrentes.
-	\item \textbf{R.N.F. 2} El sistema debe ser capaz de operar correctamente con al menos 100 comandos configurados en cada bot.
-	\item \textbf{R.N.F. 3} El sistema funcionará para cualquier tipo de sistema, ya sea \textit{Windows}, \textit{Mac} o \textit{GNU Linux}.
-	\item \textbf{R.N.F. 4} El sistema deberá ser escalable horizontalmente. Esto incluye todos los subsistemas que componen el sistema general.
-	\item \textbf{R.N.F. 5} La interfaz de usuario del sistema será mediante una aplicación web.
-	\item \textbf{R.N.F. 6} La interfaz de usuario será sencilla.
-	\item \textbf{R.N.F. 7} El sistema se encontrará bajo la licencia \textit{GNU GPLv3}.
-\end{itemize}
-
-\subsection{Requisitos de información}
-
-\begin{itemize}
-	\item \textbf{R.I. 1} El sistema almacenará todos los detalles de los comandos de los bots de \textit{Discord}.
-	\item \textbf{R.I. 2} El sistema almacenará todos los detalles de los bots de \textit{Discord}.
-	\item \textbf{R.I. 3} El sistema almacenará para cada bot un identificador único, un nombre, una descripción, una \textit{key}, un prefijo y una lista de comandos.
-	\item \textbf{R.I. 4} El sistema almacenará para cada comando, un identificador único, un nombre, una descripción, el tipo de comando, el modo de ejecución del comando y una lista de argumentos.
-\end{itemize}
 
 
 \section{Personas}
@@ -498,7 +429,7 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
         Escenario & · Dado: que quiero crear un comando de \textit{Discord} y configurar sus funcionalidades,\linebreak · Cuando: proveo al sistema de un nombre para el comando y de un prefijo,\linebreak · Entonces: el sistema crea un comando para que pueda empezar a configurarlo. \\ \hline
         Notas funcionales & · No se debe permitir la creación de comandos con el mismo nombre. \\ \hline
-        Notas técnicas & Elementos necesarios para la creación del comando:\linebreak · \verb|name: str|. Nombre del comando.\linebreak · \verb|prefix: str|. Prefijo del comando. \\ \hline
+        Notas técnicas & Elementos necesarios para la creación del comando:\linebreak · \verb|name: str|. Nombre del comando.\linebreak · \verb|prefix: str|. Prefijo del comando.\linebreak · \verb|type: CommandType|. El tipo de comando.\linebreak · \verb|params: obj|. Parámetros del comando. \\ \hline
         Dependencias & – \\ \hline
         Tareas de seguimiento & – \\ \hline
         Criterio de aceptación & · Los comandos se crean correctamente.\linebreak · El usuario es avisado en caso de error al crear un comando.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
@@ -714,3 +645,103 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \end{adjustbox}
     \caption{HU-13. Criterios de evaluación.}
 \end{table}
+ 
+\section{User journeys}
+
+En esta sección se enumeran los \textit{user journeys} tanto para el uso del sistema, como para la apliación del repertorio de comandos.
+
+\subsection{Uso del sistema}
+
+\subsubsection{Crear un bot}
+
+\begin{enumerate}
+	\item El usuario crea una aplicación de \textit{Discord} en el \href{https://discord.com/developers/applications}{portal de desarrolladores} y obtiene un \textit{token} para un bot.
+	\item El usuario provee al sistema de este \textit{token} y de un nombre.
+	\item[!] Si el nombre o el \textit{token} se encuentran en uso por otro bot, el sistema cancela la creación.
+	\item El bot es creado en el sistema, quedando disponible para ser configurado con comandos o para ser desplegado.
+\end{enumerate}
+
+\subsubsection{Modificar un bot}
+
+Se puede modificar un bot de dos maneras:
+
+\begin{itemize}
+	\item Parámetros del bot.
+	\begin{enumerate}
+		\item El usuario provee al sistema de un nombre o \textit{token} distinto a los actuales.
+		\item[!] Si el nombre o el \textit{token} corresponden a otro bot, el sistema cancela la modificación.
+		\item[!] Si el bot se encuentra desplegado, el sistema cancela el despliegue previa modificación.
+		\item El sistema modifica los detalles del bot.
+	\end{enumerate}
+	
+	\item Comandos del bot.
+	\begin{enumerate}
+		\item El usuario provee al sistema de los identificadores de los comandos que quiere agregar o eliminar del bot.
+		\item[!] Si el bot se encuentra desplegado, el sistema cancela el despliegue previa modificación.
+		\item El sistema modifica los comandos del bot.
+	\end{enumerate}
+\end{itemize}
+
+\subsubsection{Eliminar un bot}
+
+\begin{enumerate}
+	\item El usuario provee al sistema del identificador del bot que quiere eliminar.
+	\item[!] Si el bot se encuentra desplegado, el sistema cancela el despliegue previa eliminación.
+	\item El sistema elimina todos los datos asociados al bot, no pudiendo volver a usarse.
+\end{enumerate}
+
+\subsubsection{Crear un comando}
+
+\begin{enumerate}
+	\item El usuario provee al sistema de un nombre, un prefijo, un tipo de comando y de los parámetros necesarios para ese tipo de comando.
+	\item[!] Si el nombre se encuentra en uso, el sistema cancela la creación del comando.
+	\item El sistema crea el comando.
+\end{enumerate}
+
+\subsubsection{Modificar un comando}
+
+\begin{enumerate}
+	\item El usuario provee al sistema de los datos que quiere modificar de un comando, estos incluyen el nombre, prefijo y parámetros.
+	\item[!] Si los datos que el usuario provee (nombre y prefijo) corresponden a otro comando, el sistema cancela la modificación.
+	\item[!] Si el comando se encuentra en uso por un bot que se encuentra desplegado, el sistema cancela el despliegue previa modificación.
+	\item El sistema modifica el comando.
+\end{enumerate}
+
+\subsubsection{Eliminar un comando}
+
+\begin{enumerate}
+	\item El usuario provee al sistema del identificador del comando que quiere eliminar.
+	\item[!] Si el comando se encuentra en uso por un bot que se encuentra desplegado, el sistema cancela el despliegue previa eliminación.
+	\item El sistema elimina todos los datos asociados al comando, no pudiendo volver a agregarse a un bot.
+\end{enumerate}
+
+\subsubsection{Desplegar un bot}
+
+\begin{enumerate}
+	\item El usuario provee al sistema del identificador del bot que quiere desplegar, además del identificador del \textit{worker} donde quiere desplegarlo.
+	\item[!] Si el bot ya se encuentra desplegado, el sistema cancela el despliegue.
+	\item[!] Si el bot o el \textit{worker} no existen, el sistema cancela el despliegue.
+	\item El sistema despliega el bot en el \textit{worker}.
+\end{enumerate}
+
+\subsubsection{Cancelar despliegue de un bot}
+
+\begin{enumerate}
+	\item El usuario provee al sistema del identificador del bot del que quiere cancelar el despliegue.
+	\item[!] Si el bot no se encuentra desplegado, el sistema cancela la operación.
+	\item[!] Si el bot no existe, el sistema cancela la operación.
+	\item El sistema cancela el despliegue del bot.
+\end{enumerate}
+
+
+\subsection{Ampliación del repertorio de comandos}
+
+Para la realización de este \textit{user journey} es necesario el uso de C\#.
+
+\begin{enumerate}
+	\item El usuario define el nuevo tipo de comando.
+	\item El usuario define los parámetros que necesita ese comando.
+	\item El usuario implementa la funcionalidad asociada al comando, esto es el código que se ejecuta cuando el comando es invocado.
+	\item El comando queda disponible para ser usado por el sistema.
+	\item[!] Es necesario reiniciar el sistema para que pueda utilizarse el nuevo comando.
+\end{enumerate}
