@@ -77,3 +77,4 @@ hu
 Precondición
 Postcondición
 GPLv
+CommandType
