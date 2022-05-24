@@ -746,27 +746,30 @@ Para la realización de este \textit{user journey} es necesario el uso de C\#.
 	\item[!] Es necesario reiniciar el sistema para que pueda utilizarse el nuevo comando.
 \end{enumerate}
 
-\section{Modelo de negocio y presupuesto}
+\section{Modelo de negocio}
 
 La solución propuesta se caracteriza por ser software libre, pero los costos de desarrollo e implementación nunca son nulos.
 
-Debido a la muy probable falta de financiación al inicio del desarrollo del software, el modelo de negocio inicial se centraría en la renta mínima para continuar con el proyecto. A medida que se supere este primer obstáculo y el software esté mejor establecido, el modelo de financiación cambiaría para lograr un mayor valor de mercado y ganancias.
+Debido a la muy probable falta de financiación al inicio del desarrollo del software, los objetivos iniciales se centrarían en obtener la renta mínima para poder continuar con el desarrollo del proyecto. A medida que se supere este primer obstáculo y el software esté mejor establecido, el modelo de financiación cambiaría para lograr un mayor valor de mercado y ganancias.
 
-Una buena opción sería la \textit {Sociedad Limitada Nueva Sociedad}, la cual permite crear pequeñas empresas con pocos recursos iniciales y tiene bastantes beneficios frente a otros modelos:
+Como modelo de negocio, teniendo en cuenta que se opta por una solución compuesta por software libre, con el fin de sufragar todos estos gastos se podría optar por un modelo de consultoría. En este, se ofrecería soporte personalizado y desarrollo de características personalizadas para cada uno de los clientes que contratase el servicio. Otra posible fuente de ingresos podría ser el \textit{hosting} de bots mediante suscripciones mensuales, ofreciendo la herramienta y los bots como servicio.
+
+\subsection{Sociedad Limitada Nueva Empresa}
+
+Una \textit{SLNE} es una buena opción, ya que permite crear una pequeña empresa con pocos recursos iniciales con la que iniciar el desarrollo de forma profesional el desarrollo. Además tiene bastantes beneficios frente a otros modelos:
 
 \begin{itemize}
 	\item Construcción rápida.
-	\item No necesita registro de miembros.
+	\item No necesita registro de socios.
 	\item Fraccionado y aplazamiento de retenciones del \textit{IRPF} y otras deudas y pagos fraccionados.
 	\item Se puede cambiar la denominación social de forma gratuita.
 \end{itemize}
 
-Los gastos para poder desarrollar este software de forma profesional no son desorbitados, pero tampoco son bajos. En cuanto a gastos derivados de la empresa y burocráticos serían (al menos) los siguientes:
+Los gastos para poder desarrollar un software de las características descritas de forma profesional no son desorbitados, pero tampoco son bajos. En cuanto a gastos derivados de la empresa y burocráticos serían (al menos) los siguientes:
 
 \begin{itemize}
 	\item 3000 euros. El capital mínimo a aportar para crear una \textit{SLNE}.
-	\item 294 euros. La cuota de autónomos a fecha de 2022, que supone 3528 euros al año.
-	\item 500 euros. Estimación de los distintos gastos burocráticos.
+	\item 1000 euros. Estimación de los distintos gastos burocráticos.
 	\item 550 euros. Gastos derivados con el desarrollo de la actividad laboral, como por ejemplo un local. Al año supone al menos 6600 euros.
 \end{itemize}
 
@@ -780,25 +783,51 @@ A continuación se muestra un posible presupuesto del gasto anual teniendo en cu
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|r|r|r|}
+    \begin{tabularx}{\textwidth}{|L|r|r|r|}
     \hline
         \textbf{Concepto} & \textbf{Euros/Ud} & \textbf{Cantidad} & \textbf{Total (Euros)} \\ \hline
     \hline
         Capital inicial (SLNE) & 3000 & 1 & 3000 \\ \hline
-        Autónomos (cuota) & 294 & 12 & 3528 \\ \hline
-        Burocracia & 500 & 1 & 500 \\ \hline
+        Burocracia & 1000 & 1 & 1000 \\ \hline
         Derivados & 550 & 12 & 6600 \\ \hline
         Salario & 2333 & 12 & 28000 \\ \hline
-        Servicios Cloud & 150 & 12 & 1800 \\ \hline
+        Servicios \textit{Cloud} & 150 & 12 & 1800 \\ \hline
         Sistemas informáticos & 3000 & 1 & 3000 \\ \hline
-        \hline
-        \multicolumn{3}{|r|}{\textbf{Total}} & \textbf{46428} \\ \hline
+    \hline
+        \multicolumn{3}{|r|}{\textbf{Total}} & \textbf{43400} \\ \hline
     \end{tabularx}
     \end{adjustbox}
+    \caption{Presupuesto anual como \textit{SLNE}.}
 \end{table}
 
-Se puede observar que el primer año de vida de esta empresa (que hasta el momento sólo tiene un empleado) costaría más de 46000 euros, una cifra bastante alta. En el caso de que se quisiera incluir a un nuevo empleado, también desarrollador con experiencia similar, el coste adicional ascendería a aproximadamente 32000 euros.
+Se puede observar que el primer año de vida de esta empresa (que hasta el momento sólo tiene un empleado) costaría más de 43000 euros, una cifra bastante alta. En el caso de que se quisiera incluir a un nuevo empleado, también desarrollador con experiencia similar, el coste adicional ascendería a aproximadamente 33000 euros.
 
-En cuanto al modelo de negocio, si bien se quiere optar por una solución compuesta por software libre, con el fin de pagar todos estos gastos se optaría por un modelo de consultoría. En este, se ofrecería soporte personalizado y desarrollo de características personalizadas para cada uno de los clientes que contratase el servicio.
+\subsection{Autónomo}
 
+Ser autónomo es otra posible opción para comenzar a desarrollar el software profesionalmente. En este caso los costes pueden ser algo inferiores, y además existen deducciones en el caso de ser una primera alta, pero no son bajos.
 
+La siguiente tabla muestra el posible presupuesto del gasto anual:
+
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|L|r|r|r|}
+    \hline
+        \textbf{Concepto} & \textbf{Euros/Ud} & \textbf{Cantidad} & \textbf{Total (Euros)} \\ \hline
+    \hline
+        Cuota mínima & 294 & 12 & 3528 \\ \hline
+        Cuota máxima & 711 & 12 & 8532 \\ \hline
+    \hline
+        Burocracia & 1000 & 1 & 1000 \\ \hline
+        Servicios \textit{Cloud} & 150 & 12 & 1800 \\ \hline
+        Sistemas informáticos & 3000 & 1 & 3000 \\ \hline
+    \hline
+        \multicolumn{3}{|r|}{\textbf{Total (cuota mínima)}} & \textbf{9328} \\ \hline
+        \multicolumn{3}{|r|}{\textbf{Total (cuota máxima)}} & \textbf{14332} \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+    \caption{Presupuesto anual como \textit{autónomo}.}
+\end{table}
+
+Para este caso se ha mantenido el salario objetivo que se marcaba en la sección anterior, 28000 euros divididos en 12 pagas. Además, entra en juego la cuota de autónomos, que en 2022 sitúa su mínimo en 294 euros. Este aspecto es importante, ya que esta es la aportación por la que se cotiza. Si bien en los primeros meses podría ser interesante reducir al máximo los gastos, no es lo ideal a largo plazo. Otro aspecto importante es que se deberían pagar impuestos trimestrales, como el IVA, lo que incrementa los gastos.
