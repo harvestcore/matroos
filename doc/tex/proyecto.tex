@@ -1,5 +1,6 @@
 % \documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
 \documentclass[11pt, a4paper]{book}
+\usepackage[a4paper, total={5.5in, 8.75in}]{geometry}
 \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
 \usepackage[utf8]{inputenc}
 \usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
@@ -12,8 +13,12 @@
 \usepackage{enumerate}
 \usepackage{hyperref}
 \usepackage{graphicx}
-\usepackage{tabularx}
+\usepackage{adjustbox}
 \usepackage{booktabs}
+
+\usepackage{tabularx}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
 
 \usepackage[table,xcdraw]{xcolor}
 \hypersetup{
