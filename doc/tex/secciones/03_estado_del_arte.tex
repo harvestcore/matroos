@@ -1,21 +1,35 @@
 \chapter{Estado del arte}
 
-En este capítulo se hace un repaso de las distintas soluciones actuales que existen para la creación de bots de \textit{Discord}. Cada una de ellas destaca en aspectos concretos, pero ninguna reúne todas las características deseadas.
+En este capítulo se hace un repaso de las distintas soluciones actuales que existen para la creación de bots de \textit{Discord} y la configuración de sus comandos.
+
+\section{Definiciones previas}
+
+Previa lectura de este capítulo es interesante conocer el significado de algunos conceptos que se usan.
+
+\begin{itemize}
+	\item \textbf{Comandos predefinidos}. Comandos de \textit{Discord} cuya funcionalidad está ya definida (y por tanto programada) y no puede ser modificada por un usuario.
+	\item \textbf{Comandos personalizados}. Comandos predefinidos que pueden utilizarse con distintos parámetros para modificar su comportamiento.
+	\item \textbf{Comandos reutilizables}. Comandos personalizados que una vez configurados pueden utilizarse en distintos bots.
+	\item \textbf{Despliegue de un bot}. Todas aquellas tareas y actividades que hacen que un bot se encuentre disponible para ser usado por usuarios.
+	\item \textbf{Control del despliegue}. Capacidad de controlar y monitorizar el despliegue de bots de \textit{Discord} en un sistema.
+	\item \textbf{Comandos de moderación}. Comandos cuya funcionalidad se centra en la moderación de usuarios en los servidores de \textit{Discord}.
+\end{itemize}
 
 \section{Soluciones actuales}
 
-En el ámbito de la creación de bots de \textit{Discord} existen una generosa cantidad de herramientas con este cometido. Como se comentaba en el capítulo anterior, estas herramientas en su basta mayoría son bastante básicas, permitiendo una creación y configuración de bots que en ciertos ámbitos puede ser insuficiente. Aún así, existen otras alternativas que son más interesantes y completas, pero que son complejas de utilizar.
-
-Estos sistemas se podrían dividir en dos grupos, herramientas \textit{no-code} y herramientas que hacen uso de programación. En ambas la interacción con el sistema se hace a través de una aplicación web, y además suelen tener una apariencia muy similar. En las siguientes secciones se incluyen las herramientas con características más interesantes y las que dentro de lo que cabe son más completas.
+Las soluciones actuales se podrían dividir en dos grupos, herramientas \textit{no-code} y herramientas que hacen uso de programación. En ambas la interacción con el sistema se hace a través de una aplicación web, y además suelen tener una apariencia muy similar. En las siguientes secciones se incluyen las herramientas con características más interesantes.
 
 \subsection{Herramientas \textit{no-code}}
 
-Estas herramientas permiten la creación de bots sin hacer uso de recursos de programación o similares. En la mayoría de casos estas plataformas cuentan con un único bot que se debe agregar al servidor de \textit{Discord} deseado, y permiten la configuración de este bot de forma individual para cada servidor. En general la mayoría de herramientas de este tipo tienen una serie de funcionalidades gratuitas, teniendo que adquirir un plan de pago mensual para obtener funcionalidades extra.
+Estas herramientas permiten la creación de bots sin hacer uso de recursos de programación o similares. En general la mayoría de herramientas de este tipo tienen una serie de funcionalidades gratuitas, teniendo que adquirir un plan de pago mensual para obtener funcionalidades extra.
+
+En la mayoría de casos estas plataformas cuentan con un único bot que se debe agregar al servidor de \textit{Discord} deseado. Esto implica que el uso del servicio de estos sólo permite el uso de un bot, configurado de forma individual para cada servidor. No se permite por tanto agregar varios bots (del mismo tipo) con distintas funcionalidades a un mismo servidor.
 
 En ellas se puede observar también uno de los principales problemas mencionados en el capítulo anterior, la muy reducida personalización y reutilización de los comandos. En estos sistemas no se puede crear un comando específico con una funcionalidad concreta, sino que se basan en funcionalidades predefinidas no reutilizables.
 
 \subsubsection{ProBot}
-\href{https://probot.io/}{\textit{ProBot}} es sin duda la más interesante de las herramientas no-code debido a que permite crear ilimitados comandos personalizados, siendo la principal desventaja que estos comandos son predefinidos, y no se puede cambiar su funcionalidad. Los comandos predefinidos se centran en moderación y mensajes automáticos, por lo que las posibilidades no son muy amplias.
+
+\href{https://probot.io/}{\textit{ProBot}} es sin duda la más interesante de las herramientas \textit{no-code} debido a que permite crear ilimitados comandos personalizados, siendo la principal desventaja que estos comandos son predefinidos, y no se puede cambiar su funcionalidad. Los comandos predefinidos se centran en moderación y mensajes automáticos, por lo que las posibilidades no son muy amplias.
 
 A favor de esta herramienta también destaca que es sencilla de utilizar, la interfaz web intenta imitar a la de \textit{Discord} y es intuitiva. Por contra, es bastante intrusiva la modalidad \textit{premium}, ya que muchas secciones sugieren la compra de esta modalidad. Además es imposible controlar el despliegue del bot, y no es posible reutilizar comandos.
 
@@ -130,7 +144,7 @@ Actualmente existen multitud de librerías para distintos lenguajes de programac
 
 \subsubsection{Autocode}
 
-\href{https://autocode.com/}{Autocode} es sin duda la herramienta mas interesante que se ha encontrado de esta modalidad híbrida. Realmente es una plataforma que permite la creación y despliegue de aplicaciones y servicios web, bots, y tareas de automatización haciendo uso de \textit{JavaScript} inyectado por los usuarios.
+\href{https://autocode.com/}{Autocode} es sin duda la herramienta mas interesante que existe de esta modalidad híbrida. Realmente es una plataforma que facilita la creación y despliegue de aplicaciones y servicios web, bots, y tareas de automatización permitiendo que los usuarios escriban sólo una parte del código (\textit{JavaScript}) de estos.
 
 De este modo el usuario sólo tiene que preocuparse por el código de la aplicación (o bot en este caso) que quiere crear, ya que del despliegue se encarga \textit{Autocode}. En su plan gratuito se pueden crear hasta 50 aplicaciones distintas, y permite la integración entre si de los distintos recursos que el usuario crea en la plataforma.
 
@@ -236,8 +250,8 @@ En el caso de las librerías de programación, aunque todas permiten el acceso a
 
 En la comparativa de tiempos anterior se puede observar que las herramientas \textit{no-code} son las más rápidas. Esto se debe a que solo es necesario agregar el bot al servidor de \textit{Discord} deseado, y tras eso configurar de manera sencilla los comandos.
 
-En menos de 10 minutos se puede incluir una gran cantidad de funcionalidad a un servidor de manera gratuita, algo que puede ser muy útil para la basta mayoría de usuarios de \textit{Discord}, pero cuando se necesitan funcionalidades específicas entonces no son las ideales.
+En menos de 10 minutos se puede incluir una gran cantidad de funcionalidad a un servidor de \textit{Discord} de manera gratuita, algo que puede ser muy útil para la basta mayoría de usuarios de \textit{Discord}, pero cuando se necesitan funcionalidades específicas entonces no son las ideales.
 
-En cambio, cuando se usan herramientas que hacen uso de código, el tiempo de implementación se incrementa considerablemente. Debido a las características de lenguajes como \textit{JavaScript} o \textit{Python} este tiempo es algo menor que en \textit{C\#}, ya que este suele tener una curva de aprendizaje mayor. Aún así, teniendo en cuenta que hay que hacer ciertas consultas a la documentación de estas librerías y que hay que crear una estructura y una serie de recursos para poder comenzar a desarrollar el bot, el tiempo se incrementa.
+En cambio, cuando se usan herramientas que hacen uso de código, el tiempo de implementación se incrementa considerablemente. No hace justicia la comparativa, ya que en este caso se tiene que desarrollar el software por completo, por lo que es obvio que el tiempo es mayor.
 
-En definitiva, no existe ninguna herramienta que brinde lo mejor de ambas alternativas. Por un lado se quiere facilitar la creación de bots y comandos, y el despliegue de estos. Por otro se quiere poder ampliar el repertorio de comandos disponible de manera sencilla, sin tener que desarrollar una aplicación completa para ello.
+En definitiva, no existe ninguna herramienta sencilla que brinde lo mejor de ambas alternativas. Por un lado se quiere facilitar la creación de bots y comandos, y el despliegue de estos. Por otro se quiere poder ampliar el repertorio de comandos disponible de manera sencilla, sin tener que desarrollar una aplicación completa para ello.
