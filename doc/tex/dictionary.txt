@@ -14,3 +14,7 @@ TeamSpeak
 Discord
 multiplataforma
 TBD
+Concretización
+WebRTC
+WebSocket
+XMPP
