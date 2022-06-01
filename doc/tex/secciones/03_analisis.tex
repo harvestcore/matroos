@@ -167,7 +167,7 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero disponer de un repertorio de comandos predefinidos ampliable para después crear comandos personalizados a partir de ellos. \\ \hline
+        Resumen & Como usuario administrador quiero disponer de un repertorio de comandos predefinidos ampliable para despues crear comandos personalizados a partir de ellos. \\ \hline
         Meta & Disponer de un repertorio de comandos predefinidos ampliable. \\ \hline
         Beneficio & De este modo, cuando se necesitan comandos predefinidos con funcionalidad nueva, es posible crearlos. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
@@ -257,8 +257,34 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
 \end{table}
 
 
-\subsection{HU-07 - Interfaz de usuario}
+\subsection{HU-07 - Persistencia de bots y comandos}
 \label{sec:hu07}
+
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        \textbf{Sección} & \textbf{Contenido} \\ \hline
+    \hline
+        Resumen & Como usuario administrador quiero que las configuraciones de bots y comandos sean persistentes, de modo que no pierda el trabajo realizado. \\ \hline
+        Meta & Persistencia de bots y comandos. \\ \hline
+        Beneficio & Que las configuraciones de bots y comandos se puedan almacenar evita que se tenga que crear estos desde cero cada vez que se reinicia la aplicación por algún motivo. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
+        Escenario & · Dado: que quiero no quiero perder el progreso de las configuraciones realizadas,\linebreak · Cuando: creo o modifico algún comando o bot,\linebreak · Entonces: el sistema almacena de alguna manera estas configuraciones. \\ \hline
+        Notas funcionales & – \\ \hline
+        Dependencias & \hyperref[sec:hu01]{HU-01}, \hyperref[sec:hu02]{HU-02}, \hyperref[sec:hu03]{HU-03}, \hyperref[sec:hu04]{HU-04}, \hyperref[sec:hu05]{HU-05}, \hyperref[sec:hu06]{HU-06} \\ \hline
+        Tareas de seguimiento & – \\ \hline
+        Criterio de aceptación & · Los bots y comandos son almacenados de alguna manera persistente.\linebreak · El usuario es avisado en caso de producirse algún error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+    \caption{HU-07. Persistencia de datos.}
+\end{table}
+
+
+\subsection{HU-08 - Interfaz de usuario}
+\label{sec:hu08}
 
 \begin{table}[H]
     \centering
@@ -279,11 +305,11 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
         Criterio de aceptación & · La interfaz permite realizar las tareas de gestión de bots y comandos.\linebreak · El usuario es avisado en caso de producirse algún error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{HU-07. Interfaz de usuario.}
+    \caption{HU-08. Interfaz de usuario.}
 \end{table}
 
-\subsection{HU-08 - Criterios de evaluación}
-\label{sec:hu08}
+\subsection{HU-09 - Criterios de evaluación}
+\label{sec:hu09}
 
 \begin{table}[H]
     \centering
@@ -304,7 +330,7 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
         Criterio de aceptación & · La documentación cumple con los criterios de evaluación. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{HU-08. Criterios de evaluación.}
+    \caption{HU-09. Criterios de evaluación.}
 \end{table}
   
 \section{User journeys}
