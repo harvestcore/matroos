@@ -1,194 +1,6 @@
 \chapter{Análisis}
 
-En este capítulo se profundiza en el análisis del problema planteado en capítulos anteriores, describiendo los diferentes actores, casos de uso, historias de usuario y los \textit{user journeys} asociados a estas HU.
-
-\section{Actores}
-
-En el sistema hay un único actor, es el siguiente:
-
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Actor} & \textbf{Administrador} \\ \hline
-    \hline
-        Descripción & Crea los bots y los comandos. Tiene poder de configuración y de despliegue. Puede ser también usuario del bot haciendo uso de sus comandos. Agrega los bots a los servidores de \textit{Discord}. \\ \hline
-        Beneficio & Obtiene un software que le permite crear bots y comandos de forma sencilla sin tener que usar herramientas de programación, a la vez que puede ampliar los comandos disponibles usando estas herramientas. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{Actor 1. Administrador.}
-\end{table}
-
-
-
-\section{Casos de uso}
-
-En esta sección se presentan de manera detallada los diferentes casos de uso.
-
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Caso de uso} & \textbf{01 - Crear un bot} \\ \hline
-    \hline
-        Tipo & Primario \\ \hline
-        Propósito & Crear un bot para después configurarlos y desplegarlos en distintos \textit{workers}. \\ \hline
-        Referencias & \hyperref[sec:hu01]{HU-01} \\ \hline
-        Precondición & El usuario provee al sistema de los datos necesarios para crear el bot. El sistema se encuentra disponible, instalado en una máquina administrada por el usuario.\\ \hline
-        Postcondición & El bot es creado y queda disponible para ser configurado y desplegado. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{Caso de uso 01. Crear un bot.}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Caso de uso} & \textbf{02 - Editar un bot} \\ \hline
-    \hline
-        Tipo & Primario \\ \hline
-        Propósito & Editar los parámetros y comandos de un bot. \\ \hline
-        Referencias & \hyperref[sec:hu03]{HU-03}\\ \hline
-        Precondición & El usuario provee al sistema de los nuevos parámetros del bot, o de los comandos que quiere modificar. \\ \hline
-        Postcondición & El bot queda modificado. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{Caso de uso 02. Editar un bot.}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Caso de uso} & \textbf{03 - Eliminar un bot} \\ \hline
-    \hline
-        Tipo & Primario \\ \hline
-        Propósito & Eliminar un bot cuando no es necesario. \\ \hline
-        Referencias & \hyperref[sec:hu04]{HU-04} \\ \hline
-        Precondición & El usuario provee al sistema de los datos necesarios del bot que quiere eliminar. \\ \hline
-        Postcondición & El bot queda eliminado. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{Caso de uso 03. Eliminar un bot.}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Caso de uso} & \textbf{04 - Crear un comando} \\ \hline
-    \hline
-        Tipo & Primario \\ \hline
-        Propósito & Crear un comando para después configurarlo en un bot. \\ \hline
-        Referencias & \hyperref[sec:hu05]{HU-05} \\ \hline
-        Precondición & El usuario provee al sistema de los datos necesarios para crear el comando. \\ \hline
-        Postcondición & El comando es creado y queda disponible para ser configurado en bots. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{Caso de uso 04. Crear un comando.}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Caso de uso} & \textbf{05 - Editar un comando} \\ \hline
-    \hline
-        Tipo & Primario \\ \hline
-        Propósito & Editar los parámetros de un comando. \\ \hline
-        Referencias & \hyperref[sec:hu07]{HU-07} \\ \hline
-        Precondición & El usuario provee al sistema de los nuevos parámetros del bot, o de los comandos que quiere modificar. \\ \hline
-        Postcondición & El bot queda modificado. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{Caso de uso 05. Editar un comando.}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Caso de uso} & \textbf{06 - Eliminar un comando} \\ \hline
-    \hline
-        Tipo & Primario \\ \hline
-        Propósito & Eliminar un comando cuando no es necesario. \\ \hline
-        Referencias & \hyperref[sec:hu08]{HU-08} \\ \hline
-        Precondición & El usuario provee al sistema de los datos necesarios del comando que quiere eliminar. \\ \hline
-        Postcondición & El comando queda eliminado. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{Caso de uso 06. Eliminar un comando.}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Caso de uso} & \textbf{07 - Desplegar un bot} \\ \hline
-    \hline
-        Tipo & Primario \\ \hline
-        Propósito & Desplegar un bot para que esté disponible en los servidores de \textit{Discord}. \\ \hline
-        Referencias & \hyperref[sec:hu10]{HU-10} \\ \hline
-        Precondición & El usuario provee al sistema de los datos necesarios del bot que quiere desplegar. Al menos un \textit{worker} se encuentra activo. \\ \hline
-        Postcondición & El bot es desplegado en uno de los workers y queda disponible en los servidores de \textit{Discord}. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{Caso de uso 07. Desplegar un bot.}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Caso de uso} & \textbf{08 - Cancelar el despliegue de un bot} \\ \hline
-    \hline
-        Tipo & Primario \\ \hline
-        Propósito & Parar la ejecución de un bot para que deje de estar disponible en los servidores de \textit{Discord}. \\ \hline
-        Referencias & \hyperref[sec:hu11]{HU-11} \\ \hline
-        Precondición & El usuario provee al sistema de los datos necesarios del bot del que quiere cancelar el despliegue. \\ \hline
-        Postcondición & El bot deja de ejecutarse y deja de estar disponible en los servidores de \textit{Discord}. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{Caso de uso 08. Cancelar el despliegue de un bot.}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Caso de uso} & \textbf{09 - Interfaz de usuario} \\ \hline
-    \hline
-        Tipo & Primario \\ \hline
-        Propósito & Realizar las tareas de gestión de bots y comandos mediante una interfaz de usuario. \\ \hline
-        Referencias & \hyperref[sec:hu12]{HU-12} \\ \hline
-        Precondición & El sistema provee a la interfaz de usuario de toda la información referente a los bots y comandos. \\ \hline
-        Postcondición & El usuario realiza las tareas de gestión de estos bots y comandos. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{Caso de uso 09. Cancelar el despliegue de un bot.}
-\end{table}
-
+En este capítulo se profundiza en el análisis del problema planteado en capítulos anteriores, describiendo las diferentes personas, historias de usuario y los \textit{user journeys} asociados a estas \textit{HU}.
 
 \section{Personas}
 
@@ -275,7 +87,6 @@ Para la creación de las historias de usuarios se ha usado la siguiente estructu
         Perfil de usuario & Perfil del usuario que genera la historia de usuario. \\ \hline
         Escenario & Escenario de la historia de usuario. Se deben especificar detalles más concretos.\linebreak · Dado …\linebreak · Cuando …\linebreak · Entonces … \\ \hline
         Notas funcionales & Notas adicionales de carácter funcional que ayudan a comprender mejor el alcance de la historia de usuario. \\ \hline
-        Notas técnicas & Notas adicionales de carácter técnico que ayudan a comprender mejor este tipo de detalles a la hora de desarrollar la historia de usuario. \\ \hline
         Dependencias & Posibles dependencias que tenga la historia de usuario. Éstas pueden ser otras historias de usuario, tareas que se estén llevando a cabo, etc. \\ \hline
         Tareas de seguimiento & Una vez analizada la historia de usuario, las tareas que se deben realizar a continuación. \\ \hline
         Criterio de aceptación & Criterio por el cual se va a determinar que la historia de usuario ha sido completada con éxito y por tanto finalizada. \\ \hline
@@ -289,19 +100,8 @@ Para la creación de las historias de usuarios se ha usado la siguiente estructu
 Por otro lado, se han creado las siguientes historias de usuario. Estas se encuentran en el \href{https://github.com/harvestcore/matroos}{repositorio} de \textit{GitHub} del proyecto, en la sección \href{https://github.com/harvestcore/matroos/labels/US}{\textit{Issues}}.
 
 \begin{enumerate}
-	\item \href{https://github.com/harvestcore/matroos/issues/1}{Crear diferentes bots de \textit{Discord}}
-	\item \href{https://github.com/harvestcore/matroos/issues/2}{Consultar datos de un bot}
-	\item \href{https://github.com/harvestcore/matroos/issues/3}{Editar un bot}
-	\item \href{https://github.com/harvestcore/matroos/issues/4}{Eliminar un bot}
-	\item \href{https://github.com/harvestcore/matroos/issues/5}{Crear diferentes comandos de \textit{Discord}}
-	\item \href{https://github.com/harvestcore/matroos/issues/6}{Consultar datos de un comando}
-	\item \href{https://github.com/harvestcore/matroos/issues/7}{Editar un comando}
-	\item \href{https://github.com/harvestcore/matroos/issues/8}{Eliminar un comando}
-	\item \href{https://github.com/harvestcore/matroos/issues/9}{Lanzar bots}
-	\item \href{https://github.com/harvestcore/matroos/issues/10}{Cancelar ejecución de bots}
-	\item \href{https://github.com/harvestcore/matroos/issues/11}{Consultar estado de los despliegues}
-	\item \href{https://github.com/harvestcore/matroos/issues/25}{Interfaz de usuario}
-	\item \href{https://github.com/harvestcore/matroos/issues/39}{Criterios de evaluación}
+%	\item \href{https://github.com/harvestcore/matroos/issues/1}{Crear diferentes bots de \textit{Discord}}
+	\item \textbf{Actualizar cuando las issues estén creadas en GitHub.}
 \end{enumerate}
 
 
@@ -316,15 +116,13 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero crear distintos bots de \textit{Discord} en el sistema para poder configurarlos con los comandos que yo quiera para que Estos realicen las tareas que deseo al ejecutar los comandos en los canales donde he agregado los bots. \\ \hline
-        Meta & Creación de bots para que más tarde puedan ser configurados y desplegados y para que puedan ejecutar los comandos configurados en ellos. \\ \hline
+        Resumen & Como usuario administrador quiero crear distintos bots de \textit{Discord} para poder separar funcionalidades en ellos. \\ \hline
+        Meta & Creación de bots para que más tarde puedan ser configurados con distintas funcionalidades. \\ \hline
         Beneficio & De este modo, cada bot puede tener una funcionalidad específica configurada, sin tener que compartir un bot con funcionalidades de distintos ámbitos. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
-        Escenario & · Dado: que quiero crear un bot de \textit{Discord} y configurar sus funcionalidades,\linebreak · Cuando: proveo al sistema de una \textit{key} de bot de \textit{Discord} y de un nombre para el bot,\linebreak · Entonces: el sistema crea un bot para que pueda empezar a configurarlo. \\ \hline
-        Notas funcionales & · No se debe permitir la creación de bots con el mismo nombre.\linebreak · No se debe permitir la creación de bots con la misma \textit{key}. \\ \hline
-        Notas técnicas & Elementos necesarios para la creación del bot:\linebreak · \verb|key: str|. Key del bot, proporcionada en el panel de control de \textit{Discord}.\linebreak · \verb|name: str|. Nombre del bot.\linebreak \linebreak Parámetros extra necesarios para crear un bot:\linebreak · \verb|id: Guid|. Identificador único para cada bot. \\ \hline
-        Dependencias & – \\ \hline
-        Tareas de seguimiento & – \\ \hline
+        Escenario & · Dado: que quiero crear distintos bots de \textit{Discord} y configurar sus funcionalidades,\linebreak · Cuando: proveo al sistema de los datos necesarios,\linebreak · Entonces: el sistema crea los bots para que pueda empezar a configurarlos. \\ \hline
+        Notas funcionales & · No se debe permitir colisiones entre parámetros identificadores de los bots. \\ \hline
+        Tareas de seguimiento & \hyperref[sec:hu03]{HU-03}, \hyperref[sec:hu04]{HU-04}, \hyperref[sec:hu05]{HU-05}  \\ \hline
         Criterio de aceptación & · Los bots se pueden crear correctamente.\linebreak · El usuario es avisado en caso de error al crear un bot.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
     \end{tabularx}
     \end{adjustbox}
@@ -332,7 +130,7 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
 \end{table}
 
 
-\subsection{HU-02 - Consultar datos de un bot}
+\subsection{HU-02 - Editar bots}
 \label{sec:hu02}
 
 \begin{table}[H]
@@ -343,22 +141,22 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero consultar los detalles de los bots de \textit{Discord} creados en el sistema, para poder ver sus características y su configuración. \\ \hline
-        Meta & Obtener todos los datos de un bot en concreto o de todos los bots creados en el sistema para consultar sus características y configuración. \\ \hline
-        Beneficio & Consultar la configuración única y específica de cada uno de los bots. \\ \hline
+        Resumen & Como usuario administrador quiero poder editar los detalles de un bot, para configurarle comandos nuevos, eliminar existentes o cambiar sus parámetros. \\ \hline
+        Meta & Permitir la edición de los distintos parámetros de los bots. \\ \hline
+        Beneficio & Ampliar, reducir o modificar las funcionalidades específicas de los bots. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
-        Escenario & · Dado: que quiero consultar los detalles de los bots creados en el sistema,\linebreak · Cuando: hago una petición al sistema para ello,\linebreak · Entonces: el sistema me devuelve los detalles y datos de los bots. \\ \hline
-        Notas funcionales & · Se debe permitir obtener los detalles de todos los bots.\linebreak · Se debe permitir obtener los detalles de un bot en específico. \\ \hline
-        Notas técnicas & Parámetros necesarios para obtener los detalles de un bot específico:\linebreak · \verb|id: Guid|. Identificador único para cada bot. \\ \hline
-        Dependencias & – \\ \hline
+        Escenario & · Dado: que quiero modificar los datos de los bots,\linebreak · Cuando: proveo al sistema de los datos que se quiero modificar,\linebreak · Entonces: el sistema modifica esos datos de los bots. \\ \hline
+        Notas funcionales & · No se debe permitir colisiones entre parámetros identificadores de los bots. \\ \hline
+        Dependencias & \hyperref[sec:hu01]{HU-01} \\ \hline
         Tareas de seguimiento & – \\ \hline
-        Criterio de aceptación & · Todos los datos de los bots son devueltos.\linebreak · El usuario es avisado en caso de error al obtener los detalles de los bots.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+        Criterio de aceptación & · El bot es modificado correctamente.\linebreak · El usuario es avisado en caso de error al modificar los datos del bot.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{HU-02. Consultar datos de un bot.}
+    \caption{HU-02. Editar un bot.}
 \end{table}
 
-\subsection{HU-03 - Editar un bot}
+
+\subsection{HU-03 - Repertorio de comandos ampliable}
 \label{sec:hu03}
 
 \begin{table}[H]
@@ -369,22 +167,21 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero poder editar los detalles de un bot de \textit{Discord}, para configurarle comandos nuevos, eliminar existentes o cambiar sus parámetros. \\ \hline
-        Meta & Permitir la edición de los parámetros de los bots (comandos, nombre, key, etc). \\ \hline
-        Beneficio & Ampliar, reducir o modificar las funcionalidades específicas de los bots. \\ \hline
+        Resumen & Como usuario administrador quiero disponer de un repertorio de comandos predefinidos ampliable para despues crear comandos personalizados a partir de ellos. \\ \hline
+        Meta & Disponer de un repertorio de comandos predefinidos ampliable. \\ \hline
+        Beneficio & De este modo, cuando se necesitan comandos predefinidos con funcionalidad nueva, es posible crearlos. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
-        Escenario & · Dado: que quiero modificar los datos de un bot,\linebreak · Cuando: proveo al sistema del identificador del bot a editar y los datos que se deben modificar,\linebreak · Entonces: el sistema modifica los datos del bot. \\ \hline
-        Notas funcionales & · No se debe permitir la existencia de bots con el mismo nombre.\linebreak · No se debe permitir la existencia de bots con la misma \textit{key}.\linebreak · En caso de agregar un comando a un bot, el comando debe estar creado previamente en el sistema.\linebreak · No se debe permitir la existencia comandos iguales en un mismo bot.\linebreak · En caso de que el bot se encuentre desplegado, debe reiniciarse el despliegue una vez la edición finaliza. \\ \hline
-        Notas técnicas & Parámetros necesarios para obtener los detalles de un bot específico y para modificarlo:\linebreak · \verb|id: Guid|. Identificador único para cada bot.\linebreak · key: str. Key del bot, proporcionada en el panel de control de \textit{Discord}.\linebreak · \verb|name: str|. Nombre del bot.\linebreak · \verb|command_id: Guid|. Identificador único para cada comando. \\ \hline
-        Dependencias & \hyperref[sec:hu01]{HU-01} \\ \hline
+        Escenario & · Dado: que quiero tener disponible una serie de comandos predefinidos,\linebreak · Cuando: necesito comandos con una funcionalidad nueva específica,\linebreak · Entonces: el sistema me permite implementarlos y utilizarlos más adelante. \\ \hline
+        Notas funcionales & · No se debe permitir colisiones entre parámetros identificadores de los comandos. \\ \hline
+        Dependencias & – \\ \hline
         Tareas de seguimiento & – \\ \hline
-        Criterio de aceptación & · El bot es modificado correctamente.\linebreak · El usuario es avisado en caso de error al modificar los datos del bot.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+        Criterio de aceptación & · Los comandos predefinidos se pueden implementar correctamente.\linebreak · El usuario es avisado en caso de error al crear un comando.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{HU-03. Editar un bot.}
+    \caption{HU-03. Repertorio de comandos ampliable.}
 \end{table}
 
-\subsection{HU-04 - Eliminar un bot}
+\subsection{HU-04 - Crear comandos personalizados}
 \label{sec:hu04}
 
 \begin{table}[H]
@@ -395,23 +192,21 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero poder eliminar un bot de \textit{Discord}. \\ \hline
-        Meta & Permitir el borrado de bots. \\ \hline
-        Beneficio & Cuando ya no es necesario un bot, se puede eliminar. \\ \hline
+        Resumen & Como usuario administrador quiero poder crear comandos personalizados a partir de los comandos predefinidos que se encuentran en el repertorio. \\ \hline
+        Meta & La creación de comandos personalizados. \\ \hline
+        Beneficio & Crear comandos personalizados con comportamientos concretos a partir de los comandos predefinidos existentes. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
-        Escenario & · Dado: que quiero eliminar un bot,\linebreak · Cuando: proveo al sistema del identificador del bot a eliminar,\linebreak · Entonces: el sistema elimina el bot y sus datos asociados. \\ \hline
-        Notas funcionales & ·  En caso de que el bot se encuentre desplegado, éste despliegue debe cancelarse. \\ \hline
-        Notas técnicas & Parámetros necesarios para eliminar un bot:\linebreak · \verb|id: Guid|. Identificador único para cada bot. \\ \hline
-        Dependencias & \hyperref[sec:hu01]{HU-01} \\ \hline
-        Tareas de seguimiento & – \\ \hline
-        Criterio de aceptación & · El bot es eliminado correctamente.\linebreak · El usuario es avisado en caso de error al eliminar los datos del bot.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+        Escenario & · Dado: que quiero crear un comando personalizado,\linebreak · Cuando: proveo al sistema de los datos necesarios para crearlo,\linebreak · Entonces: el sistema crea el comando. \\ \hline
+        Notas funcionales & · No se debe permitir colisiones entre parámetros identificadores de los comandos. \\ \hline
+        Dependencias & \hyperref[sec:hu05]{HU-05} \\ \hline
+        Tareas de seguimiento & \hyperref[sec:hu03]{HU-03} \\ \hline
+        Criterio de aceptación & · El comando es modificado correctamente.\linebreak · El usuario es avisado en caso de error al modificar los datos del comando.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{HU-04. Eliminar un bot.}
+    \caption{HU-04. Editar un comando.}
 \end{table}
 
-
-\subsection{HU-05 - Crear diferentes comandos de \textit{Discord}}
+\subsection{HU-05 - Editar comandos personalizados}
 \label{sec:hu05}
 
 \begin{table}[H]
@@ -422,22 +217,21 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero crear distintos comandos para los bots de \textit{Discord} para que Estos realicen las tareas que deseo tras ejecutarlos en los canales de \textit{Discord}. \\ \hline
-        Meta & Creación de distintos comandos que posteriormente puedan ser asignados a bots. \\ \hline
-        Beneficio & De este modo, cada comando puede tener una tarea específica configurada y accesible (y ejecutable) dentro de un servidor de \textit{Discord}. \\ \hline
+        Resumen & Como usuario administrador quiero poder editar los detalles de un comando personalizado para cambiar su comportamiento y/o configuración. \\ \hline
+        Meta & La edición de los parámetros de los comandos. \\ \hline
+        Beneficio & Modificar la configuración de dicho comando. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
-        Escenario & · Dado: que quiero crear un comando de \textit{Discord} y configurar sus funcionalidades,\linebreak · Cuando: proveo al sistema de un nombre para el comando y de un prefijo,\linebreak · Entonces: el sistema crea un comando para que pueda empezar a configurarlo. \\ \hline
-        Notas funcionales & · No se debe permitir la creación de comandos con el mismo nombre. \\ \hline
-        Notas técnicas & Elementos necesarios para la creación del comando:\linebreak · \verb|name: str|. Nombre del comando.\linebreak · \verb|prefix: str|. Prefijo del comando.\linebreak · \verb|type: CommandType|. El tipo de comando.\linebreak · \verb|params: obj|. Parámetros del comando. \\ \hline
-        Dependencias & – \\ \hline
+        Escenario & · Dado: que quiero modificar los datos de un comando,\linebreak · Cuando: proveo al sistema de los datos que quiero modificar,\linebreak · Entonces: el sistema modifica los datos del comando. \\ \hline
+        Notas funcionales & · No se debe permitir colisiones entre parámetros identificadores de los comandos. \\ \hline
+        Dependencias & \hyperref[sec:hu04]{HU-04} \\ \hline
         Tareas de seguimiento & – \\ \hline
-        Criterio de aceptación & · Los comandos se crean correctamente.\linebreak · El usuario es avisado en caso de error al crear un comando.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+        Criterio de aceptación & · El comando es modificado correctamente.\linebreak · El usuario es avisado en caso de error al modificar los datos del comando.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{HU-05. Crear diferentes comandos de \textit{Discord}.}
+    \caption{HU-05. Editar un comando.}
 \end{table}
 
-\subsection{HU-06 - Consultar datos de un comando}
+\subsection{HU-06 - Lanzar bots}
 \label{sec:hu06}
 
 \begin{table}[H]
@@ -448,22 +242,22 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero consultar los detalles de los comandos creados en el sistema. \\ \hline
-        Meta & Obtener todos los datos de un comando en concreto o de todos los comandos creados en el sistema. \\ \hline
-        Beneficio & Consultar la configuración única y específica de cada uno de los comandos. \\ \hline
+        Resumen & Como usuario administrador quiero poder ejecutar los bots de \textit{Discord} que he creado y configurado previamente en el sistema. \\ \hline
+        Meta & Desplegar bots para que puedan usarse desde los servidores de \textit{Discord}. \\ \hline
+        Beneficio & La ejecución de los bots permite que los comandos estén disponibles en los servidores de \textit{Discord} para los usuarios. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
-        Escenario & · Dado: que quiero consultar los detalles de los comandos creados en el sistema,\linebreak · Cuando: hago una petición al sistema para ello,\linebreak · Entonces: el sistema me devuelve los datos de los comandos. \\ \hline
-        Notas funcionales & · Se debe permitir obtener los detalles de todos los comandos.\linebreak · Se debe permitir obtener los detalles de un comando en específico. \\ \hline
-        Notas técnicas & Parámetros necesarios para obtener los detalles de un comando específico:\linebreak · \verb|id: Guid|. Identificador único para cada comando. \\ \hline
-        Dependencias & \hyperref[sec:hu05]{HU-05} \\ \hline
+        Escenario & · Dado: que quiero desplegar un bot de \textit{Discord} una vez ya configurado,\linebreak · Cuando: proveo al sistema de los datos necesarios,\linebreak · Entonces: el sistema despliega el bot automáticamente, lo que me permite empezar a hacer uso de sus comandos. \\ \hline
+        Notas funcionales & · No se debe permitir el despliegue de un bot varias veces.\linebreak · No se debe permitir el despliegue de un bot que no tiene comandos configurados. \\ \hline
+        Dependencias & \hyperref[sec:hu01]{HU-01}, \hyperref[sec:hu04]{HU-04} \\ \hline
         Tareas de seguimiento & – \\ \hline
-        Criterio de aceptación & · Todos los datos de los comandos son devueltos.\linebreak · El usuario es avisado en caso de error al obtener los detalles de los comandos.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+        Criterio de aceptación & · El bot queda desplegado correctamente.\linebreak · El usuario es avisado en caso de error al desplegar un bot.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{HU-06. Consultar datos de un comando.}
+    \caption{HU-06. Lanzar bots.}
 \end{table}
 
-\subsection{HU-07 - Editar un comando}
+
+\subsection{HU-07 - Interfaz de usuario}
 \label{sec:hu07}
 
 \begin{table}[H]
@@ -474,153 +268,22 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero poder editar los detalles de un comando para . \\ \hline
-        Meta & La edición de los parámetros de los comandos (nombre, prefijo, parámetros, etc). \\ \hline
-        Beneficio & Modificar la configuración de la tarea que ejecuta dicho comando. \\ \hline
-        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
-        Escenario & · Dado: que quiero modificar los datos de un comando,\linebreak · Cuando: proveo al sistema del identificador del comando a editar y los datos que se deben modificar,\linebreak · Entonces: el sistema modifica los datos del comando. \\ \hline
-        Notas funcionales & · No se debe permitir la existencia de comandos con el mismo nombre.\linebreak · En caso de que el comando esté siendo usado por un bot que se encuentre desplegado, este debe ser reiniciado. \\ \hline
-        Notas técnicas & Parámetros necesarios para obtener los detalles de un bot específico y para modificarlo:\linebreak · \verb|id: Guid|. Identificador único para cada bot.\linebreak · \verb|prefix: str|. Prefijo del comando.\linebreak · \verb|params: dict|. Parámetros adicionales del comando. \\ \hline
-        Dependencias & \hyperref[sec:hu05]{HU-05} \\ \hline
-        Tareas de seguimiento & – \\ \hline
-        Criterio de aceptación & · El comando es modificado correctamente.\linebreak · El usuario es avisado en caso de error al modificar los datos del comando.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{HU-07. Editar un comando.}
-\end{table}
-
-\subsection{HU-08 - Eliminar un comando}
-\label{sec:hu08}
-
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Sección} & \textbf{Contenido} \\ \hline
-    \hline
-        Resumen & Como usuario administrador quiero poder eliminar un comando para que deje de estar disponible en el sistema. \\ \hline
-        Meta & El borrado de comandos en el sistema. \\ \hline
-        Beneficio & Cuando ya no es necesario un comando, se puede eliminar. \\ \hline
-        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
-        Escenario & · Dado: que quiero eliminar un comando,\linebreak · Cuando: proveo al sistema del identificador del comando a eliminar,\linebreak · Entonces: el sistema elimina el comando y sus datos asociados. \\ \hline
-        Notas funcionales & · En caso de que el comando esté en uso por un bot desplegado, éste debe reiniciarse. \\ \hline
-        Notas técnicas & Parámetros necesarios para eliminar un bot:\linebreak · \verb|id: Guid|. Identificador único para cada bot. \\ \hline
-        Dependencias & \hyperref[sec:hu05]{HU-05} \\ \hline
-        Tareas de seguimiento & – \\ \hline
-        Criterio de aceptación & · El comando es eliminado correctamente.\linebreak · El usuario es avisado en caso de error al eliminar los datos del comando.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{HU-08. Eliminar un comando.}
-\end{table}
-
-\subsection{HU-09 - Lanzar bots}
-\label{sec:hu09}
-
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Sección} & \textbf{Contenido} \\ \hline
-    \hline
-        Resumen & Como usuario administrador quiero poder ejecutar los bots de \textit{Discord} que he creado y configurado previamente en el sistema para poder hacer uso de los comandos de los que disponen en los servidores de \textit{Discord}. \\ \hline
-        Meta & Desplegar bots en los workers para que puedan usarse desde los servidores de \textit{Discord}. \\ \hline
-        Beneficio & La ejecución de los bots permite que los comandos estén disponibles en los servidores de \textit{Discord} para los usuarios (una vez los bots se agreguen a esos servidores). \\ \hline
-        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
-        Escenario & · Dado: que quiero desplegar un bot de \textit{Discord},\linebreak · Cuando: proveo al sistema de un identificador de bot de \textit{Discord} existente,\linebreak · Entonces: el sistema despliega el bot automáticamente, lo que me permite empezar a hacer uso de sus comandos. \\ \hline
-        Notas funcionales & · No se debe permitir el despliegue de un bot varias veces.\linebreak · No se debe permitir el despliegue de un bot que no tiene comandos configurados. \\ \hline
-        Notas técnicas & Elementos necesarios para el despliegue del bot:\linebreak · \verb|id: Guid|. Identificador único para cada bot. \\ \hline
-        Dependencias & \hyperref[sec:hu01]{HU-01}, \hyperref[sec:hu03]{HU-03}, \hyperref[sec:hu05]{HU-05}, \hyperref[sec:hu07]{HU-07} \\ \hline
-        Tareas de seguimiento & – \\ \hline
-        Criterio de aceptación & · El bot queda desplegado correctamente.\linebreak · El usuario es avisado en caso de error al desplegar un bot.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{HU-09. Lanzar bots.}
-\end{table}
-
-\subsection{HU-10 - Cancelar ejecución de bots}
-\label{sec:hu10}
-
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Sección} & \textbf{Contenido} \\ \hline
-    \hline
-        Resumen & Como usuario administrador quiero terminar la ejecución de un bot de \textit{Discord} en el sistema para que deje de estar disponible. \\ \hline
-        Meta & Terminar la ejecución de bots en los workers para que dejen de poder usarse desde los servidores de \textit{Discord}. \\ \hline
-        Beneficio & Cuando sea necesario realizar mantenimiento a un bot (o cuando ya no sea necesario que esté en activo), se puede cancelar su ejecución. \\ \hline
-        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
-        Escenario & · Dado: que quiero cancelar el despliegue de un bot para realizar algún tipo de tarea de mantenimiento,\linebreak · Cuando: proveo al sistema de un identificador de bot de \textit{Discord} que se encuentre desplegado,\linebreak · Entonces: el sistema termina la ejecución del bot. \\ \hline
-        Notas funcionales & · No se debe permitir cancelar el despliegue de un bot que no se encuentra desplegado. \\ \hline
-        Notas técnicas & Parámetros necesarios para cancelar el despliegue de un bot:\linebreak · \verb|id: Guid|. Identificador único para cada bot. \\ \hline
-        Dependencias & \hyperref[sec:hu01]{HU-01}, \hyperref[sec:hu03]{HU-03}, \hyperref[sec:hu05]{HU-05}, \hyperref[sec:hu07]{HU-07}, \hyperref[sec:hu09]{HU-09} \\ \hline
-        Tareas de seguimiento & – \\ \hline
-        Criterio de aceptación & · El despliegue del bot es cancelado.\linebreak · El usuario es avisado en caso de error al cancelar el despliegue del bot.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{HU-10. Cancelar ejecución de bots.}
-\end{table}
-
-\subsection{HU-11 - Consultar estado de los despliegues}
-\label{sec:hu11}
-
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Sección} & \textbf{Contenido} \\ \hline
-    \hline
-        Resumen & Como usuario administrador quiero conocer el estado de los despliegues de los bots de \textit{Discord} en el sistema. \\ \hline
-        Meta & Obtener detalles de los workers y de los bots que se encuentran desplegados en los workers. \\ \hline
-        Beneficio & Consultar cuales de los bots están activos y cuales no, para tareas de monitorización del sistema. \\ \hline
-        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
-        Escenario & · Dado: que quiero conocer el estado de los despliegues de los bots,\linebreak · Cuando: hago una petición al sistema para ello,\linebreak · Entonces: el sistema me devuelve los datos de los bots que se encuentran desplegados. \\ \hline
-        Notas funcionales & · No se deben devolver datos de configuración del bot.\linebreak · Se debe devolver información de los workers que ejecutan los bots. \\ \hline
-        Notas técnicas & Datos a devolver:\linebreak · \verb|workers: []Worker|. Todos los workers que hay disponibles en el sistema.\linebreak \linebreak Worker:\linebreak · \verb|id: Guid|. Identificador único para cada worker.\linebreak · \verb|uptime: DateTime|. El tiempo de actividad del worker.\linebreak · \verb|location: str|. La URL donde se encuentra el worker.\linebreak · \verb|bots: []Bot|. Los bots que están desplegados en el worker.\linebreak \linebreak Bot:\linebreak · \verb|id: Guid|. Identificador único para cada bot.\linebreak · \verb|uptime: DateTime|. El tiempo de actividad del bot.\linebreak · ... \\ \hline
-        Dependencias & \hyperref[sec:hu01]{HU-01}, \hyperref[sec:hu03]{HU-03}, \hyperref[sec:hu05]{HU-05}, \hyperref[sec:hu07]{HU-07}, \hyperref[sec:hu09]{HU-09}, \hyperref[sec:hu10]{HU-10} \\ \hline
-        Tareas de seguimiento & – \\ \hline
-        Criterio de aceptación & · Los datos de los bots de \textit{Discord} que se encuentran desplegados son devueltos al usuario.\linebreak · El usuario es avisado en caso de error al obtener los datos de despliegue.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{HU-11. Consultar estado de los despliegues.}
-\end{table}
-
-\subsection{HU-12 - Interfaz de usuario}
-\label{sec:hu12}
-
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Sección} & \textbf{Contenido} \\ \hline
-    \hline
-        Resumen & Como usuario administrador quiero disponer de una interfaz gráfica para poder crear, configurar, desplegar y conocer el estado de los bots de \textit{Discord} que hay en el sistema. \\ \hline
+        Resumen & Como usuario administrador quiero disponer de una interfaz gráfica para poder realizar todas las gestiones del sistema de manera sencilla y visual. \\ \hline
         Meta & Disponer de una interfaz gráfica que permita realizar las tareas de creación, configuración y despliegue de bots de \textit{Discord}. \\ \hline
-        Beneficio & Realizar todas las tareas de gestión de comandos y bots de manera sencilla en una interfaz de usuario, en lugar de hacerlas mediante el uso de una API. \\ \hline
+        Beneficio & Realizar todas las tareas de gestión de comandos y bots de manera sencilla en una interfaz de usuario, en lugar de hacerlas mediante el uso de una \textit{API}. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
         Escenario & · Dado: que quiero administrar los bots de \textit{Discord},\linebreak · Cuando: accedo a la interfaz gráfica,\linebreak · Entonces: el sistema me permite realizar todas las tareas de administración de bots y comandos. \\ \hline
         Notas funcionales & – \\ \hline
-        Notas técnicas & – \\ \hline
-        Dependencias & \hyperref[sec:hu01]{HU-01}, \hyperref[sec:hu02]{HU-02}, \hyperref[sec:hu03]{HU-03}, \hyperref[sec:hu04]{HU-04}, \hyperref[sec:hu05]{HU-05}, \hyperref[sec:hu06]{HU-06}, \hyperref[sec:hu07]{HU-07}, \hyperref[sec:hu08]{HU-08}, \hyperref[sec:hu09]{HU-09}, \hyperref[sec:hu10]{HU-10}, \hyperref[sec:hu11]{HU-11} \\ \hline
+        Dependencias & \hyperref[sec:hu01]{HU-01}, \hyperref[sec:hu02]{HU-02}, \hyperref[sec:hu03]{HU-03}, \hyperref[sec:hu04]{HU-04}, \hyperref[sec:hu05]{HU-05}, \hyperref[sec:hu06]{HU-06} \\ \hline
         Tareas de seguimiento & – \\ \hline
         Criterio de aceptación & · La interfaz permite realizar las tareas de gestión de bots y comandos.\linebreak · El usuario es avisado en caso de producirse algún error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{HU-12. Interfaz de usuario.}
+    \caption{HU-07. Interfaz de usuario.}
 \end{table}
 
-\subsection{HU-13 - Criterios de evaluación}
-\label{sec:hu13}
+\subsection{HU-08 - Criterios de evaluación}
+\label{sec:hu08}
 
 \begin{table}[H]
     \centering
@@ -636,15 +299,14 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
         Perfil de usuario & \hyperref[sec:personaMiembroTribunal]{Miembro del tribunal} \\ \hline
         Escenario & · Dado: que quiero evaluar el trabajo realizado por el alumno,\linebreak · Cuando: éste me de acceso a dicha documentación acorde a los criterios de evaluación,\linebreak · Entonces: podré evaluar el trabajo del alumno. \\ \hline
         Notas funcionales & Los criterios de evaluación son:\linebreak \linebreak El estudiante…\linebreak · Utiliza fuentes de información variadas, válidas y fiables y selecciona la relevante para el objetivo del trabajo.\linebreak · Toma decisiones adecuadas al contexto y propone soluciones utilizando el conocimiento adquirido.\linebreak · Detecta y analiza oportunidades para hacer nuevas propuestas.\linebreak · Propone soluciones adecuadas y justifica las decisiones tomadas para resolver problemas complejos.\linebreak · Utiliza recursos formales e informales para documentar adecuadamente el proceso de desarrollo: concepción, planificación, análisis, diseño, implementación, pruebas, etc.\linebreak · Muestra claridad y comprensión en la redacción,organizando la información adecuadamente y utilizando los recursos adecuados para el discurso escrito. Muestra claridad y comprensión en la expresión oral, organizando la información adecuadamente y utilizando los recursos adecuados para el discurso oral. \\ \hline
-        Notas técnicas & – \\ \hline
         Dependencias & – \\ \hline
         Tareas de seguimiento & – \\ \hline
         Criterio de aceptación & · La documentación cumple con los criterios de evaluación. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{HU-13. Criterios de evaluación.}
+    \caption{HU-08. Criterios de evaluación.}
 \end{table}
- 
+  
 \section{User journeys}
 
 En esta sección se enumeran los \textit{user journeys} tanto para el uso del sistema, como para la ampliación del repertorio de comandos.
@@ -667,15 +329,15 @@ Se puede modificar un bot de dos maneras:
 \begin{itemize}
 	\item Parámetros del bot.
 	\begin{enumerate}
-		\item El usuario provee al sistema de un nombre o \textit{token} distinto a los actuales.
-		\item[!] Si el nombre o el \textit{token} corresponden a otro bot, el sistema cancela la modificación.
+		\item El usuario provee al sistema de datos del bot a actualizar.
+		\item[!] Si los datos coinciden con los actuales o con los de otro bot, el sistema cancela la modificación.
 		\item[!] Si el bot se encuentra desplegado, el sistema cancela el despliegue previa modificación.
 		\item El sistema modifica los detalles del bot.
 	\end{enumerate}
 	
 	\item Comandos del bot.
 	\begin{enumerate}
-		\item El usuario provee al sistema de los identificadores de los comandos que quiere agregar o eliminar del bot.
+		\item El usuario provee al sistema de los identificadores de los comandos personalizados que quiere agregar o eliminar del bot.
 		\item[!] Si el bot se encuentra desplegado, el sistema cancela el despliegue previa modificación.
 		\item El sistema modifica los comandos del bot.
 	\end{enumerate}
@@ -689,24 +351,25 @@ Se puede modificar un bot de dos maneras:
 	\item El sistema elimina todos los datos asociados al bot, no pudiendo volver a usarse.
 \end{enumerate}
 
-\subsubsection{Crear un comando}
+\subsubsection{Crear un comando personalizado}
 
 \begin{enumerate}
-	\item El usuario provee al sistema de un nombre, un prefijo, un tipo de comando y de los parámetros necesarios para ese tipo de comando.
-	\item[!] Si el nombre se encuentra en uso, el sistema cancela la creación del comando.
+	\item El usuario selecciona uno de los comandos predefinidos del repertorio.
+	\item El usuario provee al sistema de los datos necesarios para crear un comando personalizado a partir del seleccionado.
+	\item[!] Si los datos coinciden con los de otro comando, el sistema cancela la creación del comando.
 	\item El sistema crea el comando.
 \end{enumerate}
 
-\subsubsection{Modificar un comando}
+\subsubsection{Modificar un comando personalizado}
 
 \begin{enumerate}
-	\item El usuario provee al sistema de los datos que quiere modificar de un comando, estos incluyen el nombre, prefijo y parámetros.
-	\item[!] Si los datos que el usuario provee (nombre y prefijo) corresponden a otro comando, el sistema cancela la modificación.
+	\item El usuario provee al sistema de los datos que quiere modificar de un comando.
+	\item[!] Si los datos que el usuario provee corresponden a otro comando, el sistema cancela la modificación.
 	\item[!] Si el comando se encuentra en uso por un bot que se encuentra desplegado, el sistema cancela el despliegue previa modificación.
 	\item El sistema modifica el comando.
 \end{enumerate}
 
-\subsubsection{Eliminar un comando}
+\subsubsection{Eliminar un comando personalizado}
 
 \begin{enumerate}
 	\item El usuario provee al sistema del identificador del comando que quiere eliminar.
@@ -717,10 +380,9 @@ Se puede modificar un bot de dos maneras:
 \subsubsection{Desplegar un bot}
 
 \begin{enumerate}
-	\item El usuario provee al sistema del identificador del bot que quiere desplegar, además del identificador del \textit{worker} donde quiere desplegarlo.
+	\item El usuario provee al sistema del identificador del bot que quiere desplegar.
 	\item[!] Si el bot ya se encuentra desplegado, el sistema cancela el despliegue.
-	\item[!] Si el bot o el \textit{worker} no existen, el sistema cancela el despliegue.
-	\item El sistema despliega el bot en el \textit{worker}.
+	\item El sistema despliega el bot.
 \end{enumerate}
 
 \subsubsection{Cancelar despliegue de un bot}
@@ -733,9 +395,9 @@ Se puede modificar un bot de dos maneras:
 \end{enumerate}
 
 
-\subsection{Ampliación del repertorio de comandos}
+\subsection{Ampliación del repertorio de comandos predefinidos}
 
-Para la realización de este \textit{user journey} es necesario el uso de C\#.
+Para la realización de este \textit{user journey} es necesario el uso de \textit{C\#}.
 
 \begin{enumerate}
 	\item El usuario define el nuevo tipo de comando.
