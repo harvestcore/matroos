@@ -41,8 +41,8 @@ En este capítulo se profundiza en el análisis del problema planteado en capít
         Descripción & · 25 años.\linebreak · Amigo de Jorge Cancho. No tiene conocimientos de programación ni de temas relacionados con la ingeniería o la informática. Le gusta disfrutar de las tardes con sus amigos en \textit{Discord}. \\ \hline
         Intereses & · Videojuegos, dedica la mayor parte de su tiempo a jugar con sus amigos.\linebreak · La facilidad de las cosas, no le gusta complicarse la vida.\linebreak · \textit{Discord}, le parece una herramienta muy útil, ya que la usa con sus amigos y para temas laborales. \\ \hline
         Formación & Magisterio de educación primaria. \\ \hline
-        Frustraciones & No le gusta nada tener que indagar en detalles técnicos al jugar a videojuegos con sus amigos. Entiende que en ocasiones es necesaria alguna configuración para poder jugar (como acceder a un servidor), pero quiere que ese proceso sea lo más fácil posible. No le gusta tener que recordar esos detalles. \\ \hline
-        Necesidades & Una herramienta que le permita acceder a esos detalles sin preocuparse de recordarlos o de consultarlos de manera extraña. \\ \hline
+        Frustraciones & No le gusta nada tener que indagar en detalles técnicos al jugar a videojuegos con sus amigos. Entiende que en ocasiones es necesaria alguna configuración para poder jugar (como acceder a un servidor), pero quiere que ese proceso sea lo más fácil posible. No le gusta tener que recordar esos detalles, como la dirección del servidor al que acceder para jugar a ciertos juegos. \\ \hline
+        Necesidades & Una herramienta que le permita acceder a esos detalles sin preocuparse de recordarlos o de consultarlos de manera extraña. Idealmente podría acceder a ellos a través de comandos de bots de \textit{Discord}. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Persona 2. Usuario de \textit{Discord}.}
@@ -86,7 +86,6 @@ Para la creación de las historias de usuarios se ha usado la siguiente estructu
         Beneficio & El beneficio de la historia de usuario. \\ \hline
         Perfil de usuario & Perfil del usuario que genera la historia de usuario. \\ \hline
         Escenario & Escenario de la historia de usuario. Se deben especificar detalles más concretos.\linebreak · Dado …\linebreak · Cuando …\linebreak · Entonces … \\ \hline
-        Notas funcionales & Notas adicionales de carácter funcional que ayudan a comprender mejor el alcance de la historia de usuario. \\ \hline
         Dependencias & Posibles dependencias que tenga la historia de usuario. Éstas pueden ser otras historias de usuario, tareas que se estén llevando a cabo, etc. \\ \hline
         Tareas de seguimiento & Una vez analizada la historia de usuario, las tareas que se deben realizar a continuación. \\ \hline
         Criterio de aceptación & Criterio por el cual se va a determinar que la historia de usuario ha sido completada con éxito y por tanto finalizada. \\ \hline
@@ -117,11 +116,10 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
         Resumen & Como usuario administrador quiero crear distintos bots de \textit{Discord} para poder separar funcionalidades en ellos. \\ \hline
-        Meta & Creación de bots para que más tarde puedan ser configurados con distintas funcionalidades. \\ \hline
+        Meta & Creación de bots para separar funcionalidad en ellos. \\ \hline
         Beneficio & De este modo, cada bot puede tener una funcionalidad específica configurada, sin tener que compartir un bot con funcionalidades de distintos ámbitos. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
         Escenario & · Dado: que quiero crear distintos bots de \textit{Discord} y configurar sus funcionalidades,\linebreak · Cuando: proveo al sistema de los datos necesarios,\linebreak · Entonces: el sistema crea los bots para que pueda empezar a configurarlos. \\ \hline
-        Notas funcionales & · No se debe permitir colisiones entre parámetros identificadores de los bots. \\ \hline
         Tareas de seguimiento & \hyperref[sec:hu03]{HU-03}, \hyperref[sec:hu04]{HU-04}, \hyperref[sec:hu05]{HU-05}  \\ \hline
         Criterio de aceptación & · Los bots se pueden crear correctamente.\linebreak · El usuario es avisado en caso de error al crear un bot.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
     \end{tabularx}
@@ -141,18 +139,17 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero poder editar los detalles de un bot, para configurarle comandos nuevos, eliminar existentes o cambiar sus parámetros. \\ \hline
-        Meta & Permitir la edición de los distintos parámetros de los bots. \\ \hline
-        Beneficio & Ampliar, reducir o modificar las funcionalidades específicas de los bots. \\ \hline
+        Resumen & Como usuario administrador quiero poder cambiar la funcionalidad de los bots, ya que es posible que en ocasiones necesite ampliar o reducir sus comandos. \\ \hline
+        Meta & Permitir agregar o eliminar comandos de los bots. \\ \hline
+        Beneficio & Si quiero agregar nuevos comandos a un bot, o quitarlos, puedo hacerlo. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
         Escenario & · Dado: que quiero modificar los datos de los bots,\linebreak · Cuando: proveo al sistema de los datos que se quiero modificar,\linebreak · Entonces: el sistema modifica esos datos de los bots. \\ \hline
-        Notas funcionales & · No se debe permitir colisiones entre parámetros identificadores de los bots. \\ \hline
         Dependencias & \hyperref[sec:hu01]{HU-01} \\ \hline
         Tareas de seguimiento & – \\ \hline
         Criterio de aceptación & · El bot es modificado correctamente.\linebreak · El usuario es avisado en caso de error al modificar los datos del bot.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{HU-02. Editar un bot.}
+    \caption{HU-02. Editar bots.}
 \end{table}
 
 
@@ -172,7 +169,6 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
         Beneficio & De este modo, cuando se necesitan comandos predefinidos con funcionalidad nueva, es posible crearlos. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
         Escenario & · Dado: que quiero tener disponible una serie de comandos predefinidos,\linebreak · Cuando: necesito comandos con una funcionalidad nueva específica,\linebreak · Entonces: el sistema me permite implementarlos y utilizarlos más adelante. \\ \hline
-        Notas funcionales & · No se debe permitir colisiones entre parámetros identificadores de los comandos. \\ \hline
         Dependencias & – \\ \hline
         Tareas de seguimiento & – \\ \hline
         Criterio de aceptación & · Los comandos predefinidos se pueden implementar correctamente.\linebreak · El usuario es avisado en caso de error al crear un comando.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
@@ -197,7 +193,6 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
         Beneficio & Crear comandos personalizados con comportamientos concretos a partir de los comandos predefinidos existentes. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
         Escenario & · Dado: que quiero crear un comando personalizado,\linebreak · Cuando: proveo al sistema de los datos necesarios para crearlo,\linebreak · Entonces: el sistema crea el comando. \\ \hline
-        Notas funcionales & · No se debe permitir colisiones entre parámetros identificadores de los comandos. \\ \hline
         Dependencias & \hyperref[sec:hu05]{HU-05} \\ \hline
         Tareas de seguimiento & \hyperref[sec:hu03]{HU-03} \\ \hline
         Criterio de aceptación & · El comando es modificado correctamente.\linebreak · El usuario es avisado en caso de error al modificar los datos del comando.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
@@ -222,7 +217,6 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
         Beneficio & Modificar la configuración de dicho comando. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
         Escenario & · Dado: que quiero modificar los datos de un comando,\linebreak · Cuando: proveo al sistema de los datos que quiero modificar,\linebreak · Entonces: el sistema modifica los datos del comando. \\ \hline
-        Notas funcionales & · No se debe permitir colisiones entre parámetros identificadores de los comandos. \\ \hline
         Dependencias & \hyperref[sec:hu04]{HU-04} \\ \hline
         Tareas de seguimiento & – \\ \hline
         Criterio de aceptación & · El comando es modificado correctamente.\linebreak · El usuario es avisado en caso de error al modificar los datos del comando.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
@@ -247,7 +241,6 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
         Beneficio & La ejecución de los bots permite que los comandos estén disponibles en los servidores de \textit{Discord} para los usuarios. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
         Escenario & · Dado: que quiero desplegar un bot de \textit{Discord} una vez ya configurado,\linebreak · Cuando: proveo al sistema de los datos necesarios,\linebreak · Entonces: el sistema despliega el bot automáticamente, lo que me permite empezar a hacer uso de sus comandos. \\ \hline
-        Notas funcionales & · No se debe permitir el despliegue de un bot varias veces.\linebreak · No se debe permitir el despliegue de un bot que no tiene comandos configurados. \\ \hline
         Dependencias & \hyperref[sec:hu01]{HU-01}, \hyperref[sec:hu04]{HU-04} \\ \hline
         Tareas de seguimiento & – \\ \hline
         Criterio de aceptación & · El bot queda desplegado correctamente.\linebreak · El usuario es avisado en caso de error al desplegar un bot.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
@@ -273,7 +266,6 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
         Beneficio & Que las configuraciones de bots y comandos se puedan almacenar evita que se tenga que crear estos desde cero cada vez que se reinicia la aplicación por algún motivo. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
         Escenario & · Dado: que quiero no quiero perder el progreso de las configuraciones realizadas,\linebreak · Cuando: creo o modifico algún comando o bot,\linebreak · Entonces: el sistema almacena de alguna manera estas configuraciones. \\ \hline
-        Notas funcionales & – \\ \hline
         Dependencias & \hyperref[sec:hu01]{HU-01}, \hyperref[sec:hu02]{HU-02}, \hyperref[sec:hu03]{HU-03}, \hyperref[sec:hu04]{HU-04}, \hyperref[sec:hu05]{HU-05}, \hyperref[sec:hu06]{HU-06} \\ \hline
         Tareas de seguimiento & – \\ \hline
         Criterio de aceptación & · Los bots y comandos son almacenados de alguna manera persistente.\linebreak · El usuario es avisado en caso de producirse algún error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
@@ -299,7 +291,6 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
         Beneficio & Realizar todas las tareas de gestión de comandos y bots de manera sencilla en una interfaz de usuario, en lugar de hacerlas mediante el uso de una \textit{API}. \\ \hline
         Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
         Escenario & · Dado: que quiero administrar los bots de \textit{Discord},\linebreak · Cuando: accedo a la interfaz gráfica,\linebreak · Entonces: el sistema me permite realizar todas las tareas de administración de bots y comandos. \\ \hline
-        Notas funcionales & – \\ \hline
         Dependencias & \hyperref[sec:hu01]{HU-01}, \hyperref[sec:hu02]{HU-02}, \hyperref[sec:hu03]{HU-03}, \hyperref[sec:hu04]{HU-04}, \hyperref[sec:hu05]{HU-05}, \hyperref[sec:hu06]{HU-06} \\ \hline
         Tareas de seguimiento & – \\ \hline
         Criterio de aceptación & · La interfaz permite realizar las tareas de gestión de bots y comandos.\linebreak · El usuario es avisado en caso de producirse algún error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
@@ -324,7 +315,7 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
         Beneficio & De este modo es más sencillo evaluar todo el trabajo que el alumno ha realizado para desarrollar el TFM. \\ \hline
         Perfil de usuario & \hyperref[sec:personaMiembroTribunal]{Miembro del tribunal} \\ \hline
         Escenario & · Dado: que quiero evaluar el trabajo realizado por el alumno,\linebreak · Cuando: éste me de acceso a dicha documentación acorde a los criterios de evaluación,\linebreak · Entonces: podré evaluar el trabajo del alumno. \\ \hline
-        Notas funcionales & Los criterios de evaluación son:\linebreak \linebreak El estudiante…\linebreak · Utiliza fuentes de información variadas, válidas y fiables y selecciona la relevante para el objetivo del trabajo.\linebreak · Toma decisiones adecuadas al contexto y propone soluciones utilizando el conocimiento adquirido.\linebreak · Detecta y analiza oportunidades para hacer nuevas propuestas.\linebreak · Propone soluciones adecuadas y justifica las decisiones tomadas para resolver problemas complejos.\linebreak · Utiliza recursos formales e informales para documentar adecuadamente el proceso de desarrollo: concepción, planificación, análisis, diseño, implementación, pruebas, etc.\linebreak · Muestra claridad y comprensión en la redacción,organizando la información adecuadamente y utilizando los recursos adecuados para el discurso escrito. Muestra claridad y comprensión en la expresión oral, organizando la información adecuadamente y utilizando los recursos adecuados para el discurso oral. \\ \hline
+        Notas extra & Los criterios de evaluación son:\linebreak \linebreak El estudiante…\linebreak · Utiliza fuentes de información variadas, válidas y fiables y selecciona la relevante para el objetivo del trabajo.\linebreak · Toma decisiones adecuadas al contexto y propone soluciones utilizando el conocimiento adquirido.\linebreak · Detecta y analiza oportunidades para hacer nuevas propuestas.\linebreak · Propone soluciones adecuadas y justifica las decisiones tomadas para resolver problemas complejos.\linebreak · Utiliza recursos formales e informales para documentar adecuadamente el proceso de desarrollo: concepción, planificación, análisis, diseño, implementación, pruebas, etc.\linebreak · Muestra claridad y comprensión en la redacción,organizando la información adecuadamente y utilizando los recursos adecuados para el discurso escrito. Muestra claridad y comprensión en la expresión oral, organizando la información adecuadamente y utilizando los recursos adecuados para el discurso oral. \\ \hline
         Dependencias & – \\ \hline
         Tareas de seguimiento & – \\ \hline
         Criterio de aceptación & · La documentación cumple con los criterios de evaluación. \\ \hline
