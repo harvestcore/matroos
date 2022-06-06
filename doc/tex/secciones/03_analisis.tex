@@ -225,58 +225,8 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \caption{HU-05. Editar un comando.}
 \end{table}
 
-\subsection{HU-06 - Lanzar bots}
+\subsection{HU-06 - Interfaz de usuario}
 \label{sec:hu06}
-
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Sección} & \textbf{Contenido} \\ \hline
-    \hline
-        Resumen & Como usuario administrador quiero poder ejecutar los bots de \textit{Discord} que he creado y configurado previamente en el sistema. \\ \hline
-        Meta & Desplegar bots para que puedan usarse desde los servidores de \textit{Discord}. \\ \hline
-        Beneficio & La ejecución de los bots permite que los comandos estén disponibles en los servidores de \textit{Discord} para los usuarios. \\ \hline
-        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
-        Escenario & · Dado: que quiero desplegar un bot de \textit{Discord} una vez ya configurado,\linebreak · Cuando: proveo al sistema de los datos necesarios,\linebreak · Entonces: el sistema despliega el bot automáticamente, lo que me permite empezar a hacer uso de sus comandos. \\ \hline
-        Dependencias & \hyperref[sec:hu01]{HU-01}, \hyperref[sec:hu04]{HU-04} \\ \hline
-        Tareas de seguimiento & – \\ \hline
-        Criterio de aceptación & · El bot queda desplegado correctamente.\linebreak · El usuario es avisado en caso de error al desplegar un bot.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{HU-06. Lanzar bots.}
-\end{table}
-
-
-\subsection{HU-07 - Persistencia de bots y comandos}
-\label{sec:hu07}
-
-\begin{table}[H]
-    \centering
-    \def\arraystretch{1.25}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabularx}{\textwidth}{|l|L|}
-    \hline
-        \textbf{Sección} & \textbf{Contenido} \\ \hline
-    \hline
-        Resumen & Como usuario administrador quiero que las configuraciones de bots y comandos sean persistentes, de modo que no pierda el trabajo realizado. \\ \hline
-        Meta & Persistencia de bots y comandos. \\ \hline
-        Beneficio & Que las configuraciones de bots y comandos se puedan almacenar evita que se tenga que crear estos desde cero cada vez que se reinicia la aplicación por algún motivo. \\ \hline
-        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
-        Escenario & · Dado: que quiero no quiero perder el progreso de las configuraciones realizadas,\linebreak · Cuando: creo o modifico algún comando o bot,\linebreak · Entonces: el sistema almacena de alguna manera estas configuraciones. \\ \hline
-        Dependencias & \hyperref[sec:hu01]{HU-01}, \hyperref[sec:hu02]{HU-02}, \hyperref[sec:hu03]{HU-03}, \hyperref[sec:hu04]{HU-04}, \hyperref[sec:hu05]{HU-05}, \hyperref[sec:hu06]{HU-06} \\ \hline
-        Tareas de seguimiento & – \\ \hline
-        Criterio de aceptación & · Los bots y comandos son almacenados de alguna manera persistente.\linebreak · El usuario es avisado en caso de producirse algún error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
-    \end{tabularx}
-    \end{adjustbox}
-    \caption{HU-07. Persistencia de datos.}
-\end{table}
-
-
-\subsection{HU-08 - Interfaz de usuario}
-\label{sec:hu08}
 
 \begin{table}[H]
     \centering
@@ -296,11 +246,11 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
         Criterio de aceptación & · La interfaz permite realizar las tareas de gestión de bots y comandos.\linebreak · El usuario es avisado en caso de producirse algún error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{HU-08. Interfaz de usuario.}
+    \caption{HU-06. Interfaz de usuario.}
 \end{table}
 
-\subsection{HU-09 - Criterios de evaluación}
-\label{sec:hu09}
+\subsection{HU-07 - Criterios de evaluación}
+\label{sec:hu07}
 
 \begin{table}[H]
     \centering
@@ -321,7 +271,7 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
         Criterio de aceptación & · La documentación cumple con los criterios de evaluación. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{HU-09. Criterios de evaluación.}
+    \caption{HU-07. Criterios de evaluación.}
 \end{table}
   
 \section{User journeys}
