@@ -4,8 +4,8 @@ En este capítulo se profundiza en el análisis del problema planteado en capít
 
 \section{Personas}
 
-\subsection{Administrador}
-\label{sec:personaAdmin}
+\subsection{Programador}
+\label{sec:personaProgramador}
 
 \begin{table}[H]
     \centering
@@ -15,7 +15,7 @@ En este capítulo se profundiza en el análisis del problema planteado en capít
     \hline
         \textbf{Nombre} & \textbf{David Infante} \\ \hline
     \hline
-        Rol & Administrador \\ \hline
+        Rol & Programador \\ \hline
         Descripción & · 24 años.\linebreak · Disfruta de las tardes con sus amigos en \textit{Discord} jugando a sus videojuegos favoritos. \\ \hline
         Intereses & · \textit{Discord}, ya que le parece una herramienta muy potente.\linebreak · Videojuegos, le encantan los \textit{shooters}.\linebreak · Automatización de tareas repetitivas, ya que odia hacer lo mismo continuamente.\linebreak · Programación, ya que disfruta creando software para facilitar su día a día.\linebreak · Monitorización, le gusta saber que todo el software que despliega funciona correctamente.\linebreak · Creación de servidores de juegos, para jugar con sus amigos y no tener que depender de servidores de terceros. \\ \hline
         Formación & Ingeniero informático.\linebreak\linebreak Tiene conocimientos avanzados en:\linebreak · Configuración de \textit{Discord}.\linebreak · Administración de sistemas.\linebreak · Despliegue de software y sistemas.\linebreak · Dispone de recursos locales (un servidor \textit{NAS} y dos \textit{Raspberry PI}) y de recursos \textit{cloud} (en \textit{Azure}) en los que puede y sabe cómo desplegar software. \\ \hline
@@ -23,7 +23,7 @@ En este capítulo se profundiza en el análisis del problema planteado en capít
         Necesidades & Un software o sistema que le permita programar crear y configurar bots con esas tareas. Usa mucho \textit{Discord}, por lo que piensa que sería útil que el software estuviera integrado con esa herramienta. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{Persona 1. Administrador.}
+    \caption{Persona 1. Programador.}
 \end{table}
 
 
@@ -114,13 +114,13 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador, cuando detecto alguna tarea que se puede simplificar en un bot, quiero poder crear distintos bots de \textit{Discord} para poder configurar comandos en ellos para que realicen estas tareas. \\ \hline
+        Resumen & Como usuario programador, cuando detecto alguna tarea que se puede simplificar en un bot, quiero poder crear distintos bots de \textit{Discord} para poder configurar comandos en ellos para que realicen estas tareas. \\ \hline
         Meta & Creación de bots de \textit{Discord} para separar funcionalidad en ellos. \\ \hline
         Beneficio & De este modo, puedo hacer uso de los comandos configurados en los bots, en lugar de tener que realizar las tareas de manera manual. \\ \hline
-        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
+        Perfil de usuario & \hyperref[sec:personaProgramador]{Programador} \\ \hline
         Escenario & · Dado: que he detectado tareas que se podrían simplificar haciendo uso de comandos de bots de \textit{Discord},\linebreak · Cuando: creo y configuro los bots,\linebreak · Entonces: tanto yo como otros usuarios pueden hacer uso de los comandos, en lugar de tener que realizar esas tareas por mi mismo. \\ \hline
         Dependencias & - \\ \hline
-        Criterio de aceptación & · Los bots y los comandos se pueden crear correctamente.\linebreak · El usuario es avisado en caso de error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+        Criterio de aceptación & · Las tareas se pueden automatizarse en los bots.\linebreak · El usuario es avisado en caso de error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{HU-01. Simplificar tareas por medio de comandos de bots.}
@@ -138,13 +138,13 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero poder cambiar la funcionalidad de los bots, ya que es posible que en ocasiones necesite ampliar o reducir sus comandos, o cambiar lo que estos comandos hacen. \\ \hline
+        Resumen & Como usuario programador quiero poder cambiar la funcionalidad de los bots, ya que es posible que en ocasiones necesite ampliar o reducir sus comandos, o cambiar lo que estos comandos hacen. \\ \hline
         Meta & Permitir agregar o eliminar comandos de los bots. \\ \hline
         Beneficio & Es posible que quiera agregar nuevos comandos a un bot o quitarlos, por tanto puedo hacerlo.  \\ \hline
-        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
+        Perfil de usuario & \hyperref[sec:personaProgramador]{Programador} \\ \hline
         Escenario & · Dado: que es posible que las necesidades cambien,\linebreak · Cuando: modifico los bots y los comandos,\linebreak · Entonces: tanto yo como otros usuarios tienen acceso a los nuevos cambios de los bots. \\ \hline
         Dependencias & \hyperref[sec:hu01]{HU-01} \\ \hline
-        Criterio de aceptación & · El bot y los comandos son modificados correctamente.\linebreak · El usuario es avisado en caso de error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+        Criterio de aceptación & · Los bots y comandos pueden actualizarse.\linebreak · El usuario es avisado en caso de error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{HU-02. Editar bots y comandos.}
@@ -162,10 +162,10 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero disponer de un repertorio de comandos predefinidos ampliable para después crear comandos personalizados a partir de ellos. \\ \hline
+        Resumen & Como usuario programador quiero disponer de un repertorio de comandos predefinidos ampliable para después crear comandos personalizados a partir de ellos. \\ \hline
         Meta & Disponer de un repertorio de comandos predefinidos ampliable. \\ \hline
         Beneficio & Cuando necesito crear un nuevo tipo de comando para una funcionalidad concreta que no está disponible en los comandos actuales, puedo programar esta funcionalidad y luego hacer uso de ella para crear comandos personalizados. \\ \hline
-        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
+        Perfil de usuario & \hyperref[sec:personaProgramador]{Programador} \\ \hline
         Escenario & · Dado: que quiero tener disponible una serie de comandos predefinidos,\linebreak · Cuando: necesito comandos con una funcionalidad nueva específica,\linebreak · Entonces: el sistema me permite implementarlos y utilizarlos más adelante. \\ \hline
         Dependencias & – \\ \hline
         Criterio de aceptación & · Los comandos predefinidos se pueden implementar correctamente.\linebreak · El usuario es avisado en caso de error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
@@ -185,13 +185,13 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero poder crear comandos y modificar personalizados a partir de los comandos predefinidos que se encuentran en el repertorio. \\ \hline
+        Resumen & Como usuario programador quiero poder crear comandos y modificar personalizados a partir de los comandos predefinidos que se encuentran en el repertorio. \\ \hline
         Meta & La creación y modificación de comandos personalizados. \\ \hline
         Beneficio & Crear y modificar comandos personalizados con comportamientos concretos a partir de los comandos predefinidos existentes. Así puedo tener comandos iguales con comportamiento distinto, y si quiero modificar ese comportamiento, puedo hacerlo. \\ \hline
-        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
+        Perfil de usuario & \hyperref[sec:personaProgramador]{Programador} \\ \hline
         Escenario & · Dado: que quiero simplificar una tarea en un comando, o modificar una existente,\linebreak · Cuando: creo o modifico los comandos personalizados existentes,\linebreak · Entonces: tanto yo como los usuarios podemos hacer uso de los comandos con nuevas funcionalidades. \\ \hline
         Dependencias & \hyperref[sec:hu05]{HU-05} \\ \hline
-        Criterio de aceptación & · El comando es modificado correctamente.\linebreak · El usuario es avisado en caso de error al modificar los datos del comando.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+        Criterio de aceptación & · Se pueden crear comandos personalizados a partir de los predefinidos.\linebreak · El usuario es avisado en caso de error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{HU-04. Creación de comandos personalizados.}
@@ -208,13 +208,13 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario administrador quiero disponer de una interfaz gráfica para poder realizar todas las gestiones del sistema de manera sencilla y visual. \\ \hline
+        Resumen & Como usuario programador quiero disponer de una interfaz gráfica para poder realizar todas las gestiones del sistema de manera sencilla y visual. \\ \hline
         Meta & Disponer de una interfaz gráfica que permita realizar las tareas de creación, configuración y despliegue de bots de \textit{Discord}. \\ \hline
         Beneficio & Realizar todas las tareas de gestión de comandos y bots de manera sencilla en una interfaz de usuario, en lugar de hacerlas mediante el uso de una \textit{API}. \\ \hline
-        Perfil de usuario & \hyperref[sec:personaAdmin]{Administrador} \\ \hline
+        Perfil de usuario & \hyperref[sec:personaProgramador]{Programador} \\ \hline
         Escenario & · Dado: que quiero administrar los bots de \textit{Discord},\linebreak · Cuando: accedo a la interfaz gráfica,\linebreak · Entonces: el sistema me permite realizar todas las tareas de administración de bots y comandos. \\ \hline
         Dependencias & \hyperref[sec:hu01]{HU-01}, \hyperref[sec:hu02]{HU-02}, \hyperref[sec:hu03]{HU-03}, \hyperref[sec:hu04]{HU-04}, \hyperref[sec:hu05]{HU-05}, \hyperref[sec:hu06]{HU-06} \\ \hline
-        Criterio de aceptación & · La interfaz permite realizar las tareas de gestión de bots y comandos.\linebreak · El usuario es avisado en caso de producirse algún error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+        Criterio de aceptación & · Las tareas de gestión de bots y comandos quedan simplificadas (en complejidad y en tiempo) en la interfaz.\linebreak · El usuario es avisado en caso de producirse algún error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{HU-05. Interfaz de usuario.}
