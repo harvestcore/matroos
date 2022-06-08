@@ -243,106 +243,18 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \end{adjustbox}
     \caption{HU-06. Criterios de evaluación.}
 \end{table}
-  
+
+
 \section{User journeys}
 
-En esta sección se enumeran los \textit{user journeys} tanto para el uso del sistema, como para la ampliación del repertorio de comandos.
-
-\subsection{Uso del sistema}
-
-\subsubsection{Crear un bot}
-
-\begin{enumerate}
-	\item El usuario crea una aplicación de \textit{Discord} en el \href{https://discord.com/developers/applications}{portal de desarrolladores} y obtiene un \textit{token} para un bot.
-	\item El usuario provee al sistema de este \textit{token} y de un nombre.
-	\item[!] Si el nombre o el \textit{token} se encuentran en uso por otro bot, el sistema cancela la creación.
-	\item El bot es creado en el sistema, quedando disponible para ser configurado con comandos o para ser desplegado.
-\end{enumerate}
-
-\subsubsection{Modificar un bot}
-
-Se puede modificar un bot de dos maneras:
+En esta sección se enumeran algunos \textit{user journeys} que podría realizar el usuario programador.
 
 \begin{itemize}
-	\item Parámetros del bot.
-	\begin{enumerate}
-		\item El usuario provee al sistema de datos del bot a actualizar.
-		\item[!] Si los datos coinciden con los actuales o con los de otro bot, el sistema cancela la modificación.
-		\item[!] Si el bot se encuentra desplegado, el sistema cancela el despliegue previa modificación.
-		\item El sistema modifica los detalles del bot.
-	\end{enumerate}
-	
-	\item Comandos del bot.
-	\begin{enumerate}
-		\item El usuario provee al sistema de los identificadores de los comandos personalizados que quiere agregar o eliminar del bot.
-		\item[!] Si el bot se encuentra desplegado, el sistema cancela el despliegue previa modificación.
-		\item El sistema modifica los comandos del bot.
-	\end{enumerate}
+	\item El programador, cuando se encuentra interactuando con otros usuarios en Discord, detecta una serie de funcionalidades (como enviar mensajes de alerta a todos los usuarios, o asignar un rol a cierto usuario) que sería interesante agregar al servidor. Accede al sistema y configura estas tareas en un bot, el cual agrega al servidor de Discord.
+	\item El programador comprueba cada semana las necesidades que tienen los usuarios de los servidores de Discord donde ha agregado bots previamente. Si estas funcionalidades están obsoletas, las actualiza en el sistema; si son insuficientes agrega nuevas; y si ya no son necesarias las elimina.
+	\item Cuando el programador detecta una funcionalidad que no puede configurar con el sistema en un bot, implementa esa funcionalidad para poder usarla en el sistema. Sabiendo que la interacción que tienen los usuarios con los bots es mediante comandos, adecúa la implementación para que las tareas se puedan ejecutar por los usuarios mediante estos comandos.
 \end{itemize}
 
-\subsubsection{Eliminar un bot}
-
-\begin{enumerate}
-	\item El usuario provee al sistema del identificador del bot que quiere eliminar.
-	\item[!] Si el bot se encuentra desplegado, el sistema cancela el despliegue previa eliminación.
-	\item El sistema elimina todos los datos asociados al bot, no pudiendo volver a usarse.
-\end{enumerate}
-
-\subsubsection{Crear un comando personalizado}
-
-\begin{enumerate}
-	\item El usuario selecciona uno de los comandos predefinidos del repertorio.
-	\item El usuario provee al sistema de los datos necesarios para crear un comando personalizado a partir del seleccionado.
-	\item[!] Si los datos coinciden con los de otro comando, el sistema cancela la creación del comando.
-	\item El sistema crea el comando.
-\end{enumerate}
-
-\subsubsection{Modificar un comando personalizado}
-
-\begin{enumerate}
-	\item El usuario provee al sistema de los datos que quiere modificar de un comando.
-	\item[!] Si los datos que el usuario provee corresponden a otro comando, el sistema cancela la modificación.
-	\item[!] Si el comando se encuentra en uso por un bot que se encuentra desplegado, el sistema cancela el despliegue previa modificación.
-	\item El sistema modifica el comando.
-\end{enumerate}
-
-\subsubsection{Eliminar un comando personalizado}
-
-\begin{enumerate}
-	\item El usuario provee al sistema del identificador del comando que quiere eliminar.
-	\item[!] Si el comando se encuentra en uso por un bot que se encuentra desplegado, el sistema cancela el despliegue previa eliminación.
-	\item El sistema elimina todos los datos asociados al comando, no pudiendo volver a agregarse a un bot.
-\end{enumerate}
-
-\subsubsection{Desplegar un bot}
-
-\begin{enumerate}
-	\item El usuario provee al sistema del identificador del bot que quiere desplegar.
-	\item[!] Si el bot ya se encuentra desplegado, el sistema cancela el despliegue.
-	\item El sistema despliega el bot.
-\end{enumerate}
-
-\subsubsection{Cancelar despliegue de un bot}
-
-\begin{enumerate}
-	\item El usuario provee al sistema del identificador del bot del que quiere cancelar el despliegue.
-	\item[!] Si el bot no se encuentra desplegado, el sistema cancela la operación.
-	\item[!] Si el bot no existe, el sistema cancela la operación.
-	\item El sistema cancela el despliegue del bot.
-\end{enumerate}
-
-
-\subsection{Ampliación del repertorio de comandos predefinidos}
-
-Para la realización de este \textit{user journey} es necesario el uso de \textit{C\#}.
-
-\begin{enumerate}
-	\item El usuario define el nuevo tipo de comando.
-	\item El usuario define los parámetros que necesita ese comando.
-	\item El usuario implementa la funcionalidad asociada al comando, esto es el código que se ejecuta cuando el comando es invocado.
-	\item El comando queda disponible para ser usado por el sistema.
-	\item[!] Es necesario reiniciar el sistema para que pueda utilizarse el nuevo comando.
-\end{enumerate}
 
 \section{Modelo de negocio}
 
