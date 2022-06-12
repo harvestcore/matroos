@@ -1,31 +1,71 @@
 \chapter{Estado del arte}
 
-En este capítulo se hace un repaso de las distintas soluciones actuales que existen para la creación de bots de \textit{Discord} y la configuración de sus comandos.
+En este capítulo se hace un repaso de las distintas soluciones que existen actualmente para la creación de bots de \textit{Discord} y la configuración de sus comandos.
 
-\section{Definiciones previas}
+\section{Contexto y definiciones previas}
 
-Previa lectura de este capítulo es interesante conocer el significado de algunos conceptos que se usan.
+Los bots actúan como un usuario más dentro de un servidor de \textit{Discord}. En cambio, debido a su naturaleza, deben ser agregados a los servidores por usuarios humanos. Se pueden crear infinidad de bots, por lo que han surgido webs (como \href{https://top.gg/}{top.gg} o \href{https://bots.ondiscord.xyz/}{Bots on Discord}) que permiten que los usuarios encuentren bots ya creados y desplegados listos para ser utilizados en sus servidores. Estos cuentan con funcionalidades específicas, por lo que no pueden modificarse por los usuarios.
+
+Además de este tipo de bots y webs, han surgido otras plataformas que permiten que los usuarios creen y configuren sus propios bots. Estas son las que se desarrollan en este capítulo. A continuación se enumeran algunos conceptos que son interesantes conocer ya que se utilizan tanto en este capítulo como en el resto del documento.
+
+Conceptos técnicos, que definen la manera en la que se estructuran, configuran y definen los bots:
 
 \begin{itemize}
-	\item \textbf{Comandos predefinidos}. Comandos de \textit{Discord} cuya funcionalidad está ya definida (y por tanto programada) y no puede ser modificada por un usuario.
-	\item \textbf{Comandos personalizados}. Comandos predefinidos que pueden utilizarse con distintos parámetros para modificar su comportamiento.
+	\item \textbf{Comandos predefinidos}. Comandos cuya funcionalidad está ya definida (y por tanto programada) y no puede ser modificada por un usuario.
+	\item \textbf{Comandos personalizados}. Comandos que se pueden crear a partir de comandos predefinidos que pueden utilizarse con distintos parámetros para modificar su comportamiento.
 	\item \textbf{Comandos reutilizables}. Comandos personalizados que una vez configurados pueden utilizarse en distintos bots.
 	\item \textbf{Despliegue de un bot}. Todas aquellas tareas y actividades que hacen que un bot se encuentre disponible para ser usado por usuarios.
-	\item \textbf{Control del despliegue}. Capacidad de controlar y monitorizar el despliegue de bots de \textit{Discord} en un sistema.
-	\item \textbf{Comandos de moderación}. Comandos cuya funcionalidad se centra en la moderación de usuarios en los servidores de \textit{Discord}.
+	\item \textbf{Control del despliegue}. Capacidad de controlar y monitorizar el despliegue de bots en un sistema.
+\end{itemize}
+
+Conceptos relacionados con funcionalidades de \textit{Discord}:
+
+\begin{itemize}
+    \item \textbf{Comandos de moderación}. Comandos cuya funcionalidad se centra en la moderación de usuarios en los servidores de \textit{Discord}.
 \end{itemize}
 
 \section{Soluciones actuales}
 
-Las soluciones actuales se podrían dividir en dos grupos, herramientas \textit{no-code} y herramientas que hacen uso de programación. En ambas la interacción con el sistema se hace a través de una aplicación web, y además suelen tener una apariencia muy similar. En las siguientes secciones se incluyen las herramientas con características más interesantes.
+Las soluciones actuales se podrían dividir en dos grupos, las herramientas \textit{no-code} y aquellas herramientas que hacen uso de programación. En ambas la interacción con el sistema se hace a través de una aplicación web y, además, suelen tener una apariencia muy similar. Las primeras se centran en usuarios con menor conocimiento técnico, abstrayendo todos los detalles de este tipo. En cambio, las segundas son utilizadas por aquellos usuarios con un conocimiento informático más amplio.
+
+En las siguientes secciones se incluyen las herramientas con características más interesantes.
+
+Por otro lado, para cada herramienta se incluye una tabla como la siguiente. Resume las características de cada una de ellas.
+
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{325px}{|l|L|}
+    \hline
+        \multicolumn{2}{|c|}{\textbf{Nombre de la herramienta}} \\ \hline
+    \hline
+        \textbf{Tipo de comandos} & El tipo de comandos que provee la herramienta, y la cantidad de comandos personalizados que se pueden crear. \\ \hline
+        \textbf{Comandos reutilizables} & Si los comandos se pueden reutilizar entre bots o no. \\ \hline
+        \textbf{Control del despliegue} & Si el usuario tiene control del despliegue del bot o no. \\ \hline
+        \textbf{Número de bots} & La cantidad de bots que el usuario puede crear y configurar. \\ \hline
+        \textbf{Experiencia} & La experiencia de usuario a la hora de utilizar las herramientas. \\ \hline
+        \textbf{Personalización extra} & Si la herramienta permite una personalización más avanzada, y si es de pago o no. \\ \hline
+        \textbf{Características} & Las funcionalidades configurables en los bots. \\ \hline
+        \textbf{Logs} & Si permiten que los usuarios tengan acceso a los logs de los bots. \\ \hline
+        \textbf{Premium} & Coste de los planes de pago de la herramienta. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
 
 \subsection{Herramientas \textit{no-code}}
 
-Estas herramientas permiten la creación de bots sin hacer uso de recursos de programación o similares. En general la mayoría de herramientas de este tipo tienen una serie de funcionalidades gratuitas, teniendo que adquirir un plan de pago mensual para obtener funcionalidades extra.
+Estas herramientas permiten la creación de bots sin hacer uso de recursos de programación o similares. Cuentan con un repertorio de comandos predefinidos, de los cuales se pueden crear comandos personalizados modificando los parámetros de estos. Esto se hace a través de interfaces gráficas sencillas compuestas por formularios y otros elementos.
 
-En la mayoría de casos estas plataformas cuentan con un único bot que se debe agregar al servidor de \textit{Discord} deseado. Esto implica que el uso del servicio de estos sólo permite el uso de un bot, configurado de forma individual para cada servidor. No se permite por tanto agregar varios bots (del mismo tipo) con distintas funcionalidades a un mismo servidor.
+Por ejemplo, el comando predefinido más común sirve para enviar mensajes. A partir de este comando se pueden crear distintos comandos personalizados, cambiando la palabra clave que los usuarios deben introducir (en los canales de texto) para activar el comando y el mensaje que el bot debe enviar.
 
-En ellas se puede observar también uno de los principales problemas mencionados en el capítulo anterior, la muy reducida personalización y reutilización de los comandos. En estos sistemas no se puede crear un comando específico con una funcionalidad concreta, sino que se basan en funcionalidades predefinidas no reutilizables.
+En general la mayoría tienen una serie de funcionalidades gratuitas, teniendo que adquirir un plan de pago mensual para obtener funcionalidades extra. Estas suscripciones suelen tener un coste aproximado de cinco dólares mensuales, pudiendo comprar suscripciones anuales o incluso de por vida y suelen ofrecer un repertorio de comandos más amplio, conexiones con redes sociales, estadísticas de uso e incluso \textit{logging}.
+
+En la mayoría de casos estas plataformas cuentan con un único bot que se debe agregar al servidor de \textit{Discord} deseado. Esto implica que el uso de estos servicios no permite por tanto agregar varios bots con distintas funcionalidades a un mismo servidor. Si un usuario utiliza \textit{ProBot} (servicio que se explica en detalle a continuación), entonces el bot que proporciona \textit{ProBot} sólo podrá utilizarse una sola vez por servidor.
+
+En ellas se puede observar también uno de los principales problemas ya mencionados, la muy reducida personalización y reutilización de los comandos. En estos sistemas no se puede crear un comando específico con una funcionalidad concreta, sino que se basan en funcionalidades predefinidas no reutilizables.
+
+Estas funcionalidades predefinidas son en su mayoría de moderación de usuarios y envío de mensajes, y no se pueden reutilizar entre distintos bots. Además, debido a la estructura y arquitectura de estas plataformas, los usuarios no pueden ampliar el repertorio de comandos, teniendo que conformarse con los existentes.
 
 \subsubsection{ProBot}
 
@@ -144,7 +184,7 @@ Actualmente existen multitud de librerías para distintos lenguajes de programac
 
 \subsubsection{Autocode}
 
-\href{https://autocode.com/}{Autocode} es sin duda la herramienta mas interesante que existe de esta modalidad híbrida. Realmente es una plataforma que facilita la creación y despliegue de aplicaciones y servicios web, bots, y tareas de automatización permitiendo que los usuarios escriban sólo una parte del código (\textit{JavaScript}) de estos.
+\href{https://autocode.com/}{Autocode} es sin duda la herramienta mas interesante que existe de esta modalidad híbrida. Realmente es una plataforma que facilita la creación y despliegue de aplicaciones y servicios web, bots, y tareas de automatización permitiendo que los usuarios escriban sólo una parte del código (\textit{JavaScript}) de estos. Esta plataforma provee de un editor de código sencillo y de un explorador de archivos, para que el usuario cree el código utilizando esos recursos.
 
 De este modo el usuario sólo tiene que preocuparse por el código de la aplicación (o bot en este caso) que quiere crear, ya que del despliegue se encarga \textit{Autocode}. En su plan gratuito se pueden crear hasta 50 aplicaciones distintas, y permite la integración entre si de los distintos recursos que el usuario crea en la plataforma.
 
@@ -180,7 +220,7 @@ Sus características son:
 
 \subsubsection{Librerías de programación}
 
-Las librerías de programación dan libertad a la hora de crear un bot de \textit{Discord}, lo cual puede ser ideal en algunos casos. Las ventajas son obvias, ya que se puede crear cualquier tipo de comando y la reutilización es sencilla, pero en cambio, la gestión del despliegue puede ser compleja.
+Las librerías de programación dan libertad total a la hora de crear un bot de \textit{Discord}, lo cual puede ser ideal en algunos casos. Las ventajas son obvias, ya que se puede crear cualquier tipo de comando y la reutilización es sencilla, pero en cambio, la gestión del despliegue puede ser compleja.
 
 Por lo general todas las librerías permiten realizar casi las mismas funcionalidades, diferenciándose en aspectos como el rendimiento, la comunidad que las soporta o la facilidad de uso.
 
@@ -206,7 +246,7 @@ Los dos comandos personalizados se han elegido al ser comunes en todas las plata
 
 \begin{itemize}
 	\item Envío de un mensaje.
-	\item Envío de un mensaje recurrente.
+	\item Envío de un mensaje recurrente (cada cierto tiempo).
 \end{itemize}
 
 \begin{table}[H]
@@ -239,9 +279,9 @@ En las herramientas \textit{no-code} los bots se centran principalmente en tarea
 
 \begin{itemize}
 	\item Reutilización de comandos.
-	\item No es posible crear comandos con funcionalidad específica.
-	\item No se tiene control del despliegue de los bots.
-	\item No se pueden crear distintos bots.
+	\item Creación de comandos con funcionalidad específica.
+	\item Control del despliegue de los bots.
+	\item Creación de distintos bots con distintas funcionalidades en un mismo sistema.
 \end{itemize}
 
 En el caso de las librerías de programación, aunque todas permiten el acceso a la \textit{API} de \textit{Discord}, cada una de ellas tiene una estructura distinta y los procedimientos para crear un bot o comandos son más o menos complejos. Si un usuario decidiese utilizarlas tendría flexibilidad completa a la hora de crear una estructura concreta, pero entonces tendría que dedicar en ese caso un tiempo necesario para diseñar algo funcional.
