@@ -9,3 +9,6 @@
 *.bbl
 *.blg
 *.gz
+*.synctex.gz
+*.dvi
+*.pdf
