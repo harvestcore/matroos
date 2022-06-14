@@ -27,7 +27,7 @@ En este capítulo se profundiza en el análisis del problema planteado en capít
 \end{table}
 
 
-\subsection{Usuario de \textit{Discord}}
+\subsection{Usuario regular de \textit{Discord}}
 \label{sec:personaUsuarioDiscord}
 \begin{table}[H]
     \centering
@@ -42,7 +42,7 @@ En este capítulo se profundiza en el análisis del problema planteado en capít
         Intereses & · Videojuegos, dedica la mayor parte de su tiempo a jugar con sus amigos.\linebreak · La facilidad de las cosas, no le gusta complicarse la vida.\linebreak · \textit{Discord}, le parece una herramienta muy útil, ya que la usa con sus amigos y para temas laborales. \\ \hline
         Formación & Magisterio de educación primaria. \\ \hline
         Frustraciones & No le gusta nada tener que indagar en detalles técnicos al jugar a videojuegos con sus amigos. Entiende que en ocasiones es necesaria alguna configuración para poder jugar (como acceder a un servidor), pero quiere que ese proceso sea lo más fácil posible. No le gusta tener que recordar esos detalles, como la dirección del servidor al que acceder para jugar a ciertos juegos. \\ \hline
-        Necesidades & Una herramienta que le permita acceder a esos detalles sin preocuparse de recordarlos o de consultarlos de manera extraña. Idealmente podría acceder a ellos a través de comandos de bots de \textit{Discord}. \\ \hline
+        Necesidades & Una herramienta que le permita acceder a esos detalles sin preocuparse de recordarlos o de consultarlos de manera extraña. Idealmente podría acceder a ellos a través de comandos de bots de \textit{Discord} que ha configurado previamente de manera sencilla. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Persona 2. Usuario de \textit{Discord}.}
@@ -99,7 +99,7 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
 
 \begin{enumerate}
 %	\item \href{https://github.com/harvestcore/matroos/issues/1}{Crear diferentes bots de \textit{Discord}}
-	\item \textbf{Actualizar cuando las issues estén creadas en GitHub.}
+%	\item \textbf{Actualizar cuando las issues estén creadas en GitHub.}
 \end{enumerate}
 
 
@@ -197,7 +197,7 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \caption{HU-04. Creación de comandos personalizados.}
 \end{table}
 
-\subsection{HU-05 - Interfaz de usuario}
+\subsection{HU-05 - Interfaz de usuario sencilla}
 \label{sec:hu05}
 
 \begin{table}[H]
@@ -208,16 +208,16 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como usuario programador quiero disponer de una interfaz gráfica para poder realizar todas las gestiones del sistema de manera sencilla y visual. \\ \hline
-        Meta & Disponer de una interfaz gráfica que permita realizar las tareas de creación, configuración y despliegue de bots de \textit{Discord}. \\ \hline
-        Beneficio & Realizar todas las tareas de gestión de comandos y bots de manera sencilla en una interfaz de usuario, en lugar de hacerlas mediante el uso de una \textit{API}. \\ \hline
-        Perfil de usuario & \hyperref[sec:personaProgramador]{Programador} \\ \hline
-        Escenario & · Dado: que quiero administrar los bots de \textit{Discord},\linebreak · Cuando: accedo a la interfaz gráfica,\linebreak · Entonces: el sistema me permite realizar todas las tareas de administración de bots y comandos. \\ \hline
+        Resumen & Como usuario regular de \textit{Discord}, quiero que la visualización de los datos en la interfaz de usuario sea sencilla, para que yo comprenda fácilmente cómo crear bots y configurarlos. \\ \hline
+        Meta & La interfaz de usuario debe permitir que los usuarios menos experimentados puedan crear y configurar bots de manera sencilla. \\ \hline
+        Beneficio & Cualquier usuario, con mayor o menor conocimiento informático puede crear y configurar bots de \textit{Discord}. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaUsuarioDiscord]{Usuario regular de \textit{Discord}} \\ \hline
+        Escenario & · Dado: que quiero administrar los bots de \textit{Discord},\linebreak · Cuando: accedo a la interfaz gráfica,\linebreak · Entonces: el sistema me permite realizar todas las tareas de administración de bots y comandos de manera sencilla. \\ \hline
         Dependencias & \hyperref[sec:hu01]{HU-01}, \hyperref[sec:hu02]{HU-02}, \hyperref[sec:hu03]{HU-03}, \hyperref[sec:hu04]{HU-04}, \hyperref[sec:hu05]{HU-05}, \hyperref[sec:hu06]{HU-06} \\ \hline
         Criterio de aceptación & · Las tareas de gestión de bots y comandos quedan simplificadas (en complejidad y en tiempo) en la interfaz.\linebreak · El usuario es avisado en caso de producirse algún error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{HU-05. Interfaz de usuario.}
+    \caption{HU-05. Interfaz de usuario sencilla.}
 \end{table}
 
 \subsection{HU-06 - Criterios de evaluación}
@@ -250,8 +250,8 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
 En esta sección se enumeran algunos \textit{user journeys} que podría realizar el usuario programador.
 
 \begin{itemize}
-	\item El programador, cuando se encuentra interactuando con otros usuarios en Discord, detecta una serie de funcionalidades (como enviar mensajes de alerta a todos los usuarios, o asignar un rol a cierto usuario) que sería interesante agregar al servidor. Accede al sistema y configura estas tareas en un bot, el cual agrega al servidor de Discord.
-	\item El programador comprueba cada semana las necesidades que tienen los usuarios de los servidores de Discord donde ha agregado bots previamente. Si estas funcionalidades están obsoletas, las actualiza en el sistema; si son insuficientes agrega nuevas; y si ya no son necesarias las elimina.
+	\item El programador o el usuario regular, cuando se encuentra interactuando con otros usuarios en Discord, detecta una serie de funcionalidades que sería interesante agregar al servidor. Accede al sistema y configura estas tareas en un bot, el cual agrega al servidor de Discord.
+	\item El programador o el usuario regular, comprueba cada semana las necesidades que tienen los usuarios de los servidores de Discord donde ha agregado bots previamente. Si estas funcionalidades están obsoletas, las actualiza en el sistema; si son insuficientes agrega nuevas; y si ya no son necesarias las elimina.
 	\item Cuando el programador detecta una funcionalidad que no puede configurar con el sistema en un bot, implementa esa funcionalidad para poder usarla en el sistema. Sabiendo que la interacción que tienen los usuarios con los bots es mediante comandos, adecúa la implementación para que las tareas se puedan ejecutar por los usuarios mediante estos comandos.
 \end{itemize}
 
