@@ -1,2 +1,120 @@
 \chapter{Herramientas y tecnologías utilizadas}
- 
+
+\section{Control de versiones}
+
+Para el control de versiones se utiliza \href{https://git-scm.com/}{\textit{Git}}, ya que es la herramienta de este tipo que mejor manejo. Por otro lado, para alojar los repositorios se utiliza \href{https://github.com}{\textit{GitHub}}, que al igual que antes, es la que mejor manejo y en la que tengo todos mis proyectos personales alojados. Existen alternativas, como \href{https://about.gitlab.com/}{\textit{GitLab}} o \href{https://bitbucket.org/product/}{\textit{Bitbucket}}, pero o bien son a mi parecer algo mas complejas o requieren suscripciones de pago para acceder a algunas de las características más interesantes.
+
+\section{Integración continua (\textit{CI})}
+
+La integración continua la práctica que incluye el control de la versión del código desarrollado y la prueba automática del mismo de forma regular para detectar rápidamente errores. Actualmente es un requisito necesario e indispensable para cualquier tipo de software, y todos los aspectos del mismo deben ser atendidos.
+
+En este proyecto se utiliza \href{https://github.com/features/actions}{\textit{GitHub Actions}} como sistema de integración continua. Esto se debe a dos razones, en primer lugar, el proyecto está alojado en \textit{GitHub} y, por otro lado, \textit{GitHub Actions} tiene una flexibilidad increíble, por lo que se puede establecer de manera sencilla cualquier tipo de entorno para las pruebas. Por otro lado permite desplegar contenedores \textit{Docker}, lo cual es útil para cuando se quieran ejecutar tests de integración con una base de datos.
+
+Existen otros servicios para este tipo de pruebas, como son \href{https://www.jenkins.io/}{Jenkins}, \href{https://travis-ci.org/}{\textit{Travis CI}} o \href{https://circleci.com/}{\textit{Circle CI}}. Todos ellos, junto con \textit{GitHub Actions}, comparten características y son realmente similares. Sin embargo, algunos de estos no son completamente gratuitos, y otros requieren de un esfuerzo extra para desplegarlos y ponerlos en funcionamiento, algo que creo que no merece la pena teniendo una herramienta disponible en el mismo repositorio en el que se aloja el código.
+
+\section{Lenguaje de programación}
+
+\subsection{\textit{Backend} y \textit{Workers}}
+
+En la actualidad existe una gran variedad de lenguajes de programación que podrían usarse para desarrollar el software con las características que se requieren. En concreto, algunos de estos lenguajes son \textit{JavaScript}, \textit{Java}, \textit{C\#}, \textit{Python}, \textit{Ruby}, \textit{PHP}, \textit{Go} o \textit{Kotlin}.
+
+Las características deseadas son las siguientes:
+
+\begin{itemize}
+	\item Debe ser independiente de la plataforma en la que se ejecute, ya que los usuarios habituales de \textit{Discord} utilizan tanto \textit{Windows}, como \textit{MacOS} y \textit{Linux}.
+	\item Lenguaje con buen rendimiento.
+	\item Buena comunidad.
+	\item Actualizado con regularidad, para que no quede obsoleto en pocos años.
+\end{itemize}
+
+En cambio, en este proyecto se usa C\#, no siendo una elección arbitraria. Se fundamenta principalmente en el creciente número de bots de \textit{Discord} que se están creando con este lenguaje y con las librerías existentes. También, las últimas versiones del lenguaje junto con las mejoras a su framework estrella, \textit{.NET}, están haciendo que \textit{C\#} sea cada vez más popular y una buena opción para desarrollar una aplicación.
+
+Además tiene características bastante interesantes:
+
+\begin{itemize}
+	\item Flexible y orientado a objetos.
+	\item Rico en librerías.
+	\item \textit{IDE} muy bien integrado (\textit{Visual Studio}).
+	\item Fuertemente tipado.
+	\item Asincronía y tareas en segundo plano.
+\end{itemize}
+
+Aún teniendo grandes ventajas sobre otros lenguajes, también tiene inconvenientes:
+
+\begin{itemize}
+	\item Compilado en dos fases, algo que ralentiza este proceso.
+	\item Curva de aprendizaje superior a otros lenguajes.
+\end{itemize}
+
+Por otro lado, también se han tenido en cuenta otros lenguajes de programación, también muy populares para el desarrollo de bots de \textit{Discord}. Estos son:
+
+\begin{itemize}
+	\item \textbf{\textit{Java}}. Con sintaxis y rendimiento similar a \textit{C\#}.
+	\item \textbf{\textit{JavaScript}} / \textbf{\textit{TypeScript}}. Con peor rendimiento que \textit{C\#}.
+	\item \textbf{\textit{Python}}. Peor rendimiento que \textit{C\#}. Además es un lenguaje interpretado y no tiene un tipado tan fuerte.
+	\item \textbf{\textit{Ruby}}. Similar a \textit{\textit{Python}}.
+	\item \textbf{\textit{Go}}. Similar en rendimiento, pero con características muy distintas y una comunidad más pequeña al ser un lenguaje reciente.
+\end{itemize}
+
+\subsubsection{\textit{Framework}}
+
+Una vez seleccionado \textit{C\#} como lenguaje de programación, se elige \href{https://docs.microsoft.com/es-es/dotnet/}{\textit{.NET Core}} como \textit{framework} principal. Es el más popular, más utilizado y con más soporte. Existe otra versión más extensa que incluye soporte para vistas (siguiendo el patrón \textit{MVC}), pero esa no tiene especial relevancia en el software que se desarrolla.
+
+También cabe destacar que en su última versión, la 6, el rendimiento ha mejorado mucho respecto a versiones anteriores, lo que ha hecho que se sitúe en mejor posición respecto a otros \textit{frameworks} de desarrollo web \textit{backend}.
+
+Se comentaba además que existen dos librerías principales para C\# que permiten interactuar con la \textit{API} de \textit{Discord}. Estas son \href{https://github.com/discord-net/Discord.Net}{\textit{Discord.NET}} y \href{https://github.com/DSharpPlus/DSharpPlus}{\textit{DSharpPlus}}, y tienen características similares.
+
+En el caso de este proyecto se utiliza la primera, pues la comunidad de usuarios es mayor, tiene mayor número de características y está más establecida. Por otro lado, tiene una muy buena integración con \textit{.NET} y una mejor infraestructura para crear comandos y bots, algo que es bastante interesante a la hora de construir un software que se basta en esta librería.
+
+\subsubsection{\textit{Logs}}
+
+Los \textit{logs} son realmente importantes, ya que facilitan la trazabilidad de errores y problemas en un sistema. Para el desarrollo del \textit{backend} se utiliza \href{https://serilog.net/}{\textit{Serilog}}, la cual es una librería muy sencilla y muy potente, además de la más utilizada, para registrar todos los sucesos en una aplicación. Además, esta librería incluye diversos conectores, que permiten almacenar los \textit{logs} en archivos de texto plano o en bases de datos. En concreto se va a utilizar:
+
+\begin{itemize}
+	\item \textit{Serilog}
+	\item \textit{Serilog.Sinks.MongoDB}
+	\item \textit{Serilog.Sinks.File}
+\end{itemize}
+
+\subsection{\textit{Frontend}} 
+
+\subsubsection{\textit{Framework}}
+
+Para el desarrollo del \textit{frontend} se utiliza \href{https://nextjs.org/}{Next.js}, descartándose el \textit{stack} tradicional \textit{HTML/JS/CSS}, ya que no aporta ninguna ventaja respecto al uso de otros \textit{frameworks}. Se basa en \href{https://es.reactjs.org/}{React} y otras librerías y permite crear y desplegar interfaces web de manera sencilla, preparadas para un entorno de producción. Aparte de las mencionadas, de sus características destacan las siguientes:
+
+\begin{itemize}
+	\item Optimización de rendimiento frente a \textit{React}, debido al \textit{SSR (Server-Side Rendering)}.
+	\item Compilado a \textit{JavaScript} más rápido.
+	\item Rutas dinámicas.
+	\item Compatibilidad con multitud de librerías de \textit{CSS}.
+	\item Simplifica las dependencias necesarias para el desarrollo del software.
+\end{itemize}
+
+Como lenguaje se utiliza \textit{TypeScript}. Es igual que \textit{JavaScript} pero con las ventajas del tipado. La principal desventaja es que tiene que ser compilado a \textit{JavaScript}.
+
+De forma paralela a \textit{Next.js}, existen otros \textit{frameworks} también muy conocidos. Estos son: \textit{React}, (mencionado anteriormente) el cual se puede utilizar de manera individual. \href{https://vuejs.org/}{Vue}, un \textit{framework} muy interesante con características similares al primero, ya que ambos trabajan con un \textit{DOM} virtual y manejan los estados de un modo parecido. Y \href{https://angular.io/}{Angular}, que es el que presenta mayores diferencias, ya que la organización interna de los componentes difiere completamente de los demás y además maneja el estado de manera distinta a los demás.
+
+
+\section{Base de datos}
+
+La elección de un sistema de gestión de bases de datos es una de las decisiones más importantes a la hora de diseñar y desarrollar software. Hay muchos tipos de bases de datos, y hay una serie de cuestiones que deben tenerse en cuenta al elegir una.
+
+Por la naturaleza del proyecto, se descarta el modelo relacional y el tipo \textit{SQL}, ya que los tipos de datos a procesar no necesitan tener una gran relación entre ellos. Sólo se necesita relacionar comandos con bots, y adicionalmente se necesita almacenar una serie de parámetros para los comandos (sin un esquema rígido definido). Por lo tanto se va a usar una base de datos \textit{NoSQL} basada en documentos, \href{https://www.mongodb.com/es}{MongoDB}.
+
+Por otro lado, el tipo de consulta a ejecutar en este proyecto no son complejas. Teniendo en cuenta esto, cabe destacar otra ventaja de las bases de datos \textit{NoSQL}, la velocidad de ejecución de las consultas.
+
+Para la integración de la base de datos en el software se utilizan los \textit{ORM} (\textit{Object Relational Mapper}), los cuales permiten realizar consultas de manera sencilla utilizando las características del lenguaje que se desee. \textit{MongoDB} dispone de una gran variedad de conectores para multitud de lenguajes de programación, y la \textit{API} que provee es realmente sencilla. Además, los datos se almacenan en formato \textit{BSON} (\href{https://www.mongodb.com/json-and-bson}{Binary JSON}), que da más flexibilidad que el formato \textit{JSON} tradicional.
+
+\textit{DBaaS} (\textit{Database as a Service}) es un concepto que en los últimos años está destacando bastante. Este servicio brinda un entorno que ofrece bases de datos optimizadas para operaciones en entornos virtualizados y además garantiza conceptos como la escalabilidad o la alta disponibilidad. En el caso de \textit{MongoDB} destacan, entre otros, \href{https://www.mongodb.com/atlas/database}{\textit{MongoAtlas}} y \href{https://aws.amazon.com/es/dynamodb/}{\textit{DynamoDB}}.
+
+\section{Despliegue en contenedores}
+
+Para el despliegue del software en contenedores se utiliza \href{https://www.docker.com/}{Docker}, tanto para el \textit{frontend}, como para el \textit{backend} y los \textit{workers}.
+
+\textit{Docker} es un sistema proporciona una capa adicional de abstracción y virtualización de aplicaciones, lo que nos permite ejecutar software de forma independiente sin depender de configuraciones complejas de máquinas virtuales o hipervisores. Por otro lado, los recursos también se pueden aislar.
+
+Para crear estos contenedores se utilizan los llamados \href{https://docs.docker.com/engine/reference/builder/}{Dockerfile}, que son archivos de texto plano con distintas instrucciones para crear a voluntad el entorno de ejecución de nuestro software. En el caso de este proyecto, será necesario crear al menos tres de estos archivos (\textit{frontend}, \textit{backend} y \textit{worker}). La creación de la imagen se realizará en un \textit{pipeline} de \textit{GitHub Actions} y ésta se alojará en el registro de imágenes de \textit{GitHub} \href{https://github.com/features/packages}{ghcr.io}.
+
+\textit{Docker Compose} es otra herramienta adicional que facilita el proceso de construcción y despliegue de contenedores, ya que permite realizar las configuraciones necesarias en un sencillo archivo \textit{YAML}. Uno de estos archivos también se incluye en el proyecto.
+
+Por último, existen otras herramientas muy interesantes como \href{https://kubernetes.io/es/}{Kubernetes} u \href{https://www.redhat.com/es/technologies/cloud-computing/openshift}{OpenShift} que nos permiten orquestar y escalar contenedores según criterios configurados. No se usan en este proyecto, pero si se quiere ir un paso más allá en la implementación del software, pueden ser muy interesantes.
