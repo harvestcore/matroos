@@ -48,3 +48,16 @@ showstringspaces
 stringstyle
 Spotify
 motivantes
+Autocode
+BotGhost
+DSharpPlus
+DiscordGo
+Golang
+JDA
+JS
+ProBot
+discordrb
+intrusiva
+js
+px
+gg
