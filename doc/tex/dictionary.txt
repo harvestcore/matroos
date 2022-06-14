@@ -83,3 +83,13 @@ Ud
 IRPF
 SLNE
 personaUsuarioDiscord
+TBD
+Guid
+distribuible
+microservicio
+microservicios
+MVP
+Kanban
+Frontend
+Dockerfile
+PMV

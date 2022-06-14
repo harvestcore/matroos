@@ -1,7 +1,235 @@
 \chapter{Planificación}
 
-\section{Metodología utilizada}
+\section{Metodología de desarrollo}
+
+La metodología de desarrollo se puede definir como el proceso disciplinado que busca ser eficiente a la hora de desarrollar un software. A lo largo del tiempo han surgido numerosas metodologías que buscan mejorarse unas a otras, haciendo hincapié en elementos como coste o calidad del desarrollo. De estas, destacan los principios ágiles, los cuales se usan en multitud de entornos laborales hoy en día.
+
+Se ha utilizado \textit{GitHub} para la gestión de un repositorio para el código, además de para utilizar las herramientas que posee que facilitan el desarrollo del software.
+
+Tras analizar el problema se han extraído una serie de casos de uso e historias de usuario, las cuales tienen especial importancia ya que de estas dependen las características del software final. En concreto, una vez establecidas las historias de usuario han surgido una serie de tareas, las cuales se han documentado en \textit{issues} en el \href{https://github.com/harvestcore/matroos}{repositorio}.
+
+En el caso de este proyecto el desarrollo se ha dividido en diferentes hitos, los cuales están compuestos por las anteriores tareas e historias de usuario.
+
+El proceso a seguir para el desarrollo es sencillo. Cuando es preciso trabajar en una tarea, se crea una rama de trabajo (usualmente nombrada con el identificador de la tarea, o un texto relevante). Sobre esta rama se publican una serie de \textit{commits} que solucionan el grueso de la tarea, y posteriormente se crea un \textit{pull request} (o \textit{PR}). Esta acción permite revisar lo que se quiere unir a la rama principal de desarrollo del software, con el fin de detectar errores o iniciar discusiones si fuese necesario.
 
 \section{Temporización}
 
-\section{Seguimiento del desarrollo}
+Como se menciona en la sección anterior, el trabajo se divide en \textit{hitos} de duración variable, ya que cada uno puede requerir mayor o menor cantidad de tiempo.
+
+\textbf{Completar con el total de issues resueltas en el proyecto + información del desarrollo.}
+
+\section{PMV y Milestones}
+
+Un producto mínimamente viable, o \textit{PMV}, es un producto con las suficientes características capaz de atraer a los posibles clientes o usuarios tan pronto como sea posible.
+
+Para la realización de este proyecto se ha propuesto la creación de los siguientes \textit{PMV} (o \textit{milestones}, como se llaman en \href{https://github.com/harvestcore/matroos/milestones}{GitHub}).
+
+Los \textit{milestones} 0 a 6 son los principales del proyecto, y son los que se planea inicialmente realizar. Los \textit{milestones} 8 y 9 son adicionales, y completarían el desarrollo de todo el software incluyendo funcionalidad y características extra.
+
+\subsection{Milestones principales}
+
+\subsubsection{00 - Configuración del entorno, tests y CI}
+
+Enlace en \href{https://github.com/harvestcore/matroos/milestone/3}{GitHub}.
+
+\textbf{Versión objetivo: 0.0.1}
+
+El \textit{PMV} incluirá:
+
+\begin{itemize}
+	\item La estructura del repositorio está definida e implementada.
+	\item Los proyectos necesarios están creados y listos para continuar con el desarrollo de nuevas funcionalidades.
+	\item \textit{CI} está listo para ejecutar los diferentes tests y pruebas implementadas en los distintos proyectos.
+	\item La documentación hasta este punto del desarrollo está actualizada y disponible.
+\end{itemize}
+
+Decisiones técnicas y documentación adicional:
+
+\begin{itemize}
+	\item Lenguaje de programación y \textit{framework}.
+	\item Integración continua.
+	\item Arquitectura.
+\end{itemize}
+
+\subsubsection{01 - Modelado del dominio del problema y lógica de negocio}
+
+Enlace en \href{https://github.com/harvestcore/matroos/milestone/12}{GitHub}.
+
+\textbf{Versión objetivo: 0.0.2}
+
+El \textit{PMV} incluirá:
+
+\begin{itemize}
+	\item El dominio del problema está modelado.
+	\item La lógica de negocio en su forma más básica está definida.
+	\item La documentación hasta este punto del desarrollo está actualizada y disponible.
+\end{itemize}
+
+Decisiones técnicas y documentación adicional:
+
+\begin{itemize}
+	\item Arquitectura.
+	\item Comandos.
+	\item Bots.
+	\item Herramientas.
+\end{itemize}
+
+\subsubsection{02 - Gestión de comandos}
+
+Enlace en \href{https://github.com/harvestcore/matroos/milestone/10}{GitHub}.
+
+\textbf{Versión objetivo: 0.0.3}
+
+Tras la finalización de este \textit{milestone}:
+
+\begin{itemize}
+	\item La estructura de los comandos está definida.
+	\item El \textit{backend} cuenta con un servicio capaz de gestionar los comandos y su configuración.
+	\item Los tipos de comandos básicos quedan definidos y se pueden crear nuevos comandos de estos tipos.
+	\item La documentación hasta este punto del desarrollo está actualizada y disponible.
+\end{itemize}
+
+Decisiones técnicas y documentación adicional:
+
+\begin{itemize}
+	\item Arquitectura.
+	\item Comandos.
+\end{itemize}
+
+\subsubsection{03 - Gestión de bots}
+
+Enlace en \href{https://github.com/harvestcore/matroos/milestone/6}{GitHub}.
+
+\textbf{Versión objetivo: 0.0.4}
+
+
+El \textit{PMV} incluirá:
+
+\begin{itemize}
+	\item La estructura de los bots está definida.
+	\item El \textit{backend} cuenta con un servicio capaz de gestionar los bots y su configuración.
+	\item Es posible asociar comandos a bots.
+	\item La documentación hasta este punto del desarrollo está actualizada y disponible.
+\end{itemize}
+
+Decisiones técnicas y documentación adicional:
+
+\begin{itemize}
+	\item Arquitectura.
+	\item Bots.
+\end{itemize}
+
+\subsubsection{04 - Despliegue de bots en \textit{workers}}
+
+Enlace en \href{https://github.com/harvestcore/matroos/milestone/5}{GitHub}.
+
+\textbf{Versión objetivo: 0.0.5}
+
+
+El \textit{PMV} incluirá:
+
+\begin{itemize}
+	\item Es posible desplegar (ejecutar) bots en los \textit{workers}.
+	\item El \textit{backend} es capaz de comunicarse con los distintos \textit{workers}.
+	\item La documentación hasta este punto del desarrollo está actualizada y disponible.
+\end{itemize}
+
+Decisiones técnicas y documentación adicional:
+
+\begin{itemize}
+	\item Lenguaje de programación y \textit{framework}.
+	\item Arquitectura.
+\end{itemize}
+
+\subsubsection{05 - API REST}
+
+Enlace en \href{https://github.com/harvestcore/matroos/milestone/7}{GitHub}.
+
+\textbf{Versión objetivo: 0.1.0}
+
+
+El \textit{PMV} incluirá:
+
+\begin{itemize}
+	\item La \textit{API Rest} está definida y los \textit{endpoints} están documentados.
+	\item Es posible realizar las tareas de administración de bots y comandos haciendo uso de la API.
+	\item La documentación hasta este punto del desarrollo está actualizada y disponible.
+\end{itemize}
+
+Decisiones técnicas y documentación adicional:
+
+\begin{itemize}
+	\item Lenguaje de programación y \textit{framework}.
+	\item Arquitectura.
+\end{itemize}
+
+\subsubsection{06 - Despliegue en contenedores Docker}
+
+Enlace en \href{https://github.com/harvestcore/matroos/milestone/2}{GitHub}.
+
+\textbf{Versión objetivo: 0.2.0}
+
+
+El \textit{PMV} incluirá:
+
+\begin{itemize}
+	\item El software es distribuible mediante contenedores Docker.
+	\item El archivo \textit{Dockerfile} para el microservicio del \textit{backend} está disponible.
+	\item El archivo \textit{Dockerfile} para el microservicio del \textit{worker} está disponible.
+	\item El archivo \textit{Docker Compose} para orquestar los microservicios está disponible.
+	\item La documentación hasta este punto del desarrollo está actualizada y disponible.
+\end{itemize}
+
+Decisiones técnicas y documentación adicional:
+
+\begin{itemize}
+	\item Despliegue en contenedores.
+	\item Arquitectura.
+\end{itemize}
+
+\subsubsection{07 - Almacén de datos}
+
+Enlace en \href{https://github.com/harvestcore/matroos/milestone/11}{GitHub}.
+
+\textbf{Versión objetivo: 0.3.0}
+
+
+El \textit{PMV} incluirá:
+
+\begin{itemize}
+	\item Tanto los bots como los comandos son almacenables en base de datos.
+	\item La documentación hasta este punto del desarrollo está actualizada y disponible.
+\end{itemize}
+
+Decisiones técnicas y documentación adicional:
+
+\begin{itemize}
+	\item Herramientas (Base de datos).
+	\item Arquitectura.
+	\item Base de datos.
+\end{itemize}
+
+\subsection{Milestones adicionales}
+
+\subsubsection{08 - Interfaz de usuario}
+
+Enlace en \href{https://github.com/harvestcore/matroos/milestone/9}{GitHub}.
+
+\textbf{Versión objetivo: 0.4.0}
+
+
+El \textit{PMV} incluirá:
+
+\begin{itemize}
+	\item La interfaz de usuario está disponible y es capaz de realizar las tareas de creación y configuración de comandos y bots, además del despliegue de éstos en \textit{workers}.
+	\item La interfaz de usuario es distribuible mediante contenedores \textit{Docker}.
+	\item El archivo \textit{Dockerfile} para el microservicio está disponible.
+	\item La documentación hasta este punto del desarrollo está actualizada y disponible.
+\end{itemize}
+
+Decisiones técnicas y documentación adicional:
+
+\begin{itemize}
+	\item \textit{Frontend}.
+	\item Arquitectura.
+\end{itemize}
