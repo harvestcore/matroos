@@ -1,0 +1,343 @@
+\chapter{Análisis}
+
+En este capítulo se profundiza en el análisis del problema planteado en capítulos anteriores, describiendo las diferentes personas, historias de usuario y los \textit{user journeys} asociados a estas \textit{HU}.
+
+\section{Personas}
+
+\subsection{Programador}
+\label{sec:personaProgramador}
+
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        \textbf{Nombre} & \textbf{David Infante} \\ \hline
+    \hline
+        Rol & Programador \\ \hline
+        Descripción & · 24 años.\linebreak · Disfruta de las tardes con sus amigos en \textit{Discord} jugando a sus videojuegos favoritos. \\ \hline
+        Intereses & · \textit{Discord}, ya que le parece una herramienta muy potente.\linebreak · Videojuegos, le encantan los \textit{shooters}.\linebreak · Automatización de tareas repetitivas, ya que odia hacer lo mismo continuamente.\linebreak · Programación, ya que disfruta creando software para facilitar su día a día.\linebreak · Monitorización, le gusta saber que todo el software que despliega funciona correctamente.\linebreak · Creación de servidores de juegos, para jugar con sus amigos y no tener que depender de servidores de terceros. \\ \hline
+        Formación & Ingeniero informático.\linebreak\linebreak Tiene conocimientos avanzados en:\linebreak · Configuración de \textit{Discord}.\linebreak · Administración de sistemas.\linebreak · Despliegue de software y sistemas.\linebreak · Dispone de recursos locales (un servidor \textit{NAS} y dos \textit{Raspberry PI}) y de recursos \textit{cloud} (en \textit{Azure}) en los que puede y sabe cómo desplegar software. \\ \hline
+        Frustraciones & Tener que realizar tareas que podrían ser fácilmente ejecutables por un bot. Crear bots en sistemas conversacionales es en ocasiones bastante complejo. \\ \hline
+        Necesidades & Un software o sistema que le permita programar crear y configurar bots con esas tareas. Usa mucho \textit{Discord}, por lo que piensa que sería útil que el software estuviera integrado con esa herramienta. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+    \caption{Persona 1. Programador.}
+\end{table}
+
+
+\subsection{Usuario regular de \textit{Discord}}
+\label{sec:personaUsuarioDiscord}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        \textbf{Nombre} & \textbf{Jorge Pulido} \\ \hline
+    \hline
+        Rol & Usuario de \textit{Discord} \\ \hline
+        Descripción & · 25 años.\linebreak · Amigo de Jorge Cancho. No tiene conocimientos de programación ni de temas relacionados con la ingeniería o la informática. Le gusta disfrutar de las tardes con sus amigos en \textit{Discord}. \\ \hline
+        Intereses & · Videojuegos, dedica la mayor parte de su tiempo a jugar con sus amigos.\linebreak · La facilidad de las cosas, no le gusta complicarse la vida.\linebreak · \textit{Discord}, le parece una herramienta muy útil, ya que la usa con sus amigos y para temas laborales. \\ \hline
+        Formación & Magisterio de educación primaria. \\ \hline
+        Frustraciones & No le gusta nada tener que indagar en detalles técnicos al jugar a videojuegos con sus amigos. Entiende que en ocasiones es necesaria alguna configuración para poder jugar (como acceder a un servidor), pero quiere que ese proceso sea lo más fácil posible. No le gusta tener que recordar esos detalles, como la dirección del servidor al que acceder para jugar a ciertos juegos. \\ \hline
+        Necesidades & Una herramienta que le permita acceder a esos detalles sin preocuparse de recordarlos o de consultarlos de manera extraña. Idealmente podría acceder a ellos a través de comandos de bots de \textit{Discord} que ha configurado previamente de manera sencilla. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+    \caption{Persona 2. Usuario de \textit{Discord}.}
+\end{table}
+
+\subsection{Miembro del tribunal}
+\label{sec:personaMiembroTribunal}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        \textbf{Nombre} & \textbf{Blanca Casado} \\ \hline
+    \hline
+        Rol & Miembro del tribunal \\ \hline
+        Descripción & · 52 años.\linebreak · Su conocimiento en informática es muy elevado, pero no tiene tanta destreza con las distintas aplicaciones de mensajería instantánea que han surgido en los últimos años. \\ \hline
+        Intereses & · Procesamiento en segundo plano.\linebreak · Redes neuronales.\linebreak · Desarrollo ágil. \\ \hline
+        Formación & Catedrática en informática. \\ \hline
+        Frustraciones & No le gusta enfrentarse a documentaciones poco precisas o de dudosa credibilidad. \\ \hline
+        Necesidades & Una documentación y una presentación acorde a los criterios de evaluación de TFM que le permita evaluar al estudiante. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+    \caption{Persona 3. Miembro del tribunal.}
+\end{table}
+
+\section{Historias de usuario}
+
+Para la creación de las historias de usuarios se ha usado la siguiente estructura.
+
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        \textbf{Sección} & \textbf{Significado} \\ \hline
+    \hline
+        Resumen & Breve resumen de la historia de usuario. \\ \hline
+        Meta & Qué se quiere conseguir. \\ \hline
+        Beneficio & El beneficio de la historia de usuario. \\ \hline
+        Perfil de usuario & Perfil del usuario que genera la historia de usuario. \\ \hline
+        Escenario & Escenario de la historia de usuario. Se deben especificar detalles más concretos.\linebreak · Dado …\linebreak · Cuando …\linebreak · Entonces … \\ \hline
+        Dependencias & Posibles dependencias que tenga la historia de usuario. Éstas pueden ser otras historias de usuario, tareas que se estén llevando a cabo, etc. \\ \hline
+        Criterio de aceptación & Criterio por el cual se va a determinar que la historia de usuario ha sido completada con éxito y por tanto finalizada. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+    \caption{Resumen historias de usuario.}
+\end{table}
+
+\bigskip
+
+Por otro lado, se han creado las siguientes historias de usuario. Estas se encuentran en el \href{https://github.com/harvestcore/matroos}{repositorio} de \textit{GitHub} del proyecto, en la sección \href{https://github.com/harvestcore/matroos/labels/US}{\textit{Issues}}.
+
+\begin{enumerate}
+%	\item \href{https://github.com/harvestcore/matroos/issues/1}{Crear diferentes bots de \textit{Discord}}
+	\item \textbf{Actualizar cuando las issues estén creadas en GitHub.}
+\end{enumerate}
+
+
+\subsection{HU-01 - Simplificar tareas por medio de comandos de bots}
+\label{sec:hu01}
+
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        \textbf{Sección} & \textbf{Contenido} \\ \hline
+    \hline
+        Resumen & Como usuario programador, cuando detecto alguna tarea que se puede simplificar en un bot, quiero poder crear distintos bots de \textit{Discord} para poder configurar comandos en ellos para que realicen estas tareas. \\ \hline
+        Meta & Creación de bots de \textit{Discord} para separar funcionalidad en ellos. \\ \hline
+        Beneficio & De este modo, puedo hacer uso de los comandos configurados en los bots, en lugar de tener que realizar las tareas de manera manual. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaProgramador]{Programador} \\ \hline
+        Escenario & · Dado: que he detectado tareas que se podrían simplificar haciendo uso de comandos de bots de \textit{Discord},\linebreak · Cuando: creo y configuro los bots,\linebreak · Entonces: tanto yo como otros usuarios pueden hacer uso de los comandos, en lugar de tener que realizar esas tareas por mi mismo. \\ \hline
+        Dependencias & - \\ \hline
+        Criterio de aceptación & · Las tareas se pueden automatizarse en los bots.\linebreak · El usuario es avisado en caso de error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+    \caption{HU-01. Simplificar tareas por medio de comandos de bots.}
+\end{table}
+
+
+\subsection{HU-02 - Editar bots y comandos}
+\label{sec:hu02}
+
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        \textbf{Sección} & \textbf{Contenido} \\ \hline
+    \hline
+        Resumen & Como usuario programador quiero poder cambiar la funcionalidad de los bots, ya que es posible que en ocasiones necesite ampliar o reducir sus comandos, o cambiar lo que estos comandos hacen. \\ \hline
+        Meta & Permitir agregar o eliminar comandos de los bots. \\ \hline
+        Beneficio & Es posible que quiera agregar nuevos comandos a un bot o quitarlos, por tanto puedo hacerlo.  \\ \hline
+        Perfil de usuario & \hyperref[sec:personaProgramador]{Programador} \\ \hline
+        Escenario & · Dado: que es posible que las necesidades cambien,\linebreak · Cuando: modifico los bots y los comandos,\linebreak · Entonces: tanto yo como otros usuarios tienen acceso a los nuevos cambios de los bots. \\ \hline
+        Dependencias & \hyperref[sec:hu01]{HU-01} \\ \hline
+        Criterio de aceptación & · Los bots y comandos pueden actualizarse.\linebreak · El usuario es avisado en caso de error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+    \caption{HU-02. Editar bots y comandos.}
+\end{table}
+
+
+\subsection{HU-03 - Repertorio de comandos ampliable}
+\label{sec:hu03}
+
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        \textbf{Sección} & \textbf{Contenido} \\ \hline
+    \hline
+        Resumen & Como usuario programador quiero disponer de un repertorio de comandos predefinidos ampliable para después crear comandos personalizados a partir de ellos. \\ \hline
+        Meta & Disponer de un repertorio de comandos predefinidos ampliable. \\ \hline
+        Beneficio & Cuando necesito crear un nuevo tipo de comando para una funcionalidad concreta que no está disponible en los comandos actuales, puedo programar esta funcionalidad y luego hacer uso de ella para crear comandos personalizados. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaProgramador]{Programador} \\ \hline
+        Escenario & · Dado: que quiero tener disponible una serie de comandos predefinidos,\linebreak · Cuando: necesito comandos con una funcionalidad nueva específica,\linebreak · Entonces: el sistema me permite implementarlos y utilizarlos más adelante. \\ \hline
+        Dependencias & – \\ \hline
+        Criterio de aceptación & · Los comandos predefinidos se pueden implementar correctamente.\linebreak · El usuario es avisado en caso de error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+    \caption{HU-03. Repertorio de comandos ampliable.}
+\end{table}
+
+\subsection{HU-04 - Creación de comandos personalizados}
+\label{sec:hu04}
+
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        \textbf{Sección} & \textbf{Contenido} \\ \hline
+    \hline
+        Resumen & Como usuario programador quiero poder crear comandos y modificar personalizados a partir de los comandos predefinidos que se encuentran en el repertorio. \\ \hline
+        Meta & La creación y modificación de comandos personalizados. \\ \hline
+        Beneficio & Crear y modificar comandos personalizados con comportamientos concretos a partir de los comandos predefinidos existentes. Así puedo tener comandos iguales con comportamiento distinto, y si quiero modificar ese comportamiento, puedo hacerlo. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaProgramador]{Programador} \\ \hline
+        Escenario & · Dado: que quiero simplificar una tarea en un comando, o modificar una existente,\linebreak · Cuando: creo o modifico los comandos personalizados existentes,\linebreak · Entonces: tanto yo como los usuarios podemos hacer uso de los comandos con nuevas funcionalidades. \\ \hline
+        Dependencias & \hyperref[sec:hu05]{HU-05} \\ \hline
+        Criterio de aceptación & · Se pueden crear comandos personalizados a partir de los predefinidos.\linebreak · El usuario es avisado en caso de error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+    \caption{HU-04. Creación de comandos personalizados.}
+\end{table}
+
+\subsection{HU-05 - Interfaz de usuario sencilla}
+\label{sec:hu05}
+
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        \textbf{Sección} & \textbf{Contenido} \\ \hline
+    \hline
+        Resumen & Como usuario regular de \textit{Discord}, quiero que la visualización de los datos en la interfaz de usuario sea sencilla, para que yo comprenda fácilmente cómo crear bots y configurarlos. \\ \hline
+        Meta & La interfaz de usuario debe permitir que los usuarios menos experimentados puedan crear y configurar bots de manera sencilla. \\ \hline
+        Beneficio & Cualquier usuario, con mayor o menor conocimiento informático puede crear y configurar bots de \textit{Discord}. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaUsuarioDiscord]{Usuario regular de \textit{Discord}} \\ \hline
+        Escenario & · Dado: que quiero administrar los bots de \textit{Discord},\linebreak · Cuando: accedo a la interfaz gráfica,\linebreak · Entonces: el sistema me permite realizar todas las tareas de administración de bots y comandos de manera sencilla. \\ \hline
+        Dependencias & \hyperref[sec:hu01]{HU-01}, \hyperref[sec:hu02]{HU-02}, \hyperref[sec:hu03]{HU-03}, \hyperref[sec:hu04]{HU-04}, \hyperref[sec:hu05]{HU-05}, \hyperref[sec:hu06]{HU-06} \\ \hline
+        Criterio de aceptación & · Las tareas de gestión de bots y comandos quedan simplificadas (en complejidad y en tiempo) en la interfaz.\linebreak · El usuario es avisado en caso de producirse algún error.\linebreak · Tests unitarios y integración son creados dentro de lo posible. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+    \caption{HU-05. Interfaz de usuario sencilla.}
+\end{table}
+
+\subsection{HU-06 - Criterios de evaluación}
+\label{sec:hu06}
+
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|L|}
+    \hline
+        \textbf{Sección} & \textbf{Contenido} \\ \hline
+    \hline
+        Resumen & Como miembro del tribunal, quisiera disponer de una documentación, una presentación y un informe acordes a los criterios de evaluación para comprobar que Estos se han cumplido correctamente. \\ \hline
+        Meta & Disponer de una documentación que recoja claramente toda la información referente al desarrollo del TFM. \\ \hline
+        Beneficio & De este modo es más sencillo evaluar todo el trabajo que el alumno ha realizado para desarrollar el TFM. \\ \hline
+        Perfil de usuario & \hyperref[sec:personaMiembroTribunal]{Miembro del tribunal} \\ \hline
+        Escenario & · Dado: que quiero evaluar el trabajo realizado por el alumno,\linebreak · Cuando: éste me de acceso a dicha documentación acorde a los criterios de evaluación,\linebreak · Entonces: podré evaluar el trabajo del alumno. \\ \hline
+        Notas extra & Los criterios de evaluación son:\linebreak \linebreak El estudiante…\linebreak · Utiliza fuentes de información variadas, válidas y fiables y selecciona la relevante para el objetivo del trabajo.\linebreak · Toma decisiones adecuadas al contexto y propone soluciones utilizando el conocimiento adquirido.\linebreak · Detecta y analiza oportunidades para hacer nuevas propuestas.\linebreak · Propone soluciones adecuadas y justifica las decisiones tomadas para resolver problemas complejos.\linebreak · Utiliza recursos formales e informales para documentar adecuadamente el proceso de desarrollo: concepción, planificación, análisis, diseño, implementación, pruebas, etc.\linebreak · Muestra claridad y comprensión en la redacción,organizando la información adecuadamente y utilizando los recursos adecuados para el discurso escrito. Muestra claridad y comprensión en la expresión oral, organizando la información adecuadamente y utilizando los recursos adecuados para el discurso oral. \\ \hline
+        Dependencias & – \\ \hline
+        Criterio de aceptación & · La documentación cumple con los criterios de evaluación. \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+    \caption{HU-06. Criterios de evaluación.}
+\end{table}
+
+
+\section{User journeys}
+
+En esta sección se enumeran algunos \textit{user journeys} que podría realizar el usuario programador.
+
+\begin{itemize}
+	\item El programador o el usuario regular, cuando se encuentra interactuando con otros usuarios en Discord, detecta una serie de funcionalidades que sería interesante agregar al servidor. Accede al sistema y configura estas tareas en un bot, el cual agrega al servidor de Discord.
+	\item El programador o el usuario regular, comprueba cada semana las necesidades que tienen los usuarios de los servidores de Discord donde ha agregado bots previamente. Si estas funcionalidades están obsoletas, las actualiza en el sistema; si son insuficientes agrega nuevas; y si ya no son necesarias las elimina.
+	\item Cuando el programador detecta una funcionalidad que no puede configurar con el sistema en un bot, implementa esa funcionalidad para poder usarla en el sistema. Sabiendo que la interacción que tienen los usuarios con los bots es mediante comandos, adecúa la implementación para que las tareas se puedan ejecutar por los usuarios mediante estos comandos.
+\end{itemize}
+
+
+\section{Modelo de negocio}
+
+La solución propuesta se caracteriza por ser software libre, pero los costos de desarrollo e implementación nunca son nulos.
+
+Debido a la muy probable falta de financiación al inicio del desarrollo del software, los objetivos iniciales se centrarían en obtener la renta mínima para poder continuar con el desarrollo del proyecto. A medida que se supere este primer obstáculo y el software esté mejor establecido, el modelo de financiación cambiaría para lograr un mayor valor de mercado y ganancias.
+
+Como modelo de negocio, teniendo en cuenta que se opta por una solución compuesta por software libre, con el fin de sufragar todos estos gastos se podría optar por un modelo de consultoría. En este, se ofrecería soporte personalizado y desarrollo de características personalizadas para cada uno de los clientes que contratase el servicio. Otra posible fuente de ingresos podría ser el \textit{hosting} de bots mediante suscripciones mensuales, ofreciendo la herramienta y los bots como servicio.
+
+\subsection{Sociedad Limitada Nueva Empresa}
+
+Una \textit{SLNE} es una buena opción, ya que permite crear una pequeña empresa con pocos recursos iniciales con la que iniciar el desarrollo de forma profesional el desarrollo. Además tiene bastantes beneficios frente a otros modelos:
+
+\begin{itemize}
+	\item Construcción rápida.
+	\item No necesita registro de socios.
+	\item Fraccionado y aplazamiento de retenciones del \textit{IRPF} y otras deudas y pagos fraccionados.
+	\item Se puede cambiar la denominación social de forma gratuita.
+\end{itemize}
+
+Los gastos para poder desarrollar un software de las características descritas de forma profesional no son desorbitados, pero tampoco son bajos. En cuanto a gastos derivados de la empresa y burocráticos serían (al menos) los siguientes:
+
+\begin{itemize}
+	\item 3000 euros. El capital mínimo a aportar para crear una \textit{SLNE}.
+	\item 1000 euros. Estimación de los distintos gastos burocráticos.
+	\item 550 euros. Gastos derivados con el desarrollo de la actividad laboral, como por ejemplo un local. Al año supone al menos 6600 euros.
+\end{itemize}
+
+Además, hay que tener en cuenta el salario del trabajador, que en este caso sería uno solo, para intentar abaratar costes. Los datos de empleo de 2022 en el sector de la Informática y Telecomunicaciones indican que el salario medio de una persona con aproximadamente 3 años de experiencia laboral (como es mi caso) se sitúa en 36500 euros brutos, lo que se traduce aproximadamente en 3050 euros brutos al mes. De nuevo, a fin de reducir los costes al inicio de la actividad laboral de esta empresa, se podría fijar un salario inferior, 28000 euros brutos al año.
+
+A todas estas cifras habría que sumar todos los gastos relacionados con el desarrollo del software en sí, como pueden ser servicios de alojamiento del código, integración continua, copias de seguridad o sistemas y equipos informáticos. En una etapa inicial se podrían utilizar las versiones gratuitas de algunos estos servicios, pero en ciertos casos no sería posible ya que pueden ser necesarias otras características adicionales.
+
+A continuación se muestra un posible presupuesto del gasto anual teniendo en cuenta todos los aspectos anterior mencionados.
+
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|L|r|r|r|}
+    \hline
+        \textbf{Concepto} & \textbf{Euros/Ud} & \textbf{Cantidad} & \textbf{Total (Euros)} \\ \hline
+    \hline
+        Capital inicial (SLNE) & 3000 & 1 & 3000 \\ \hline
+        Burocracia & 1000 & 1 & 1000 \\ \hline
+        Derivados & 550 & 12 & 6600 \\ \hline
+        Salario & 2333 & 12 & 28000 \\ \hline
+        Servicios \textit{Cloud} & 150 & 12 & 1800 \\ \hline
+        Sistemas informáticos & 3000 & 1 & 3000 \\ \hline
+    \hline
+        \multicolumn{3}{|r|}{\textbf{Total}} & \textbf{43400} \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+    \caption{Presupuesto anual como \textit{SLNE}.}
+\end{table}
+
+Se puede observar que el primer año de vida de esta empresa (que hasta el momento sólo tiene un empleado) costaría más de 43000 euros, una cifra bastante alta. En el caso de que se quisiera incluir a un nuevo empleado, también desarrollador con experiencia similar, el coste adicional ascendería a aproximadamente 33000 euros.
+
+\subsection{Autónomo}
+
+Ser autónomo es otra posible opción para comenzar a desarrollar el software profesionalmente. En este caso los costes pueden ser algo inferiores, y además existen deducciones en el caso de ser una primera alta, pero no son bajos.
+
+La siguiente tabla muestra el posible presupuesto del gasto anual:
+
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|L|r|r|r|}
+    \hline
+        \textbf{Concepto} & \textbf{Euros/Ud} & \textbf{Cantidad} & \textbf{Total (Euros)} \\ \hline
+    \hline
+        Cuota mínima & 294 & 12 & 3528 \\ \hline
+        Cuota máxima & 711 & 12 & 8532 \\ \hline
+    \hline
+        Burocracia & 1000 & 1 & 1000 \\ \hline
+        Servicios \textit{Cloud} & 150 & 12 & 1800 \\ \hline
+        Sistemas informáticos & 3000 & 1 & 3000 \\ \hline
+    \hline
+        \multicolumn{3}{|r|}{\textbf{Total (cuota mínima)}} & \textbf{9328} \\ \hline
+        \multicolumn{3}{|r|}{\textbf{Total (cuota máxima)}} & \textbf{14332} \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+    \caption{Presupuesto anual como \textit{autónomo}.}
+\end{table}
+
+Para este caso se ha mantenido el salario objetivo que se marcaba en la sección anterior, 28000 euros divididos en 12 pagas. Además, entra en juego la cuota de autónomos, que en 2022 sitúa su mínimo en 294 euros. Este aspecto es importante, ya que esta es la aportación por la que se cotiza. Si bien en los primeros meses podría ser interesante reducir al máximo los gastos, no es lo ideal a largo plazo. Otro aspecto importante es que se deberían pagar impuestos trimestrales, como el IVA, lo que incrementa los gastos.
