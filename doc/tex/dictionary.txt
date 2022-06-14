@@ -128,3 +128,4 @@ trazabilidad
 virtualización
 virtualizados
 DSharpPlus
+MacOS
