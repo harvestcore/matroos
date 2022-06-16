@@ -21,7 +21,7 @@ Sin embargo, esta arquitectura también tiene desventajas. La ejecución de una 
 
 Aún así, se opta por una arquitectura basada en microservicios compuesta por tres servicios distintos:
 
-\textbf{Backend.} Parte principal del sistema. Gestiona la creación de bots y comandos, y el despliegue de estos. Compuesto por un componente para la gestión de bots, otro para la gestión de comandos, otro de comunicación y finalmente otro de acceso a base de datos. La comunicación se divide en dos: con los workers y con los usuarios de la API REST.
+\textbf{\textit{Backend}} Parte principal del sistema. Gestiona la creación de bots y comandos, y el despliegue de estos. Compuesto por un componente para la gestión de bots, otro para la gestión de comandos, otro de comunicación y finalmente otro de acceso a base de datos. La comunicación se divide en dos: con los \textit{workers} y con los usuarios de la \textit{API REST}.
 
 \begin{figure}[H]
 	\centering
@@ -29,7 +29,7 @@ Aún así, se opta por una arquitectura basada en microservicios compuesta por t
 	\caption{Estructura interna del \textit{backend}.}
 \end{figure}
 
-\textbf{Worker.} Ejecuta los bots. Un worker puede ejecutar N bots, y puede haber M workers distintos. Compuesto por un componente para la ejecución de bots y por otro de comunicación. Los workers se comunican directamente con el backend.
+\textbf{\textit{Worker}} Ejecuta los bots. Un \textit{worker} puede ejecutar N bots, y puede haber M \textit{workers} distintos. Compuesto por un componente para la ejecución de bots y por otro de comunicación. Los \textit{workers} se comunican directamente con el backend.
 
 \begin{figure}[H]
 	\centering
@@ -38,7 +38,7 @@ Aún así, se opta por una arquitectura basada en microservicios compuesta por t
 \end{figure}
 
 
-\textbf{Frontend.} Interfaz de usuario. Se comunica con el backend mediante la API REST. Compuesto por un componente para la gestión de bots, otro para la gestión de comandos y por otro de comunicación.
+\textbf{\textit{Frontend}} Interfaz de usuario. Se comunica con el \textit{backend} mediante la API REST. Compuesto por un componente para la gestión de bots, otro para la gestión de comandos y por otro de comunicación.
 
 \begin{figure}[H]
 	\centering
@@ -81,7 +81,7 @@ Sistema completo sin autenticación. El usuario accede a la configuración del s
 
 \subsubsection{\textit{Backend}}
 
-Sistema sin autenticación ni \textit{frontend}. El usuario accede a la configuración del sistema mediante la API REST que provee el \textit{backend} y hace uso de los bots mediante los comandos en servidores de \textit{Discord}.
+Sistema sin autenticación ni \textit{frontend}. El usuario accede a la configuración del sistema mediante la \textit{API REST} que provee el \textit{backend} y hace uso de los bots mediante los comandos en servidores de \textit{Discord}.
 
 \begin{figure}[H]
 	\centering
