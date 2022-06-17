@@ -1,3 +1,6 @@
+using Matroos.Worker.Services;
+using Matroos.Worker.Services.Interfaces;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Services
+builder.Services.AddSingleton<IMainService, MainService>();
 
 WebApplication app = builder.Build();
 
