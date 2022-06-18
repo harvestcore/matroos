@@ -6,6 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <Version>0.0.2</Version>
+    <Product>Matroos</Product>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Discord.Addons.Hosting" Version="5.1.0" />
     <PackageReference Include="Discord.Net" Version="3.7.2" />
