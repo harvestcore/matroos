@@ -1,12 +1,11 @@
-﻿using Matroos.Resources.Classes.Bots;
+﻿using Matroos.Backend.Services.Interfaces;
+using Matroos.Resources.Classes.Bots;
 
-namespace Matroos.Backend.Services.Interfaces;
+namespace Matroos.Backend.Services;
 
 public class BotsService : IBotsService
 {
-    /// <summary>
-    /// The bots.
-    /// </summary>
+    /// <inheritdoc />
     public List<Bot> Bots { get; }
 
     /// <summary>

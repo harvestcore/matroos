@@ -1,6 +1,6 @@
 ﻿using Matroos.Resources.Classes.Bots;
 
-namespace Matroos.Backend.Services;
+namespace Matroos.Backend.Services.Interfaces;
 
 public interface IWorkersService
 {

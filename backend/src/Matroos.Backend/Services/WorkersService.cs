@@ -1,7 +1,8 @@
-﻿using Matroos.Resources.Classes.Bots;
+﻿using Matroos.Backend.Services.Interfaces;
+using Matroos.Resources.Classes.Bots;
 using Matroos.Resources.Classes.Workers;
 
-namespace Matroos.Backend.Services.Interfaces;
+namespace Matroos.Backend.Services;
 
 public class WorkersService : IWorkersService
 {

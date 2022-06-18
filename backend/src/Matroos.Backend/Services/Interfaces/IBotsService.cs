@@ -1,9 +1,14 @@
 ﻿using Matroos.Resources.Classes.Bots;
 
-namespace Matroos.Backend.Services;
+namespace Matroos.Backend.Services.Interfaces;
 
 public interface IBotsService
 {
+    /// <summary>
+    /// The bots.
+    /// </summary>
+    public List<Bot> Bots { get; }
+
     /// <summary>
     /// Add a new bot.
     /// </summary>

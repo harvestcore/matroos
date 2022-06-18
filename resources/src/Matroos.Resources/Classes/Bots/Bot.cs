@@ -1,6 +1,4 @@
-﻿using Matroos.Resources.Classes.Commands;
-
-namespace Matroos.Resources.Classes.Bots;
+﻿namespace Matroos.Resources.Classes.Bots;
 
 public class Bot
 {

@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\resources\src\Matroos.Resources\Matroos.Resources.csproj" />
+    <ProjectReference Include="..\..\src\Matroos.Backend\Matroos.Backend.csproj" />
   </ItemGroup>
 
 </Project>
