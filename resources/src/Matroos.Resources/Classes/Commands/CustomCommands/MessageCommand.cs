@@ -1,12 +1,10 @@
 ﻿using Discord.WebSocket;
 
 using Matroos.Resources.Classes.Bots;
-using Matroos.Resources.Classes.Commands;
-using Matroos.Resources.Classes.Commands.CustomCommands;
 using Matroos.Resources.Extensions;
 using Matroos.Resources.Utilities;
 
-namespace Matroos.Reources.Classes.Commands.CustomCommands;
+namespace Matroos.Resources.Classes.Commands.CustomCommands;
 
 public class MessageCommand : BaseCommand, IRunnableCommand
 {
@@ -46,6 +44,7 @@ public class MessageCommand : BaseCommand, IRunnableCommand
         };
     }
 
+    /// <inheritdoc />
     public async Task Run(DiscordShardedClient client, SocketMessage message, Bot bot, UserCommand command)
     {
         if (client == null || !ValidPrefix(message, bot))
