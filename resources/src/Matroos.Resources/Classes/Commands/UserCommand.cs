@@ -1,4 +1,6 @@
-﻿namespace Matroos.Resources.Classes.Commands;
+﻿using Matroos.Resources.Extensions;
+
+namespace Matroos.Resources.Classes.Commands;
 
 public class UserCommand
 {
@@ -62,6 +64,12 @@ public class UserCommand
         Name = name ?? throw new ArgumentException("The UserCommand name must not be empty.");
         Description = description;
         Trigger = trigger ?? throw new ArgumentException("The UserCommand trigger must not be empty.");
+
+        if (!commandType.GetAllowedCommandModes().Contains(commandMode))
+        {
+            throw new ArgumentException("The execution mode (CommandMode) is not allowed.");
+        }
+
         Type = commandType;
         Mode = commandMode;
         Parameters = new();

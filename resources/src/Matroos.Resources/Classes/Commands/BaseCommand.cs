@@ -1,4 +1,8 @@
-﻿namespace Matroos.Resources.Classes.Commands;
+﻿using Discord.WebSocket;
+
+using Matroos.Resources.Classes.Bots;
+
+namespace Matroos.Resources.Classes.Commands;
 
 public class BaseCommand
 {
@@ -33,5 +37,21 @@ public class BaseCommand
         NeedsPrefix = needsPrefix;
         AllowedModes = new();
         Parameters = new();
+    }
+
+    /// <summary>
+    /// Check if the prefix is valid.
+    /// </summary>
+    /// <param name="message">The message where to check the prefix.</param>
+    /// <param name="bot">The bot that is running the command.</param>
+    /// <returns>Whether the prefix is valid or not.</returns>
+    protected bool ValidPrefix(SocketMessage message, Bot bot)
+    {
+        if (!NeedsPrefix || message == null)
+        {
+            return true;
+        }
+
+        return NeedsPrefix && message.Content.StartsWith(bot.Prefix);
     }
 }

@@ -20,8 +20,8 @@ public class UserCommandsServiceTests
     }
 
     [Theory]
-    [InlineData("a", "!", CommandType.VERSION, CommandMode.SINGLE)]
-    [InlineData("b", "!", CommandType.VERSION, CommandMode.SINGLE)]
+    [InlineData("a", "!", CommandType.MESSAGE, CommandMode.SCOPED)]
+    [InlineData("b", "!", CommandType.MESSAGE, CommandMode.SCOPED)]
     public void AddSomeCommands(string name, string trigger, CommandType type, CommandMode mode)
     {
         UserCommand uc = new(name, "", trigger, new(), type, mode);
@@ -32,15 +32,15 @@ public class UserCommandsServiceTests
     [Fact]
     public void AddDuplicatedCommands()
     {
-        UserCommand a = new("a", "", "!", new(), CommandType.VERSION, CommandMode.SINGLE);
+        UserCommand a = new("a", "", "!", new(), CommandType.MESSAGE, CommandMode.SCOPED);
 
         Assert.True(_userCommandsService.AddUserCommand(a).Item1);
         Assert.False(_userCommandsService.AddUserCommand(a).Item1);
     }
 
     [Theory]
-    [InlineData("a", "!", CommandType.VERSION, CommandMode.SINGLE)]
-    [InlineData("b", "!", CommandType.VERSION, CommandMode.SINGLE, true)]
+    [InlineData("a", "!", CommandType.MESSAGE, CommandMode.SCOPED)]
+    [InlineData("b", "!", CommandType.MESSAGE, CommandMode.SCOPED, true)]
     public void DeleteCommands(string name, string trigger, CommandType type, CommandMode mode, bool shouldFail = false)
     {
         UserCommand uc = new(name, "", trigger, new(), type, mode);
@@ -59,7 +59,7 @@ public class UserCommandsServiceTests
     [Fact]
     public void UpdateCommand()
     {
-        UserCommand? uc = new("a", "", "!", new(), CommandType.VERSION, CommandMode.SINGLE);
+        UserCommand? uc = new("a", "", "!", new(), CommandType.MESSAGE, CommandMode.SCOPED);
 
         (bool _, Guid commandId) = _userCommandsService.AddUserCommand(uc);
 

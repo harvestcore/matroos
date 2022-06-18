@@ -1,4 +1,6 @@
-﻿namespace Matroos.Resources.Classes.Workers;
+﻿using Matroos.Resources.Classes.Bots;
+
+namespace Matroos.Resources.Classes.Workers;
 
 public class Worker
 {

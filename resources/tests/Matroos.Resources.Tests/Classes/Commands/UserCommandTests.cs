@@ -10,10 +10,20 @@ namespace Matroos.Resources.Tests.Classes.Commands;
 public class UserCommandTests
 {
     [Fact]
+    public void CreateUserCommandWithWrongCommandMode()
+    {
+        Assert.Throws<ArgumentException>(() =>
+        {
+            // INLINE is not a valid mode.
+            new UserCommand("name", "description", "trigger", new(), CommandType.MESSAGE, CommandMode.INLINE);
+        });
+    }
+
+    [Fact]
     public void UpdateSimpleAttributes()
     {
-        UserCommand uc = new("name", "description", "trigger", new(), CommandType.MESSAGE, CommandMode.INLINE);
-        UserCommand modified = new("a", "b", "c", new(), CommandType.MESSAGE, CommandMode.INLINE);
+        UserCommand uc = new("name", "description", "trigger", new(), CommandType.MESSAGE, CommandMode.SCOPED);
+        UserCommand modified = new("a", "b", "c", new(), CommandType.MESSAGE, CommandMode.SCOPED);
         uc.Update(modified);
 
         Assert.Equal("a", uc.Name);
@@ -32,7 +42,7 @@ public class UserCommandTests
             { "d", null },
         };
 
-        UserCommand uc = new("a", "b", "c", data, CommandType.MESSAGE, CommandMode.INLINE);
+        UserCommand uc = new("a", "b", "c", data, CommandType.MESSAGE, CommandMode.SCOPED);
 
         // There should only 3 parameters, "d" is null and should not be added.
         Assert.Equal(3, uc.Parameters.Count);
@@ -46,7 +56,7 @@ public class UserCommandTests
         };
 
 
-        UserCommand modified = new("a", "b", "c", updated, CommandType.MESSAGE, CommandMode.INLINE);
+        UserCommand modified = new("a", "b", "c", updated, CommandType.MESSAGE, CommandMode.SCOPED);
 
         uc.Update(modified);
 
