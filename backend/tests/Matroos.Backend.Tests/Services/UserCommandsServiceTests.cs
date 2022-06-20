@@ -67,15 +67,23 @@ public class UserCommandsServiceTests
         Assert.False(_userCommandsService.UpdateUserCommand(uc));
 
         uc = _userCommandsService.GetById(commandId);
+        Assert.NotNull(uc);
 
-        uc.Name = "another name";
-        uc.Trigger = ">";
+        if (uc != null)
+        {
+            uc.Name = "another name";
+            uc.Trigger = ">";
+        }
 
         Assert.True(_userCommandsService.UpdateUserCommand(uc));
 
         uc = _userCommandsService.GetById(commandId);
-        Assert.Equal("another name", uc.Name);
-        Assert.Equal(">", uc.Trigger);
+        Assert.NotNull(uc);
 
+        if (uc != null)
+        {
+            Assert.Equal("another name", uc.Name);
+            Assert.Equal(">", uc.Trigger);
+        }
     }
 }

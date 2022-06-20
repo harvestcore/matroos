@@ -68,11 +68,11 @@ public class BaseCommand
     {
         foreach (ParameterSignature parameter in Parameters)
         {
-            parameters.TryGetValue(parameter.Name, out object providedParam);
+            parameters.TryGetValue(parameter.Name, out object? providedParam);
 
             if (
                 (providedParam == null && parameter.Required) ||
-                parameter.Type.GetAttribute<ATypeAttribute>().Type != providedParam.GetType() ||
+                parameter.Type.GetAttribute<ATypeAttribute>().Type != providedParam?.GetType() ||
                 !parameter.Validator(providedParam)
             )
             {
