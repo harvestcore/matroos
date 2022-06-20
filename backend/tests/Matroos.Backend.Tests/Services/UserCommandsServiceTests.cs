@@ -73,9 +73,8 @@ public class UserCommandsServiceTests
         {
             uc.Name = "another name";
             uc.Trigger = ">";
+            Assert.True(_userCommandsService.UpdateUserCommand(uc));
         }
-
-        Assert.True(_userCommandsService.UpdateUserCommand(uc));
 
         uc = _userCommandsService.GetById(commandId);
         Assert.NotNull(uc);
