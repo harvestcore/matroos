@@ -18,7 +18,8 @@ public class StatusCommand : BaseCommand, IRunnableCommand
                 displayName: "Channel",
                 required: false,
                 type: DataType.STRING,
-                @default: ""
+                @default: "",
+                validator: (_) => true
             )
         };
     }

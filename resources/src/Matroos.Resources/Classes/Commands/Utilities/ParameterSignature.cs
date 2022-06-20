@@ -30,6 +30,11 @@ public class ParameterSignature
     public object Default { get; }
 
     /// <summary>
+    /// Validation function.
+    /// </summary>
+    public Func<object, bool> Validator { get; }
+
+    /// <summary>
     /// Default constructor.
     /// </summary>
     /// <param name="name">The name of the parameter.</param>
@@ -37,12 +42,19 @@ public class ParameterSignature
     /// <param name="required">Whether the parameter is required or not.</param>
     /// <param name="type">The data type of the parameter.</param>
     /// <param name="default">The default value of the parameter.</param>
-    public ParameterSignature(string name, string displayName, bool required, DataType type, object @default)
+    /// <param name="validator">The validation function.</param>
+    public ParameterSignature(string name, string displayName, bool required, DataType type, object @default, Func<object, bool> validator)
     {
         Name = name ?? throw new ArgumentException("The ParameterSignature name must not be empty.");
         DisplayName = displayName ?? "";
         Required = required;
         Type = type;
         Default = @default;
+        Validator = validator;
+
+        if (Validator == null)
+        {
+            Validator = (object _) => true;
+        }
     }
 }

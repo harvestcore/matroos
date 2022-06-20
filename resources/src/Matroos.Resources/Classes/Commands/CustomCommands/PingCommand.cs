@@ -20,14 +20,16 @@ public class PingCommand : BaseCommand, IRunnableCommand
                 displayName: "Host",
                 required: true,
                 type: DataType.STRING,
-                @default: ""
+                @default: "",
+                validator: (_) => true
             ),
             new(
                 name: "ChannelId",
                 displayName: "Channel",
                 required: false,
                 type: DataType.STRING,
-                @default: ""
+                @default: "",
+                validator: (_) => true
             )
         };
     }

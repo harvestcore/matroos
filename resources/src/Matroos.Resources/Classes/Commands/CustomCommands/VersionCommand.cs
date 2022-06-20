@@ -7,7 +7,7 @@ namespace Matroos.Resources.Classes.Commands.CustomCommands;
 
 public class VersionCommand : BaseCommand, IRunnableCommand
 {
-    public VersionCommand() : base(CommandType.STATUS, true)
+    public VersionCommand() : base(CommandType.VERSION, true)
     {
         AllowedModes = new() { CommandMode.SINGLE };
     }

@@ -18,28 +18,32 @@ public class MessageCommand : BaseCommand, IRunnableCommand
                 displayName: "Message",
                 required: true,
                 type: DataType.STRING,
-                @default: ""
+                @default: "",
+                validator: (_) => true
             ),
             new(
                 name: "ChannelId",
                 displayName: "Channel",
                 required: false,
                 type: DataType.STRING,
-                @default: ""
+                @default: "",
+                validator: (_) => true
             ),
             new(
                 name: "IsResponse",
                 displayName: "Response?",
                 required: false,
                 type: DataType.BOOLEAN,
-                @default: false
+                @default: false,
+                validator: (_) => true
             ),
             new(
                 name: "IsTTS",
                 displayName: "TTS?",
                 required: false,
                 type: DataType.BOOLEAN,
-                @default: false
+                @default: false,
+                validator: (_) => true
             )
         };
     }

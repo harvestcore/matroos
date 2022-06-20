@@ -9,8 +9,10 @@ public enum CommandType
     MESSAGE,    // 0
     [Command(typeof(PingCommand))]
     PING,       // 1
+    [Command(typeof(StatusCommand))]
     STATUS,     // 2
     TIMER,      // 3
+    [Command(typeof(VersionCommand))]
     VERSION     // 4
 }
 
