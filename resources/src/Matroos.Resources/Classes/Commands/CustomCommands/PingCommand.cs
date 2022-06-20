@@ -21,7 +21,7 @@ public class PingCommand : BaseCommand, IRunnableCommand
                 required: true,
                 type: DataType.STRING,
                 @default: "",
-                validator: (_) => true
+                validator: _ => true
             ),
             new(
                 name: "ChannelId",
@@ -29,7 +29,7 @@ public class PingCommand : BaseCommand, IRunnableCommand
                 required: false,
                 type: DataType.STRING,
                 @default: "",
-                validator: (_) => true
+                validator: _ => true
             )
         };
     }

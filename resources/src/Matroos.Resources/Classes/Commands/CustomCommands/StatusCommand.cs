@@ -19,7 +19,7 @@ public class StatusCommand : BaseCommand, IRunnableCommand
                 required: false,
                 type: DataType.STRING,
                 @default: "",
-                validator: (_) => true
+                validator: _ => true
             )
         };
     }

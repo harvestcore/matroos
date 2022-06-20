@@ -54,7 +54,7 @@ public class ParameterSignature
 
         if (Validator == null)
         {
-            Validator = (object _) => true;
+            Validator = _ => true;
         }
     }
 }

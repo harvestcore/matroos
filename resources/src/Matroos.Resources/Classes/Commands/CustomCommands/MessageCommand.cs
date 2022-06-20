@@ -19,7 +19,7 @@ public class MessageCommand : BaseCommand, IRunnableCommand
                 required: true,
                 type: DataType.STRING,
                 @default: "",
-                validator: (_) => true
+                validator: _ => true
             ),
             new(
                 name: "ChannelId",
@@ -27,7 +27,7 @@ public class MessageCommand : BaseCommand, IRunnableCommand
                 required: false,
                 type: DataType.STRING,
                 @default: "",
-                validator: (_) => true
+                validator: _ => true
             ),
             new(
                 name: "IsResponse",
@@ -35,7 +35,7 @@ public class MessageCommand : BaseCommand, IRunnableCommand
                 required: false,
                 type: DataType.BOOLEAN,
                 @default: false,
-                validator: (_) => true
+                validator: _ => true
             ),
             new(
                 name: "IsTTS",
@@ -43,7 +43,7 @@ public class MessageCommand : BaseCommand, IRunnableCommand
                 required: false,
                 type: DataType.BOOLEAN,
                 @default: false,
-                validator: (_) => true
+                validator: _ => true
             )
         };
     }
