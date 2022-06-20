@@ -16,7 +16,8 @@ public class UserCommandTests
         Assert.Throws<ArgumentException>(() =>
         {
             // INLINE is not a valid mode.
-            new UserCommand("name", "description", "trigger", new(), CommandType.VERSION, CommandMode.INLINE);        });
+            new UserCommand("name", "description", "trigger", new(), CommandType.VERSION, CommandMode.INLINE);
+        });
     }
 
     [Fact]

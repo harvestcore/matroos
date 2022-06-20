@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
 using Matroos.Resources.Attributes;
 using Matroos.Resources.Classes.Commands;
-using Matroos.Resources.Utilities;
 
 using Xunit;
 
