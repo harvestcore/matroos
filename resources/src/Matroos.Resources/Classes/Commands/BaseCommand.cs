@@ -1,6 +1,10 @@
-﻿using Discord.WebSocket;
+﻿using System.ComponentModel.DataAnnotations;
 
+using Discord.WebSocket;
+
+using Matroos.Resources.Attributes;
 using Matroos.Resources.Classes.Bots;
+using Matroos.Resources.Extensions;
 
 namespace Matroos.Resources.Classes.Commands;
 
@@ -53,5 +57,37 @@ public class BaseCommand
         }
 
         return NeedsPrefix && message.Content.StartsWith(bot.Prefix);
+    }
+
+    /// <summary>
+    /// Validate the given parameters.
+    /// </summary>
+    /// <param name="parameters">The parameters to be validated.</param>
+    /// <returns>Whether the validation is successful or not.</returns>
+    public void ValidateParameters(Dictionary<string, object> parameters)
+    {
+        foreach (ParameterSignature parameter in Parameters)
+        {
+            parameters.TryGetValue(parameter.Name, out object? providedParam);
+
+            if (
+                (providedParam == null && parameter.Required) ||
+                parameter.Type.GetAttribute<ATypeAttribute>().Type != providedParam?.GetType() ||
+                !parameter.Validator(providedParam)
+            )
+            {
+                throw new ValidationException($"Validation failed. The parameter '{parameter.Name}' is not valid.");
+            }
+        }
+
+        foreach (KeyValuePair<string, object> parameter in parameters)
+        {
+            ParameterSignature? signature = Parameters.Find(item => item.Name.Equals(parameter.Key));
+
+            if (signature == null || !signature.Validator(parameter.Value) || parameter.Value.GetType() != signature.Type.GetAttribute<ATypeAttribute>().Type)
+            {
+                throw new ValidationException($"Validation failed. The parameter '{parameter.Key}' is not valid.");
+            }
+        }
     }
 }

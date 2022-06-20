@@ -16,7 +16,7 @@ public static class CommandHelper
     public static void RunCommand(DiscordShardedClient client, SocketMessage message, UserCommand command)
     {
         // Get the command attribute.
-        CommandAttribute attribute = command.Type.GetCommandAttribute();
+        CommandAttribute attribute = command.Type.GetAttribute<CommandAttribute>();
         Type commandType = attribute.Command;
 
         if (commandType == null)

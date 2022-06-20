@@ -20,8 +20,8 @@ public class UserCommandsServiceTests
     }
 
     [Theory]
-    [InlineData("a", "!", CommandType.MESSAGE, CommandMode.SCOPED)]
-    [InlineData("b", "!", CommandType.MESSAGE, CommandMode.SCOPED)]
+    [InlineData("a", "!", CommandType.VERSION, CommandMode.SINGLE)]
+    [InlineData("b", "!", CommandType.VERSION, CommandMode.SINGLE)]
     public void AddSomeCommands(string name, string trigger, CommandType type, CommandMode mode)
     {
         UserCommand uc = new(name, "", trigger, new(), type, mode);
@@ -32,15 +32,15 @@ public class UserCommandsServiceTests
     [Fact]
     public void AddDuplicatedCommands()
     {
-        UserCommand a = new("a", "", "!", new(), CommandType.MESSAGE, CommandMode.SCOPED);
+        UserCommand a = new("a", "", "!", new(), CommandType.VERSION, CommandMode.SINGLE);
 
         Assert.True(_userCommandsService.AddUserCommand(a).Item1);
         Assert.False(_userCommandsService.AddUserCommand(a).Item1);
     }
 
     [Theory]
-    [InlineData("a", "!", CommandType.MESSAGE, CommandMode.SCOPED)]
-    [InlineData("b", "!", CommandType.MESSAGE, CommandMode.SCOPED, true)]
+    [InlineData("a", "!", CommandType.VERSION, CommandMode.SINGLE)]
+    [InlineData("b", "!", CommandType.VERSION, CommandMode.SINGLE, true)]
     public void DeleteCommands(string name, string trigger, CommandType type, CommandMode mode, bool shouldFail = false)
     {
         UserCommand uc = new(name, "", trigger, new(), type, mode);
@@ -59,7 +59,7 @@ public class UserCommandsServiceTests
     [Fact]
     public void UpdateCommand()
     {
-        UserCommand? uc = new("a", "", "!", new(), CommandType.MESSAGE, CommandMode.SCOPED);
+        UserCommand? uc = new("a", "", "!", new(), CommandType.VERSION, CommandMode.SINGLE);
 
         (bool _, Guid commandId) = _userCommandsService.AddUserCommand(uc);
 
@@ -67,15 +67,22 @@ public class UserCommandsServiceTests
         Assert.False(_userCommandsService.UpdateUserCommand(uc));
 
         uc = _userCommandsService.GetById(commandId);
+        Assert.NotNull(uc);
 
-        uc.Name = "another name";
-        uc.Trigger = ">";
-
-        Assert.True(_userCommandsService.UpdateUserCommand(uc));
+        if (uc != null)
+        {
+            uc.Name = "another name";
+            uc.Trigger = ">";
+            Assert.True(_userCommandsService.UpdateUserCommand(uc));
+        }
 
         uc = _userCommandsService.GetById(commandId);
-        Assert.Equal("another name", uc.Name);
-        Assert.Equal(">", uc.Trigger);
+        Assert.NotNull(uc);
 
+        if (uc != null)
+        {
+            Assert.Equal("another name", uc.Name);
+            Assert.Equal(">", uc.Trigger);
+        }
     }
 }

@@ -46,9 +46,7 @@ Define las características básicas de un tipo de comando. Estas son:
 - `AllowedModes: List<CommandMode>` Los modos de ejecución del comando permitidos.
 - `CommandType: CommandType` El tipo de comando.
 - `NeedsPrefix: boolean` Si el comando necesita ser invocado haciendo uso de un prefijo o no.
-- `ParametersSignature: Dictionary<string, ParameterSignature>` Los tipos de parámetros que necesita el comando.
-  - `Key: string` Nombre del parámetro necesario.
-  - `Value: ParameterSignature` Firma del parámetro.
+- `Parameters: List<ParameterSignature>` Los tipos de parámetros que necesita el comando.
 
 ### ParameterSignature
 
@@ -57,6 +55,7 @@ Define las características básicas de un tipo de comando. Estas son:
 - `Required: boolean` Si el parámetro es requerido o no.
 - `Type: DataType` El tipo de dato del parámetro.
 - `Default: object` El valor por defecto.
+- `Validator: Func<object, bool>` Función para validar el parámetro.
 
 ### DataType
 
@@ -89,23 +88,40 @@ Parámetros:
     "AllowedModes": [CommandMode.SCOPED],
     "CommandType": CommandType.MESSAGE,
     "NeedsPrefix": true,
-    "ParametersSignature": {
-        "Message": {
+    "Parameters": [
+        {
+        	"Name": "Message",
             "DisplayName": "Message",
             "Required": true,
-            "Type": DataType.STRING
+            "Type": DataType.STRING,
+            "Default": "",
+            "Validator": () => true
         },
-        "ChannelID": {
+        {
+            "Name": "ChannelID",
             "DisplayName": "Channel",
             "Required": false,
-            "Type": DataType.STRING
+            "Type": DataType.STRING,
+            "Default": "",
+            "Validator": () => true
         },
-        "IsResponse": {
+        {
+            "Name": "IsResponse",
             "DisplayName": "Response?",
             "Required": false,
-            "Type": DataType.BOOLEAN
+            "Type": DataType.BOOLEAN,
+            "Default": false,
+            "Validator": () => true
+        },
+        {
+            "Name": "IsTTS",
+            "DisplayName": "TTS?",
+            "Required": false,
+            "Type": DataType.BOOLEAN,
+            "Default": false,
+            "Validator": () => true
         }
-    }
+    ]
 }
 ```
 
@@ -125,13 +141,16 @@ Parámetros:
     "AllowedModes": [CommandMode.INLINE, CommandMode.SCOPED],
     "CommandType": CommandType.PING,
     "NeedsPrefix": true,
-    "ParametersSignature": {
-        "Host": {
+    "Parameters": [
+        {
+            "Name": "Host",
             "DisplayName": "Host",
             "Required": true,
-            "Type": DataType.STRING
+            "Type": DataType.STRING,
+            "Default": "",
+            "Validator": () => true
         }
-    }
+    ]
 }
 ```
 
@@ -150,13 +169,16 @@ Parámetros:
     "AllowedModes": [CommandMode.SCOPED],
     "CommandType": CommandType.STATUS,
     "NeedsPrefix": true,
-    "ParametersSignature": {
-        "ChannelID": {
+    "Parameters": [
+        {
+            "Name": "ChannelID",
             "DisplayName": "Channel",
             "Required": false,
-            "Type": DataType.STRING
+            "Type": DataType.STRING,
+            "Default": "",
+            "Validator": () => true
         }
-    }
+    ]
 }
 ```
 
@@ -171,7 +193,7 @@ No necesita parámetros.
     "AllowedModes": [CommandMode.SINGLE],
     "CommandType": CommandType.VERSION,
     "NeedsPrefix": true,
-    "ParametersSignature": {}
+    "Parameters": []
 }
 ```
 
@@ -192,23 +214,32 @@ Parámetros:
     "AllowedModes": [CommandMode.HEADLESS],
     "CommandType": CommandType.TIMER,
     "NeedsPrefix": false,
-    "ParametersSignature": {
-        "Interval": {
+    "Parameters": [
+        {
+            "Name": "Interval",
             "DisplayName": "TimeSpan",
             "Required": true,
-            "Type": DataType.STRING
+            "Type": DataType.STRING,
+            "Default": "",
+            "Validator": () => true
         },
-        "CommandID": {
+        {
+            "Name": "CommandID",
             "DisplayName": "Command",
             "Required": true,
-            "Type": DataType.STRING
+            "Type": DataType.STRING,
+            "Default": "",
+            "Validator": () => true
         },
-        "Active": {
+        {
+            "Name": "Active",
             "DisplayName": "Active",
             "Required": true,
-            "Type": DataType.BOOLEAN
+            "Type": DataType.BOOLEAN,
+            "Default": false,
+            "Validator": () => true
         }
-    }
+    ]
 }
 ```
 

@@ -89,6 +89,12 @@ public class UserCommand
             return;
         }
 
+        // This will throw if the parameters are not correct.
+        if (!Type.ValidateParameters(parameters))
+        {
+            return;
+        }
+
         foreach (KeyValuePair<string, object> param in parameters)
         {
             if (Parameters.ContainsKey(param.Key) && param.Value != null)

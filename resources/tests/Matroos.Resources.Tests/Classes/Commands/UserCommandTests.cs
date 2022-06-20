@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 using Matroos.Resources.Classes.Commands;
 
@@ -15,15 +16,15 @@ public class UserCommandTests
         Assert.Throws<ArgumentException>(() =>
         {
             // INLINE is not a valid mode.
-            new UserCommand("name", "description", "trigger", new(), CommandType.MESSAGE, CommandMode.INLINE);
+            new UserCommand("name", "description", "trigger", new(), CommandType.VERSION, CommandMode.INLINE);
         });
     }
 
     [Fact]
     public void UpdateSimpleAttributes()
     {
-        UserCommand uc = new("name", "description", "trigger", new(), CommandType.MESSAGE, CommandMode.SCOPED);
-        UserCommand modified = new("a", "b", "c", new(), CommandType.MESSAGE, CommandMode.SCOPED);
+        UserCommand uc = new("name", "description", "trigger", new(), CommandType.VERSION, CommandMode.SINGLE);
+        UserCommand modified = new("a", "b", "c", new(), CommandType.VERSION, CommandMode.SINGLE);
         uc.Update(modified);
 
         Assert.Equal("a", uc.Name);
@@ -36,37 +37,47 @@ public class UserCommandTests
     {
         Dictionary<string, object> data = new()
         {
-            { "a", 1 },
-            { "b", "b" },
-            { "c", true },
-            { "d", null },
+            { "Message", "msg" },
+            { "ChannelId", "channel" },
+            { "IsResponse", true },
+            { "IsTTS", true },
         };
 
         UserCommand uc = new("a", "b", "c", data, CommandType.MESSAGE, CommandMode.SCOPED);
-
-        // There should only 3 parameters, "d" is null and should not be added.
-        Assert.Equal(3, uc.Parameters.Count);
+        Assert.Equal(4, uc.Parameters.Count);
 
         Dictionary<string, object> updated = new()
         {
-            { "a", 2 },
-            { "b", "test" },
-            { "e", 0.5 },
-            { "f", false }
+            { "Message", "test" },
+            { "ChannelId", "test" },
+            { "IsResponse", false },
+            { "IsTTS", false }
         };
 
-
         UserCommand modified = new("a", "b", "c", updated, CommandType.MESSAGE, CommandMode.SCOPED);
-
         uc.Update(modified);
 
-        // There should only 5 parameters.
-        Assert.Equal(5, uc.Parameters.Count);
+        Assert.Equal(4, uc.Parameters.Count);
+        Assert.Equal("test", uc.Parameters["Message"]);
+        Assert.Equal("test", uc.Parameters["ChannelId"]);
+        Assert.Equal(false, uc.Parameters["IsResponse"]);
+        Assert.Equal(false, uc.Parameters["IsTTS"]);
+    }
 
-        Assert.Equal(2, uc.Parameters["a"]);
-        Assert.Equal("test", uc.Parameters["b"]);
-        Assert.Equal(true, uc.Parameters["c"]);
-        Assert.Equal(0.5, uc.Parameters["e"]);
-        Assert.Equal(false, uc.Parameters["f"]);
+    [Fact]
+    public void CheckWrongParameters()
+    {
+        // Wrong data types.
+        Dictionary<string, object> data = new()
+        {
+            { "Message", 1 },
+            { "ChannelId", true },
+            { "IsResponse", 2 },
+            { "IsTTS", 0.5 },
+        };
+
+        Assert.Throws<TargetInvocationException>(
+            () => new UserCommand("a", "b", "c", data, CommandType.MESSAGE, CommandMode.SCOPED)
+        );
     }
 }

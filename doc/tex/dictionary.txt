@@ -163,3 +163,6 @@ commandtype
 middleware
 optándose
 speach
+Func
+Validator
+bool
