@@ -11,6 +11,7 @@ public enum CommandType
     PING,       // 1
     [Command(typeof(StatusCommand))]
     STATUS,     // 2
+    [Command(typeof(TimerCommand))]
     TIMER,      // 3
     [Command(typeof(VersionCommand))]
     VERSION     // 4

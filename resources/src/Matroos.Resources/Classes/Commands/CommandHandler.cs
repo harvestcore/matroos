@@ -58,7 +58,7 @@ public class CommandHandler : DiscordShardedClientService
 
         // Run the command (asynchronously).
         // The command is null for now.
-        CommandHelper.RunCommand(_client, socketMessage, null);
+        CommandHelper.RunCommand(_client, socketMessage, null, null);
 
         return Task.CompletedTask;
     }

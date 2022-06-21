@@ -1,4 +1,6 @@
-﻿namespace Matroos.Resources.Classes.Bots;
+﻿using Matroos.Resources.Classes.Commands;
+
+namespace Matroos.Resources.Classes.Bots;
 
 public class Bot
 {
@@ -60,5 +62,10 @@ public class Bot
         Commands = commands;
         CreatedAt = DateTime.Now;
         UpdatedAt = DateTime.Now;
+    }
+
+    public List<UserCommand> GetUserCommands()
+    {
+        throw new NotImplementedException();
     }
 }
