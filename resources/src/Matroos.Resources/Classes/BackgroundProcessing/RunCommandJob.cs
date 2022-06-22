@@ -1,4 +1,5 @@
-﻿using Matroos.Resources.Classes.Bots;
+﻿
+using Matroos.Resources.Classes.Bots;
 using Matroos.Resources.Classes.Commands;
 using Matroos.Resources.Extensions;
 
@@ -23,14 +24,14 @@ public class RunCommandJob : IJob
         UserCommand? timerCommand = context.MergedJobDataMap?.Get("Command").GetValue<UserCommand>();
         Bot? bot = context.MergedJobDataMap?.Get("Bot").GetValue<Bot>();
 
-        if (timerCommand == null || bot == null)
+        if (timerCommand == null || bot == null || bot.Client == null)
         {
             return Task.CompletedTask;
         }
 
         // The command to be executed.
         string? commandToExecute = timerCommand.Parameters["CommandId"].GetValue<string>();
-        UserCommand? commandFound = bot.GetUserCommands().Find(command => command.Id == Guid.Parse(commandToExecute ?? ""));
+        UserCommand? commandFound = bot.UserCommands.Find(command => command.Id == Guid.Parse(commandToExecute ?? ""));
 
         if (commandFound == null || commandFound.Mode == CommandMode.INLINE || commandFound.Mode == CommandMode.HEADLESS)
         {
@@ -38,7 +39,7 @@ public class RunCommandJob : IJob
         }
 
         // Run the command.
-        CommandHelper.RunCommand(null, null, bot, commandFound);
+        CommandHelper.RunCommand(bot.Client, null, bot, commandFound);
 
         return Task.CompletedTask;
     }

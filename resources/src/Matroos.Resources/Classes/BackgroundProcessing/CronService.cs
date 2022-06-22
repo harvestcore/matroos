@@ -99,7 +99,7 @@ public class CronService
         startSchedulerTask.Wait();
 
         // Activate tasks (commands).
-        foreach (UserCommand userCommand in _bot.GetUserCommands().FindAll(command => command.Type == CommandType.TIMER))
+        foreach (UserCommand userCommand in _bot.UserCommands.FindAll(command => command.Type == CommandType.TIMER))
         {
             if (userCommand.Parameters["Active"].GetValue<bool>())
             {
