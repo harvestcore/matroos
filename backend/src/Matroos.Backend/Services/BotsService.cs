@@ -19,18 +19,51 @@ public class BotsService : IBotsService
     /// <inheritdoc />
     public bool AddBot(Bot bot)
     {
-        throw new NotImplementedException();
+        if (Bots.Any(_bot =>
+            _bot.Id == bot.Id ||
+            _bot.Name == bot.Name ||
+            _bot.Key == bot.Key
+        ))
+        {
+            return false;
+        }
+
+        Bots.Add(new Bot(
+            name: bot.Name,
+            description: bot.Description,
+            prefix: bot.Prefix,
+            key: bot.Key,
+            userCommands: bot.UserCommands
+        ));
+
+        return true;
     }
 
     /// <inheritdoc />
     public bool DeleteBot(Guid botId)
     {
-        throw new NotImplementedException();
+        Bot? botFound = Bots.Find(_bot => _bot.Id == botId);
+
+        if (botFound == null)
+        {
+            return false;
+        }
+
+        return Bots.Remove(botFound);
     }
 
     /// <inheritdoc />
     public bool UpdateBot(Bot bot)
     {
-        throw new NotImplementedException();
+        Bot? botFound = Bots.Find(_bot => _bot.Id == bot.Id);
+
+        if (botFound == null)
+        {
+            return false;
+        }
+
+        botFound.Update(bot);
+
+        return true;
     }
 }

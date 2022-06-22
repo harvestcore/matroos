@@ -17,17 +17,17 @@ public class Bot
     /// <summary>
     /// Bot name.
     /// </summary>
-    public string Name { get; }
+    public string Name { get; internal set; }
 
     /// <summary>
     /// Bot description.
     /// </summary>
-    public string Description { get; }
+    public string Description { get; internal set; }
 
     /// <summary>
     /// Bot Discord key.
     /// </summary>
-    public string Key { get; }
+    public string Key { get; internal set; }
 
     /// <summary>
     /// Bot prefix.
@@ -129,5 +129,29 @@ public class Bot
             App.WaitForShutdownAsync(CancellationToken.Token).ConfigureAwait(false);
             Running = false;
         }
+    }
+
+    /// <summary>
+    /// Update the properties.
+    /// </summary>
+    /// <param name="bot">An object containing the new properties.</param>
+    public void Update(Bot bot)
+    {
+        if (!string.IsNullOrEmpty(bot.Name))
+        {
+            Name = bot.Name;
+        }
+
+        if (!string.IsNullOrEmpty(bot.Description))
+        {
+            Description = bot.Description;
+        }
+
+        if (!string.IsNullOrEmpty(bot.Key))
+        {
+            Key = bot.Key;
+        }
+
+        UserCommands = new List<UserCommand>(bot.UserCommands);
     }
 }
