@@ -1,4 +1,5 @@
 ﻿using Matroos.Backend.Services.Interfaces;
+using Matroos.Resources.Classes.Bots;
 using Matroos.Resources.Classes.Commands;
 
 namespace Matroos.Backend.Services;
@@ -66,9 +67,9 @@ public class UserCommandsService : IUserCommandsService
             return false;
         }
 
-        foreach (Resources.Classes.Bots.Bot? bot in _botsService.Bots)
+        foreach (Bot? bot in _botsService.Bots)
         {
-            bot.Commands.Remove(userCommandId);
+            bot.UserCommands.Remove(commandFound);
         }
 
         return UserCommands.Remove(commandFound);
