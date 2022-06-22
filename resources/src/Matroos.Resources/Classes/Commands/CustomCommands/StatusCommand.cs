@@ -57,7 +57,7 @@ public class StatusCommand : BaseCommand, IRunnableCommand
 
         string msg = $"Bot: {bot.Name}\n" +
             $"Prefix: {bot.Prefix}\n" +
-            $"# Commands: {bot.Commands.Count}\n" +
+            $"# Commands: {bot.UserCommands.Count}\n" +
             $"Last update: {bot.UpdatedAt}\n";
 
         await channel.SendMessageAsync(msg).ConfigureAwait(false);

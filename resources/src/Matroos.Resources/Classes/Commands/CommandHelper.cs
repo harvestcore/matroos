@@ -13,6 +13,7 @@ public static class CommandHelper
     /// </summary>
     /// <param name="client">The Discord client.</param>
     /// <param name="message">The Discord message.</param>
+    /// <param name="message">The bot.</param>
     /// <param name="command">The user command to be run.</param>
     public static void RunCommand(DiscordShardedClient client, SocketMessage message, Bot bot, UserCommand command)
     {
@@ -27,6 +28,7 @@ public static class CommandHelper
 
         // Generate an instance from the command type.
         object? generatedInstance = Activator.CreateInstance(attribute.Command);
+
 
         // Invoke the "Run" method to run the command.
         commandType

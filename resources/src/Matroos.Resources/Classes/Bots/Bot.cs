@@ -1,4 +1,9 @@
-﻿using Matroos.Resources.Classes.Commands;
+﻿using Discord.WebSocket;
+
+using Matroos.Resources.Classes.BackgroundProcessing;
+using Matroos.Resources.Classes.Commands;
+
+using Microsoft.Extensions.Hosting;
 
 namespace Matroos.Resources.Classes.Bots;
 
@@ -30,9 +35,34 @@ public class Bot
     public string Prefix { get; }
 
     /// <summary>
-    /// Bot commands.
+    /// Bot's user commands. This list is populated when the Bot application is generated.
     /// </summary>
-    public List<Guid> Commands { get; }
+    public List<UserCommand> UserCommands { get; internal set; }
+
+    /// <summary>
+    /// The <see cref="DiscordShardedClient"/> associated to this bot.
+    /// </summary>
+    public DiscordShardedClient? Client { get; internal set; }
+
+    /// <summary>
+    /// Application cancellation token.
+    /// </summary>
+    public CancellationTokenSource? CancellationToken { get; internal set; }
+
+    /// <summary>
+    /// Bot application.
+    /// </summary>
+    public IHost? App { get; internal set; }
+
+    /// <summary>
+    /// Application cron service.
+    /// </summary>
+    public CronService? Cron { get; internal set; }
+
+    /// <summary>
+    /// Whether the bot is running or not.
+    /// </summary>
+    public bool Running { get; set; }
 
     /// <summary>
     /// The creation time of the bot.
@@ -51,21 +81,53 @@ public class Bot
     /// <param name="description">The description.</param>
     /// <param name="prefix">The prefix.</param>
     /// <param name="key">The Discord key.</param>
-    /// <param name="commands">The commands.</param>
-    public Bot(string name, string description, string prefix, string key, List<Guid> commands)
+    /// <param name="userCommands">The user commands.</param>
+    public Bot(string name, string description, string prefix, string key, List<UserCommand> userCommands)
     {
         Id = Guid.NewGuid();
         Name = name ?? throw new ArgumentException("The Bot name must not be empty.");
         Description = description;
         Key = key ?? throw new ArgumentException("The Bot key must not be empty.");
         Prefix = prefix;
-        Commands = commands;
+        UserCommands = userCommands;
         CreatedAt = DateTime.Now;
         UpdatedAt = DateTime.Now;
+
+        // Runnable props
+        UserCommands = new();
+        Client = null;
     }
 
-    public List<UserCommand> GetUserCommands()
+    /// <summary>
+    /// Start the bot.
+    /// </summary>
+    public void Start()
     {
-        throw new NotImplementedException();
+        if (!Running)
+        {
+            (App, Cron) = BotGenerator.Generate(this);
+            CancellationToken = new CancellationTokenSource();
+            App?.RunAsync(CancellationToken.Token).ConfigureAwait(false);
+            Cron?.TriggerAction(BackgroundProcessing.Action.START);
+            Running = true;
+        }
+    }
+
+    /// <summary>
+    /// Stop the bot.
+    /// </summary>
+    public void Stop()
+    {
+        if (
+            Running &&
+            CancellationToken != null &&
+            App != null &&
+            Cron != null)
+        {
+            Cron.TriggerAction(BackgroundProcessing.Action.STOP);
+            CancellationToken.Cancel();
+            App.WaitForShutdownAsync(CancellationToken.Token).ConfigureAwait(false);
+            Running = false;
+        }
     }
 }

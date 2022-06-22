@@ -1,6 +1,8 @@
 ﻿using Discord.Addons.Hosting;
 using Discord.WebSocket;
 
+using Matroos.Resources.Classes.Bots;
+
 using Microsoft.Extensions.Logging;
 
 namespace Matroos.Resources.Classes.Commands;
@@ -18,13 +20,21 @@ public class CommandHandler : DiscordShardedClientService
     private readonly Action ExecuteAsyncAction;
 
     /// <summary>
+    /// The current bot.
+    /// </summary>
+    private readonly Bot _bot;
+
+    /// <summary>
     /// Default constructor.
     /// </summary>
     /// <param name="client">The Discord client.</param>
     /// <param name="logger">The logger.</param>
-    public CommandHandler(DiscordShardedClient client, ILogger<CommandHandler> logger) : base(client, logger)
+    public CommandHandler(DiscordShardedClient client, ILogger<CommandHandler> logger, Bot bot) : base(client, logger)
     {
         _client = client;
+        _bot = bot;
+        bot.Client = client;
+
 
         ExecuteAsyncAction = () =>
         {
@@ -56,9 +66,17 @@ public class CommandHandler : DiscordShardedClientService
             return Task.CompletedTask;
         }
 
+        string commandWithPrefix = socketMessage.Content.Split(" ").FirstOrDefault() ?? "";
+        string trigger = commandWithPrefix.Replace(_bot.Prefix, "");
+
+        UserCommand? foundCommand = _bot.UserCommands.Find(command => command.Trigger.Equals(trigger));
+        if (foundCommand == null)
+        {
+            return Task.CompletedTask;
+        }
+
         // Run the command (asynchronously).
-        // The command is null for now.
-        CommandHelper.RunCommand(_client, socketMessage, null, null);
+        CommandHelper.RunCommand(_client, socketMessage, _bot, foundCommand);
 
         return Task.CompletedTask;
     }
