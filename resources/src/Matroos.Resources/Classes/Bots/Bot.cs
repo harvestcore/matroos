@@ -1,4 +1,4 @@
-﻿using Discord.WebSocket;
+using Discord.WebSocket;
 
 using Matroos.Resources.Classes.BackgroundProcessing;
 using Matroos.Resources.Classes.Commands;
@@ -153,5 +153,6 @@ public class Bot
         }
 
         UserCommands = new List<UserCommand>(bot.UserCommands);
+        UpdatedAt = DateTime.UtcNow;
     }
 }

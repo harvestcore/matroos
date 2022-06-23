@@ -1,4 +1,4 @@
-﻿using Matroos.Resources.Classes.Bots;
+using Matroos.Resources.Classes.Bots;
 
 namespace Matroos.Resources.Classes.Workers;
 
@@ -7,17 +7,17 @@ public class Worker
     /// <summary>
     /// The worker identifier.
     /// </summary>
-    public Guid Id { get; }
+    public Guid Id { get; set; }
 
     /// <summary>
     /// The remote URL where the worker is located.
     /// </summary>
-    public string RemoteUrl { get; private set; }
+    public string RemoteUrl { get; set; }
 
     /// <summary>
     /// The bots that are deployed in the worker.
     /// </summary>
-    public List<Bot> Bots { get; private set; }
+    public List<Bot> Bots { get; set; }
 
     /// <summary>
     /// Whether the worker is up (reachable) or not.
@@ -27,11 +27,12 @@ public class Worker
     /// <summary>
     /// Default constructor.
     /// </summary>
+    /// <param name="id">The worker identifier.</param>
     /// <param name="remoteURL">The remote URL where the worker is located.</param>
     /// <param name="bots">The bots that are deployed in the worker.</param>
-    public Worker(string remoteURL, List<Bot> bots)
+    public Worker(Guid id, string remoteURL, List<Bot> bots)
     {
-        Id = Guid.NewGuid();
+        Id = id;
         RemoteUrl = remoteURL ?? throw new ArgumentException("The Worker remote URL must not be empty.");
         Bots = new(bots);
     }

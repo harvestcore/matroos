@@ -27,30 +27,64 @@ public class MainService : IMainService
     /// <inheritdoc />
     public bool CreateBot(Bot bot)
     {
-        throw new NotImplementedException();
+        if (!Bots.ContainsKey(bot.Id))
+        {
+            Bots.Add(bot.Id, bot);
+            return true;
+        }
+
+        return false;
     }
 
     /// <inheritdoc />
     public bool DestroyBot(Guid botId)
     {
-        throw new NotImplementedException();
+        Bots.TryGetValue(botId, out Bot? bot);
+        if (bot != null)
+        {
+            bot.Stop();
+            Bots.Remove(botId);
+
+            return true;
+        }
+
+        return false;
     }
 
     /// <inheritdoc />
     public bool UpdateBot(Bot bot)
     {
-        throw new NotImplementedException();
+        bool destroy = DestroyBot(bot.Id);
+        bool create = CreateBot(bot);
+
+        return destroy && create;
     }
 
     /// <inheritdoc />
     public bool StartBot(Guid botId)
     {
-        throw new NotImplementedException();
+        Bots.TryGetValue(botId, out Bot? bot);
+        if (bot == null)
+        {
+            return false;
+        }
+
+        bot.Start();
+
+        return true;
     }
 
     /// <inheritdoc />
     public bool StopBot(Guid botId)
     {
-        throw new NotImplementedException();
+        Bots.TryGetValue(botId, out Bot? bot);
+        if (bot == null)
+        {
+            return false;
+        }
+
+        bot.Stop();
+
+        return true;
     }
 }

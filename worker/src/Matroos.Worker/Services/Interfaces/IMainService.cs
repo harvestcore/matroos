@@ -5,6 +5,16 @@ namespace Matroos.Worker.Services.Interfaces;
 public interface IMainService
 {
     /// <summary>
+    /// The worker identifier.
+    /// </summary>
+    public Guid Id { get; }
+
+    /// <summary>
+    /// The bots hosted in this worker.
+    /// </summary>
+    public Dictionary<Guid, Bot> Bots { get; }
+
+    /// <summary>
     /// Create a bot in the worker.
     /// </summary>
     /// <param name="bot">The bot.</param>
