@@ -1,8 +1,13 @@
-﻿using Discord.WebSocket;
+﻿using System.Text.Json.Serialization;
+
+using Discord;
+using Discord.Addons.Hosting;
+using Discord.WebSocket;
 
 using Matroos.Resources.Classes.BackgroundProcessing;
 using Matroos.Resources.Classes.Commands;
 
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace Matroos.Resources.Classes.Bots;
@@ -32,7 +37,7 @@ public class Bot
     /// <summary>
     /// Bot prefix.
     /// </summary>
-    public string Prefix { get; }
+    public string Prefix { get; internal set; }
 
     /// <summary>
     /// Bot's user commands. This list is populated when the Bot application is generated.
@@ -42,27 +47,32 @@ public class Bot
     /// <summary>
     /// The <see cref="DiscordShardedClient"/> associated to this bot.
     /// </summary>
+    [JsonIgnore]
     public DiscordShardedClient? Client { get; internal set; }
 
     /// <summary>
     /// Application cancellation token.
     /// </summary>
+    [JsonIgnore]
     public CancellationTokenSource? CancellationToken { get; internal set; }
 
     /// <summary>
     /// Bot application.
     /// </summary>
+    [JsonIgnore]
     public IHost? App { get; internal set; }
 
     /// <summary>
     /// Application cron service.
     /// </summary>
+    [JsonIgnore]
     public CronService? Cron { get; internal set; }
 
     /// <summary>
     /// Whether the bot is running or not.
     /// </summary>
-    public bool Running { get; set; }
+    [JsonIgnore]
+    public bool Running { get; internal set; }
 
     /// <summary>
     /// The creation time of the bot.
@@ -72,7 +82,7 @@ public class Bot
     /// <summary>
     /// The update time of the bot.
     /// </summary>
-    public DateTime? UpdatedAt { get; }
+    public DateTime? UpdatedAt { get; internal set; }
 
     /// <summary>
     /// Default constructor.
@@ -94,8 +104,10 @@ public class Bot
         UpdatedAt = DateTime.Now;
 
         // Runnable props
-        UserCommands = new();
+        CancellationToken = null;
         Client = null;
+        Cron = null;
+        App = null;
     }
 
     /// <summary>
@@ -105,7 +117,7 @@ public class Bot
     {
         if (!Running)
         {
-            (App, Cron) = BotGenerator.Generate(this);
+            (App, Cron) = GenerateRunnable();
             CancellationToken = new CancellationTokenSource();
             App?.RunAsync(CancellationToken.Token).ConfigureAwait(false);
             Cron?.TriggerAction(BackgroundProcessing.Action.START);
@@ -152,6 +164,52 @@ public class Bot
             Key = bot.Key;
         }
 
+        Prefix = bot.Prefix;
+
         UserCommands = new List<UserCommand>(bot.UserCommands);
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    /// <summary>
+    /// Generates the bot application and its <see cref="CronService"/>.
+    /// </summary>
+    /// <returns>The <see cref="IHost"/> bot application and its <see cref="CronService"/>.</returns>
+    public (IHost, CronService) GenerateRunnable()
+    {
+        CronService cron = new(this);
+
+        IHost app = Host
+            .CreateDefaultBuilder()
+            .ConfigureLogging(logging =>
+            {
+                // Logging to be configured.
+            })
+            .ConfigureDiscordShardedHost((HostBuilderContext context, DiscordHostConfiguration config) =>
+            {
+                config.SocketConfig = new DiscordSocketConfig
+                {
+                    LogLevel = LogSeverity.Verbose,
+                    AlwaysDownloadUsers = false,
+                    MessageCacheSize = 200,
+                    TotalShards = 4
+                };
+
+                config.Token = Key;
+            })
+            .ConfigureServices((_, services) =>
+            {
+                services
+                    // Add the Bot instance as a singleton service.
+                    .AddSingleton(this)
+
+                    // Add the command handler as a hosted service.
+                    .AddHostedService<CommandHandler>()
+
+                    // Add the CronService as a singleton service.
+                    .AddSingleton(cron);
+            })
+            .Build();
+
+        return (app, cron);
     }
 }

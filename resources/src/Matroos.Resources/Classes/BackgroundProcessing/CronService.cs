@@ -4,7 +4,6 @@ using Matroos.Resources.Classes.Commands.CustomCommands;
 using Matroos.Resources.Extensions;
 
 using Quartz;
-using Quartz.Impl;
 
 namespace Matroos.Resources.Classes.BackgroundProcessing;
 
@@ -79,12 +78,13 @@ public class CronService
             .StoreDurably()
             .Build();
 
-        // Create the scheduler.
-        Task<IScheduler> getSchedulerTask = new StdSchedulerFactory().GetScheduler();
+        // Get the scheduler.
+        _scheduler = QuartzFactory.SchedulerInstance;
 
-        // Wait for the scheduler to initialize.
-        getSchedulerTask.Wait();
-        _scheduler = getSchedulerTask.Result;
+        if (_scheduler == null)
+        {
+            throw new Exception("The CronService scheduler could not be created.");
+        }
 
         // Add the job to the scheduler.
         Task addJobTask = _scheduler.AddJob(_runCommandJob, true);
@@ -113,6 +113,11 @@ public class CronService
     /// </summary>
     private void Shutdown()
     {
+        if (_scheduler == null)
+        {
+            return;
+        }
+
         foreach ((Guid _, ITrigger trigger) in Triggers)
         {
             _scheduler?.UnscheduleJob(trigger.Key);
