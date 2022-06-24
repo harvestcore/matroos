@@ -16,6 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\resources\src\Matroos.Resources\Matroos.Resources.csproj" />
   </ItemGroup>
 
