@@ -1,4 +1,4 @@
-using Matroos.Resources.Classes.Bots;
+﻿using Matroos.Resources.Classes.Bots;
 
 namespace Matroos.Resources.Classes.Workers;
 
@@ -20,9 +20,25 @@ public class Worker
     public List<Bot> Bots { get; set; }
 
     /// <summary>
+    /// Worker's last update.
+    /// </summary>
+    public DateTime LastUpdate { get; internal set; }
+
+    /// <summary>
     /// Whether the worker is up (reachable) or not.
     /// </summary>
-    public bool IsUp { get; }
+    public bool IsUp => LastUpdate > DateTime.UtcNow;
+
+    /// <summary>
+    /// Default constructor.
+    /// </summary>
+    public Worker()
+    {
+        Id = Guid.NewGuid();
+        Bots = new();
+        LastUpdate = DateTime.UtcNow;
+        RemoteUrl = string.Empty;
+    }
 
     /// <summary>
     /// Default constructor.
