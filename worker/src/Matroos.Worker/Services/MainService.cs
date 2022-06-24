@@ -54,10 +54,7 @@ public class MainService : IMainService
     /// <inheritdoc />
     public bool UpdateBot(Bot bot)
     {
-        bool destroy = DestroyBot(bot.Id);
-        bool create = CreateBot(bot);
-
-        return destroy && create;
+        return DestroyBot(bot.Id) && CreateBot(bot);
     }
 
     /// <inheritdoc />
