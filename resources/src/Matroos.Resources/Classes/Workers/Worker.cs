@@ -52,4 +52,14 @@ public class Worker
         RemoteUrl = remoteURL ?? throw new ArgumentException("The Worker remote URL must not be empty.");
         Bots = new(bots);
     }
+
+    /// <summary>
+    /// Renew the worker information.
+    /// </summary>
+    /// <param name="bots">The new list of bots.</param>
+    public void Renew(List<Bot> bots)
+    {
+        LastUpdate = DateTime.UtcNow + TimeSpan.FromSeconds(15);
+        Bots = new(bots);
+    }
 }

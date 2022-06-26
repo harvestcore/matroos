@@ -5,6 +5,11 @@ namespace Matroos.Backend.Services.Interfaces;
 public interface IWorkersService
 {
     /// <summary>
+    /// Renew workers information.
+    /// </summary>
+    public Task RenewWorkers();
+
+    /// <summary>
     /// Starts a bot in a worker.
     /// </summary>
     /// <param name="workerId">The identifier of the worker where to start the bot.</param>
@@ -19,13 +24,6 @@ public interface IWorkersService
     /// <param name="botId">The identifier of the bot to be stop.</param>
     /// <returns>Whether the operation was successful or not.</returns>
     public bool StopBotInWorker(Guid workerId, Guid botId);
-
-    /// <summary>
-    /// Gets all the bots from a worker.
-    /// </summary>
-    /// <param name="workerId">The identifier of the worker where to get the bots.</param>
-    /// <returns>Whether the operation was successful or not.</returns>
-    public Task<List<Bot>> GetBotsFromWorker(Guid workerId);
 
     /// <summary>
     /// Adds bots to a worker.

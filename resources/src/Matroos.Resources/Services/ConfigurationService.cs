@@ -22,8 +22,12 @@ public class ConfigurationService : IConfigurationService
         _configurationPool = new();
     }
 
-    /// <inheritdoc />
-    public object? Get(string key)
+    /// <summary>
+    /// Get a variable from the configuration pool.
+    /// </summary>
+    /// <param name="key">The name of that variable.</param>
+    /// <returns>The variable found or null.</returns>
+    private object? Get(string key)
     {
         // Try to get the variable from the configuration pool.
         _configurationPool.TryGetValue(key, out object? fromPool);

@@ -1,5 +1,8 @@
 using Matroos.Backend.Services;
 using Matroos.Backend.Services.Interfaces;
+using Matroos.Resources.Services;
+
+using BBackgroundService = Matroos.Backend.Services.BackgroundService;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +14,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Services
+builder.Services.AddResourcesServices();
+builder.Services.AddHostedService<BBackgroundService>();
 builder.Services.AddSingleton<IBotsService, BotsService>();
 builder.Services.AddSingleton<IUserCommandsService, UserCommandsService>();
 builder.Services.AddSingleton<IWorkersService, WorkersService>();
