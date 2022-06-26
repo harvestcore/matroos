@@ -5,6 +5,11 @@ namespace Matroos.Backend.Services.Interfaces;
 public interface IUserCommandsService
 {
     /// <summary>
+    /// The user commands.
+    /// </summary>
+    public List<UserCommand> UserCommands { get; }
+
+    /// <summary>
     /// Get a User Command by its identifier.
     /// </summary>
     /// <param name="userCommandId">The User Command identifier.</param>
