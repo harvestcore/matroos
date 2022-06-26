@@ -1,5 +1,4 @@
-﻿using Matroos.Resources.Classes.Bots;
-using Matroos.Resources.Classes.Commands;
+﻿using Matroos.Resources.Classes.Commands;
 
 namespace Matroos.Backend.Services.Interfaces;
 

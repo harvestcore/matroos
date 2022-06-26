@@ -1,9 +1,14 @@
-﻿using Matroos.Resources.Classes.Bots;
+﻿using Matroos.Resources.Classes.Workers;
 
 namespace Matroos.Backend.Services.Interfaces;
 
 public interface IWorkersService
 {
+    /// <summary>
+    /// The workers.
+    /// </summary>
+    public List<Worker> Workers { get; }
+
     /// <summary>
     /// Renew workers information.
     /// </summary>

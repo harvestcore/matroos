@@ -6,6 +6,15 @@ namespace Matroos.Backend.Services.Interfaces;
 public interface ICommunicationService
 {
     /// <summary>
+    /// Perform a Http request.
+    /// </summary>
+    /// <param name="method">The request method.</param>
+    /// <param name="uri">The request URI.</param>
+    /// <param name="payload">The payload.</param>
+    /// <returns>A task containing the <see cref="HttpResponseMessage"/>.</returns>
+    public Task<HttpResponseMessage> Request(HttpMethod method, string uri, object? payload = null);
+
+    /// <summary>
     /// Get the status of a given worker.
     /// </summary>
     /// <param name="remoteURL">The remote URL of the worker to update.</param>

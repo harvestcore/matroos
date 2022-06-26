@@ -8,9 +8,7 @@ namespace Matroos.Backend.Services;
 
 public class WorkersService : IWorkersService
 {
-    /// <summary>
-    /// The workers.
-    /// </summary>
+    /// <inheritdoc />
     public List<Worker> Workers { get; }
 
     /// <summary>
@@ -63,6 +61,7 @@ public class WorkersService : IWorkersService
             else
             {
                 Workers.Add(newWorker);
+                newWorker.Renew(newWorker.Bots);
             }
         }
     }

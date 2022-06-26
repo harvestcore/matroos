@@ -1,25 +1,19 @@
 ﻿using System.Text;
 
-using Newtonsoft.Json;
-
+using Matroos.Backend.Services.Interfaces;
 using Matroos.Resources.Classes.Bots;
 using Matroos.Resources.Classes.Workers;
-using Matroos.Backend.Services.Interfaces;
+
+using Newtonsoft.Json;
 
 namespace Matroos.Backend.Services;
 
 public class CommunicationService : ICommunicationService
 {
-    /// <summary>
-    /// Perform a Http request.
-    /// </summary>
-    /// <param name="method">The request method.</param>
-    /// <param name="uri">The request URI.</param>
-    /// <param name="payload">The payload.</param>
-    /// <returns>A task containing the <see cref="HttpResponseMessage"/>.</returns>
-    private static async Task<HttpResponseMessage> Request(HttpMethod method, string uri, object? payload = null)
+    /// <inheritdoc />
+    public virtual async Task<HttpResponseMessage> Request(HttpMethod method, string uri, object? payload = null)
     {
-        using HttpClient client = new();
+        HttpClient client = new();
         HttpRequestMessage hrm = new(method, new Uri(uri));
 
         if (payload != null)
@@ -33,7 +27,7 @@ public class CommunicationService : ICommunicationService
     }
 
     /// <inheritdoc />
-    public async Task<Worker> GetWorkerStatus(string remoteURL)
+    public virtual async Task<Worker> GetWorkerStatus(string remoteURL)
     {
         try
         {
@@ -57,7 +51,7 @@ public class CommunicationService : ICommunicationService
     }
 
     /// <inheritdoc />
-    public async Task AddBotToWorker(Worker worker, Bot bot)
+    public virtual async Task AddBotToWorker(Worker worker, Bot bot)
     {
         try
         {
@@ -76,7 +70,7 @@ public class CommunicationService : ICommunicationService
     }
 
     /// <inheritdoc />
-    public async Task UpdateBotInWorker(Worker worker, Bot bot)
+    public virtual async Task UpdateBotInWorker(Worker worker, Bot bot)
     {
         try
         {
@@ -95,7 +89,7 @@ public class CommunicationService : ICommunicationService
     }
 
     /// <inheritdoc />
-    public async Task DeleteBotFromWorker(Worker worker, Guid botId)
+    public virtual async Task DeleteBotFromWorker(Worker worker, Guid botId)
     {
         try
         {
@@ -114,7 +108,7 @@ public class CommunicationService : ICommunicationService
     }
 
     /// <inheritdoc />
-    public async Task StartBotInWorker(Worker worker, Guid botId)
+    public virtual async Task StartBotInWorker(Worker worker, Guid botId)
     {
         try
         {
@@ -133,7 +127,7 @@ public class CommunicationService : ICommunicationService
     }
 
     /// <inheritdoc />
-    public async Task StopBotInWorker(Worker worker, Guid botId)
+    public virtual async Task StopBotInWorker(Worker worker, Guid botId)
     {
         try
         {
