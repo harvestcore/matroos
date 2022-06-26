@@ -10,14 +10,34 @@ namespace Matroos.Backend.Services;
 
 public class CommunicationService : ICommunicationService
 {
+    /// <summary>
+    /// Perform a Http request.
+    /// </summary>
+    /// <param name="method">The request method.</param>
+    /// <param name="uri">The request URI.</param>
+    /// <param name="payload">The payload.</param>
+    /// <returns>A task containing the <see cref="HttpResponseMessage"/>.</returns>
+    private static async Task<HttpResponseMessage> Request(HttpMethod method, string uri, object? payload = null)
+    {
+        using HttpClient client = new();
+        HttpRequestMessage hrm = new(method, new Uri(uri));
+
+        if (payload != null)
+        {
+            string json = JsonConvert.SerializeObject(payload);
+            StringContent stringContent = new(json, Encoding.UTF8, "application/json");
+            hrm.Content = stringContent;
+        }
+
+        return await client.SendAsync(hrm);
+    }
+
     /// <inheritdoc />
     public async Task<Worker> GetWorkerStatus(string remoteURL)
     {
-        HttpClient client = new();
-
         try
         {
-            HttpResponseMessage response = await client.GetAsync(new Uri(remoteURL));
+            HttpResponseMessage response = await Request(HttpMethod.Get, remoteURL);
 
             if (response.IsSuccessStatusCode)
             {
@@ -32,10 +52,6 @@ public class CommunicationService : ICommunicationService
             Console.WriteLine(ex.ToString());
             return new();
         }
-        finally
-        {
-            client.Dispose();
-        }
 
         return new();
     }
@@ -43,17 +59,13 @@ public class CommunicationService : ICommunicationService
     /// <inheritdoc />
     public async Task AddBotToWorker(Worker worker, Bot bot)
     {
-        HttpClient client = new();
-
-        string json = JsonConvert.SerializeObject(bot);
-        StringContent payload = new(json, Encoding.UTF8, "application/json");
-
         try
         {
-            HttpResponseMessage response = await client.PostAsync(new Uri(worker.RemoteUrl), payload);
+            HttpResponseMessage response = await Request(HttpMethod.Post, worker.RemoteUrl, bot);
 
             if (response.IsSuccessStatusCode)
             {
+                // To be handled.
                 Console.WriteLine("AddBotToWorker");
             }
         }
@@ -61,26 +73,18 @@ public class CommunicationService : ICommunicationService
         {
             Console.WriteLine(ex.ToString());
         }
-        finally
-        {
-            client.Dispose();
-        }
     }
 
     /// <inheritdoc />
     public async Task UpdateBotInWorker(Worker worker, Bot bot)
     {
-        HttpClient client = new();
-
-        string json = JsonConvert.SerializeObject(bot);
-        StringContent payload = new(json, Encoding.UTF8, "application/json");
-
         try
         {
-            HttpResponseMessage response = await client.PutAsync(new Uri(worker.RemoteUrl), payload);
+            HttpResponseMessage response = await Request(HttpMethod.Put, worker.RemoteUrl, bot);
 
             if (response.IsSuccessStatusCode)
             {
+                // To be handled.
                 Console.WriteLine("UpdateBotInWorker");
             }
         }
@@ -88,23 +92,18 @@ public class CommunicationService : ICommunicationService
         {
             Console.WriteLine(ex.ToString());
         }
-        finally
-        {
-            client.Dispose();
-        }
     }
 
     /// <inheritdoc />
     public async Task DeleteBotFromWorker(Worker worker, Guid botId)
     {
-        HttpClient client = new();
-
         try
         {
-            HttpResponseMessage response = await client.DeleteAsync(new Uri(worker.RemoteUrl + botId));
+            HttpResponseMessage response = await Request(HttpMethod.Delete, worker.RemoteUrl + botId);
 
             if (response.IsSuccessStatusCode)
             {
+                // To be handled.
                 Console.WriteLine("DeleteBotFromWorker");
             }
         }
@@ -112,57 +111,43 @@ public class CommunicationService : ICommunicationService
         {
             Console.WriteLine(ex.ToString());
         }
-        finally
-        {
-            client.Dispose();
-        }
     }
 
     /// <inheritdoc />
     public async Task StartBotInWorker(Worker worker, Guid botId)
     {
-        HttpClient client = new();
-
         try
         {
-            HttpResponseMessage response = await client.GetAsync(new Uri($"{worker.RemoteUrl}start/{botId}"));
+            HttpResponseMessage response = await Request(HttpMethod.Get, $"{worker.RemoteUrl}start/{botId}");
 
             if (response.IsSuccessStatusCode)
             {
+                // To be handled.
                 Console.WriteLine("StartBotInWorker");
             }
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.ToString());
-        }
-        finally
-        {
-            client.Dispose();
         }
     }
 
     /// <inheritdoc />
     public async Task StopBotInWorker(Worker worker, Guid botId)
     {
-        HttpClient client = new();
-
         try
         {
-            HttpResponseMessage response = await client.GetAsync(new Uri($"{worker.RemoteUrl}stop/{botId}"));
+            HttpResponseMessage response = await Request(HttpMethod.Get, $"{worker.RemoteUrl}stop/{botId}");
 
             if (response.IsSuccessStatusCode)
             {
+                // To be handled.
                 Console.WriteLine("StartBotInWorker");
             }
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.ToString());
-        }
-        finally
-        {
-            client.Dispose();
         }
     }
 }
