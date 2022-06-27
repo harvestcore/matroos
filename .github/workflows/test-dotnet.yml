@@ -14,13 +14,17 @@ jobs:
 
     strategy:
       matrix:
-        project: ['resources', 'backend', 'worker']
+        project: [
+            { name: 'resources', test: 'tests/Matroos.Resources.Tests/Matroos.Resources.Tests.csproj' },
+            { name: 'backend', test: 'tests/Matroos.Backend.Tests/Matroos.Backend.Tests.csproj' },
+            { name: 'worker', test: 'tests/Matroos.Worker.Tests/Matroos.Worker.Tests.csproj' },
+        ]
         configuration: ['Debug', 'Release']
 
     env:
       DOTNET_VERSION: '6.0.x'
       DOTNET_CONFIGURATION: ${{ matrix.configuration }}
-      WORKING_DIR: ./${{ matrix.project }}
+      WORKING_DIR: ./${{ matrix.project.name }}
 
     steps:
       - uses: actions/checkout@v2
@@ -42,5 +46,5 @@ jobs:
         working-directory: ${{ env.WORKING_DIR }}
 
       - name: Run tests
-        run: dotnet test --no-build --no-restore --configuration ${{ env.DOTNET_CONFIGURATION }} --verbosity normal
+        run: dotnet test ${{ matrix.project.test }} --no-build --no-restore --configuration ${{ env.DOTNET_CONFIGURATION }} --verbosity normal
         working-directory: ${{ env.WORKING_DIR }}
