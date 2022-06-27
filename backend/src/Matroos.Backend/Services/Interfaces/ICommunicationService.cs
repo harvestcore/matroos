@@ -18,20 +18,20 @@ public interface ICommunicationService
     /// Get the status of a given worker.
     /// </summary>
     /// <param name="remoteURL">The remote URL of the worker to update.</param>
-    public Task<Worker> GetWorkerStatus(string remoteURL);
+    public Task<Worker?> GetWorkerStatus(string remoteURL);
 
     /// <summary>
     /// Adds a bot to a worker.
     /// </summary>
     /// <param name="worker">The worker where to add the bot.</param>
-    /// <param name="botId">The identifier of the bot to add.</param>
+    /// <param name="bot">The identifier of the bot to add.</param>
     public Task AddBotToWorker(Worker worker, Bot bot);
 
     /// <summary>
     /// Updates a bot from a worker.
     /// </summary>
     /// <param name="worker">The worker where to update the bot.</param>
-    /// <param name="botId">The identifier of the bot to update.</param>
+    /// <param name="bot">The identifier of the bot to update.</param>
     public Task UpdateBotInWorker(Worker worker, Bot bot);
 
     /// <summary>

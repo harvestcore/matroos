@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 using Discord;
 using Discord.Addons.Hosting;
@@ -48,30 +49,35 @@ public class Bot
     /// The <see cref="DiscordShardedClient"/> associated to this bot.
     /// </summary>
     [JsonIgnore]
+    [IgnoreDataMember]
     public DiscordShardedClient? Client { get; internal set; }
 
     /// <summary>
     /// Application cancellation token.
     /// </summary>
     [JsonIgnore]
+    [IgnoreDataMember]
     public CancellationTokenSource? CancellationToken { get; internal set; }
 
     /// <summary>
     /// Bot application.
     /// </summary>
     [JsonIgnore]
+    [IgnoreDataMember]
     public IHost? App { get; internal set; }
 
     /// <summary>
     /// Application cron service.
     /// </summary>
     [JsonIgnore]
+    [IgnoreDataMember]
     public CronService? Cron { get; internal set; }
 
     /// <summary>
     /// Whether the bot is running or not.
     /// </summary>
     [JsonIgnore]
+    [IgnoreDataMember]
     public bool Running { get; internal set; }
 
     /// <summary>
