@@ -1,7 +1,7 @@
 ﻿using System;
 
-using Matroos.Resources.Classes.API;
 using Matroos.Resources.Classes.Bots;
+using Matroos.Resources.Tests;
 using Matroos.Worker.Controllers;
 using Matroos.Worker.Services;
 
@@ -12,21 +12,6 @@ using Xunit;
 using WWorker = Matroos.Resources.Classes.Workers.Worker;
 
 namespace Matroos.Worker.Tests.Controllers;
-
-public static class TestHelper
-{
-    public static void SuccessResponseShouldBe(this ActionResult<SuccessResponse> res, bool status)
-    {
-        Assert.NotNull(res);
-        OkObjectResult? response = res.Result as OkObjectResult;
-
-        Assert.NotNull(response);
-        Assert.Equal(200, response?.StatusCode ?? 0);
-
-        SuccessResponse? successResponse = response?.Value as SuccessResponse;
-        Assert.Equal(status, successResponse?.Success ?? !status);
-    }
-}
 
 public class MainControllerTests
 {

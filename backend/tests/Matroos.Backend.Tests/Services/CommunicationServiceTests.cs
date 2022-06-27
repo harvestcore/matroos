@@ -1,24 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Reflection.Metadata;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 using Matroos.Backend.Services;
 using Matroos.Backend.Services.Interfaces;
-using Matroos.Resources.Classes.Bots;
-using Matroos.Resources.Classes.Workers;
-using Matroos.Resources.Services;
-using Matroos.Resources.Services.Interfaces;
 
-using Microsoft.Extensions.Configuration;
 using Moq;
 
-using Newtonsoft.Json;
-
 using Xunit;
+
+using WWorker = Matroos.Resources.Classes.Workers.Worker;
 
 namespace Matroos.Backend.Tests.Services;
 
@@ -26,11 +20,11 @@ public class CommunicationServiceTests
 {
     private readonly string WORKER_URL = "http://worker";
     private readonly ICommunicationService _communicationService;
-    private readonly Worker _worker;
+    private readonly WWorker _worker;
 
     public CommunicationServiceTests()
     {
-        _worker = new Worker(Guid.NewGuid(), WORKER_URL, new());
+        _worker = new WWorker(Guid.NewGuid(), WORKER_URL, new());
 
         Mock<CommunicationService> csMock = new();
         csMock
@@ -39,7 +33,7 @@ public class CommunicationServiceTests
             {
                 if (uri.Equals(WORKER_URL) && method == HttpMethod.Get)
                 {
-                    string json = JsonConvert.SerializeObject(_worker);
+                    string json = JsonSerializer.Serialize(_worker);
                     StringContent content = new(json, Encoding.UTF8, "application/json");
 
                     return Task.FromResult(new HttpResponseMessage()
@@ -61,7 +55,7 @@ public class CommunicationServiceTests
 
     [Fact]
     public async void RenewWorkersTests()
-    {        
+    {
         Exception? exception = await Record.ExceptionAsync(async () =>
             await _communicationService.GetWorkerStatus(WORKER_URL)
         );
