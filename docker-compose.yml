@@ -1,0 +1,30 @@
+version: "3.3"
+services:
+    backend:
+        container_name: backend
+        build:
+            context: .
+            dockerfile: Dockerfile.core
+        restart: always
+        ports:
+            - "7000:80"
+        environment:
+            - WORKERS=http://worker1/;http://worker2/
+
+    worker1:
+        container_name: worker1
+        build:
+            context: .
+            dockerfile: Dockerfile.worker
+        restart: always
+        ports:
+            - "7001:80"
+
+    worker2:
+        container_name: worker2
+        build:
+            context: .
+            dockerfile: Dockerfile.worker
+        restart: always
+        ports:
+            - "7002:80"

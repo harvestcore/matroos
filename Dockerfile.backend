@@ -1,0 +1,20 @@
+FROM mcr.microsoft.com/dotnet/sdk:6.0.201-alpine3.15 AS build
+WORKDIR /source
+COPY ./backend ./backend
+COPY ./resources ./resources
+
+WORKDIR /source/resources
+RUN dotnet restore && \
+	dotnet build --no-restore -c Release && \
+	dotnet test tests/Matroos.Resources.Tests/Matroos.Resources.Tests.csproj --no-build --no-restore --configuration Release
+
+WORKDIR /source/backend
+RUN dotnet restore && \
+	dotnet build --no-restore -c Release && \
+	dotnet test tests/Matroos.Backend.Tests/Matroos.Backend.Tests.csproj --no-build --no-restore --configuration Release && \
+	dotnet publish -c Release -o /app --no-restore
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0.6-alpine3.15
+WORKDIR /app
+COPY --from=build /app ./
+ENTRYPOINT ["dotnet", "Matroos.Backend.dll"]

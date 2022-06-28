@@ -1,0 +1,42 @@
+name: Build Docker images
+
+on:
+  push:
+    branches-ignore:
+      - 'skip-ci/**'
+      - 'doc/**'
+#      - 'feat/**'
+    paths-ignore:
+      - 'frontend/**'
+      - 'doc/**'
+
+jobs:
+  build-backend:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        image: [
+            { df: 'Dockerfile.backend', name: 'harvestcore/matroos-backend:latest' },
+            { df: 'Dockerfile.worker', name: 'harvestcore/matroos-worker:latest' }
+        ]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: GitHub Registry - Login
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: GitHub Registry - Build and push image
+        run: |
+          docker build . -f ${{ matrix.image.df }} -t ghcr.io/${{ matrix.image.name }}
+          docker push ghcr.io/${{ matrix.image.name }}
