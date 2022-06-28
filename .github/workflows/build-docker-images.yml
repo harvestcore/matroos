@@ -5,13 +5,13 @@ on:
     branches-ignore:
       - 'skip-ci/**'
       - 'doc/**'
-#      - 'feat/**'
+      - 'feat/**'
     paths-ignore:
       - 'frontend/**'
       - 'doc/**'
 
 jobs:
-  build-backend:
+  build-and-push:
     runs-on: ubuntu-latest
 
     strategy:
