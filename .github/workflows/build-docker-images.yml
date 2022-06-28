@@ -1,0 +1,49 @@
+name: Build Docker images
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        image: [
+            { df: 'Dockerfile.backend', name: 'ghcr.io/harvestcore/matroos-backend' },
+            { df: 'Dockerfile.worker', name: 'ghcr.io/harvestcore/matroos-worker' }
+        ]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set env
+        run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: GitHub Registry - Login
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: GitHub Registry - Build images
+        run: docker build . -f ${{ matrix.image.df }} -t ${{ matrix.image.name }}
+
+      - name: GitHub Registry - Tag images
+        run: |
+          docker tag ${{ matrix.image.name }} ${{ matrix.image.name }}:latest
+          docker tag ${{ matrix.image.name }} ${{ matrix.image.name }}:$RELEASE_VERSION
+
+      - name: GitHub Registry - Push images
+        run: |
+          docker push ${{ matrix.image.name }}:latest
+          docker push ${{ matrix.image.name }}:$RELEASE_VERSION

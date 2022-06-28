@@ -16,6 +16,7 @@ builder.Services.AddSwaggerGen();
 // Services
 builder.Services.AddResourcesServices();
 builder.Services.AddHostedService<BBackgroundService>();
+builder.Services.AddSingleton<ICommunicationService, CommunicationService>();
 builder.Services.AddSingleton<IBotsService, BotsService>();
 builder.Services.AddSingleton<IUserCommandsService, UserCommandsService>();
 builder.Services.AddSingleton<IWorkersService, WorkersService>();
@@ -28,10 +29,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
 
 app.MapControllers();
 
