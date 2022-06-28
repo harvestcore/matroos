@@ -2,13 +2,8 @@ name: Build Docker images
 
 on:
   push:
-    branches-ignore:
-      - 'skip-ci/**'
-      - 'doc/**'
-      - 'feat/**'
-    paths-ignore:
-      - 'frontend/**'
-      - 'doc/**'
+    tags:
+      - '*.*.*'
 
 jobs:
   build-and-push:
@@ -17,12 +12,16 @@ jobs:
     strategy:
       matrix:
         image: [
-            { df: 'Dockerfile.backend', name: 'harvestcore/matroos-backend:latest' },
-            { df: 'Dockerfile.worker', name: 'harvestcore/matroos-worker:latest' }
+            { df: 'Dockerfile.backend', name: 'ghcr.io/harvestcore/matroos-backend' },
+            { df: 'Dockerfile.worker', name: 'ghcr.io/harvestcore/matroos-worker' }
         ]
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Set env
+        run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       
@@ -36,7 +35,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: GitHub Registry - Build and push image
+      - name: GitHub Registry - Build images
+        run: docker build . -f ${{ matrix.image.df }} -t ${{ matrix.image.name }}
+
+      - name: GitHub Registry - Tag images
         run: |
-          docker build . -f ${{ matrix.image.df }} -t ghcr.io/${{ matrix.image.name }}
-          docker push ghcr.io/${{ matrix.image.name }}
+          docker tag ${{ matrix.image.name }} ${{ matrix.image.name }}:latest
+          docker tag ${{ matrix.image.name }} ${{ matrix.image.name }}:$RELEASE_VERSION
+
+      - name: GitHub Registry - Push images
+        run: |
+          docker push ${{ matrix.image.name }}:latest
+          docker push ${{ matrix.image.name }}:$RELEASE_VERSION
