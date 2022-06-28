@@ -2,7 +2,9 @@ version: "3.3"
 services:
     backend:
         container_name: backend
-        image: ghcr.io/harvestcore/matroos-backend:latest
+        build:
+            context: .
+            dockerfile: Dockerfile.backend
         restart: always
         ports:
             - "7000:80"
@@ -11,14 +13,18 @@ services:
 
     worker1:
         container_name: worker1
-        image: ghcr.io/harvestcore/matroos-worker:latest
+        build:
+            context: .
+            dockerfile: Dockerfile.worker
         restart: always
         ports:
             - "7001:80"
 
     worker2:
         container_name: worker2
-        image: ghcr.io/harvestcore/matroos-worker:latest
+        build:
+            context: .
+            dockerfile: Dockerfile.worker
         restart: always
         ports:
             - "7002:80"
