@@ -14,7 +14,7 @@ public interface IBotsService
     /// </summary>
     /// <param name="bot">The bot.</param>
     /// <returns>Whether the operation was successful or not.</returns>
-    public bool AddBot(Bot bot);
+    public (bool, Guid) AddBot(Bot bot);
 
     /// <summary>
     /// Update the data of a bot.

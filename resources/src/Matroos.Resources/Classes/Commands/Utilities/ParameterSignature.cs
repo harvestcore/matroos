@@ -1,4 +1,7 @@
-﻿using Matroos.Resources.Utilities;
+﻿using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
+
+using Matroos.Resources.Utilities;
 
 namespace Matroos.Resources.Classes.Commands;
 
@@ -32,6 +35,8 @@ public class ParameterSignature
     /// <summary>
     /// Validation function.
     /// </summary>
+    [JsonIgnore]
+    [IgnoreDataMember]
     public Func<object, bool> Validator { get; }
 
     /// <summary>

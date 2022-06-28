@@ -1,10 +1,9 @@
 ﻿using System.Text;
+using System.Text.Json;
 
 using Matroos.Backend.Services.Interfaces;
 using Matroos.Resources.Classes.Bots;
 using Matroos.Resources.Classes.Workers;
-
-using Newtonsoft.Json;
 
 namespace Matroos.Backend.Services;
 
@@ -18,7 +17,7 @@ public class CommunicationService : ICommunicationService
 
         if (payload != null)
         {
-            string json = JsonConvert.SerializeObject(payload);
+            string json = JsonSerializer.Serialize(payload);
             StringContent stringContent = new(json, Encoding.UTF8, "application/json");
             hrm.Content = stringContent;
         }
@@ -27,7 +26,7 @@ public class CommunicationService : ICommunicationService
     }
 
     /// <inheritdoc />
-    public virtual async Task<Worker> GetWorkerStatus(string remoteURL)
+    public virtual async Task<Worker?> GetWorkerStatus(string remoteURL)
     {
         try
         {
@@ -36,7 +35,7 @@ public class CommunicationService : ICommunicationService
             if (response.IsSuccessStatusCode)
             {
                 string output = await response.Content.ReadAsStringAsync();
-                Worker? worker = JsonConvert.DeserializeObject<Worker>(output ?? "");
+                Worker? worker = JsonSerializer.Deserialize<Worker>(output ?? "");
 
                 return worker ?? new();
             }
@@ -44,10 +43,10 @@ public class CommunicationService : ICommunicationService
         catch (Exception ex)
         {
             Console.WriteLine(ex.ToString());
-            return new();
+            return null;
         }
 
-        return new();
+        return null;
     }
 
     /// <inheritdoc />

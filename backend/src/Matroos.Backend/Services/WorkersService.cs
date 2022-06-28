@@ -54,14 +54,14 @@ public class WorkersService : IWorkersService
             }
 
             Worker? current = Workers.Find(item => item.RemoteUrl.Equals(workerURL));
-            if (current != null && newWorker.Id == current.Id)
+            if (current != null)
             {
-                current.Renew(newWorker.Bots);
+                current.Renew(newWorker.Bots, workerURL);
             }
             else
             {
+                newWorker.Renew(newWorker.Bots, workerURL);
                 Workers.Add(newWorker);
-                newWorker.Renew(newWorker.Bots);
             }
         }
     }

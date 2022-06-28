@@ -17,7 +17,7 @@ public class BotsService : IBotsService
     }
 
     /// <inheritdoc />
-    public bool AddBot(Bot bot)
+    public (bool, Guid) AddBot(Bot bot)
     {
         if (Bots.Any(_bot =>
             _bot.Id == bot.Id ||
@@ -25,18 +25,20 @@ public class BotsService : IBotsService
             _bot.Key == bot.Key
         ))
         {
-            return false;
+            return (false, Guid.Empty);
         }
 
-        Bots.Add(new Bot(
+        Bot added = new(
             name: bot.Name,
             description: bot.Description,
             prefix: bot.Prefix,
             key: bot.Key,
             userCommands: bot.UserCommands
-        ));
+        );
 
-        return true;
+        Bots.Add(added);
+
+        return (true, added.Id);
     }
 
     /// <inheritdoc />

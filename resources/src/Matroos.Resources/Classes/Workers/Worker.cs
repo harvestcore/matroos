@@ -57,9 +57,11 @@ public class Worker
     /// Renew the worker information.
     /// </summary>
     /// <param name="bots">The new list of bots.</param>
-    public void Renew(List<Bot> bots)
+    /// <param name="remoteURL">The remote URL.</param>
+    public void Renew(List<Bot> bots, string remoteURL)
     {
         LastUpdate = DateTime.UtcNow + TimeSpan.FromSeconds(15);
         Bots = new(bots);
+        RemoteUrl = remoteURL;
     }
 }

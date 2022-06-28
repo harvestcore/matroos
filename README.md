@@ -9,3 +9,4 @@ Create and deploy Discord bots easily.
 | License                | [![License](https://img.shields.io/github/license/harvestcore/matroos)](https://www.gnu.org/licenses/gpl-3.0) |
 | Documentation          | [![​ - ​Markdown](https://img.shields.io/badge/Markdown-2ea4ff?logo=markdown)](./doc/md/README.md) [![​ - ​Markdown](https://img.shields.io/badge/LaTeX-2ea4ff?logo=latex)](./doc/tex/README.md) [![PDF - Latest artifact](https://img.shields.io/badge/PDF_Latest_artifact-2ea4ff?logo=adobe-acrobat-reader)](https://github.com/harvestcore/matroos/actions/workflows/build-latex.yml) |
 | PDF Build & Spellcheck | [![PDF build & spellcheck](https://github.com/harvestcore/matroos/actions/workflows/build-latex.yml/badge.svg)](https://github.com/harvestcore/matroos/actions/workflows/build-latex.yml) |
+| API reference          | [![API](https://img.shields.io/badge/-API-informational)](./doc/md/api.md) |
