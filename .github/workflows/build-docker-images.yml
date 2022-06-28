@@ -19,9 +19,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set env
-        run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       
@@ -41,9 +38,9 @@ jobs:
       - name: GitHub Registry - Tag images
         run: |
           docker tag ${{ matrix.image.name }} ${{ matrix.image.name }}:latest
-          docker tag ${{ matrix.image.name }} ${{ matrix.image.name }}:$RELEASE_VERSION
+          docker tag ${{ matrix.image.name }} ${{ matrix.image.name }}:${GITHUB_REF:10}
 
       - name: GitHub Registry - Push images
         run: |
           docker push ${{ matrix.image.name }}:latest
-          docker push ${{ matrix.image.name }}:$RELEASE_VERSION
+          docker push ${{ matrix.image.name }}:${GITHUB_REF:10}
