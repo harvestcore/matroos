@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
+using Matroos.Backend.Controllers;
 using Matroos.Backend.Services;
 using Matroos.Backend.Services.Interfaces;
 using Matroos.Resources.Classes.API;
@@ -14,8 +15,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
 using Moq;
-
-using TestMercachuflasCore.Controllers;
 
 using Xunit;
 

@@ -4,7 +4,7 @@ using Matroos.Resources.Classes.Workers;
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace TestMercachuflasCore.Controllers;
+namespace Matroos.Backend.Controllers;
 
 [ApiController]
 [Route("workers")]
