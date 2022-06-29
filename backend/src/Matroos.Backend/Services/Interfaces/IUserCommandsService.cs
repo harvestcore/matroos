@@ -1,4 +1,7 @@
-﻿using Matroos.Resources.Classes.Commands;
+﻿using Matroos.Resources.Classes.Bots;
+using System.Linq.Expressions;
+
+using Matroos.Resources.Classes.Commands;
 
 namespace Matroos.Backend.Services.Interfaces;
 
@@ -16,6 +19,13 @@ public interface IUserCommandsService
     /// </summary>
     /// <returns>A list containing all the user commands.</returns>
     public Task<List<UserCommand>> GetAll();
+
+    /// <summary>
+    /// Get all the user commands that match the filter.
+    /// </summary>
+    /// <param name="filter">The filter.</param>
+    /// <returns>A list containing all the user commands found.</returns>
+    public Task<List<UserCommand>> Filter(Expression<Func<UserCommand, bool>> filter);
 
     /// <summary>
     /// Add a new user command.

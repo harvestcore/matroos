@@ -5,6 +5,7 @@ using Matroos.Backend.Services;
 using Matroos.Backend.Services.Interfaces;
 using Matroos.Resources.Classes.API;
 using Matroos.Resources.Classes.Bots;
+using Matroos.Resources.Classes.Commands;
 using Matroos.Resources.Tests;
 
 using Microsoft.AspNetCore.Mvc;
@@ -13,22 +14,24 @@ using Xunit;
 
 namespace Matroos.Worker.Tests.Controllers;
 
-public class BotsControllerTests
+[Collection("Sequential")]
+public class BotsControllerTests : BaseTest
 {
     private readonly BotsController _botsController;
     private readonly IBotsService _botsService;
 
-    public BotsControllerTests()
+    public BotsControllerTests() : base()
     {
-        _botsService = new BotsService();
+        _botsService = new BotsService(_dataContextService);
         _botsController = new BotsController(_botsService);
     }
 
     [Fact]
-    public void GET_GetAll_Test()
+    public async void GET_GetAll_Test()
     {
+        await EmptyCollection<Bot>();
         // 0 bots.
-        ActionResult<ItemsResponse<Bot>>? res = _botsController.GetAll();
+        ActionResult<ItemsResponse<Bot>>? res = await _botsController.GetAll();
         OkObjectResult? response = res.Result as OkObjectResult;
 
         Assert.NotNull(response);
@@ -39,9 +42,9 @@ public class BotsControllerTests
         Assert.Equal(0, items?.Count);
 
         // 2 bots.
-        _botsService.AddBot(new("test", "", "!", "key", new()));
-        _botsService.AddBot(new("test2", "2", "!2", "key2", new()));
-        res = _botsController.GetAll();
+        await _botsService.AddBot(new("test", "", "!", "key", new()));
+        await _botsService.AddBot(new("test2", "2", "!2", "key2", new()));
+        res = await _botsController.GetAll();
         response = res.Result as OkObjectResult;
 
         Assert.NotNull(response);
@@ -53,13 +56,14 @@ public class BotsControllerTests
     }
 
     [Fact]
-    public void GET_GetSingleBot_Test()
+    public async void GET_GetSingleBot_Test()
     {
+        await EmptyCollection<Bot>();
         // Existent bot.
         Bot bot = new("test", "", "!", "key", new());
-        (_, Guid botId) = _botsService.AddBot(bot);
+        (_, Guid botId) = await _botsService.AddBot(bot);
 
-        ActionResult<Bot>? res = _botsController.Get(botId);
+        ActionResult<Bot>? res = await _botsController.Get(botId);
         OkObjectResult? response = res.Result as OkObjectResult;
 
         Assert.NotNull(response);
@@ -69,56 +73,59 @@ public class BotsControllerTests
         Assert.NotNull(b);
 
         // Non-existent bot.
-        res = _botsController.Get(Guid.NewGuid());
+        res = await _botsController.Get(Guid.NewGuid());
         NotFoundResult? nfResult = res.Result as NotFoundResult;
         Assert.Equal(404, nfResult?.StatusCode ?? 0);
     }
 
     [Fact]
-    public void POST_AddBot_Test()
+    public async void POST_AddBot_Test()
     {
+        await EmptyCollection<Bot>();
         Bot bot = new("test", "", "!", "key", new());
-        _botsController.Post(bot).SuccessResponseShouldBe(true);
+        (await _botsController.Post(bot)).SuccessResponseShouldBe(true);
 
 
         Bot? bot2 = new("test2", "2", "!2", "key2", new());
-        (_, Guid botId) = _botsService.AddBot(bot2);
-        bot2 = _botsService.Bots.Find(b => b.Id == botId);
+        (_, Guid botId) = await _botsService.AddBot(bot2);
+        bot2 = await _botsService.Get(botId);
 
         if (bot2 == null)
         {
             throw new Exception("The bot is somehow null");
         }
 
-        _botsController.Post(bot2).CheckResponse<BadRequestObjectResult>();
+        (await _botsController.Post(bot2)).CheckResponse<BadRequestObjectResult>();
     }
 
     [Fact]
-    public void PUT_UpdateBot_Test()
+    public async void PUT_UpdateBot_Test()
     {
+        await EmptyCollection<Bot>();
         Bot? bot = new("test", "", "!", "key", new());
-        (_, Guid botId) = _botsService.AddBot(bot);
-        bot = _botsService.Bots.Find(b => b.Id == botId);
+        (_, Guid botId) = await _botsService.AddBot(bot);
+        bot = await _botsService.Get(botId);
 
         if (bot == null)
         {
             throw new Exception("The bot is somehow null");
         }
-        _botsController.Put(bot).SuccessResponseShouldBe(true);
+        (await _botsController.Put(bot)).SuccessResponseShouldBe(true);
 
         Bot bot2 = new("test2", "2", "!2", "key2", new());
-        _botsController.Put(bot2).CheckResponse<BadRequestObjectResult>();
+        (await _botsController.Put(bot2)).CheckResponse<BadRequestObjectResult>();
     }
 
     [Fact]
-    public void DELETE_DeleteBot_Test()
+    public async void DELETE_DeleteBot_Test()
     {
+        await EmptyCollection<Bot>();
         Bot? bot = new("test", "", "!", "key", new());
-        (_, Guid botId) = _botsService.AddBot(bot);
+        (_, Guid botId) = await _botsService.AddBot(bot);
 
-        _botsController.Delete(botId).SuccessResponseShouldBe(true);
+        (await _botsController.Delete(botId)).SuccessResponseShouldBe(true);
 
         // Non-existent bot.
-        _botsController.Delete(Guid.NewGuid()).CheckResponse<BadRequestObjectResult>();
+        (await _botsController.Delete(Guid.NewGuid())).CheckResponse<BadRequestObjectResult>();
     }
 }

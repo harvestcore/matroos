@@ -1,4 +1,7 @@
-﻿using Matroos.Backend.Services.Interfaces;
+﻿using System.Linq.Expressions;
+
+using Matroos.Backend.Services.Interfaces;
+using Matroos.Resources.Classes.Bots;
 using Matroos.Resources.Classes.Commands;
 using Matroos.Resources.Services.Interfaces;
 
@@ -29,6 +32,12 @@ public class UserCommandsService : IUserCommandsService
     public async Task<List<UserCommand>> GetAll()
     {
         return await _dataContextService.GetAll<UserCommand>();
+    }
+
+    /// <inheritdoc />
+    public async Task<List<UserCommand>> Filter(Expression<Func<UserCommand, bool>> filter)
+    {
+        return await _dataContextService.Filter(filter);
     }
 
     /// <inheritdoc />

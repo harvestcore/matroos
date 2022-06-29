@@ -5,7 +5,7 @@ using Matroos.Resources.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Matroos.Resources.Tests.Base;
+namespace Matroos.Resources.Tests;
 
 public class Sample : IBaseItem
 {

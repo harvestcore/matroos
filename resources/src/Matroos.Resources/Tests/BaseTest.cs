@@ -1,9 +1,14 @@
-﻿using Matroos.Resources.Services;
+﻿using Discord;
+
+using Matroos.Resources.Interfaces;
+using Matroos.Resources.Services;
 using Matroos.Resources.Services.Interfaces;
 
 using Microsoft.Extensions.Configuration;
 
-namespace Matroos.Resources.Tests.Base;
+using MongoDB.Driver;
+
+namespace Matroos.Resources.Tests;
 
 public class BaseTest
 {
@@ -30,5 +35,10 @@ public class BaseTest
         _configurationService.Set("MongoDBDatabaseName", databaseName);
 
         _dataContextService = new DataContextService(_configurationService);
+    }
+
+    public async Task<DeleteResult> EmptyCollection<TValue>() where TValue : IBaseItem
+    {
+        return await _dataContextService.GetCollection<TValue>()?.DeleteManyAsync(Builders<TValue>.Filter.Empty);
     }
 }
