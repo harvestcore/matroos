@@ -84,9 +84,9 @@ public class UserCommandsController : ControllerBase
     /// </summary>
     /// <returns>The user commands.</returns>
     [HttpGet]
-    public ActionResult<ItemsResponse<UserCommand>> GetAll()
+    public async Task<ActionResult<ItemsResponse<UserCommand>>> GetAll()
     {
-        return Ok(new ItemsResponse<UserCommand>(_userCommandsService.UserCommands));
+        return Ok(new ItemsResponse<UserCommand>(await _userCommandsService.GetAll()));
     }
 
     /// <summary>
@@ -95,9 +95,9 @@ public class UserCommandsController : ControllerBase
     /// <param name="userCommandId">The user command identifier.</param>
     /// <returns>The user command.</returns>
     [HttpGet("{userCommandId}")]
-    public ActionResult<UserCommand> Get(Guid userCommandId)
+    public async Task<ActionResult<UserCommand>> Get(Guid userCommandId)
     {
-        UserCommand? userCommand = _userCommandsService.UserCommands.Find(userCommand => userCommand.Id == userCommandId);
+        UserCommand? userCommand = await _userCommandsService.Get(userCommandId);
         if (userCommand == null)
         {
             return NotFound();
@@ -112,9 +112,9 @@ public class UserCommandsController : ControllerBase
     /// <param name="userCommand">The user command to be added.</param>
     /// <returns>Whether the operation was successful or not.</returns>
     [HttpPost]
-    public ActionResult<SuccessResponse> Post([FromBody] UserCommand userCommand)
+    public async Task<ActionResult<SuccessResponse>> Post([FromBody] UserCommand userCommand)
     {
-        (bool result, _) = _userCommandsService.AddUserCommand(userCommand);
+        (bool result, _) = await _userCommandsService.AddUserCommand(userCommand);
         if (!result)
         {
             return BadRequest(new
@@ -132,9 +132,9 @@ public class UserCommandsController : ControllerBase
     /// <param name="userCommand">The user command to be updated.</param>
     /// <returns>Whether the operation was successful or not.</returns>
     [HttpPut]
-    public ActionResult<SuccessResponse> Put([FromBody] UserCommand userCommand)
+    public async Task<ActionResult<SuccessResponse>> Put([FromBody] UserCommand userCommand)
     {
-        bool result = _userCommandsService.UpdateUserCommand(userCommand);
+        bool result = await _userCommandsService.UpdateUserCommand(userCommand);
         if (!result)
         {
             return BadRequest(new
@@ -152,9 +152,9 @@ public class UserCommandsController : ControllerBase
     /// <param name="userCommandId">The user command identifier.</param>
     /// <returns>Whether the operation was successful or not.</returns>
     [HttpDelete("{userCommandId}")]
-    public ActionResult<SuccessResponse> Delete(Guid userCommandId)
+    public async Task<ActionResult<SuccessResponse>> Delete(Guid userCommandId)
     {
-        bool result = _userCommandsService.DeleteUserCommand(userCommandId);
+        bool result = await _userCommandsService.DeleteUserCommand(userCommandId);
         if (!result)
         {
             return BadRequest(new

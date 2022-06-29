@@ -66,7 +66,7 @@ public class UserCommandsServiceTests
         // Non existant command.
         Assert.False(_userCommandsService.UpdateUserCommand(uc));
 
-        uc = _userCommandsService.GetById(commandId);
+        uc = _userCommandsService.Get(commandId);
         Assert.NotNull(uc);
 
         if (uc != null)
@@ -76,7 +76,7 @@ public class UserCommandsServiceTests
             Assert.True(_userCommandsService.UpdateUserCommand(uc));
         }
 
-        uc = _userCommandsService.GetById(commandId);
+        uc = _userCommandsService.Get(commandId);
         Assert.NotNull(uc);
 
         if (uc != null)

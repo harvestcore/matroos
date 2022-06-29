@@ -1,53 +1,84 @@
 ﻿using Matroos.Resources.Extensions;
+using Matroos.Resources.Interfaces;
+
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Matroos.Resources.Classes.Commands;
 
-public class UserCommand
+public class UserCommand : IBaseItem
 {
+    /// <inheritdoc />
+    public static string CollectionName { get; } = "commands";
+
     /// <summary>
     /// Comand identifier.
     /// </summary>
+    [BsonId]
+    [BsonRepresentation(BsonType.String)]
     public Guid Id { get; set; }
 
     /// <summary>
     /// Command friendly name.
     /// </summary>
+    [BsonElement("name")]
     public string Name { get; set; }
 
     /// <summary>
     /// Command description.
     /// </summary>
+    [BsonElement("description")]
     public string Description { get; set; }
 
     /// <summary>
     /// The command type.
     /// </summary>
+    [BsonElement("type")]
     public CommandType Type { get; set; }
 
     /// <summary>
     /// The trigger used to run the command.
     /// </summary>
+    [BsonElement("trigger")]
     public string Trigger { get; set; }
 
     /// <summary>
     /// The command execution mode.
     /// </summary>
+    [BsonElement("mode")]
     public CommandMode Mode { get; set; }
 
     /// <summary>
     /// Command particular parameters.
     /// </summary>
+    [BsonElement("parameters")]
     public Dictionary<string, object> Parameters { get; set; }
 
     /// <summary>
     /// The creation time of the bot.
     /// </summary>
+    [BsonElement("createdAt")]
     public DateTime CreatedAt { get; set; }
 
     /// <summary>
     /// The update time of the bot.
     /// </summary>
+    [BsonElement("updatedAt")]
     public DateTime UpdatedAt { get; set; }
+
+    /// <summary>
+    /// Default constructor.
+    /// </summary>
+    public UserCommand()
+    {
+        Id = Guid.NewGuid();
+        Name = string.Empty;
+        Description = string.Empty;
+        Trigger = string.Empty;
+        Parameters = new();
+        CreatedAt = DateTime.Now;
+        UpdatedAt = DateTime.Now;
+    }
 
     /// <summary>
     /// Default constructor.

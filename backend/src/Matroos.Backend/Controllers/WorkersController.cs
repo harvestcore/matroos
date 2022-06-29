@@ -100,9 +100,9 @@ public class WorkersController : ControllerBase
     /// <param name="botIds">A list containing the list of workers to be added.</param>
     /// <returns>Whether the operation was successful or not.</returns>
     [HttpPost("{workerId}")]
-    public ActionResult<SuccessResponse> Add(Guid workerId, [FromBody] List<Guid> botIds)
+    public async Task<ActionResult<SuccessResponse>> Add(Guid workerId, [FromBody] List<Guid> botIds)
     {
-        bool result = _workersService.AddBotsToWorker(workerId, botIds);
+        bool result = await _workersService.AddBotsToWorker(workerId, botIds);
         if (!result)
         {
             return BadRequest(new
@@ -121,9 +121,9 @@ public class WorkersController : ControllerBase
     /// <param name="botIds">A list containing the list of workers to be deleted.</param>
     /// <returns>Whether the operation was successful or not.</returns>
     [HttpDelete("{workerId}")]
-    public ActionResult<SuccessResponse> Delete(Guid workerId, [FromBody] List<Guid> botIds)
+    public async Task<ActionResult<SuccessResponse>> Delete(Guid workerId, [FromBody] List<Guid> botIds)
     {
-        bool result = _workersService.DeleteBotsFromWorker(workerId, botIds);
+        bool result = await _workersService.DeleteBotsFromWorker(workerId, botIds);
         if (!result)
         {
             return BadRequest(new

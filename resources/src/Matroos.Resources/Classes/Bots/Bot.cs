@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Drawing;
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Discord;
@@ -7,48 +8,64 @@ using Discord.WebSocket;
 
 using Matroos.Resources.Classes.BackgroundProcessing;
 using Matroos.Resources.Classes.Commands;
+using Matroos.Resources.Classes.Mappers;
+using Matroos.Resources.Interfaces;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace Matroos.Resources.Classes.Bots;
 
-public class Bot
+public class Bot : IBaseItem
 {
+    /// <inheritdoc />
+    public static string CollectionName { get; } = "bots";
+
     /// <summary>
     /// Bot identifier.
     /// </summary>
-    public Guid Id { get; }
+    [BsonId]
+    [BsonRepresentation(BsonType.String)]
+    public Guid Id { get; set; }
 
     /// <summary>
     /// Bot name.
     /// </summary>
-    public string Name { get; internal set; }
+    [BsonElement("name")]
+    public string Name { get; set; }
 
     /// <summary>
     /// Bot description.
     /// </summary>
-    public string Description { get; internal set; }
+    [BsonElement("description")]
+    public string Description { get; set; }
 
     /// <summary>
     /// Bot Discord key.
     /// </summary>
-    public string Key { get; internal set; }
+    [BsonElement("key")]
+    public string Key { get; set; }
 
     /// <summary>
     /// Bot prefix.
     /// </summary>
-    public string Prefix { get; internal set; }
+    [BsonElement("prefix")]
+    public string Prefix { get; set; }
 
     /// <summary>
     /// Bot's user commands. This list is populated when the Bot application is generated.
     /// </summary>
-    public List<UserCommand> UserCommands { get; internal set; }
+    [BsonElement("userCommands")]
+    public List<UserCommand> UserCommands { get; set; }
 
     /// <summary>
     /// The <see cref="DiscordShardedClient"/> associated to this bot.
     /// </summary>
     [JsonIgnore]
+    [BsonIgnore]
     [IgnoreDataMember]
     public DiscordShardedClient? Client { get; internal set; }
 
@@ -56,6 +73,7 @@ public class Bot
     /// Application cancellation token.
     /// </summary>
     [JsonIgnore]
+    [BsonIgnore]
     [IgnoreDataMember]
     public CancellationTokenSource? CancellationToken { get; internal set; }
 
@@ -63,6 +81,7 @@ public class Bot
     /// Bot application.
     /// </summary>
     [JsonIgnore]
+    [BsonIgnore]
     [IgnoreDataMember]
     public IHost? App { get; internal set; }
 
@@ -70,6 +89,7 @@ public class Bot
     /// Application cron service.
     /// </summary>
     [JsonIgnore]
+    [BsonIgnore]
     [IgnoreDataMember]
     public CronService? Cron { get; internal set; }
 
@@ -77,18 +97,36 @@ public class Bot
     /// Whether the bot is running or not.
     /// </summary>
     [JsonIgnore]
+    [BsonIgnore]
     [IgnoreDataMember]
     public bool Running { get; internal set; }
 
     /// <summary>
     /// The creation time of the bot.
     /// </summary>
-    public DateTime? CreatedAt { get; }
+    [BsonElement("createdAt")]
+    public DateTime? CreatedAt { get; set; }
 
     /// <summary>
     /// The update time of the bot.
     /// </summary>
-    public DateTime? UpdatedAt { get; internal set; }
+    [BsonElement("updatedAt")]
+    public DateTime? UpdatedAt { get; set; }
+
+    /// <summary>
+    /// Default constructor.
+    /// </summary>
+    public Bot()
+    {
+        Id = Guid.NewGuid();
+        Name = string.Empty;
+        Description = string.Empty;
+        Key = string.Empty;
+        Prefix = string.Empty;
+        UserCommands = new();
+        CreatedAt = DateTime.Now;
+        UpdatedAt = DateTime.Now;
+    }
 
     /// <summary>
     /// Default constructor.

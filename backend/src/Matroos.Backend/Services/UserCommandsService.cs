@@ -1,44 +1,46 @@
 ﻿using Matroos.Backend.Services.Interfaces;
-using Matroos.Resources.Classes.Bots;
 using Matroos.Resources.Classes.Commands;
+using Matroos.Resources.Services.Interfaces;
 
 namespace Matroos.Backend.Services;
 
 public class UserCommandsService : IUserCommandsService
 {
     /// <summary>
-    /// The user commands.
+    /// The data context service.
     /// </summary>
-    public List<UserCommand> UserCommands { get; }
-
-    /// <summary>
-    /// The bots service.
-    /// </summary>
-    private readonly IBotsService _botsService;
+    private readonly IDataContextService _dataContextService;
 
     /// <summary>
     /// Default constructor.
     /// </summary>
-    public UserCommandsService(IBotsService botsService)
+    public UserCommandsService(IDataContextService dataContextService)
     {
-        UserCommands = new();
-        _botsService = botsService;
+        _dataContextService = dataContextService;
     }
 
     /// <inheritdoc />
-    public UserCommand? GetById(Guid userCommandId)
+    public async Task<UserCommand?> Get(Guid userCommandId)
     {
-        return UserCommands.Find(command => command.Id == userCommandId);
+        return await _dataContextService.Get<UserCommand>(userCommandId);
     }
 
     /// <inheritdoc />
-    public (bool, Guid) AddUserCommand(UserCommand userCommand)
+    public async Task<List<UserCommand>> GetAll()
     {
-        if (UserCommands.Any(command =>
+        return await _dataContextService.GetAll<UserCommand>();
+    }
+
+    /// <inheritdoc />
+    public async Task<(bool, Guid)> AddUserCommand(UserCommand userCommand)
+    {
+        List<UserCommand> filtered = await _dataContextService.Filter<UserCommand>(command =>
             command.Id == userCommand.Id ||
             command.Name == userCommand.Name ||
             command.Trigger == userCommand.Trigger
-        ))
+        );
+
+        if (filtered.Count > 0)
         {
             return (false, Guid.Empty);
         }
@@ -52,41 +54,30 @@ public class UserCommandsService : IUserCommandsService
             commandMode: userCommand.Mode
         );
 
-        UserCommands.Add(uc);
+        bool result = await _dataContextService.Insert(uc);
 
-        return (true, uc.Id);
+        return (result, result ? uc.Id : Guid.Empty);
     }
 
     /// <inheritdoc />
-    public bool DeleteUserCommand(Guid userCommandId)
+    public async Task<bool> DeleteUserCommand(Guid userCommandId)
     {
-        UserCommand? commandFound = GetById(userCommandId);
+        return await _dataContextService.Delete<UserCommand>(userCommandId);
+    }
 
-        if (commandFound == null)
+    /// <inheritdoc />
+    public async Task<bool> UpdateUserCommand(UserCommand userCommand)
+    {
+        UserCommand? found = await _dataContextService.Get<UserCommand>(userCommand.Id);
+        if (found == null)
         {
             return false;
         }
 
-        foreach (Bot? bot in _botsService.Bots)
-        {
-            bot.UserCommands.Remove(commandFound);
-        }
+        // Update the command.
+        found.Update(userCommand);
 
-        return UserCommands.Remove(commandFound);
-    }
-
-    /// <inheritdoc />
-    public bool UpdateUserCommand(UserCommand userCommand)
-    {
-        UserCommand? commandFound = GetById(userCommand.Id);
-
-        if (commandFound == null)
-        {
-            return false;
-        }
-
-        commandFound.Update(userCommand);
-
-        return true;
+        // Push the changes to DB.
+        return await _dataContextService.Update(found.Id, found);
     }
 }

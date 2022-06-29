@@ -36,7 +36,7 @@ public interface IWorkersService
     /// <param name="workerId">The identifier of the worker where to add the bots.</param>
     /// <param name="botIds">A list containing the identifiers of the bots to be added.</param>
     /// <returns>Whether the operation was successful or not.</returns>
-    public bool AddBotsToWorker(Guid workerId, List<Guid> botIds);
+    public Task<bool> AddBotsToWorker(Guid workerId, List<Guid> botIds);
 
     /// <summary>
     /// Updates the data of the given bots in a worker.
@@ -44,7 +44,7 @@ public interface IWorkersService
     /// <param name="workerId">The identifier of the worker where to update the data.</param>
     /// <param name="botIds">A list containing the identifiers of the bots to be updated.</param>
     /// <returns>Whether the operation was successful or not.</returns>
-    public bool UpdateBotsInWorker(Guid workerId, List<Guid> botIds);
+    public Task<bool> UpdateBotsInWorker(Guid workerId, List<Guid> botIds);
 
     /// <summary>
     /// Deletes bots from a worker.
@@ -52,5 +52,5 @@ public interface IWorkersService
     /// <param name="workerId">The identifier of the worker where to delete the bots.</param>
     /// <param name="botIds">A list containing the identifiers of the bots to be removed.</param>
     /// <returns>Whether the operation was successful or not.</returns>
-    public bool DeleteBotsFromWorker(Guid workerId, List<Guid> botIds);
+    public Task<bool> DeleteBotsFromWorker(Guid workerId, List<Guid> botIds);
 }

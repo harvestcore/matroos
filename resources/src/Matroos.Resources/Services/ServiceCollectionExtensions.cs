@@ -8,6 +8,8 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddResourcesServices(this IServiceCollection services)
     {
-        return services.AddSingleton<IConfigurationService, ConfigurationService>();
+        return services
+            .AddSingleton<IConfigurationService, ConfigurationService>()
+            .AddSingleton<IDataContextService, DataContextService>();
     }
 }
