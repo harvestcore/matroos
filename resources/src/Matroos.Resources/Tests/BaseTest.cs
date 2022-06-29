@@ -1,6 +1,4 @@
-﻿using Discord;
-
-using Matroos.Resources.Interfaces;
+﻿using Matroos.Resources.Interfaces;
 using Matroos.Resources.Services;
 using Matroos.Resources.Services.Interfaces;
 

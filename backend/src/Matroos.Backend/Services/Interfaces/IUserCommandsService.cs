@@ -1,5 +1,4 @@
-﻿using Matroos.Resources.Classes.Bots;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 using Matroos.Resources.Classes.Commands;
 

@@ -5,7 +5,6 @@ using Matroos.Backend.Services;
 using Matroos.Backend.Services.Interfaces;
 using Matroos.Resources.Classes.API;
 using Matroos.Resources.Classes.Bots;
-using Matroos.Resources.Classes.Commands;
 using Matroos.Resources.Tests;
 
 using Microsoft.AspNetCore.Mvc;

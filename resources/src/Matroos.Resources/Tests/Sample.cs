@@ -1,6 +1,4 @@
-﻿using System;
-
-using Matroos.Resources.Interfaces;
+﻿using Matroos.Resources.Interfaces;
 
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;

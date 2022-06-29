@@ -1,7 +1,6 @@
 ﻿using System.Linq.Expressions;
 
 using Matroos.Backend.Services.Interfaces;
-using Matroos.Resources.Classes.Bots;
 using Matroos.Resources.Classes.Commands;
 using Matroos.Resources.Services.Interfaces;
 

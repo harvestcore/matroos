@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 using Discord;
@@ -8,7 +7,6 @@ using Discord.WebSocket;
 
 using Matroos.Resources.Classes.BackgroundProcessing;
 using Matroos.Resources.Classes.Commands;
-using Matroos.Resources.Classes.Mappers;
 using Matroos.Resources.Interfaces;
 
 using Microsoft.Extensions.DependencyInjection;
