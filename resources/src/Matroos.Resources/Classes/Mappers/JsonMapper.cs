@@ -73,11 +73,11 @@ public class JsonMapper : JsonConverter<List<UserCommand>>
     /// <param name="options">Extra options.</param>
     public override void Write(Utf8JsonWriter writer, List<UserCommand> commands, JsonSerializerOptions options)
     {
-        writer.WriteStartArray();
-        foreach (UserCommand? command in commands)
+        string? output = JsonSerializer.Serialize(commands, new JsonSerializerOptions
         {
-            writer.WriteStringValue(command.Id.ToString());
-        }
-        writer.WriteEndArray();
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+        });
+
+        writer.WriteRawValue(output);
     }
 }
