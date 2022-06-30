@@ -5,13 +5,11 @@ COPY ./resources ./resources
 
 WORKDIR /source/resources
 RUN dotnet restore && \
-	dotnet build --no-restore -c Release && \
-	dotnet test tests/Matroos.Resources.Tests/Matroos.Resources.Tests.csproj --no-build --no-restore --configuration Release
+	dotnet build --no-restore -c Release
 
 WORKDIR /source/worker
 RUN dotnet restore && \
 	dotnet build --no-restore -c Release && \
-	dotnet test tests/Matroos.Worker.Tests/Matroos.Worker.Tests.csproj --no-build --no-restore --configuration Release && \
 	dotnet publish -c Release -o /app --no-restore
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0.6-alpine3.15

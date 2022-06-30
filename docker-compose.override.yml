@@ -1,15 +1,24 @@
 version: "3.3"
 services:
+    mongodb:
+        container_name: mongo
+        image: mongo:4.2
+        restart: always
+
     backend:
         container_name: backend
         build:
             context: .
             dockerfile: Dockerfile.backend
         restart: always
+        depends_on:
+            - mongodb
         ports:
             - "7000:80"
         environment:
             - Workers=http://worker1/;http://worker2/
+            - MongoDBConnectionString=mongodb://mongodb:27017/matroos
+            - MongoDBDatabaseName=matroos
 
     worker1:
         container_name: worker1
