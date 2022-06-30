@@ -1,5 +1,6 @@
 ﻿using Matroos.Backend.Services.Interfaces;
 using Matroos.Resources.Classes.API;
+using Matroos.Resources.Classes.Bots;
 using Matroos.Resources.Classes.Workers;
 
 using Microsoft.AspNetCore.Mvc;
@@ -100,9 +101,9 @@ public class WorkersController : ControllerBase
     /// <param name="botIds">A list containing the list of workers to be added.</param>
     /// <returns>Whether the operation was successful or not.</returns>
     [HttpPost("{workerId}")]
-    public ActionResult<SuccessResponse> Add(Guid workerId, [FromBody] List<Guid> botIds)
+    public async Task<ActionResult<SuccessResponse>> Add(Guid workerId, [FromBody] BotIdList botIds)
     {
-        bool result = _workersService.AddBotsToWorker(workerId, botIds);
+        bool result = await _workersService.AddBotsToWorker(workerId, botIds.Bots);
         if (!result)
         {
             return BadRequest(new
@@ -121,9 +122,9 @@ public class WorkersController : ControllerBase
     /// <param name="botIds">A list containing the list of workers to be deleted.</param>
     /// <returns>Whether the operation was successful or not.</returns>
     [HttpDelete("{workerId}")]
-    public ActionResult<SuccessResponse> Delete(Guid workerId, [FromBody] List<Guid> botIds)
+    public async Task<ActionResult<SuccessResponse>> Delete(Guid workerId, [FromBody] BotIdList botIds)
     {
-        bool result = _workersService.DeleteBotsFromWorker(workerId, botIds);
+        bool result = await _workersService.DeleteBotsFromWorker(workerId, botIds.Bots);
         if (!result)
         {
             return BadRequest(new

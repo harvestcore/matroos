@@ -17,7 +17,7 @@ public class StatusCommand : BaseCommand, IRunnableCommand
                 name: "ChannelId",
                 displayName: "Channel",
                 required: false,
-                type: DataType.STRING,
+                dataType: DataType.STRING,
                 @default: "",
                 validator: _ => true
             )
@@ -33,7 +33,7 @@ public class StatusCommand : BaseCommand, IRunnableCommand
 
         // Channel where to send the message.
         ISocketMessageChannel channel;
-        string channelId = command.Parameters["ChannelId"]?.GetValue<string>() ?? "";
+        string channelId = command.Parameters.GetValueOrDefault("ChannelId")?.GetValue<string>() ?? "";
 
         // There is no channel where to send messages.
         if (string.IsNullOrEmpty(channelId) && message == null)
@@ -41,7 +41,7 @@ public class StatusCommand : BaseCommand, IRunnableCommand
             return;
         }
 
-        if (client.GetChannel(Convert.ToUInt64(channelId)) is ISocketMessageChannel channelFound)
+        if (!string.IsNullOrEmpty(channelId) && client.GetChannel(Convert.ToUInt64(channelId)) is ISocketMessageChannel channelFound)
         {
             channel = channelFound;
         }

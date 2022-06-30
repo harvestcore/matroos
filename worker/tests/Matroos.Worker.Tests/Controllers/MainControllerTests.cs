@@ -34,7 +34,7 @@ public class MainControllerTests
         WWorker? worker = response?.Value as WWorker;
         Assert.Empty(worker?.Bots ?? null);
         Assert.False(worker?.IsUp ?? true);
-        Assert.Equal(string.Empty, worker?.RemoteUrl ?? "not-empty");
+        Assert.Equal("update", worker?.RemoteUrl ?? "not-empty");
         Assert.NotEqual(Guid.Empty, worker?.Id ?? Guid.Empty);
         Assert.True((worker?.LastUpdate ?? DateTime.UtcNow + TimeSpan.FromSeconds(5)) < DateTime.UtcNow);
     }

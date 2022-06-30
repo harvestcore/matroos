@@ -22,7 +22,7 @@ public class Worker
     /// <summary>
     /// Worker's last update.
     /// </summary>
-    public DateTime LastUpdate { get; internal set; }
+    public DateTime LastUpdate { get; set; }
 
     /// <summary>
     /// Whether the worker is up (reachable) or not.
@@ -56,10 +56,12 @@ public class Worker
     /// <summary>
     /// Renew the worker information.
     /// </summary>
+    /// <param name="id">The new identifier.</param>
     /// <param name="bots">The new list of bots.</param>
     /// <param name="remoteURL">The remote URL.</param>
-    public void Renew(List<Bot> bots, string remoteURL)
+    public void Renew(Guid id, List<Bot> bots, string remoteURL)
     {
+        Id = id;
         LastUpdate = DateTime.UtcNow + TimeSpan.FromSeconds(15);
         Bots = new(bots);
         RemoteUrl = remoteURL;

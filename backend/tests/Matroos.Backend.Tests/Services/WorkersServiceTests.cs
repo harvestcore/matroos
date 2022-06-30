@@ -7,6 +7,7 @@ using Matroos.Backend.Services.Interfaces;
 using Matroos.Resources.Classes.Bots;
 using Matroos.Resources.Services;
 using Matroos.Resources.Services.Interfaces;
+using Matroos.Resources.Tests;
 
 using Microsoft.Extensions.Configuration;
 
@@ -18,16 +19,17 @@ using WWorker = Matroos.Resources.Classes.Workers.Worker;
 
 namespace Matroos.Backend.Tests.Services;
 
-public class WorkersServiceTests
+[Collection("Sequential")]
+public class WorkersServiceTests : BaseTest
 {
     private readonly IWorkersService _workersService;
     private readonly IBotsService _botsService;
     private readonly ICommunicationService _communicationService;
-    private readonly IConfigurationService _configurationService;
+    private new readonly IConfigurationService _configurationService;
 
-    public WorkersServiceTests()
+    public WorkersServiceTests() : base()
     {
-        _botsService = new BotsService();
+        _botsService = new BotsService(_dataContextService);
         _configurationService = new ConfigurationService(new ConfigurationBuilder().Build());
 
         Dictionary<string, WWorker> workers = new()
@@ -50,7 +52,7 @@ public class WorkersServiceTests
     [Fact]
     public void RenewWorkersTests()
     {
-        _configurationService.Set("WORKERS", "http://w1;http://w2");
+        _configurationService.Set("Workers", "http://w1;http://w2");
         Assert.Empty(_workersService.Workers);
 
         _workersService.RenewWorkers();
@@ -83,22 +85,22 @@ public class WorkersServiceTests
     }
 
     [Fact]
-    public void UpdateBotsInWorkerTests()
+    public async void UpdateBotsInWorkerTests()
     {
         WWorker w = new(Guid.NewGuid(), "http://w1", new());
         _workersService.Workers.Add(w);
 
-        Assert.True(_workersService.UpdateBotsInWorker(w.Id, new()));
-        Assert.False(_workersService.UpdateBotsInWorker(Guid.NewGuid(), new()));
+        Assert.True(await _workersService.UpdateBotsInWorker(w.Id, new()));
+        Assert.False(await _workersService.UpdateBotsInWorker(Guid.NewGuid(), new()));
     }
 
     [Fact]
-    public void DeleteBotsFromWorkerTests()
+    public async void DeleteBotsFromWorkerTests()
     {
         WWorker w = new(Guid.NewGuid(), "http://w1", new());
         _workersService.Workers.Add(w);
 
-        Assert.True(_workersService.DeleteBotsFromWorker(w.Id, new()));
-        Assert.False(_workersService.DeleteBotsFromWorker(Guid.NewGuid(), new()));
+        Assert.True(await _workersService.DeleteBotsFromWorker(w.Id, new()));
+        Assert.False(await _workersService.DeleteBotsFromWorker(Guid.NewGuid(), new()));
     }
 }

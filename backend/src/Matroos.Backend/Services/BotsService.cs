@@ -1,34 +1,59 @@
-﻿using Matroos.Backend.Services.Interfaces;
+﻿using System.Linq.Expressions;
+
+using Matroos.Backend.Services.Interfaces;
 using Matroos.Resources.Classes.Bots;
+using Matroos.Resources.Services.Interfaces;
 
 namespace Matroos.Backend.Services;
 
 public class BotsService : IBotsService
 {
-    /// <inheritdoc />
-    public List<Bot> Bots { get; }
+    /// <summary>
+    /// The data context service.
+    /// </summary>
+    private readonly IDataContextService _dataContextService;
 
     /// <summary>
     /// Default constructor.
     /// </summary>
-    public BotsService()
+    public BotsService(IDataContextService dataContextService)
     {
-        Bots = new List<Bot>();
+        _dataContextService = dataContextService;
     }
 
     /// <inheritdoc />
-    public (bool, Guid) AddBot(Bot bot)
+    public async Task<Bot?> Get(Guid botId)
     {
-        if (Bots.Any(_bot =>
+        return await _dataContextService.Get<Bot>(botId);
+    }
+
+    /// <inheritdoc />
+    public async Task<List<Bot>> GetAll()
+    {
+        return await _dataContextService.GetAll<Bot>();
+    }
+
+    /// <inheritdoc />
+    public async Task<List<Bot>> Filter(Expression<Func<Bot, bool>> filter)
+    {
+        return await _dataContextService.Filter<Bot>(filter);
+    }
+
+    /// <inheritdoc />
+    public async Task<(bool, Guid)> AddBot(Bot bot)
+    {
+        List<Bot> filtered = await _dataContextService.Filter<Bot>(_bot =>
             _bot.Id == bot.Id ||
             _bot.Name == bot.Name ||
             _bot.Key == bot.Key
-        ))
+        );
+
+        if (filtered.Count > 0)
         {
             return (false, Guid.Empty);
         }
 
-        Bot added = new(
+        Bot newBot = new(
             name: bot.Name,
             description: bot.Description,
             prefix: bot.Prefix,
@@ -36,36 +61,30 @@ public class BotsService : IBotsService
             userCommands: bot.UserCommands
         );
 
-        Bots.Add(added);
+        bool result = await _dataContextService.Insert(newBot);
 
-        return (true, added.Id);
+        return (result, result ? newBot.Id : Guid.Empty);
     }
 
     /// <inheritdoc />
-    public bool DeleteBot(Guid botId)
+    public async Task<bool> DeleteBot(Guid botId)
     {
-        Bot? botFound = Bots.Find(_bot => _bot.Id == botId);
+        return await _dataContextService.Delete<Bot>(botId);
+    }
 
-        if (botFound == null)
+    /// <inheritdoc />
+    public async Task<bool> UpdateBot(Bot bot)
+    {
+        Bot? found = await _dataContextService.Get<Bot>(bot.Id);
+        if (found == null)
         {
             return false;
         }
 
-        return Bots.Remove(botFound);
-    }
+        // Update the bot.
+        found.Update(bot);
 
-    /// <inheritdoc />
-    public bool UpdateBot(Bot bot)
-    {
-        Bot? botFound = Bots.Find(_bot => _bot.Id == bot.Id);
-
-        if (botFound == null)
-        {
-            return false;
-        }
-
-        botFound.Update(bot);
-
-        return true;
+        // Push the changes to DB.
+        return await _dataContextService.Update(found.Id, found);
     }
 }

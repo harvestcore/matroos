@@ -23,7 +23,7 @@ public class MainController : ControllerBase
     public ActionResult<WWorker> Get()
     {
         List<Bot> bots = _mainService.Bots.Values.ToList();
-        return Ok(new WWorker(_mainService.Id, "", bots));
+        return Ok(new WWorker(_mainService.Id, "update", bots));
     }
 
     [HttpPost]

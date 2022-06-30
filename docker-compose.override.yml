@@ -9,7 +9,7 @@ services:
         ports:
             - "7000:80"
         environment:
-            - WORKERS=http://worker1/;http://worker2/
+            - Workers=http://worker1/;http://worker2/
 
     worker1:
         container_name: worker1

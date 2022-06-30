@@ -19,7 +19,7 @@ public class PingCommand : BaseCommand, IRunnableCommand
                 name: "Host",
                 displayName: "Host",
                 required: true,
-                type: DataType.STRING,
+                dataType: DataType.STRING,
                 @default: "",
                 validator: _ => true
             ),
@@ -27,7 +27,7 @@ public class PingCommand : BaseCommand, IRunnableCommand
                 name: "ChannelId",
                 displayName: "Channel",
                 required: false,
-                type: DataType.STRING,
+                dataType: DataType.STRING,
                 @default: "",
                 validator: _ => true
             )
@@ -44,14 +44,14 @@ public class PingCommand : BaseCommand, IRunnableCommand
 
         // Channel where to send the message.
         ISocketMessageChannel channel;
-        string channelId = command.Parameters["ChannelId"]?.GetValue<string>() ?? "";
+        string channelId = command.Parameters.GetValueOrDefault("ChannelId")?.GetValue<string>() ?? "";
 
         if (string.IsNullOrEmpty(channelId) && message == null)
         {
             return;
         }
 
-        if (client.GetChannel(Convert.ToUInt64(channelId)) is ISocketMessageChannel channelFound)
+        if (!string.IsNullOrEmpty(channelId) && client.GetChannel(Convert.ToUInt64(channelId)) is ISocketMessageChannel channelFound)
         {
             channel = channelFound;
         }
@@ -73,7 +73,7 @@ public class PingCommand : BaseCommand, IRunnableCommand
         }
         else if (command.Mode == CommandMode.SCOPED)
         {
-            host = command.Parameters["Host"]?.GetValue<string>() ?? "";
+            host = command.Parameters.GetValueOrDefault("Host")?.GetValue<string>() ?? "";
         }
 
         if (string.IsNullOrEmpty(host))

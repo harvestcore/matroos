@@ -42,7 +42,7 @@ public class WorkersService : IWorkersService
     /// <inheritdoc />
     public async Task RenewWorkers()
     {
-        string workers = _configurationService.Get<string>("WORKERS") ?? "";
+        string workers = _configurationService.Get<string>("Workers") ?? "";
         List<string> workerURLs = workers.GetWorkerURLs();
 
         foreach (string workerURL in workerURLs)
@@ -56,11 +56,11 @@ public class WorkersService : IWorkersService
             Worker? current = Workers.Find(item => item.RemoteUrl.Equals(workerURL));
             if (current != null)
             {
-                current.Renew(newWorker.Bots, workerURL);
+                current.Renew(newWorker.Id, newWorker.Bots, workerURL);
             }
             else
             {
-                newWorker.Renew(newWorker.Bots, workerURL);
+                newWorker.Renew(newWorker.Id, newWorker.Bots, workerURL);
                 Workers.Add(newWorker);
             }
         }
@@ -95,7 +95,7 @@ public class WorkersService : IWorkersService
     }
 
     /// <inheritdoc />
-    public bool AddBotsToWorker(Guid workerId, List<Guid> botIds)
+    public async Task<bool> AddBotsToWorker(Guid workerId, List<Guid> botIds)
     {
         Worker? workerFound = Workers.Find(w => w.Id == workerId);
 
@@ -104,7 +104,7 @@ public class WorkersService : IWorkersService
             return false;
         }
 
-        List<Bot> bots = _botsService.Bots.FindAll(bot => botIds.Contains(bot.Id));
+        List<Bot> bots = await _botsService.Filter(bot => botIds.Contains(bot.Id));
 
         foreach (Bot bot in bots)
         {
@@ -116,7 +116,7 @@ public class WorkersService : IWorkersService
     }
 
     /// <inheritdoc />
-    public bool UpdateBotsInWorker(Guid workerId, List<Guid> botIds)
+    public async Task<bool> UpdateBotsInWorker(Guid workerId, List<Guid> botIds)
     {
         Worker? workerFound = Workers.Find(w => w.Id == workerId);
 
@@ -125,7 +125,7 @@ public class WorkersService : IWorkersService
             return false;
         }
 
-        List<Bot> bots = _botsService.Bots.FindAll(bot => botIds.Contains(bot.Id));
+        List<Bot> bots = await _botsService.Filter(bot => botIds.Contains(bot.Id));
 
         foreach (Bot bot in bots)
         {
@@ -133,11 +133,13 @@ public class WorkersService : IWorkersService
             _ = _communicationService.UpdateBotInWorker(workerFound, bot);
         }
 
+        _ = RenewWorkers();
+
         return true;
     }
 
     /// <inheritdoc />
-    public bool DeleteBotsFromWorker(Guid workerId, List<Guid> botIds)
+    public async Task<bool> DeleteBotsFromWorker(Guid workerId, List<Guid> botIds)
     {
         Worker? workerFound = Workers.Find(w => w.Id == workerId);
 
@@ -146,13 +148,15 @@ public class WorkersService : IWorkersService
             return false;
         }
 
-        List<Bot> bots = _botsService.Bots.FindAll(bot => botIds.Contains(bot.Id));
+        List<Bot> bots = await _botsService.Filter(bot => botIds.Contains(bot.Id));
 
         foreach (Bot bot in bots)
         {
             // Do not wait for this call to finish.
             _ = _communicationService.DeleteBotFromWorker(workerFound, bot.Id);
         }
+
+        _ = RenewWorkers();
 
         return true;
     }

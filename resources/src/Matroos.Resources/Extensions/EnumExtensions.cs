@@ -54,6 +54,31 @@ public static class EnumExtensions
     }
 
     /// <summary>
+    /// Get the parameters signature of a given <see cref="CommandType"/>.
+    /// </summary>
+    /// <param name="value">The <see cref="CommandType"/>.</param>
+    /// <returns>A list containing all the parameters signature.</returns>
+    public static List<ParameterSignature> GetParametersSignature(this CommandType value)
+    {
+        CommandAttribute commandAttribute = value.GetAttribute<CommandAttribute>();
+        if (commandAttribute == null)
+        {
+            return new();
+        }
+
+        // Generate an instance.
+        object? generatedInstance = Activator.CreateInstance(commandAttribute.Command);
+
+        // Get the property.
+        PropertyInfo? property = commandAttribute.Command.GetProperty("Parameters");
+
+        // Get the parameters signature.
+        List<ParameterSignature>? allowedModes = property?.GetValue(generatedInstance) as List<ParameterSignature>;
+
+        return allowedModes ?? new();
+    }
+
+    /// <summary>
     /// Get the allowed properties of a given <see cref="CommandType"/>.
     /// </summary>
     /// <param name="value">The <see cref="CommandType"/>.</param>
@@ -71,7 +96,6 @@ public static class EnumExtensions
 
         // Invoke the "Run" method to run the command.
         MethodInfo? method = commandAttribute.Command.GetMethod("ValidateParameters");
-
         if (method == null)
         {
             return false;

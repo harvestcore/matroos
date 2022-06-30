@@ -16,22 +16,22 @@ using Xunit;
 
 namespace Matroos.Worker.Tests.Controllers;
 
-public class UserCommandsControllerTests
+[Collection("Sequential")]
+public class UserCommandsControllerTests : BaseTest
 {
     private readonly UserCommandsController _userCommandsController;
     private readonly IUserCommandsService _userCommandsService;
-    private readonly IBotsService _botsService;
 
-    public UserCommandsControllerTests()
+    public UserCommandsControllerTests() : base()
     {
-        _botsService = new BotsService();
-        _userCommandsService = new UserCommandsService(_botsService);
+        _userCommandsService = new UserCommandsService(_dataContextService);
         _userCommandsController = new UserCommandsController(_userCommandsService);
     }
 
     [Fact]
-    public void GET_Signatures_Test()
+    public async void GET_Signatures_Test()
     {
+        await EmptyCollection<UserCommand>();
         // Actual command signatures.
         IEnumerable<CommandType>? commandEnumTypes = Enum.GetValues(typeof(CommandType)).Cast<CommandType>();
         if (commandEnumTypes == null)
@@ -52,17 +52,18 @@ public class UserCommandsControllerTests
         List<CommandType> commandTypes = commandEnumTypes.ToList();
         foreach (CommandSignature item in commandSignatures?.Items ?? new())
         {
-            Assert.Contains(commandTypes, ct => ct == item.Type);
+            Assert.Contains(commandTypes, ct => ct == item.CommandType);
             Assert.NotNull(item.Signature);
             Assert.NotNull(item.AllowedModes);
         }
     }
 
     [Fact]
-    public void GET_GetAll_Test()
+    public async void GET_GetAll_Test()
     {
+        await EmptyCollection<UserCommand>();
         // 0 commands.
-        ActionResult<ItemsResponse<UserCommand>>? res = _userCommandsController.GetAll();
+        ActionResult<ItemsResponse<UserCommand>>? res = await _userCommandsController.GetAll();
         OkObjectResult? response = res.Result as OkObjectResult;
 
         Assert.NotNull(response);
@@ -73,9 +74,9 @@ public class UserCommandsControllerTests
         Assert.Equal(0, items?.Count);
 
         // 2 commands.
-        _userCommandsService.AddUserCommand(new("a", "", "!", new(), CommandType.VERSION, CommandMode.SINGLE));
-        _userCommandsService.AddUserCommand(new("a2", "2", "!2", new(), CommandType.VERSION, CommandMode.SINGLE));
-        res = _userCommandsController.GetAll();
+        await _userCommandsService.AddUserCommand(new("super-command-1", "", "super-trigger-1", new(), CommandType.VERSION, CommandMode.SINGLE));
+        await _userCommandsService.AddUserCommand(new("super-command-2", "", "super-trigger-2", new(), CommandType.VERSION, CommandMode.SINGLE));
+        res = await _userCommandsController.GetAll();
         response = res.Result as OkObjectResult;
 
         Assert.NotNull(response);
@@ -87,12 +88,13 @@ public class UserCommandsControllerTests
     }
 
     [Fact]
-    public void GET_GetSingle_Test()
+    public async void GET_GetSingle_Test()
     {
+        await EmptyCollection<UserCommand>();
         UserCommand command = new("a", "", "!", new(), CommandType.VERSION, CommandMode.SINGLE);
-        (_, Guid commandId) = _userCommandsService.AddUserCommand(command);
+        (_, Guid commandId) = await _userCommandsService.AddUserCommand(command);
 
-        ActionResult<UserCommand>? res = _userCommandsController.Get(commandId);
+        ActionResult<UserCommand>? res = await _userCommandsController.Get(commandId);
         OkObjectResult? response = res.Result as OkObjectResult;
 
         Assert.NotNull(response);
@@ -102,56 +104,59 @@ public class UserCommandsControllerTests
         Assert.NotNull(b);
 
         // Non-existent bot.
-        res = _userCommandsController.Get(Guid.NewGuid());
+        res = await _userCommandsController.Get(Guid.NewGuid());
         NotFoundResult? nfResult = res.Result as NotFoundResult;
         Assert.Equal(404, nfResult?.StatusCode ?? 0);
     }
 
     [Fact]
-    public void POST_AddUserCommand_Test()
+    public async void POST_AddUserCommand_Test()
     {
+        await EmptyCollection<UserCommand>();
         UserCommand uc = new("a", "", "!", new(), CommandType.VERSION, CommandMode.SINGLE);
-        _userCommandsController.Post(uc).SuccessResponseShouldBe(true);
+        (await _userCommandsController.Post(uc)).SuccessResponseShouldBe(true);
 
 
         UserCommand? uc2 = new("a2", "2", "!2", new(), CommandType.VERSION, CommandMode.SINGLE);
-        (_, Guid commandId) = _userCommandsService.AddUserCommand(uc2);
-        uc2 = _userCommandsService.UserCommands.Find(c => c.Id == commandId);
+        (_, Guid commandId) = await _userCommandsService.AddUserCommand(uc2);
+        uc2 = await _userCommandsService.Get(commandId);
 
         if (uc2 == null)
         {
             throw new Exception("The user command is somehow null");
         }
 
-        _userCommandsController.Post(uc2).CheckResponse<BadRequestObjectResult>();
+        (await _userCommandsController.Post(uc2)).CheckResponse<BadRequestObjectResult>();
     }
 
     [Fact]
-    public void PUT_UpdateUserCommand_Test()
+    public async void PUT_UpdateUserCommand_Test()
     {
+        await EmptyCollection<UserCommand>();
         UserCommand? uc = new("a", "", "!", new(), CommandType.VERSION, CommandMode.SINGLE);
-        (_, Guid commandId) = _userCommandsService.AddUserCommand(uc);
-        uc = _userCommandsService.UserCommands.Find(c => c.Id == commandId);
+        (_, Guid commandId) = await _userCommandsService.AddUserCommand(uc);
+        uc = await _userCommandsService.Get(commandId);
 
         if (uc == null)
         {
             throw new Exception("The bot is somehow null");
         }
-        _userCommandsController.Put(uc).SuccessResponseShouldBe(true);
+        (await _userCommandsController.Put(uc)).SuccessResponseShouldBe(true);
 
         UserCommand uc2 = new("a2", "2", "!2", new(), CommandType.VERSION, CommandMode.SINGLE);
-        _userCommandsController.Put(uc2).CheckResponse<BadRequestObjectResult>();
+        (await _userCommandsController.Put(uc2)).CheckResponse<BadRequestObjectResult>();
     }
 
     [Fact]
-    public void DELETE_DeleteUserCommand_Test()
+    public async void DELETE_DeleteUserCommand_Test()
     {
+        await EmptyCollection<UserCommand>();
         UserCommand? uc = new("a", "", "!", new(), CommandType.VERSION, CommandMode.SINGLE);
-        (_, Guid commandId) = _userCommandsService.AddUserCommand(uc);
+        (_, Guid commandId) = await _userCommandsService.AddUserCommand(uc);
 
-        _userCommandsController.Delete(commandId).SuccessResponseShouldBe(true);
+        (await _userCommandsController.Delete(commandId)).SuccessResponseShouldBe(true);
 
         // Non-existent bot.
-        _userCommandsController.Delete(Guid.NewGuid()).CheckResponse<BadRequestObjectResult>();
+        (await _userCommandsController.Delete(Guid.NewGuid())).CheckResponse<BadRequestObjectResult>();
     }
 }

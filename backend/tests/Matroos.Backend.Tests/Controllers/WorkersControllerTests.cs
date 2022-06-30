@@ -22,7 +22,8 @@ using WWorker = Matroos.Resources.Classes.Workers.Worker;
 
 namespace Matroos.Worker.Tests.Controllers;
 
-public class WorkersControllerTests
+[Collection("Sequential")]
+public class WorkersControllerTests : BaseTest
 {
     private readonly WorkersController _workersController;
     private readonly IWorkersService _workersService;
@@ -32,9 +33,9 @@ public class WorkersControllerTests
         { "http://w2", new(Guid.NewGuid(), "http://w2", new()) }
     };
 
-    public WorkersControllerTests()
+    public WorkersControllerTests() : base()
     {
-        IBotsService botsService = new BotsService();
+        IBotsService botsService = new BotsService(_dataContextService);
         IConfigurationService configurationService = new ConfigurationService(new ConfigurationBuilder().Build());
 
         Mock<CommunicationService> csMock = new();
@@ -105,22 +106,22 @@ public class WorkersControllerTests
     }
 
     [Fact]
-    public void POST_AddBotToWorker_Test()
+    public async void POST_AddBotToWorker_Test()
     {
         WWorker w = _workers["http://w1"];
         _workersService.Workers.Add(w);
 
-        _workersController.Add(w.Id, new()).SuccessResponseShouldBe(true);
-        _workersController.Add(Guid.NewGuid(), new()).CheckResponse<BadRequestObjectResult>();
+        (await _workersController.Add(w.Id, new())).SuccessResponseShouldBe(true);
+        (await _workersController.Add(Guid.NewGuid(), new())).CheckResponse<BadRequestObjectResult>();
     }
 
     [Fact]
-    public void DELETE_DeleteBotFromWorker_Test()
+    public async void DELETE_DeleteBotFromWorker_Test()
     {
         WWorker w = _workers["http://w1"];
         _workersService.Workers.Add(w);
 
-        _workersController.Delete(w.Id, new()).SuccessResponseShouldBe(true);
-        _workersController.Delete(Guid.NewGuid(), new()).CheckResponse<BadRequestObjectResult>();
+        (await _workersController.Delete(w.Id, new())).SuccessResponseShouldBe(true);
+        (await _workersController.Delete(Guid.NewGuid(), new())).CheckResponse<BadRequestObjectResult>();
     }
 }
