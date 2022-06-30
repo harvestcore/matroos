@@ -32,7 +32,7 @@ public static class CommandHelper
 
         // Invoke the "Run" method to run the command.
         commandType
-            ?.GetMethod("Run")
+            .GetMethod("Run")
             ?.Invoke(generatedInstance, new object[] { client, message, bot, command });
     }
 }

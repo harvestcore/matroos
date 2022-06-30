@@ -96,10 +96,12 @@ public class EnumExtensionsTests
             { "ChannelId", "123" },
             { "ThisParameter", "ShouldNotBeHere" }
         };
-        Assert.Throws<TargetInvocationException>(() => CommandType.STATUS.ValidateParameters(parameters));
+        exception = Record.Exception(() => CommandType.STATUS.ValidateParameters(parameters));
+        Assert.Null(exception);
 
         // No parameters at all.
         parameters = new();
-        Assert.Throws<TargetInvocationException>(() => CommandType.STATUS.ValidateParameters(parameters));
+        exception = Record.Exception(() => CommandType.STATUS.ValidateParameters(parameters));
+        Assert.Null(exception);
     }
 }

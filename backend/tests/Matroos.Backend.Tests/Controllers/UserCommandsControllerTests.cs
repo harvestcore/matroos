@@ -52,7 +52,7 @@ public class UserCommandsControllerTests : BaseTest
         List<CommandType> commandTypes = commandEnumTypes.ToList();
         foreach (CommandSignature item in commandSignatures?.Items ?? new())
         {
-            Assert.Contains(commandTypes, ct => ct == item.Type);
+            Assert.Contains(commandTypes, ct => ct == item.CommandType);
             Assert.NotNull(item.Signature);
             Assert.NotNull(item.AllowedModes);
         }

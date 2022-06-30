@@ -1,4 +1,7 @@
-﻿using Matroos.Resources.Extensions;
+﻿using System.Reflection;
+
+using Matroos.Resources.Attributes;
+using Matroos.Resources.Extensions;
 using Matroos.Resources.Interfaces;
 
 using MongoDB.Bson;
@@ -126,15 +129,25 @@ public class UserCommand : IBaseItem
             return;
         }
 
+        List<ParameterSignature> parameterSignatures = Type.GetParametersSignature();
         foreach (KeyValuePair<string, object> param in parameters)
         {
-            if (Parameters.ContainsKey(param.Key) && param.Value != null)
+            ParameterSignature? signature = parameterSignatures.Find(item =>
+                item.Name.ToLower().Equals(param.Key.ToLower())
+            );
+
+            Type? parameterType = signature?.DataType.GetAttribute<ATypeAttribute>().Type;
+            MethodInfo? method = typeof(ObjectExtensions).GetMethod("GetValue");
+            MethodInfo? genericMethod = method?.MakeGenericMethod(parameterType ?? typeof(object));
+            object? value = genericMethod?.Invoke(this, new object[] { param.Value });
+
+            if (Parameters.ContainsKey(param.Key) && value != null)
             {
-                Parameters[param.Key] = param.Value;
+                Parameters[param.Key] = value;
             }
-            else if (param.Value != null)
+            else if (value != null)
             {
-                Parameters.Add(param.Key, param.Value);
+                Parameters.Add(param.Key, value);
             }
         }
     }

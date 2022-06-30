@@ -15,7 +15,7 @@ public class TimerCommand : BaseCommand
                 name: "Interval",
                 displayName: "TimeSpan",
                 required: true,
-                type: DataType.DATE,
+                dataType: DataType.DATE,
                 @default: "",
                 validator: ValidateInterval
             ),
@@ -23,7 +23,7 @@ public class TimerCommand : BaseCommand
                 name: "CommandId",
                 displayName: "Command?",
                 required: false,
-                type: DataType.STRING,
+                dataType: DataType.STRING,
                 @default: "",
                 validator: _ => true
             ),
@@ -31,7 +31,7 @@ public class TimerCommand : BaseCommand
                 name: "Active",
                 displayName: "Active",
                 required: true,
-                type: DataType.BOOLEAN,
+                dataType: DataType.BOOLEAN,
                 @default: false,
                 validator: _ => true
             )
@@ -45,14 +45,6 @@ public class TimerCommand : BaseCommand
     /// <returns></returns>
     private bool ValidateInterval(object expression)
     {
-        try
-        {
-            CronExpression.ValidateExpression((string)expression);
-            return true;
-        }
-        catch (Exception)
-        {
-            return false;
-        }
+        return CronExpression.IsValidExpression((string)expression);
     }
 }

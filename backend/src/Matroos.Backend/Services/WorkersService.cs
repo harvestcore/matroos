@@ -42,7 +42,7 @@ public class WorkersService : IWorkersService
     /// <inheritdoc />
     public async Task RenewWorkers()
     {
-        string workers = _configurationService.Get<string>("WORKERS") ?? "";
+        string workers = _configurationService.Get<string>("Workers") ?? "";
         List<string> workerURLs = workers.GetWorkerURLs();
 
         foreach (string workerURL in workerURLs)
@@ -56,11 +56,11 @@ public class WorkersService : IWorkersService
             Worker? current = Workers.Find(item => item.RemoteUrl.Equals(workerURL));
             if (current != null)
             {
-                current.Renew(newWorker.Bots, workerURL);
+                current.Renew(newWorker.Id, newWorker.Bots, workerURL);
             }
             else
             {
-                newWorker.Renew(newWorker.Bots, workerURL);
+                newWorker.Renew(newWorker.Id, newWorker.Bots, workerURL);
                 Workers.Add(newWorker);
             }
         }
@@ -133,6 +133,8 @@ public class WorkersService : IWorkersService
             _ = _communicationService.UpdateBotInWorker(workerFound, bot);
         }
 
+        _ = RenewWorkers();
+
         return true;
     }
 
@@ -153,6 +155,8 @@ public class WorkersService : IWorkersService
             // Do not wait for this call to finish.
             _ = _communicationService.DeleteBotFromWorker(workerFound, bot.Id);
         }
+
+        _ = RenewWorkers();
 
         return true;
     }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 using Discord.WebSocket;
 
@@ -60,6 +61,15 @@ public class BaseCommand
     }
 
     /// <summary>
+    /// Throws a validation exception.
+    /// </summary>
+    /// <param name="name">The name of the parameter that is not valid.</param>
+    private static void Throw(string name)
+    {
+        throw new ValidationException($"Validation failed. The parameter '{name}' is not valid.");
+    }
+
+    /// <summary>
     /// Validate the given parameters.
     /// </summary>
     /// <param name="parameters">The parameters to be validated.</param>
@@ -70,23 +80,24 @@ public class BaseCommand
         {
             parameters.TryGetValue(parameter.Name, out object? providedParam);
 
-            if (
-                (providedParam == null && parameter.Required) ||
-                parameter.Type.GetAttribute<ATypeAttribute>().Type != providedParam?.GetType() ||
-                !parameter.Validator(providedParam)
-            )
+            Type parameterType = parameter.DataType.GetAttribute<ATypeAttribute>().Type;
+            MethodInfo? method = typeof(ObjectExtensions).GetMethod("GetValue");
+            MethodInfo? genericMethod = method?.MakeGenericMethod(parameterType);
+            object? value = genericMethod?.Invoke(this, new object[] { providedParam });
+
+            if (parameter.Required)
             {
-                throw new ValidationException($"Validation failed. The parameter '{parameter.Name}' is not valid.");
+                if (providedParam == null || parameterType != value?.GetType() || !parameter.Validator(value))
+                {
+                    Throw(parameter.Name);
+                }
             }
-        }
-
-        foreach (KeyValuePair<string, object> parameter in parameters)
-        {
-            ParameterSignature? signature = Parameters.Find(item => item.Name.Equals(parameter.Key));
-
-            if (signature == null || !signature.Validator(parameter.Value) || parameter.Value.GetType() != signature.Type.GetAttribute<ATypeAttribute>().Type)
+            else
             {
-                throw new ValidationException($"Validation failed. The parameter '{parameter.Key}' is not valid.");
+                if (providedParam != null && (parameterType != value?.GetType() || !parameter.Validator(value)))
+                {
+                    Throw(parameter.Name);
+                }
             }
         }
     }

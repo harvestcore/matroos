@@ -40,6 +40,15 @@ builder.Services.AddControllers().AddJsonOptions(options =>
     options.JsonSerializerOptions.Converters.Add(new JsonMapper(dcs));
 });
 
+// CORS
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:3000");
+    });
+});
+
 DBMapper.RegisterClassMappers(dcs);
 
 
@@ -50,10 +59,17 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    // CORS
+    app.UseCors();
 }
 
-app.UseMiddleware<ExceptionMiddleware>();
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.Run();

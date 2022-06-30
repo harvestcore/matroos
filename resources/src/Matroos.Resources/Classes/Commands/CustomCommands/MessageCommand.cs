@@ -17,7 +17,7 @@ public class MessageCommand : BaseCommand, IRunnableCommand
                 name: "Message",
                 displayName: "Message",
                 required: true,
-                type: DataType.STRING,
+                dataType: DataType.STRING,
                 @default: "",
                 validator: _ => true
             ),
@@ -25,7 +25,7 @@ public class MessageCommand : BaseCommand, IRunnableCommand
                 name: "ChannelId",
                 displayName: "Channel",
                 required: false,
-                type: DataType.STRING,
+                dataType: DataType.STRING,
                 @default: "",
                 validator: _ => true
             ),
@@ -33,7 +33,7 @@ public class MessageCommand : BaseCommand, IRunnableCommand
                 name: "IsResponse",
                 displayName: "Response?",
                 required: false,
-                type: DataType.BOOLEAN,
+                dataType: DataType.BOOLEAN,
                 @default: false,
                 validator: _ => true
             ),
@@ -41,7 +41,7 @@ public class MessageCommand : BaseCommand, IRunnableCommand
                 name: "IsTTS",
                 displayName: "TTS?",
                 required: false,
-                type: DataType.BOOLEAN,
+                dataType: DataType.BOOLEAN,
                 @default: false,
                 validator: _ => true
             )
@@ -58,8 +58,8 @@ public class MessageCommand : BaseCommand, IRunnableCommand
 
         // Channel where to send the message.
         ISocketMessageChannel channel;
-        string channelId = command.Parameters["ChannelId"]?.GetValue<string>() ?? "";
-        bool isTTS = command.Parameters["IsTTS"].GetValue<bool>();
+        string channelId = command.Parameters.GetValueOrDefault("ChannelId")?.GetValue<string>() ?? "";
+        bool isTTS = command.Parameters.GetValueOrDefault("IsTTS")?.GetValue<bool>() ?? false;
 
         // There is no channel where to send messages.
         if (string.IsNullOrEmpty(channelId) && message == null)
@@ -67,7 +67,7 @@ public class MessageCommand : BaseCommand, IRunnableCommand
             return;
         }
 
-        if (client.GetChannel(Convert.ToUInt64(channelId)) is ISocketMessageChannel channelFound)
+        if (!string.IsNullOrEmpty(channelId) && client.GetChannel(Convert.ToUInt64(channelId)) is ISocketMessageChannel channelFound)
         {
             channel = channelFound;
         }
@@ -81,8 +81,8 @@ public class MessageCommand : BaseCommand, IRunnableCommand
             channel = message.Channel;
         }
 
-        string msg = command.Parameters["Message"]?.GetValue<string>() ?? "";
-        bool isResponse = command.Parameters["IsResponse"].GetValue<bool>();
+        string msg = command.Parameters.GetValueOrDefault("Message")?.GetValue<string>() ?? "";
+        bool isResponse = command.Parameters.GetValueOrDefault("IsResponse")?.GetValue<bool>() ?? false;
 
         if (isResponse && message != null)
         {

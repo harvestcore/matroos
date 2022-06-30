@@ -52,7 +52,7 @@ public class WorkersServiceTests : BaseTest
     [Fact]
     public void RenewWorkersTests()
     {
-        _configurationService.Set("WORKERS", "http://w1;http://w2");
+        _configurationService.Set("Workers", "http://w1;http://w2");
         Assert.Empty(_workersService.Workers);
 
         _workersService.RenewWorkers();

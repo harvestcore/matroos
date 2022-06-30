@@ -5,7 +5,7 @@ public class CommandSignature
     /// <summary>
     /// The command type.
     /// </summary>
-    public CommandType Type { get; }
+    public CommandType CommandType { get; }
 
     /// <summary>
     /// The parameter signature.
@@ -23,9 +23,9 @@ public class CommandSignature
     /// <param name="type">The command type.</param>
     /// <param name="signature">The parameter signature.</param>
     /// <param name="allowedModes">The allowed command modes.</param>
-    public CommandSignature(CommandType type, List<ParameterSignature> signature, List<CommandMode> allowedModes)
+    public CommandSignature(CommandType commandType, List<ParameterSignature> signature, List<CommandMode> allowedModes)
     {
-        Type = type;
+        CommandType = commandType;
         Signature = signature;
         AllowedModes = allowedModes;
     }

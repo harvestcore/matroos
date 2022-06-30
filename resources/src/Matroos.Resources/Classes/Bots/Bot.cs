@@ -94,10 +94,8 @@ public class Bot : IBaseItem
     /// <summary>
     /// Whether the bot is running or not.
     /// </summary>
-    [JsonIgnore]
     [BsonIgnore]
-    [IgnoreDataMember]
-    public bool Running { get; internal set; }
+    public bool Running { get; set; }
 
     /// <summary>
     /// The creation time of the bot.

@@ -35,9 +35,17 @@ public class CommunicationService : ICommunicationService
             if (response.IsSuccessStatusCode)
             {
                 string output = await response.Content.ReadAsStringAsync();
-                Worker? worker = JsonSerializer.Deserialize<Worker>(output ?? "");
+                Worker? worker = JsonSerializer.Deserialize<Worker>(
+                    output ?? "",
+                    new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase }
+                );
 
-                return worker ?? new();
+                if (worker == null || !worker.RemoteUrl.Equals("update"))
+                {
+                    return null;
+                }
+
+                return worker;
             }
         }
         catch (Exception ex)
@@ -59,7 +67,6 @@ public class CommunicationService : ICommunicationService
             if (response.IsSuccessStatusCode)
             {
                 // To be handled.
-                Console.WriteLine("AddBotToWorker");
             }
         }
         catch (Exception ex)
@@ -78,7 +85,6 @@ public class CommunicationService : ICommunicationService
             if (response.IsSuccessStatusCode)
             {
                 // To be handled.
-                Console.WriteLine("UpdateBotInWorker");
             }
         }
         catch (Exception ex)
@@ -97,7 +103,6 @@ public class CommunicationService : ICommunicationService
             if (response.IsSuccessStatusCode)
             {
                 // To be handled.
-                Console.WriteLine("DeleteBotFromWorker");
             }
         }
         catch (Exception ex)
@@ -116,7 +121,6 @@ public class CommunicationService : ICommunicationService
             if (response.IsSuccessStatusCode)
             {
                 // To be handled.
-                Console.WriteLine("StartBotInWorker");
             }
         }
         catch (Exception ex)
@@ -135,7 +139,6 @@ public class CommunicationService : ICommunicationService
             if (response.IsSuccessStatusCode)
             {
                 // To be handled.
-                Console.WriteLine("StartBotInWorker");
             }
         }
         catch (Exception ex)

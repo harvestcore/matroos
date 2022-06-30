@@ -25,7 +25,7 @@ public class ParameterSignature
     /// <summary>
     /// The data type of the parameter.
     /// </summary>
-    public DataType Type { get; }
+    public DataType DataType { get; }
 
     /// <summary>
     /// The default value of the parameter.
@@ -48,12 +48,12 @@ public class ParameterSignature
     /// <param name="type">The data type of the parameter.</param>
     /// <param name="default">The default value of the parameter.</param>
     /// <param name="validator">The validation function.</param>
-    public ParameterSignature(string name, string displayName, bool required, DataType type, object @default, Func<object, bool> validator)
+    public ParameterSignature(string name, string displayName, bool required, DataType dataType, object @default, Func<object, bool> validator)
     {
         Name = name ?? throw new ArgumentException("The ParameterSignature name must not be empty.");
         DisplayName = displayName ?? "";
         Required = required;
-        Type = type;
+        DataType = dataType;
         Default = @default;
         Validator = validator;
 

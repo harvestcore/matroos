@@ -120,7 +120,7 @@ public class CronService
 
         foreach ((Guid _, ITrigger trigger) in Triggers)
         {
-            _scheduler?.UnscheduleJob(trigger.Key);
+            _scheduler.UnscheduleJob(trigger.Key);
         }
     }
 
