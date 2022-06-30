@@ -35,10 +35,12 @@ builder.Services.AddSingleton<IUserCommandsService, UserCommandsService>();
 builder.Services.AddSingleton<IWorkersService, WorkersService>();
 builder.Services.AddSingleton<ICommunicationService, CommunicationService>();
 
+// Mappers
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.Converters.Add(new JsonMapper(dcs));
 });
+DBMapper.RegisterClassMappers(dcs);
 
 // CORS
 builder.Services.AddCors(options =>
@@ -49,9 +51,7 @@ builder.Services.AddCors(options =>
     });
 });
 
-DBMapper.RegisterClassMappers(dcs);
-
-
+// Build the application.
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
