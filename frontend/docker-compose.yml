@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+    matroos-front:
+        container_name: matroos-front
+        build:
+            dockerfile: Dockerfile
+            context: .
+
+        ports:
+            - 3003:80
