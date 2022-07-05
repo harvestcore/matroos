@@ -303,7 +303,9 @@ export default function Home() {
                                     expand={expanded}
                                     onClick={handleExpandClick}
                                     aria-expanded={expanded}
-                                    aria-label="show more"
+                                    sx={{
+                                        marginX: '0.5em'
+                                    }}
                                 >
                                     <ExpandMoreIcon />
                                 </ExpandMore>
