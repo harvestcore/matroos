@@ -36,8 +36,6 @@ const pages: Page[] = [
 ];
 
 export default function App() {
-    const handleClick = (href: string) => {};
-
     return (
         <Router>
             <AppBar position="relative">
@@ -51,7 +49,6 @@ export default function App() {
                         {pages.map(page => (
                             <Button
                                 key={page.href}
-                                onClick={() => handleClick(page.href)}
                                 size={page.isHome ? 'large' : 'small'}
                                 sx={{ color: 'white', display: 'block' }}
                             >
