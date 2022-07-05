@@ -1,0 +1,11 @@
+\chapter{Variables de entorno}
+
+\textbf{Matroos} hace uso de algunas variables de entorno para funcionar correctamente que deben ser configuradas. Son las siguientes:
+
+\begin{itemize}
+	\item \textsf{MongoDBConnectionString}. \textit{String} de conexión al servidor de \textit{MongoDB}. \\ E.g.: \textsf{mongodb://mongodb:27017/matroos}
+	\item \textsf{MongoDBDatabaseName}. Nombre de la base de datos. \\ E.g.: \textsf{matroos}
+	\item \textsf{TestMongoDBConnectionString}. \textit{String} de conexión al servidor de \textit{MongoDB} para ejecutar las pruebas unitarias. \\ E.g.: \textsf{mongodb://mongodb:27017/matroos-test}
+	\item \textsf{TestMongoDBDatabaseName}. Nombre de la base de datos para ejecutar las pruebas unitarias. \\ E.g.: \textsf{matroos-test}
+	\item \textsf{Workers}. URLs de los \textit{workers} desplegados separadas por ''\textsf{;}``. \\ E.g.: \textsf{http://worker1/;http://worker2/}
+\end{itemize}

@@ -1,0 +1,84 @@
+\chapter{Instalación del sistema}
+
+Una vez se ha clonado \href{https://github.com/harvestcore/matroos}{el repositorio} se puede instalar el software siguiendo los pasos que se describen a continuación.
+
+\section{\textit{Backend} y \textit{workers}}
+
+
+Para ejecutar estos servicios se recomienda el uso de \textit{Visual Studio}, ya que facilita mucho este proceso. Aún así, se puede ejecutar mediante línea de comandos:
+
+\begin{lstlisting}
+cd matroos
+
+// Compilar Backend.
+cd backend
+dotnet restore
+dotnet build --no-restore -c Release
+dotnet publish -c Release -o ./app --no-restore
+
+// Compilar Worker.
+cd worker
+dotnet restore
+dotnet build --no-restore -c Release
+dotnet publish -c Release -o ./app --no-restore
+
+
+// Ejecutar backend.
+cd backend/app
+dotnet Matroos.Backend.dll
+
+
+// Ejecutar worker.
+cd worker/app
+dotnet Matroos.Worker.dll
+\end{lstlisting}
+
+En cambio, para ejecutar de una manera mucho más sencilla los servicios, se puede usar \textit{Docker}.
+
+\begin{lstlisting}[language=sh]
+cd matroos
+
+// Construir imagenes.
+docker-compose build
+
+// Ejecutar contenedores.
+docker-compose up
+\end{lstlisting}
+
+Además, previa ejecución de los servicios, se deben revisar las variables de entorno.
+
+
+
+
+\section{Frontend}
+
+Ejecución del \textit{frontend} instalando y construyendo el servicio de manera local:
+
+\begin{lstlisting}[language=sh]
+cd matroos/frontend
+
+// Instalación de dependencias.
+npm install
+
+// Ejecución de un entorno de pruebas.
+npm run start
+
+// Construcción de una versión de producción.
+npm run build
+\end{lstlisting}
+
+En el caso de utilizar una \textit{build} de producción se recomienda utilizar un servidor web como \textit{NGINX}, aunque puede usarse cualquier otro.
+
+Por otro lado se puede ejecutar el \textit{frontend} haciendo uso de \textit{Docker}, para ello es necesario ejecutar:
+
+\begin{lstlisting}[language=sh]
+cd matroos/frontend
+
+// Construir imagen.
+docker-compose build
+
+// Ejecutar contenedor.
+docker-compose up
+\end{lstlisting}
+
+De cualquier modo, previa ejecución del \textit{frontend} debe configurarse la variable \textit{BACKEND\_URL}, la cual se encuentra en el archivo \textit{frontend/api/fetch.ts}. En un ambiente local puede definirse la variable de entorno con ese mismo nombre, en el caso de una \textit{build} de producción o en el uso de \textit{Docker} debe asignarse esa variable manualmente.
