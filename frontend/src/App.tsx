@@ -40,7 +40,7 @@ export default function App() {
 
     return (
         <Router>
-            <AppBar position="fixed">
+            <AppBar position="relative">
                 <Toolbar disableGutters>
                     <Box
                         sx={{

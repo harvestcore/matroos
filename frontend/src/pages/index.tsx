@@ -229,7 +229,7 @@ export default function Home() {
                         display: 'flex',
                         flexDirection: 'row',
                         justifyContent: 'space-around',
-                        marginY: '5em'
+                        marginY: '3em'
                     }}
                 >
                     <Box sx={{ width: '30%' }}>
