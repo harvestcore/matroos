@@ -299,3 +299,4 @@ lastUpdate
 msg
 remoteUrl
 userCommands
+datacontextservice
