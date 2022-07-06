@@ -17,6 +17,11 @@ services:
             - Workers=http://worker1/;http://worker2/
             - MongoDBConnectionString=mongodb://mongodb:27017/matroos
             - MongoDBDatabaseName=matroos
+        healthcheck:
+            test: curl --fail -s http://localhost/health || exit 1
+            interval: 30s
+            timeout: 10s
+            retries: 3
 
     worker1:
         container_name: worker1
@@ -24,6 +29,11 @@ services:
         restart: always
         ports:
             - "7001:80"
+        healthcheck:
+            test: curl --fail -s http://localhost/health || exit 1
+            interval: 30s
+            timeout: 10s
+            retries: 3
 
     worker2:
         container_name: worker2
@@ -31,3 +41,8 @@ services:
         restart: always
         ports:
             - "7002:80"
+        healthcheck:
+            test: curl --fail -s http://localhost/health || exit 1
+            interval: 30s
+            timeout: 10s
+            retries: 3
