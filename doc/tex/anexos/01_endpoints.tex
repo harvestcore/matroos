@@ -91,6 +91,21 @@
     \end{adjustbox}
 \end{table}
 
+\subsection{\textit{HealthInfo}}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|L|l|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        ok & boolean & Sí \\ \hline
+        version & string & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
 \subsection{\textit{ItemsResponse}}
 \begin{table}[H]
     \centering
@@ -749,6 +764,30 @@ No aplica.
     \hline
         200 & OK & Success & SuccessResponse \\ \hline
         400 & Bad Request & Failure & MessageResponse \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+\section{\textit{Health}}
+
+Este \textit{endpoint} se encuentra disponible tanto en el \textit{backend} como en los \textit{workers}.
+
+\subsection{\textit{GET /health}}
+No aplica.
+
+\subsubsection{Respuestas}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|l|L|}
+    \hline
+        \textbf{\textit{Código}} & \textbf{\textit{Significado}} & \textbf{\textit{Descripción}} & \textbf{\textit{Esquema}} \\ \hline
+    \hline
+        200 & OK & Success & HealthInfo \\ \hline
     \end{tabularx}
     \end{adjustbox}
 \end{table}

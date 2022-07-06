@@ -560,7 +560,7 @@ Se han desarrollado servicios para manejar todas las operaciones relacionadas co
 
 \subsection{Controladores}
 
-Del mismo modo que existen tres servicios distintos para manejar los datos del sistema, existen tres controladores que implementan los endpoints de la \textit{API REST}. Los controladores son los siguientes, y esencialmente hacen uso de los servicios anteriores, para realizar las operaciones necesarias:
+Del mismo modo que existen tres servicios distintos para manejar los datos del sistema, existen tres controladores que implementan los endpoints de la \textit{API REST}. Los controladores son los siguientes, y esencialmente hacen uso de los servicios anteriores, para realizar las operaciones necesarias. De forma adicional se ha creado un controlador para conocer el estado del \textit{backend}.
 
 \begin{itemize}
 	\item \textit{BotsController}
@@ -589,6 +589,10 @@ Del mismo modo que existen tres servicios distintos para manejar los datos del s
 		\item \textit{POST /workers/<workerId>}
 		\item \textit{DELETE /workers/<workerId>}
 	\end{itemize}
+	\item \textit{HealthController}
+	\begin{itemize}
+		\item \textit{GET /health}. Para conocer el estado del \textit{backend}.
+	\end{itemize}
 \end{itemize}
 
 En el anexo XXX se encuentra la especificación y documentación más completa de todos y cada uno de los endpoints del sistema.
@@ -612,7 +616,7 @@ El único servicio implementado en este caso es el siguiente:
 
 \subsection{Controladores}
 
-En este caso también es sencilla la implementación, y solo ha sido necesario un controlador.
+En este caso también es sencilla la implementación, y solo han sido necesarios dos controladores.
 
 \begin{itemize}
 	\item \textit{MainController}
@@ -623,6 +627,10 @@ En este caso también es sencilla la implementación, y solo ha sido necesario u
 		\item \textit{DELETE /<botId>}
 		\item \textit{GET /start/<botId>}
 		\item \textit{GET /stop/<botId>}
+	\end{itemize}
+	\item \textit{HealthController}
+	\begin{itemize}
+		\item \textit{GET /health}. Para conocer el estado del \textit{worker}.
 	\end{itemize}
 \end{itemize}
 
