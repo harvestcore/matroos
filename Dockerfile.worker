@@ -13,6 +13,9 @@ RUN dotnet restore && \
 	dotnet publish -c Release -o /app --no-restore
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0.6-alpine3.15
+
+RUN apk add --no-cache curl
+
 WORKDIR /app
 COPY --from=build /app ./
 ENTRYPOINT ["dotnet", "Matroos.Worker.dll"]
