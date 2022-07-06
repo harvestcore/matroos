@@ -1,0 +1,754 @@
+\chapter{Especificación de \textit{endpoints}}
+
+\section{Esquemas}
+
+\subsection{Bot}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|L|l|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        id & string(UUID) & Sí \\ \hline
+        name & string & Sí \\ \hline
+        description & string & Sí \\ \hline
+        key & string & Sí \\ \hline
+        prefix & string & Sí \\ \hline
+        userCommands & []UserCommand & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{\textit{CommandMode}}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|L|l|}
+    \hline
+        \textbf{\textit{Propiedad}} & \textbf{\textit{Valor}} \\ \hline
+    \hline
+        INLINE & 0 \\ \hline
+        SCOPED & 1 \\ \hline
+        HEADLESS & 2 \\ \hline
+        SINGLE & 3 \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{\textit{CommandSignature}}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|L|l|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        type & CommandType & Sí \\ \hline
+        Signature & []ParameterSignature & Sí \\ \hline
+        allowedModes & []CommandMode & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{\textit{CommandType}}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|L|l|}
+    \hline
+        \textbf{\textit{Propiedad}} & \textbf{\textit{Valor}} \\ \hline
+    \hline
+        MESSAGE & 0 \\ \hline
+        PING & 1 \\ \hline
+        STATUS & 2 \\ \hline
+        TIMER & 3 \\ \hline
+        VERSION & 4 \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{\textit{DataType}}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|L|l|}
+    \hline
+        \textbf{\textit{Propiedad}} & \textbf{\textit{Valor}} \\ \hline
+    \hline
+        BOOLEAN & 0 \\ \hline
+        DATE & 1 \\ \hline
+        DOUBLE & 2 \\ \hline
+        INTEGER & 3 \\ \hline
+        STRING & 4 \\ \hline
+        LIST & 5 \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{\textit{ItemsResponse}}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|L|l|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        count & integer & Sí \\ \hline
+        items & []object & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{\textit{MessageResponse}}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|L|l|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+    	msg & string & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{\textit{ParameterSignature}}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|L|l|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        name & string & Sí \\ \hline
+        displayName & string & Sí \\ \hline
+        required & boolean & Sí \\ \hline
+        type & []DataType & Sí \\ \hline
+        default & object & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{\textit{SuccessResponse}}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|L|l|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+    	success & boolean & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{\textit{UserCommand}}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|L|l|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        id & string(UUID) & Sí \\ \hline
+        name & string & Sí \\ \hline
+        description & string & Sí \\ \hline
+        type & []CommandType & Sí \\ \hline
+        trigger & string & Sí \\ \hline
+        mode & []CommandMode & Sí \\ \hline
+        parameters & object & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsection{\textit{Worker}}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|L|l|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        id & string(UUID) & Sí \\ \hline
+        remoteUrl & string & Sí \\ \hline
+        bots & []Bot & Sí \\ \hline
+        lastUpdate & date & Sí \\ \hline
+        isUp & boolean & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+
+
+
+
+\section{Bots}
+
+\subsection{\textit{GET /bots}}
+
+\subsubsection{Parámetros}
+No aplica.
+
+\subsubsection{Respuestas}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|l|L|}
+    \hline
+        \textbf{\textit{Código}} & \textbf{\textit{Significado}} & \textbf{\textit{Descripción}} & \textbf{\textit{Esquema}} \\ \hline
+    \hline
+        200 & OK & Success & ItemsResponse<Bot> \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+\subsection{\textit{POST /bots}}
+
+\subsubsection{Parámetros}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|L|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{En}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        - & body & Bot & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsubsection{Respuestas}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|l|L|}
+    \hline
+        \textbf{\textit{Código}} & \textbf{\textit{Significado}} & \textbf{\textit{Descripción}} & \textbf{\textit{Esquema}} \\ \hline
+    \hline
+        200 & OK & Success & ItemsResponse<Bot> \\ \hline
+        400 & Bad Request & Failure & - \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+
+\subsection{\textit{PUT /bots}}
+
+\subsubsection{Parámetros}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|L|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{En}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        - & body & Bot & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsubsection{Respuestas}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|l|L|}
+    \hline
+        \textbf{\textit{Código}} & \textbf{\textit{Significado}} & \textbf{\textit{Descripción}} & \textbf{\textit{Esquema}} \\ \hline
+    \hline
+        200 & OK & Success & SuccessResponse \\ \hline
+        400 & Bad Request & Failure & MessageResponse \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+
+\subsection{\textit{GET /bots/\{botId\}}}
+\subsubsection{Parámetros}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|L|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{En}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        botId & query & string & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsubsection{Respuestas}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|l|L|}
+    \hline
+        \textbf{\textit{Código}} & \textbf{\textit{Significado}} & \textbf{\textit{Descripción}} & \textbf{\textit{Esquema}} \\ \hline
+    \hline
+        200 & OK & Success & Bot \\ \hline
+        404 & Not Found & Failure & - \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+
+\subsection{\textit{DELETE /bots/\{botId\}}}
+\subsubsection{Parámetros}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|L|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{En}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        botId & query & string & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsubsection{Respuestas}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|l|L|}
+    \hline
+        \textbf{\textit{Código}} & \textbf{\textit{Significado}} & \textbf{\textit{Descripción}} & \textbf{\textit{Esquema}} \\ \hline
+    \hline
+        200 & OK & Success & SuccessResponse \\ \hline
+        400 & Bad Request & Failure & MessageResponse \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+
+\section{\textit{Commands}}
+
+\subsection{\textit{GET /commands/signatures}}
+
+\subsubsection{Parámetros}
+No aplica.
+
+\subsubsection{Respuestas}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|l|L|}
+    \hline
+        \textbf{\textit{Código}} & \textbf{\textit{Significado}} & \textbf{\textit{Descripción}} & \textbf{\textit{Esquema}} \\ \hline
+    \hline
+        200 & OK & Success & ItemsResponse<CommandSignature> \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+\subsection{\textit{GET /commands}}
+
+\subsubsection{Parámetros}
+No aplica.
+
+\subsubsection{Respuestas}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|l|L|}
+    \hline
+        \textbf{\textit{Código}} & \textbf{\textit{Significado}} & \textbf{\textit{Descripción}} & \textbf{\textit{Esquema}} \\ \hline
+    \hline
+        200 & OK & Success & ItemsResponse<UserCommand> \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+
+\subsection{\textit{POST /commands}}
+
+\subsubsection{Parámetros}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|L|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{En}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        - & body & UserCommand & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsubsection{Respuestas}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|l|L|}
+    \hline
+        \textbf{\textit{Código}} & \textbf{\textit{Significado}} & \textbf{\textit{Descripción}} & \textbf{\textit{Esquema}} \\ \hline
+    \hline
+        200 & OK & Success & SuccessResponse \\ \hline
+        400 & Bad Request & Failure & MessageResponse \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+
+
+\subsection{\textit{PUT /commands}}
+
+\subsubsection{Parámetros}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|L|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{En}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        - & body & UserCommand & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsubsection{Respuestas}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|l|L|}
+    \hline
+        \textbf{\textit{Código}} & \textbf{\textit{Significado}} & \textbf{\textit{Descripción}} & \textbf{\textit{Esquema}} \\ \hline
+    \hline
+        200 & OK & Success & SuccessResponse \\ \hline
+        400 & Bad Request & Failure & MessageResponse \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+
+
+
+
+
+\subsection{\textit{GET /commands/\{commandId\}}}
+\subsubsection{Parámetros}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|L|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{En}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        commandId & query & string(UUID) & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsubsection{Respuestas}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|l|L|}
+    \hline
+        \textbf{\textit{Código}} & \textbf{\textit{Significado}} & \textbf{\textit{Descripción}} & \textbf{\textit{Esquema}} \\ \hline
+    \hline
+        200 & OK & Success & UserCommand \\ \hline
+        404 & Not Found & Failure & - \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+
+
+\subsection{\textit{DELETE /commands/\{commandId\}}}
+\subsubsection{Parámetros}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|L|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{En}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        commandId & query & string(UUID) & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsubsection{Respuestas}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|l|L|}
+    \hline
+        \textbf{\textit{Código}} & \textbf{\textit{Significado}} & \textbf{\textit{Descripción}} & \textbf{\textit{Esquema}} \\ \hline
+    \hline
+        200 & OK & Success & SuccessResponse \\ \hline
+        400 & Bad Request & Failure & MessageResponse \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+
+
+
+
+\section{\textit{Workers}}
+
+
+
+
+\subsection{\textit{GET /workers}}
+
+\subsubsection{Parámetros}
+No aplica.
+
+\subsubsection{Respuestas}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|l|L|}
+    \hline
+        \textbf{\textit{Código}} & \textbf{\textit{Significado}} & \textbf{\textit{Descripción}} & \textbf{\textit{Esquema}} \\ \hline
+    \hline
+        200 & OK & Success & ItemsResponse<Worker> \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+\subsection{\textit{GET /workers/\{workerId\}/start/\{botId\}}}
+\subsubsection{Parámetros}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|L|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{En}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        workerId & query & string(UUID) & Sí \\ \hline
+        botId & query & string(UUID) & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsubsection{Respuestas}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|l|L|}
+    \hline
+        \textbf{\textit{Código}} & \textbf{\textit{Significado}} & \textbf{\textit{Descripción}} & \textbf{\textit{Esquema}} \\ \hline
+    \hline
+        200 & OK & Success & SuccessResponse \\ \hline
+        400 & Bad Request & Failure & MessageResponse \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+\subsection{\textit{GET /workers/\{workerId\}/stop/\{botId\}}}
+\subsubsection{Parámetros}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|L|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{En}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        workerId & query & string(UUID) & Sí \\ \hline
+        botId & query & string(UUID) & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsubsection{Respuestas}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|l|L|}
+    \hline
+        \textbf{\textit{Código}} & \textbf{\textit{Significado}} & \textbf{\textit{Descripción}} & \textbf{\textit{Esquema}} \\ \hline
+    \hline
+        200 & OK & Success & SuccessResponse \\ \hline
+        400 & Bad Request & Failure & MessageResponse \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+
+
+
+\subsection{\textit{GET /workers/\{workerId\}}}
+\subsubsection{Parámetros}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|L|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{En}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        workerId & query & string(UUID) & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsubsection{Respuestas}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|l|L|}
+    \hline
+        \textbf{\textit{Código}} & \textbf{\textit{Significado}} & \textbf{\textit{Descripción}} & \textbf{\textit{Esquema}} \\ \hline
+    \hline
+        200 & OK & Success & Worker \\ \hline
+        404 & Not Found & Failure & - \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+
+
+\subsection{\textit{POST /workers/\{workerId\}}}
+\subsubsection{Parámetros}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|L|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{En}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        workerId & query & string(UUID) & Sí \\ \hline
+        - & body & []string(UUID) & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsubsection{Respuestas}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|l|L|}
+    \hline
+        \textbf{\textit{Código}} & \textbf{\textit{Significado}} & \textbf{\textit{Descripción}} & \textbf{\textit{Esquema}} \\ \hline
+    \hline
+        200 & OK & Success & SuccessResponse \\ \hline
+        400 & Bad Request & Failure & MessageResponse \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+
+
+
+
+
+\subsection{\textit{DELETE /workers/\{workerId\}}}
+\subsubsection{Parámetros}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|L|l|}
+    \hline
+        \textbf{\textit{Nombre}} & \textbf{\textit{En}} & \textbf{\textit{Esquema}} & \textbf{\textit{Requerido}} \\ \hline
+    \hline
+        workerId & query & string(UUID) & Sí \\ \hline
+        - & body & []string(UUID) & Sí \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
+
+\subsubsection{Respuestas}
+\begin{table}[H]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{adjustbox}{max width=\textwidth}
+    \begin{tabularx}{\textwidth}{|l|l|l|L|}
+    \hline
+        \textbf{\textit{Código}} & \textbf{\textit{Significado}} & \textbf{\textit{Descripción}} & \textbf{\textit{Esquema}} \\ \hline
+    \hline
+        200 & OK & Success & SuccessResponse \\ \hline
+        400 & Bad Request & Failure & MessageResponse \\ \hline
+    \end{tabularx}
+    \end{adjustbox}
+\end{table}
