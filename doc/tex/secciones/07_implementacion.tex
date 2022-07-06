@@ -7,7 +7,7 @@ En la primera sección se define y se explica cómo se ha estructurado todo el s
 
 \section{Estructura del software creado}
 
-Como se introducía en el capítulo 5, el software se basa en una arquitectura de microservicios. Estos son tres, siendo dos de ellos esenciales y uno opcional. Los principales son el \textit{backend} y los \textit{workers}, y el tercero es el \textit{frontend}, la interfaz de usuario.
+Como se introducía en el capítulo \hyperref[cap:5]{cinco}, el software se basa en una arquitectura de microservicios. Estos son tres, siendo dos de ellos esenciales y uno opcional. Los principales son el \textit{backend} y los \textit{workers}, y el tercero es el \textit{frontend}, la interfaz de usuario.
 
 Centrándonos en la parte de procesamiento de datos, es decir, \textit{backend} y \textit{workers}, debido a las características de los datos que ambos microservicios manejan estos, se han creado tres componentes para implementarlos. Cuando se trata de desarrollo de software haciendo uso de \textit{.NET} y \textit{C\#}, el software se suele organizar en proyectos y soluciones.
 
@@ -99,7 +99,7 @@ public interface IBaseItem
 
 Esta interfaz es la que tienen que implementar todas aquellas clases de las que se quieren almacenar datos. En el caso de \textit{Matroos}, puesto que sólo es necesario almacenar los bots y los comandos, sólo estas clases implementan esta interfaz.
 
-El único método mencionado se llama \textit{CollectionName}, y corresponde con el nombre de la colección de \textit{MongoDB} donde se quieren almacenar los datos. Más información en la siguiente sección.
+El único método mencionado se llama \textit{CollectionName}, y corresponde con el nombre de la colección de \textit{MongoDB} donde se quieren almacenar los datos. Más información en la siguiente \hyperref[sec:datacontextservice]{sección}.
 
 \medskip 
 
@@ -124,6 +124,8 @@ public class Bot : IBaseItem
 \end{lstlisting}
 
 \subsubsection{DataContextService.cs}
+\label{sec:datacontextservice}
+
 
 Este servicio es el que permite realizar operaciones con los datos almacenados en \textit{MongoDB}. Sus operaciones se definen en la interfaz \textit{IDataContextService.cs}, son las siguientes:
 
@@ -225,7 +227,7 @@ Los componentes necesarios para crear un bot se han encapsulado dentro de la cla
 	\item Servicio cron. Servicio que permite ejecutar tareas en segundo plano. Más información en las siguientes secciones.
 \end{itemize}
 
-Esta clase cuenta con distintos métodos, para crear una aplicación, para lanzarla y para parar su ejecución. El más interesante es el primero de ellos, es el siguiente:
+Esta clase cuenta con distintos métodos, para crear una aplicación, para lanzarla y para parar su ejecución. El más interesante es el primero de ellos, que es el siguiente:
 
 \begin{lstlisting}[language=java]
 public (IHost, CronService) GenerateRunnable()
@@ -360,7 +362,7 @@ Se puede observar que:
 	\item Se ha implementado la interfaz \textit{IRunnableCommand}, que fuerza a que se implemente el método \textit{Run}. Este método contiene el código que se ejecutará cuando un usuario active un comando de este tipo.
 \end{itemize}
 
-Este caso es muy sencillo, ya que al ejecutarlo sólo se devuelve el mensaje \textit{Hi!} por el cliente de \textit{Discord}, pero como se mencionaba, las posibilidades son infinitas.
+Este caso es muy sencillo, ya que al ejecutarlo sólo se devuelve el mensaje \textit{Hi!} por el cliente de \textit{Discord}, pero como se mencionaba anteriormente, las posibilidades son infinitas.
 
 
 \subsubsection{\textit{UserCommand}}
