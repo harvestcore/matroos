@@ -2,12 +2,21 @@
 
 En este capítulo se profundiza en el análisis del problema planteado en capítulos anteriores, describiendo las diferentes personas, historias de usuario y los \textit{user journeys} asociados a estas \textit{HU}.
 
+Las personas son una técnica muy usada que permite diseñar y enfocar el desarrollo de un software en torno a los usuarios finales. En el caso de este proyecto se han detectado tres de estas personas. Son un usuario programador, un usuario sin apenas conocimiento informático y los miembros del tribunal de defensa de este TFM.
+
+Las historia de usuario son extractos de carácter informal que expresan desde la perspectiva del usuario final las necesidades y expectativas que se tienen del software. Además sirven como apoyo para conocer las distintas funciones que el software debe tener y que aportan valor al cliente. En este caso se han identificado seis historias de usuario.
+
+Finalmente, en este capítulo se hace una pequeña investigación del posible modelo de negocio que se podría adoptar a la hora de desarrollar, distribuir y comercializar el software. Se presentan dos alternativas que han destacado sobre otras.
+
+\pagebreak
+
 \section{Personas}
 
 \subsection{Programador}
 \label{sec:personaProgramador}
 
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -25,11 +34,19 @@ En este capítulo se profundiza en el análisis del problema planteado en capít
     \end{adjustbox}
     \caption{Persona 1. Programador.}
 \end{table}
+\FloatBarrier
+
+
+\bigskip
+\bigskip
+\bigskip
+\pagebreak
 
 
 \subsection{Usuario regular de \textit{Discord}}
 \label{sec:personaUsuarioDiscord}
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -47,10 +64,18 @@ En este capítulo se profundiza en el análisis del problema planteado en capít
     \end{adjustbox}
     \caption{Persona 2. Usuario de \textit{Discord}.}
 \end{table}
+\FloatBarrier
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\pagebreak
 
 \subsection{Miembro del tribunal}
 \label{sec:personaMiembroTribunal}
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -68,6 +93,7 @@ En este capítulo se profundiza en el análisis del problema planteado en capít
     \end{adjustbox}
     \caption{Persona 3. Miembro del tribunal.}
 \end{table}
+\FloatBarrier
 
 \section{Historias de usuario}
 
@@ -130,11 +156,13 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \caption{HU-01. Simplificar tareas por medio de comandos de bots.}
 \end{table}
 
+\pagebreak
 
 \subsection{HU-02 - Editar bots y comandos}
 \label{sec:hu02}
 
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -153,12 +181,23 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \end{adjustbox}
     \caption{HU-02. Editar bots y comandos.}
 \end{table}
+\FloatBarrier
 
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\pagebreak
 
 \subsection{HU-03 - Repertorio de comandos ampliable}
 \label{sec:hu03}
 
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -177,11 +216,21 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \end{adjustbox}
     \caption{HU-03. Repertorio de comandos ampliable.}
 \end{table}
+\FloatBarrier
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\pagebreak
 
 \subsection{HU-04 - Creación de comandos personalizados}
 \label{sec:hu04}
 
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -200,6 +249,14 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \end{adjustbox}
     \caption{HU-04. Creación de comandos personalizados.}
 \end{table}
+\FloatBarrier
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\pagebreak
 
 \subsection{HU-05 - Interfaz de usuario}
 \label{sec:hu05}
@@ -223,11 +280,19 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \end{adjustbox}
     \caption{HU-05. Interfaz de usuario.}
 \end{table}
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\pagebreak
 
 \subsection{HU-06 - Criterios de evaluación del proyecto}
 \label{sec:hu06}
 
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -235,19 +300,25 @@ Por otro lado, se han creado las siguientes historias de usuario. Estas se encue
     \hline
         \textbf{Sección} & \textbf{Contenido} \\ \hline
     \hline
-        Resumen & Como miembro del tribunal, quisiera disponer de una documentación, una presentación y un informe acordes a los criterios de evaluación para comprobar que estos se han cumplido correctamente. \\ \hline
+        Resumen & Como miembro del tribunal, quisiera disponer de una documentación y una presentación acordes a los criterios de evaluación para comprobar que estos se han cumplido correctamente. \\ \hline
         Meta & Disponer de una documentación que recoja claramente toda la información referente al desarrollo del TFM. \\ \hline
         Beneficio & De este modo es más sencillo evaluar todo el trabajo que el alumno ha realizado para desarrollar el TFM. \\ \hline
         Perfil de usuario & \hyperref[sec:personaMiembroTribunal]{Miembro del tribunal} \\ \hline
-        Escenario & · Dado: que quiero evaluar el trabajo realizado por el alumno,\linebreak · Cuando: éste me de acceso a dicha documentación acorde a los criterios de evaluación,\linebreak · Entonces: podré evaluar el trabajo del alumno. \\ \hline
-        Notas extra & Los criterios de evaluación son:\linebreak El estudiante…\linebreak · Utiliza fuentes de información variadas, válidas y fiables y selecciona la relevante para el objetivo del trabajo.\linebreak · Toma decisiones adecuadas al contexto y propone soluciones utilizando el conocimiento adquirido.\linebreak · Detecta y analiza oportunidades para hacer nuevas propuestas.\linebreak · Propone soluciones adecuadas y justifica las decisiones tomadas para resolver problemas complejos.\linebreak · Utiliza recursos formales e informales para documentar adecuadamente el proceso de desarrollo: concepción, planificación, análisis, diseño, implementación, pruebas, etc.\linebreak · Muestra claridad y comprensión en la redacción,organizando la información adecuadamente y utilizando los recursos adecuados para el discurso escrito. Muestra claridad y comprensión en la expresión oral, organizando la información adecuadamente y utilizando los recursos adecuados para el discurso oral. \\ \hline
-        Dependencias & – \\ \hline
+        Escenario & · Dado que quiero evaluar el trabajo realizado por el alumno, cuando éste lo finalice, entonces podré evaluar el trabajo del alumno. \\ \hline
+        Notas extra & Los criterios son: El estudiante... Utiliza fuentes de información variadas, válidas y fiables y selecciona la relevante para el objetivo del trabajo. Toma decisiones adecuadas al contexto y propone soluciones utilizando el conocimiento adquirido. Detecta y analiza oportunidades para hacer nuevas propuestas. Propone soluciones adecuadas y justifica las decisiones tomadas para resolver problemas complejos. Utiliza recursos formales e informales para documentar adecuadamente el proceso de desarrollo: concepción, planificación, análisis, diseño, implementación, pruebas. Muestra claridad y comprensión en la redacción,organizando la información adecuadamente y utilizando los recursos adecuados para el discurso escrito. Muestra claridad y comprensión en la expresión oral, organizando la información adecuadamente y utilizando los recursos adecuados para el discurso oral. \\ \hline
         Criterio de aceptación & · La documentación cumple con los criterios de evaluación. \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{HU-06. Criterios de evaluación del proyecto.}
 \end{table}
+\FloatBarrier
 
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\pagebreak
 
 \section{User journeys}
 
@@ -341,7 +412,7 @@ La siguiente tabla muestra el posible presupuesto del gasto anual:
         \multicolumn{3}{|r|}{\textbf{Total (cuota máxima)}} & \textbf{14332} \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{Presupuesto anual como \textit{autónomo}.}
+    \caption{Presupuesto anual como autónomo.}
 \end{table}
 
 Para este caso se ha mantenido el salario objetivo que se marcaba en la sección anterior, 28000 euros divididos en 12 pagas. Además, entra en juego la cuota de autónomos, que en 2022 sitúa su mínimo en 294 euros. Este aspecto es importante, ya que esta es la aportación por la que se cotiza. Si bien en los primeros meses podría ser interesante reducir al máximo los gastos, no es lo ideal a largo plazo. Otro aspecto importante es que se deberían pagar impuestos trimestrales, como el IVA, lo que incrementa los gastos.

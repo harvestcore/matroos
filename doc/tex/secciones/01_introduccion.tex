@@ -4,7 +4,7 @@ Los bots son software que, mediante la ejecución de algoritmos, permiten automa
 
 La plataforma \textit{Discord}, una aplicación de mensajería instantánea de texto y voz, es uno de los mejores ejemplos de la integración de bots en una plataforma social. En ella esta característica tiene gran aceptación y uso por parte de los usuarios. Esto, junto con la versatilidad de la aplicación, ha hecho que en los últimos años gane mucha popularidad\cite{tsbb}. 
 
-Además, en contraste con otros sistemas de mensajería instantánea que también incorporan bots, como por ejemplo \textit{Telegram} o \textit{Slack}, es una de las aplicaciones donde el ritmo de crecimiento del uso de bots es más acusado. Es por ello que cada vez más usuarios demandan la existencia de más bots y de que estos tengan más funcionalidades.
+Además, en contraste con otros sistemas de mensajería instantánea que también incorporan bots, como por ejemplo \textit{Telegram} o \textit{Slack}, es una de las aplicaciones donde el ritmo de crecimiento del uso de bots es más acusado\cite{enlyft}. Es por ello que cada vez más usuarios demandan la existencia de más bots y de que estos tengan más funcionalidades.
 
 Sin embargo, aunque dado su intuitivo funcionamiento puedan parecer sencillos, todo lo que rodea a un bot puede llegar a ser intrincado. Este es el caso de su proceso de creación. Generalmente la creación de un bot requiere de una serie de procedimientos y conocimientos informáticos de la que no todos los usuarios disponen, así como de la implementación de una compleja infraestructura. Es por ello que actualmente su desarrollo está bastante limitado a usuarios con un nivel avanzado de conocimientos informáticos.
 
@@ -89,7 +89,7 @@ La principal forma de interacción de los usuarios en \textit{Discord} es a trav
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.75\textwidth]{img/discord.png}
+	\includegraphics[width=1\textwidth]{img/discord.png}
 	\caption{Interfaz web de \textit{Discord}.}
 \end{figure}
 
@@ -100,7 +100,7 @@ La principal forma de interacción de los usuarios en \textit{Discord} es a trav
 Los bots son programas informáticos con funcionalidades definidas que pueden ser ejecutadas de forma autónoma o a voluntad de un usuario. Estos pueden ser de muchos tipos, como por ejemplo:
 
 \begin{itemize}
-	\item Chatbots. Que intentan simular conversaciones humanas con el usuario.
+	\item \textit{Chatbots}. Que intentan simular conversaciones humanas con el usuario.
 	\item Maliciosos. Usados para difundir \textit{spam} o para realizar ataques informáticos.
 	\item Sociales. Usados en aplicaciones sociales para realizar cualquier tipo de tarea.
 \end{itemize}
@@ -109,7 +109,7 @@ En la estructura de un bot se pueden destacar dos partes principales. En primer 
 
 En concreto, los bots están compuestos por comandos y por distintos módulos. Los comandos son una serie de órdenes concretas que puede ejecutar el bot (más información en la siguiente sección). Por otro lado los módulos contienen el código fuente que ha creado un programador y que realizan las tareas deseadas. Los módulos pueden ser de acceso a bases de datos, de inteligencia artificial u otras características.
 
-En cuanto al aspecto técnico, los bots se pueden crear con casi cualquier lenguaje de programación, haciendo uso de las distintas librerías y recursos disponibles. En el caso de los bots sociales, se utilizan librerías que actúan como capa de acceso a las API que proveen las aplicaciones de este tipo.
+En cuanto al aspecto técnico, los bots se pueden crear con casi cualquier lenguaje de programación, haciendo uso de las distintas librerías y recursos disponibles. En el caso de los bots sociales, se utilizan librerías que actúan como capa de acceso a las \textit{API} que proveen las aplicaciones de este tipo.
 
 Generalmente los bots operan a través de internet, siendo alojados en un servidor y se accede a sus funcionalidades mediante los mencionados comandos. Por tanto, cuando este software se ejecuta, queda a la escucha de los diferentes eventos que se lanzan por parte de los usuarios, preparado para ejecutar las tareas deseadas.
 
@@ -148,9 +148,9 @@ Los comandos son órdenes o instrucciones concretas que, a petición del usuario
 
 Para un usuario común estos comandos son simples mensajes que se escriben en un canal de texto, a los cuales reacciona el bot devolviendo una respuesta. En cambio, para el sistema subyacente, un comando es el gatillo que activa la ejecución de cierta tarea. Estas tareas pueden ser cualesquiera, siempre y cuando se puedan programar mediante código en el bot.
 
-Un ejemplo sencillo puede ser enviar un mensaje de texto sencillo. Algo más complejo podría ser acceder a cierta API meteorológica para consultar la previsión de la ciudad que el usuario incluye al ejecutar el comando.
+Un ejemplo sencillo puede ser enviar un mensaje de texto sencillo. Algo más complejo podría ser acceder a cierta \textit{API} meteorológica para consultar la previsión de la ciudad que el usuario incluye al ejecutar el comando.
 
-Los comandos suelen ejecutarse precedidos de un \textit{token} o carácter clave, como \textit{!} o \textit{.}. La razón de ello es meramente la de distinguir los comandos de palabras usuales, además de para evitar confusiones al ejecutar los mismos. Esto no es un requisito indispensable, por lo que se puede omitir.
+Los comandos suelen ejecutarse precedidos de un \textit{token} o carácter clave, como \textit{!} o \textit{>}. La razón de ello es meramente la de distinguir los comandos de palabras usuales, además de para evitar confusiones al ejecutar los mismos. Esto no es un requisito indispensable, por lo que se puede omitir.
 
 Por la parte del servidor que aloja al bot los comandos se suelen recibir como eventos, donde se incluye información como el contenido del mensaje enviado por el usuario, quién lo ha invocado, el canal donde se ha enviado el mensaje y otros parámetros que permiten identificar el contexto de ejecución.
 
@@ -166,13 +166,13 @@ A continuación se muestra la ejecución de los dos comandos configurados en el 
 
 \section{Estructura del documento}
 
-En este documento se explica el desarrollo del proyecto, llamado Matroos, por completo, desde decisiones que se han tomado hasta los distintos aspectos que se han tenido en cuenta.
+En este documento se explica el desarrollo del proyecto, llamado \textbf{Matroos}, por completo, desde decisiones que se han tomado hasta los distintos aspectos que se han tenido en cuenta.
 
 Una vez introducido el problema, la motivación y algunos conceptos básicos se continúa por un repaso al estado del arte en el capítulo dos. Tras eso, en el capítulo tres, se desarrolla el análisis realizado al problema, indicando las personas implicadas, una serie de historias de usuario obtenidas y finalizando con el modelo de negocio que se podría aplicar para sacar rentabilidad al producto.
 
 El capítulo cuatro introduce la planificación que se ha planteado para el desarrollo del proyecto, seguido del diseño técnico detallado en bastante profundidad en el capítulo cinco. Este incluye todas las pequeñas partes que componen la estructura y arquitectura interna del software creado.
 
-Los dos siguientes capítulos, séis y siete, corresponden a las herramientas y tecnologías que se han utilizado y al desarrollo del software como tal, respectivamente. En el caso del segundo se incluyen detalles más técnicos, como código o archivos de configuración.
+Los dos siguientes capítulos, seis y siete, corresponden a las herramientas y tecnologías que se han utilizado y al desarrollo del software como tal, respectivamente. En el caso del segundo se incluyen detalles más técnicos, como código o archivos de configuración.
 
 Finalmente, el capítulo ocho incluye las conclusiones que se han extraído tras el trabajo realizado en este proyecto, además de un listado de posibles áreas donde se podría mejorar el software en posteriores iteraciones.
 

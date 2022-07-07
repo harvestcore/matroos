@@ -15,7 +15,7 @@ Un proyecto contiene todos los archivos necesarios (de cualquier tipo) que compo
 
 Por otro lado, una solución es una composición de proyectos. Es un contenedor que, junto con cierta configuración, relaciona distintos proyectos para crear un software.
 
-En el caso de Matroos se han creado tres soluciones. Estas son:
+En el caso de \textbf{Matroos} se han creado tres soluciones. Estas son:
 
 \begin{itemize}
 	\item \textbf{\textit{Matroos.Resources}}. Contiene todos los servicios, clases y otros recursos compartidos. Actúa como librería de recursos compartidos para las otras soluciones.
@@ -31,8 +31,6 @@ En el siguiente cuadro se puede observar la estructura de los directorios de las
 	\item Cada proyecto cuenta con un archivo de extensión \textit{*.csproj} que contiene las dependencias y otros parámetros que definen cómo debe construirse ese proyecto.
 	\item Existen proyectos adicionales para pruebas unitarias y de integración, para asegurar el correcto funcionamiento del software.
 \end{itemize}
-
-{\scriptsize En el cuadro se han omitido los archivos de código fuente.}
 
 \begin{lstlisting}[style=tree]
 Matroos
@@ -82,9 +80,9 @@ Esta solución actúa como librería de recursos compartidos, y contiene las cla
 
 \subsection{Almacenamiento de datos}
 
-En el capítulo de herramientas y diseño técnico de \textit{Matroos} se introducía que el sistema gestor de base de datos es \textit{MongoDB}. Para acomodar este sistema, se han desarrollado distintos elementos que permiten trabajar de manera muy sencilla con este sistema gestor.
+En el capítulo de herramientas y diseño técnico de \textbf{Matroos} se introducía que el sistema gestor de base de datos es \textit{MongoDB}. Para acomodar este sistema, se han desarrollado distintos elementos que permiten trabajar de manera muy sencilla con este sistema gestor.
 
-El acceso a base de datos en Matroos se compone de dos elementos, una interfaz para identificar los elementos a almacenar, y un servicio que ofrece las operaciones para manejar estos datos.
+El acceso a base de datos en \textbf{Matroos} se compone de dos elementos, una interfaz para identificar los elementos a almacenar, y un servicio que ofrece las operaciones para manejar estos datos.
 
 \subsubsection{IBaseItem.cs}
 
@@ -97,15 +95,18 @@ public interface IBaseItem
 }
 \end{lstlisting}
 
-Esta interfaz es la que tienen que implementar todas aquellas clases de las que se quieren almacenar datos. En el caso de \textit{Matroos}, puesto que sólo es necesario almacenar los bots y los comandos, sólo estas clases implementan esta interfaz.
+Esta interfaz es la que tienen que implementar todas aquellas clases de las que se quieren almacenar datos. En el caso de \textbf{Matroos}, puesto que sólo es necesario almacenar los bots y los comandos, sólo estas clases implementan esta interfaz.
 
 El único método mencionado se llama \textit{CollectionName}, y corresponde con el nombre de la colección de \textit{MongoDB} donde se quieren almacenar los datos. Más información en la siguiente \hyperref[sec:datacontextservice]{sección}.
 
-\medskip 
+\medskip
 
 \textbf{Flujo de trabajo}
 
 El uso de esta interfaz es muy sencillo, en el siguiente ejemplo se ve cómo se ha definido la clase \textit{Bot}. Se puede observar que al implementar esta interfaz se define un valor para el método \textit{CollectionName}, y además se han agregado algunos decoradores para hacerle saber a \textit{MongoDB} cómo serializar y deserializar algunos campos.
+
+
+\pagebreak
 
 \begin{lstlisting}[language=java]
 public class Bot : IBaseItem
@@ -530,7 +531,7 @@ Estos permiten que, cuando se cargan bots desde base de datos, la lista de ident
 
 \section{Backend}
 
-Este microservicio es el principal de Matroos, e incluye gran parte de la lógica. Se compone de una serie de servicios y controladores, además de ciertas utilidades.
+Este microservicio es el principal de \textbf{Matroos}, e incluye gran parte de la lógica. Se compone de una serie de servicios y controladores, además de ciertas utilidades.
 
 \subsection{Servicios}
 
@@ -668,7 +669,7 @@ Contiene tres tarjetas con información del estado general del sistema.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{img/front/page-home.png}
-	\caption{Página principal de Matroos.}
+	\caption{Página principal de \textbf{Matroos}.}
 \end{figure}
 
 \subsubsection{Bots}
@@ -719,9 +720,9 @@ Listado de los \textit{workers} disponibles, junto con modales para editar \text
 	\caption{Modal de edición de \textit{workers}.}
 \end{figure}
 
-\section{Despliegue en Docker}
+\section{Despliegue en \textit{Docker}}
 
-Todas los microservicios que componen \textit{Matroos} son desplegables mediante contenedores \textit{Docker}. Para ello se han incluido archivos \textit{Dockerfile} para cada uno de ellos, además de archivos \textit{docker-compose.yml} para orquestar los servicios.
+Todas los microservicios que componen \textbf{Matroos} son desplegables mediante contenedores \textit{Docker}. Para ello se han incluido archivos \textit{Dockerfile} para cada uno de ellos, además de archivos \textit{docker-compose.yml} para orquestar los servicios.
 
 Además, cada vez que se hace una \textit{release} en \href{https://github.com/harvestcore/matroos}{el repositorio} de que contiene el código, se generan automáticamente nuevas imágenes de los microservicios \textit{backend} y \textit{worker}. Tras eso se suben al registro de imágenes que proporciona el propio \textit{GitHub}, \href{https://github.com/harvestcore?tab=packages&repo_name=matroos}{aquí}. Esto se ha configurado mediante un \textit{workflow} de \textit{GitHub Actions}, el cual puede encontrarse \href{https://github.com/harvestcore/matroos/blob/develop/.github/workflows/build-docker-images.yml}{aquí}.
 
@@ -758,7 +759,7 @@ Para la confección de los siguientes archivos se han tenido en cuenta las mejor
 
 \section{Despliegue en producción}
 
-Para realizar un despliegue en producción de podrían utilizar desde servidores domésticos como plataformas \textit{cloud} de gran complejidad. En el caso de \textit{Matroos}, y a modo de entorno para mostrar el funcionamiento del software se ha realizado un despliegue en un servidor \textit{cloud} dedicado, se encuentra en este \href{https://0xhc.com:9000/}{enlace}.
+Para realizar un despliegue en producción de podrían utilizar desde servidores domésticos como plataformas \textit{cloud} de gran complejidad. En el caso de \textbf{Matroos}, y a modo de entorno para mostrar el funcionamiento del software se ha realizado un despliegue en un servidor \textit{cloud} dedicado, se encuentra en este \href{https://0xhc.com:9000/}{enlace}.
 
 Como se indicaba en la sección anterior, existen distintos archivos que permiten desplegar el software mediante contenedores de \textit{Docker}, y esta plataforma es la que se ha utilizado para el despliegue en producción.
 
@@ -846,7 +847,7 @@ server {
 En este caso la configuración es sencilla, haciéndose un \textit{proxy} de las peticiones a los contenedores adecuados.
 
 
-\subsection{Configuración de los servicios de \textit{Matroos}}
+\subsection{Configuración de los servicios de \textbf{Matroos}}
 
 La única modificación necesaria ha sido la agregación de la red externa compartida en los archivos \textit{docker-compose.yml}, para permitir la comunicación con el servicio de \textit{NGINX}.
 

@@ -1,7 +1,7 @@
 \chapter{Diseño técnico}
 \label{cap:5}
  
-En este capítulo se desarrolla el diseño técnico de \textit{Matroos}. Se comienza por la arquitectura, se continúa con el diseño de los bots y de los comandos, y se finaliza con los detalles de bases de datos.
+En este capítulo se desarrolla el diseño técnico de \textbf{Matroos}. Se comienza por la arquitectura, se continúa con el diseño de los bots y de los comandos, y se finaliza con los detalles de bases de datos.
 
 \section{Arquitectura}
 
@@ -39,7 +39,7 @@ Aún así, se opta por una arquitectura basada en microservicios compuesta por t
 \end{figure}
 
 
-\textbf{\textit{Frontend}} Interfaz de usuario. Se comunica con el \textit{backend} mediante la API REST. Compuesto por un componente para la gestión de bots, otro para la gestión de comandos y por otro de comunicación.
+\textbf{\textit{Frontend}} Interfaz de usuario. Se comunica con el \textit{backend} mediante la \textit{API REST}. Compuesto por un componente para la gestión de bots, otro para la gestión de comandos y por otro de comunicación.
 
 \begin{figure}[H]
 	\centering
@@ -56,7 +56,7 @@ Se ha decidido no incluir ningún sistema de autenticación en ninguno de los mi
 
 Implementar un sistema de autenticación implica la adición de una lógica extra que consume una serie de recursos, y puede ser algo que no sea necesario según dónde se implemente el sistema (e.g. una instalación local de pruebas o en el caso de este software, en la máquina local de un usuario). No implementando esta autenticación, se evita una implementación específica, que seguramente no case con los modelos usuales de autenticación.
 
-Por otro lado, existen multitud de software y servicios que se dedican exclusivamente a la autenticación, y cuya integración con \textit{Matroos} sería sencilla e incluiría esa capa de seguridad que falta. Algunos ejemplos son los siguientes:
+Por otro lado, existen multitud de software y servicios que se dedican exclusivamente a la autenticación, y cuya integración con \textbf{Matroos} sería sencilla e incluiría esa capa de seguridad que falta. Algunos ejemplos son los siguientes:
 
 \begin{itemize}
 	\item \href{https://auth0.com/es}{\textit{Auth0}}
@@ -243,7 +243,7 @@ Parámetros:
         IsTTS & IsTTS? & boolean & false & Si el mensaje se debe enviar como \textit{TTS} (\textit{Text to speach}) \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{Comando \textit{Message}}
+    \caption{Comando \textit{Message}.}
 \end{table}
 
 Configuración del comando:
@@ -272,7 +272,7 @@ Parámetros:
         ChannelID & ChannelID? & string & "" & Canal donde enviar el mensaje. Opcional, si no se indica se manda en el canal actual. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{Comando \textit{Ping}}
+    \caption{Comando \textit{Ping}.}
 \end{table}
 
 Configuración del comando:
@@ -300,7 +300,7 @@ Parámetros:
         ChannelID & ChannelID? & string & "" & Canal donde enviar el mensaje. Opcional, si no se indica se manda en el canal actual. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{Comando \textit{Status}}
+    \caption{Comando \textit{Status}.}
 \end{table}
 
 Configuración del comando:
@@ -324,7 +324,6 @@ Configuración del comando:
 	\item \verb|NeedsPrefix|: \verb|true|
 \end{itemize}
 
-
 \subsubsection{\textit{TimerCommand}}
 Ejecuta un comando cada vez que se cumple el intervalo de tiempo.
 
@@ -343,7 +342,7 @@ Parámetros:
         Active & Active & boolean & ~ & Si el *timer* está activo o no. \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{Comando \textit{Timer}}
+    \caption{Comando \textit{Timer}.}
 \end{table}
 
 Configuración del comando:
@@ -375,6 +374,7 @@ En las siguientes secciones se incluyen posibles configuraciones de cada uno de 
 \end{lstlisting}
 
 Entrada del usuario: !ping my-service.com
+
 Respuesta del bot: The ping is 17ms.
 
 \begin{lstlisting}[language=sh]
@@ -394,6 +394,7 @@ Respuesta del bot: The ping is 17ms.
 \end{lstlisting}
 
 Entrada del usuario: !ping
+
 Respuesta del bot: The ping is 13ms.
 
 
@@ -420,6 +421,7 @@ Respuesta del bot: The ping is 13ms.
 \end{lstlisting}
 
 Entrada del usuario: !message
+
 Respuesta del bot: (TTS) Hola!
 
 
@@ -443,9 +445,11 @@ Respuesta del bot: (TTS) Hola!
 \end{lstlisting}
 
 Entrada del usuario: !status
+
 Respuesta del bot: Test Bot - Uptime: 10h
 
 
+\pagebreak
 
 \subsubsection{\textit{TimerCommand}}
 
@@ -468,6 +472,7 @@ Respuesta del bot: Test Bot - Uptime: 10h
 \end{lstlisting}
 
 Entrada del usuario: (ninguna)
+
 Respuesta del bot: (cada 10 segundos) Hola!
 
 
@@ -489,6 +494,7 @@ Respuesta del bot: (cada 10 segundos) Hola!
 \end{lstlisting}
 
 Entrada del usuario: !version
+
 Respuesta del bot: Version 3.1.5
 
 
@@ -525,7 +531,7 @@ Para la realización de este \textit{user journey} es necesario el uso de C\#.
 
 \section{Base de datos}
 
-En esta sección se definen las diferentes colecciones de datos que se utilizan para almacenar los datos necesarios en \textit{Matroos}.
+En esta sección se definen las diferentes colecciones de datos que se utilizan para almacenar los datos necesarios en \textbf{Matroos}.
 
 \subsection{Bots}
 

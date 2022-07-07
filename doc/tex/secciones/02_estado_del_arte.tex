@@ -4,7 +4,7 @@ En este capítulo se hace un repaso de las distintas soluciones que existen actu
 
 \section{Contexto y definiciones previas}
 
-Los bots actúan como un usuario más dentro de un servidor de \textit{Discord}. En cambio, debido a su naturaleza, deben ser agregados a los servidores por usuarios humanos. Se pueden crear infinidad de bots, por lo que han surgido webs (como \href{https://top.gg/}{top.gg} o \href{https://bots.ondiscord.xyz/}{Bots on Discord}) que permiten que los usuarios encuentren bots ya creados y desplegados listos para ser utilizados en sus servidores. Estos cuentan con funcionalidades específicas, por lo que no pueden modificarse por los usuarios.
+Los bots actúan como un usuario más dentro de un servidor de \textit{Discord}. En cambio, debido a su naturaleza, deben ser agregados a los servidores por usuarios humanos. Se pueden crear infinidad de bots, por lo que han surgido páginas web (como \href{https://top.gg/}{top.gg} o \href{https://bots.ondiscord.xyz/}{Bots on Discord}) que permiten que los usuarios encuentren bots ya creados y desplegados listos para ser utilizados en sus servidores. Estos cuentan con funcionalidades específicas, por lo que no pueden modificarse por los usuarios.
 
 Además de este tipo de bots y webs, han surgido otras plataformas que permiten que los usuarios creen y configuren sus propios bots. Estas son las que se desarrollan en este capítulo. A continuación se enumeran algunos conceptos que son interesantes conocer ya que se utilizan tanto en este capítulo como en el resto del documento.
 
@@ -30,7 +30,8 @@ Las soluciones actuales se podrían dividir en dos grupos, las herramientas \tex
 
 En las siguientes secciones se incluyen las herramientas con características más interesantes. Por otro lado, para cada herramienta se incluye una tabla como la siguiente, donde se resumen las características más importantes de cada una de ellas.
 
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -49,7 +50,9 @@ En las siguientes secciones se incluyen las herramientas con características m�
         \textbf{Premium} & Coste de los planes de pago de la herramienta. \\ \hline
     \end{tabularx}
     \end{adjustbox}
+    \caption{Cuadro resumen de las características de una herramienta.}
 \end{table}
+\FloatBarrier
 
 \subsection{Herramientas \textit{no-code}}
 
@@ -65,7 +68,7 @@ En ellas se puede observar también uno de los principales problemas ya menciona
 
 Estas funcionalidades predefinidas son en su mayoría de moderación de usuarios y envío de mensajes, y no se pueden reutilizar entre distintos bots. Además, debido a la estructura y arquitectura de estas plataformas, los usuarios no pueden ampliar el repertorio de comandos, teniendo que conformarse con los existentes.
 
-\subsubsection{ProBot}
+\subsubsection{\textit{ProBot}}
 
 \href{https://probot.io/}{\textit{ProBot}} es sin duda la más interesante de las herramientas \textit{no-code} debido a que permite crear ilimitados comandos personalizados, siendo la principal desventaja que estos comandos son predefinidos, y no se puede cambiar su funcionalidad. Los comandos predefinidos se centran en moderación y mensajes automáticos, por lo que las posibilidades no son muy amplias.
 
@@ -73,7 +76,8 @@ A favor de esta herramienta también destaca que es sencilla de utilizar, la int
 
 Sus características son:
 
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -87,21 +91,24 @@ Sus características son:
         \textbf{Número de bots} & 1, único \\ \hline
         \textbf{Experiencia} & Sencilla \\ \hline
         \textbf{Personalización extra} & Requiere \textit{premium} (mensualidades) \\ \hline
-        \textbf{Características} & · Moderación\linebreak · Estadísticas\linebreak · Mensajes automáticos\linebreak · Música \\ \hline
+        \textbf{Características} & Moderación, estadísticas, mensajes automáticos, música \\ \hline
         \textbf{Logs} & No \\ \hline
         \textbf{Premium} & \$60 al año \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Características de \textit{ProBot}.}
 \end{table}
+\FloatBarrier
 
-\begin{figure}[H]
+\FloatBarrier
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{img/probot.png}
 	\caption{Interfaz web de \textit{ProBot}.}
 \end{figure}
+\FloatBarrier
 
-\subsubsection{Mee6}
+\subsubsection{\textit{Mee6}}
 
 \href{https://mee6.xyz/}{\textit{Mee6}} es otra herramienta muy similar a la anterior, siendo la principal diferencia que en este caso los comandos personalizados se limitan a 5. Por contra, tiene un mayor catálogo de funcionalidades.
 
@@ -109,7 +116,8 @@ De nuevo no es posible controlar el despliegue del bot, como tampoco es posible 
 
 Sus características son:
 
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -123,32 +131,34 @@ Sus características son:
         \textbf{Número de bots} & 1, único \\ \hline
         \textbf{Experiencia} & Sencilla \\ \hline
         \textbf{Personalización extra} & Requiere \textit{premium} (mensualidades) \\ \hline
-        \textbf{Características} & · Moderación\linebreak · Estadísticas\linebreak · Mensajes automáticos\linebreak · Música\linebreak · Temporizadores\linebreak · \textit{Quiz} / \textit{Trivia} \\ \hline
+        \textbf{Características} & · Moderación, estadísticas, mensajes automáticos, música, temporizadores, \textit{quiz} / \textit{trivia} \\ \hline
         \textbf{Logs} & No \\ \hline
         \textbf{Premium} & \$50 al año / \$90 de por vida  \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Características de \textit{Mee6}.}
 \end{table}
+\FloatBarrier
 
-\begin{figure}[H]
+\FloatBarrier
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{img/mee6.png}
 	\caption{Interfaz web de \textit{Mee6}.}
 \end{figure}
+\FloatBarrier
 
 
-\subsubsection{BotGhost}
+\subsubsection{\textit{BotGhost}}
 
 \href{https://botghost.com/}{\textit{BotGhost}} es un híbrido entre \textit{ProBot} y \textit{Mee6}, ya que tiene características comunes de ambos. La principal característica de esta herramienta es que permite crear comandos personalizados haciendo uso de una serie de módulos que se pueden interconectar para definir el ciclo de vida de un comando.
 
 Esta característica es muy interesante, pero está muy limitada y las funcionalidades que permite realizar se resumen en envío de mensajes y tareas de moderación de usuarios muy básicas. El plan \textit{premium} sería necesario en este caso para poder sacarle partido a esta funcionalidad.
 
-Otro aspecto interesante es que se pueden crear distintos bots, hasta 50 distintos si se opta por la opción \textit{premium}.
+Otro aspecto interesante es que se pueden crear distintos bots, hasta 50 distintos si se opta por la opción \textit{premium}. Sus características son las siguientes.
 
-Sus características son:
-
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -162,33 +172,37 @@ Sus características son:
         \textbf{Número de bots} & 1, único (50 con \textit{premium}) \\ \hline
         \textbf{Experiencia} & Compleja \\ \hline
         \textbf{Personalización extra} & Requiere \textit{premium} (mensualidades) \\ \hline
-        \textbf{Características} & · Moderación\linebreak · Estadísticas\linebreak · Mensajes automáticos\linebreak · Temporizadores\linebreak · Integración con videojuegos\linebreak · Meteorología\linebreak · Música\linebreak · \textit{Quiz} / \textit{Trivia} \\ \hline
+        \textbf{Características} & · Moderación, estadísticas, mensajes automáticos, temporizadores, integración con videojuegos, meteorología, música, \textit{quiz} / \textit{trivia} \\ \hline
         \textbf{Logs} & No \\ \hline
         \textbf{Premium} & \$60 al año / \$100 de por vida \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Características de \textit{BotGhost}.}
 \end{table}
+\FloatBarrier
 
-\begin{figure}[H]
+\FloatBarrier
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{img/botghost.png}
 	\caption{Interfaz web de \textit{BotGhost}.}
 \end{figure}
+\FloatBarrier
 
 \subsection{Herramientas de programación}
 
 Actualmente existen multitud de librerías para distintos lenguajes de programación que permiten interactuar con la \textit{API} de \textit{Discord} y por tanto crear un bot. Así mismo existen herramientas híbridas que permiten esta creación de una manera más sencilla.
 
-\subsubsection{Autocode}
+\subsubsection{\textit{Autocode}}
 
-\href{https://autocode.com/}{Autocode} es sin duda la herramienta mas interesante que existe de esta modalidad híbrida. Realmente es una plataforma que facilita la creación y despliegue de aplicaciones y servicios web, bots, y tareas de automatización permitiendo que los usuarios escriban sólo una parte del código (\textit{JavaScript}) de estos. Esta plataforma provee al usuario con un editor de código sencillo y de un explorador de archivos, recursos con los cuales puede crear el código.
+\href{https://autocode.com/}{\textit{Autocode}} es sin duda la herramienta mas interesante que existe de esta modalidad híbrida. Realmente es una plataforma que facilita la creación y despliegue de aplicaciones y servicios web, bots, y tareas de automatización permitiendo que los usuarios escriban sólo una parte del código (\textit{JavaScript}) de estos. Esta plataforma provee al usuario con un editor de código sencillo y de un explorador de archivos, recursos con los cuales puede crear el código.
 
 De este modo el usuario sólo tiene que preocuparse por el código de la aplicación (o bot en este caso) que quiere crear, ya que del despliegue se encarga \textit{Autocode}. En su plan gratuito se pueden crear hasta 50 aplicaciones distintas, y permite la integración entre si de los distintos recursos que el usuario crea en la plataforma.
 
 Sus características son:
 
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -209,12 +223,15 @@ Sus características son:
     \end{adjustbox}
     \caption{Resumen de soluciones actuales.}
 \end{table}
+\FloatBarrier
 
-\begin{figure}[H]
+\FloatBarrier
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{img/autocode.png}
 	\caption{Interfaz web de \textit{Autocode}.}
 \end{figure}
+\FloatBarrier
 
 \subsubsection{Librerías de programación}
 
@@ -247,7 +264,8 @@ Los dos comandos personalizados se han elegido al ser comunes en todas las plata
 	\item Envío de un mensaje recurrente (cada cierto tiempo).
 \end{itemize}
 
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -266,8 +284,9 @@ Los dos comandos personalizados se han elegido al ser comunes en todas las plata
         Python & 80 \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{Comparativa de tiempos}
+    \caption{Comparativa de tiempos de las distintas herramientas analizadas.}
 \end{table}
+\FloatBarrier
 
 \section{Discusión}
 
