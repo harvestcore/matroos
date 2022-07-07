@@ -5,7 +5,7 @@ Una vez se ha clonado \href{https://github.com/harvestcore/matroos}{el repositor
 \section{\textit{Backend} y \textit{workers}}
 
 
-Para ejecutar estos servicios se recomienda el uso de \textit{Visual Studio}, ya que facilita mucho este proceso. Aún así, se puede ejecutar mediante línea de comandos:
+Para ejecutar estos servicios se recomienda el uso de \textit{Visual Studio} (abriendo los archivos de las soluciones (\textit{*.sln}), ya que facilita mucho este proceso. Aún así, se puede ejecutar mediante línea de comandos:
 
 \begin{lstlisting}
 cd matroos
@@ -22,11 +22,9 @@ dotnet restore
 dotnet build --no-restore -c Release
 dotnet publish -c Release -o ./app --no-restore
 
-
 // Ejecutar backend.
 cd backend/app
 dotnet Matroos.Backend.dll
-
 
 // Ejecutar worker.
 cd worker/app

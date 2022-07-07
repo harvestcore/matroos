@@ -4,7 +4,7 @@ En este capítulo se hace un repaso de las distintas soluciones que existen actu
 
 \section{Contexto y definiciones previas}
 
-Los bots actúan como un usuario más dentro de un servidor de \textit{Discord}. En cambio, debido a su naturaleza, deben ser agregados a los servidores por usuarios humanos. Se pueden crear infinidad de bots, por lo que han surgido webs (como \href{https://top.gg/}{top.gg} o \href{https://bots.ondiscord.xyz/}{Bots on Discord}) que permiten que los usuarios encuentren bots ya creados y desplegados listos para ser utilizados en sus servidores. Estos cuentan con funcionalidades específicas, por lo que no pueden modificarse por los usuarios.
+Los bots actúan como un usuario más dentro de un servidor de \textit{Discord}. En cambio, debido a su naturaleza, deben ser agregados a los servidores por usuarios humanos. Se pueden crear infinidad de bots, por lo que han surgido páginas web (como \href{https://top.gg/}{top.gg} o \href{https://bots.ondiscord.xyz/}{Bots on Discord}) que permiten que los usuarios encuentren bots ya creados y desplegados listos para ser utilizados en sus servidores. Estos cuentan con funcionalidades específicas, por lo que no pueden modificarse por los usuarios.
 
 Además de este tipo de bots y webs, han surgido otras plataformas que permiten que los usuarios creen y configuren sus propios bots. Estas son las que se desarrollan en este capítulo. A continuación se enumeran algunos conceptos que son interesantes conocer ya que se utilizan tanto en este capítulo como en el resto del documento.
 
@@ -26,13 +26,12 @@ Conceptos relacionados con funcionalidades de \textit{Discord}:
 
 \section{Soluciones actuales}
 
-Las soluciones actuales se podrían dividir en dos grupos, las herramientas \textit{no-code} y aquellas herramientas que hacen uso de programación. En ambas la interacción con el sistema se hace a través de una aplicación web y, además, suelen tener una apariencia muy similar. Las primeras se centran en usuarios con menor conocimiento técnico, abstrayendo todos los detalles de este tipo. En cambio, las segundas son utilizadas por aquellos usuarios con un conocimiento informático más amplio.
+Las soluciones actuales se podrían dividir en dos grupos, las herramientas \textit{no-code} y aquellas herramientas que hacen uso de programación. En ambas la interacción con el sistema se hace a través de una aplicación web y, además, suelen tener una apariencia muy similar, siendo las \textit{no-code} algo más complejas de usar. Las primeras se centran en usuarios con menor conocimiento técnico, abstrayendo todos los detalles de este tipo. En cambio, las segundas son utilizadas por aquellos usuarios con un conocimiento informático más amplio.
 
-En las siguientes secciones se incluyen las herramientas con características más interesantes.
+En las siguientes secciones se incluyen las herramientas con características más interesantes. Por otro lado, para cada herramienta se incluye una tabla como la siguiente, donde se resumen las características más importantes de cada una de ellas.
 
-Por otro lado, para cada herramienta se incluye una tabla como la siguiente. Resume las características de cada una de ellas.
-
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -51,7 +50,9 @@ Por otro lado, para cada herramienta se incluye una tabla como la siguiente. Res
         \textbf{Premium} & Coste de los planes de pago de la herramienta. \\ \hline
     \end{tabularx}
     \end{adjustbox}
+    \caption{Cuadro resumen de las características de una herramienta.}
 \end{table}
+\FloatBarrier
 
 \subsection{Herramientas \textit{no-code}}
 
@@ -59,7 +60,7 @@ Estas herramientas permiten la creación de bots sin hacer uso de recursos de pr
 
 Por ejemplo, el comando predefinido más común sirve para enviar mensajes. A partir de este comando se pueden crear distintos comandos personalizados, cambiando la palabra clave que los usuarios deben introducir (en los canales de texto) para activar el comando y el mensaje que el bot debe enviar.
 
-En general la mayoría tienen una serie de funcionalidades gratuitas, teniendo que adquirir un plan de pago mensual para obtener funcionalidades extra. Estas suscripciones suelen tener un coste aproximado de cinco dólares mensuales, pudiendo comprar suscripciones anuales o incluso de por vida y suelen ofrecer un repertorio de comandos más amplio, conexiones con redes sociales, estadísticas de uso e incluso \textit{logging}.
+En general la mayoría tienen una serie de funcionalidades gratuitas, teniendo que suscribirse a un plan de pago mensual para obtener funcionalidades extra. Estas suscripciones suelen tener un coste aproximado de cinco dólares mensuales, pudiendo comprar suscripciones anuales o incluso de por vida y suelen ofrecer un repertorio de comandos más amplio, conexiones con redes sociales, estadísticas de uso e incluso \textit{logging}.
 
 En la mayoría de casos estas plataformas cuentan con un único bot que se debe agregar al servidor de \textit{Discord} deseado. Esto implica que el uso de estos servicios no permite por tanto agregar varios bots con distintas funcionalidades a un mismo servidor. Si un usuario utiliza \textit{ProBot} (servicio que se explica en detalle a continuación), entonces el bot que proporciona \textit{ProBot} sólo podrá utilizarse una sola vez por servidor.
 
@@ -67,7 +68,7 @@ En ellas se puede observar también uno de los principales problemas ya menciona
 
 Estas funcionalidades predefinidas son en su mayoría de moderación de usuarios y envío de mensajes, y no se pueden reutilizar entre distintos bots. Además, debido a la estructura y arquitectura de estas plataformas, los usuarios no pueden ampliar el repertorio de comandos, teniendo que conformarse con los existentes.
 
-\subsubsection{ProBot}
+\subsubsection{\textit{ProBot}}
 
 \href{https://probot.io/}{\textit{ProBot}} es sin duda la más interesante de las herramientas \textit{no-code} debido a que permite crear ilimitados comandos personalizados, siendo la principal desventaja que estos comandos son predefinidos, y no se puede cambiar su funcionalidad. Los comandos predefinidos se centran en moderación y mensajes automáticos, por lo que las posibilidades no son muy amplias.
 
@@ -75,7 +76,8 @@ A favor de esta herramienta también destaca que es sencilla de utilizar, la int
 
 Sus características son:
 
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -89,21 +91,24 @@ Sus características son:
         \textbf{Número de bots} & 1, único \\ \hline
         \textbf{Experiencia} & Sencilla \\ \hline
         \textbf{Personalización extra} & Requiere \textit{premium} (mensualidades) \\ \hline
-        \textbf{Características} & · Moderación\linebreak · Estadísticas\linebreak · Mensajes automáticos\linebreak · Música \\ \hline
+        \textbf{Características} & Moderación, estadísticas, mensajes automáticos, música \\ \hline
         \textbf{Logs} & No \\ \hline
         \textbf{Premium} & \$60 al año \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Características de \textit{ProBot}.}
 \end{table}
+\FloatBarrier
 
-\begin{figure}[H]
+\FloatBarrier
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{img/probot.png}
 	\caption{Interfaz web de \textit{ProBot}.}
 \end{figure}
+\FloatBarrier
 
-\subsubsection{Mee6}
+\subsubsection{\textit{Mee6}}
 
 \href{https://mee6.xyz/}{\textit{Mee6}} es otra herramienta muy similar a la anterior, siendo la principal diferencia que en este caso los comandos personalizados se limitan a 5. Por contra, tiene un mayor catálogo de funcionalidades.
 
@@ -111,7 +116,8 @@ De nuevo no es posible controlar el despliegue del bot, como tampoco es posible 
 
 Sus características son:
 
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -125,32 +131,34 @@ Sus características son:
         \textbf{Número de bots} & 1, único \\ \hline
         \textbf{Experiencia} & Sencilla \\ \hline
         \textbf{Personalización extra} & Requiere \textit{premium} (mensualidades) \\ \hline
-        \textbf{Características} & · Moderación\linebreak · Estadísticas\linebreak · Mensajes automáticos\linebreak · Música\linebreak · Temporizadores\linebreak · \textit{Quiz} / \textit{Trivia} \\ \hline
+        \textbf{Características} & · Moderación, estadísticas, mensajes automáticos, música, temporizadores, \textit{quiz} / \textit{trivia} \\ \hline
         \textbf{Logs} & No \\ \hline
         \textbf{Premium} & \$50 al año / \$90 de por vida  \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Características de \textit{Mee6}.}
 \end{table}
+\FloatBarrier
 
-\begin{figure}[H]
+\FloatBarrier
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{img/mee6.png}
 	\caption{Interfaz web de \textit{Mee6}.}
 \end{figure}
+\FloatBarrier
 
 
-\subsubsection{BotGhost}
+\subsubsection{\textit{BotGhost}}
 
-\href{https://botghost.com/}{\textit{BotGhost}} es un híbrido entre \textit{ProBot} y \textit{Mee6}, ya que tiene las características comunes de ambos. La principal característica de esta herramienta es que permite crear comandos personalizados haciendo uso de una serie de módulos que se pueden interconectar para definir el ciclo de vida de un comando.
+\href{https://botghost.com/}{\textit{BotGhost}} es un híbrido entre \textit{ProBot} y \textit{Mee6}, ya que tiene características comunes de ambos. La principal característica de esta herramienta es que permite crear comandos personalizados haciendo uso de una serie de módulos que se pueden interconectar para definir el ciclo de vida de un comando.
 
 Esta característica es muy interesante, pero está muy limitada y las funcionalidades que permite realizar se resumen en envío de mensajes y tareas de moderación de usuarios muy básicas. El plan \textit{premium} sería necesario en este caso para poder sacarle partido a esta funcionalidad.
 
-Otro aspecto interesante es que se pueden crear distintos bots, hasta 50 distintos si se opta por la opción \textit{premium}.
+Otro aspecto interesante es que se pueden crear distintos bots, hasta 50 distintos si se opta por la opción \textit{premium}. Sus características son las siguientes.
 
-Sus características son:
-
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -164,33 +172,37 @@ Sus características son:
         \textbf{Número de bots} & 1, único (50 con \textit{premium}) \\ \hline
         \textbf{Experiencia} & Compleja \\ \hline
         \textbf{Personalización extra} & Requiere \textit{premium} (mensualidades) \\ \hline
-        \textbf{Características} & · Moderación\linebreak · Estadísticas\linebreak · Mensajes automáticos\linebreak · Temporizadores\linebreak · Integración con videojuegos\linebreak · Meteorología\linebreak · Música\linebreak · \textit{Quiz} / \textit{Trivia} \\ \hline
+        \textbf{Características} & · Moderación, estadísticas, mensajes automáticos, temporizadores, integración con videojuegos, meteorología, música, \textit{quiz} / \textit{trivia} \\ \hline
         \textbf{Logs} & No \\ \hline
         \textbf{Premium} & \$60 al año / \$100 de por vida \\ \hline
     \end{tabularx}
     \end{adjustbox}
     \caption{Características de \textit{BotGhost}.}
 \end{table}
+\FloatBarrier
 
-\begin{figure}[H]
+\FloatBarrier
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{img/botghost.png}
 	\caption{Interfaz web de \textit{BotGhost}.}
 \end{figure}
+\FloatBarrier
 
 \subsection{Herramientas de programación}
 
 Actualmente existen multitud de librerías para distintos lenguajes de programación que permiten interactuar con la \textit{API} de \textit{Discord} y por tanto crear un bot. Así mismo existen herramientas híbridas que permiten esta creación de una manera más sencilla.
 
-\subsubsection{Autocode}
+\subsubsection{\textit{Autocode}}
 
-\href{https://autocode.com/}{Autocode} es sin duda la herramienta mas interesante que existe de esta modalidad híbrida. Realmente es una plataforma que facilita la creación y despliegue de aplicaciones y servicios web, bots, y tareas de automatización permitiendo que los usuarios escriban sólo una parte del código (\textit{JavaScript}) de estos. Esta plataforma provee de un editor de código sencillo y de un explorador de archivos, para que el usuario cree el código utilizando esos recursos.
+\href{https://autocode.com/}{\textit{Autocode}} es sin duda la herramienta mas interesante que existe de esta modalidad híbrida. Realmente es una plataforma que facilita la creación y despliegue de aplicaciones y servicios web, bots, y tareas de automatización permitiendo que los usuarios escriban sólo una parte del código (\textit{JavaScript}) de estos. Esta plataforma provee al usuario con un editor de código sencillo y de un explorador de archivos, recursos con los cuales puede crear el código.
 
 De este modo el usuario sólo tiene que preocuparse por el código de la aplicación (o bot en este caso) que quiere crear, ya que del despliegue se encarga \textit{Autocode}. En su plan gratuito se pueden crear hasta 50 aplicaciones distintas, y permite la integración entre si de los distintos recursos que el usuario crea en la plataforma.
 
 Sus características son:
 
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -211,12 +223,15 @@ Sus características son:
     \end{adjustbox}
     \caption{Resumen de soluciones actuales.}
 \end{table}
+\FloatBarrier
 
-\begin{figure}[H]
+\FloatBarrier
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{img/autocode.png}
 	\caption{Interfaz web de \textit{Autocode}.}
 \end{figure}
+\FloatBarrier
 
 \subsubsection{Librerías de programación}
 
@@ -249,7 +264,8 @@ Los dos comandos personalizados se han elegido al ser comunes en todas las plata
 	\item Envío de un mensaje recurrente (cada cierto tiempo).
 \end{itemize}
 
-\begin{table}[H]
+\FloatBarrier
+\begin{table}[h]
     \centering
     \def\arraystretch{1.25}
     \begin{adjustbox}{max width=\textwidth}
@@ -268,14 +284,15 @@ Los dos comandos personalizados se han elegido al ser comunes en todas las plata
         Python & 80 \\ \hline
     \end{tabularx}
     \end{adjustbox}
-    \caption{Comparativa de tiempos}
+    \caption{Comparativa de tiempos de las distintas herramientas analizadas.}
 \end{table}
+\FloatBarrier
 
 \section{Discusión}
 
-Como se puede observar existen multitud de posibilidades a la hora de crear un bot de \textit{Discord}, y aunque cumplen lo que prometen, se centran en aspectos muy concretos dejando otros bastante desatendidos.
+Como se puede observar existen multitud de posibilidades a la hora de crear un bot de \textit{Discord}, y, aunque cumplen lo que prometen, se centran en aspectos muy concretos dejando otros bastante desatendidos.
 
-En las herramientas \textit{no-code} los bots se centran principalmente en tareas de moderación, envío de mensajes, estadísticas e integración con videojuegos y redes sociales. Se enfocan también en los paquetes \textit{premium}, dejando de lado detalles específicos (y que serían ideales) como:
+En las herramientas \textit{no-code} los bots se centran principalmente en tareas de moderación, envío de mensajes, estadísticas e integración con videojuegos y redes sociales. Además, para sacarles partido es necesario el uso de los paquetes \textit{premium}, dejando de lado en el plan gratuito detalles específicos (y que serían ideales) como:
 
 \begin{itemize}
 	\item Reutilización de comandos.
@@ -290,7 +307,7 @@ En el caso de las librerías de programación, aunque todas permiten el acceso a
 
 En la comparativa de tiempos anterior se puede observar que las herramientas \textit{no-code} son las más rápidas. Esto se debe a que solo es necesario agregar el bot al servidor de \textit{Discord} deseado, y tras eso configurar de manera sencilla los comandos.
 
-En menos de 10 minutos se puede incluir una gran cantidad de funcionalidad a un servidor de \textit{Discord} de manera gratuita, algo que puede ser muy útil para la basta mayoría de usuarios de \textit{Discord}, pero cuando se necesitan funcionalidades específicas entonces no son las ideales.
+En menos de 10 minutos se puede incluir una gran cantidad de funcionalidad a un servidor de \textit{Discord} de manera gratuita, algo que puede ser muy útil para la basta mayoría de usuarios de \textit{Discord}, pero cuando se necesitan funcionalidades específicas entonces no es el sistema ideal.
 
 En cambio, cuando se usan herramientas que hacen uso de código, el tiempo de implementación se incrementa considerablemente. No hace justicia la comparativa, ya que en este caso se tiene que desarrollar el software por completo, por lo que es obvio que el tiempo es mayor.
 
