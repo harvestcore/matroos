@@ -1,6 +1,6 @@
-﻿using Matroos.Resources.Interfaces;
-using Matroos.Resources.Services;
-using Matroos.Resources.Services.Interfaces;
+﻿using AppContext.Interfaces;
+using AppContext.Services;
+using AppContext.Services.Interfaces;
 
 using Microsoft.Extensions.Configuration;
 
@@ -37,6 +37,6 @@ public class BaseTest
 
     public async Task<DeleteResult> EmptyCollection<TValue>() where TValue : IBaseItem
     {
-        return await _dataContextService.GetCollection<TValue>()?.DeleteManyAsync(Builders<TValue>.Filter.Empty);
+        return await _dataContextService.GetCollection<TValue>().DeleteManyAsync(Builders<TValue>.Filter.Empty);
     }
 }

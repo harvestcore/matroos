@@ -1,8 +1,9 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
+using AppContext.Services.Interfaces;
+
 using Matroos.Resources.Classes.Commands;
-using Matroos.Resources.Services.Interfaces;
 
 namespace Matroos.Resources.Classes.Mappers;
 

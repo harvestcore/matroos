@@ -1,13 +1,14 @@
 ﻿using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
+using AppContext.Interfaces;
+
 using Discord;
 using Discord.Addons.Hosting;
 using Discord.WebSocket;
 
 using Matroos.Resources.Classes.BackgroundProcessing;
 using Matroos.Resources.Classes.Commands;
-using Matroos.Resources.Interfaces;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
