@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
+using AppContext.Services;
+using AppContext.Services.Interfaces;
+
 using Matroos.Backend.Services;
 using Matroos.Backend.Services.Interfaces;
 using Matroos.Resources.Classes.Bots;
-using Matroos.Resources.Services;
-using Matroos.Resources.Services.Interfaces;
 using Matroos.Resources.Tests;
 
 using Microsoft.Extensions.Configuration;

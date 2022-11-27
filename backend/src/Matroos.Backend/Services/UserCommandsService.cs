@@ -1,8 +1,9 @@
 ﻿using System.Linq.Expressions;
 
+using AppContext.Services.Interfaces;
+
 using Matroos.Backend.Services.Interfaces;
 using Matroos.Resources.Classes.Commands;
-using Matroos.Resources.Services.Interfaces;
 
 namespace Matroos.Backend.Services;
 
