@@ -1,6 +1,6 @@
-﻿using Matroos.Resources.Interfaces;
-using Matroos.Resources.Services;
-using Matroos.Resources.Services.Interfaces;
+﻿using AppContext.Interfaces;
+using AppContext.Services;
+using AppContext.Services.Interfaces;
 
 using Microsoft.Extensions.Configuration;
 
@@ -25,7 +25,7 @@ public class BaseTest
         _configurationService = new ConfigurationService(configuration);
 
         // The default values can be overwriten via Environment Variables.
-        string connectionString = _configurationService.Get<string>("TestMongoDBConnectionString") ?? "http://localhost:27017/matroos-test";
+        string connectionString = _configurationService.Get<string>("TestMongoDBConnectionString") ?? "mongodb://localhost:27017/matroos-test";
         string databaseName = _configurationService.Get<string>("TestMongoDBDatabaseName") ?? "matroos-test";
 
         // Configure the testing database.
@@ -37,6 +37,6 @@ public class BaseTest
 
     public async Task<DeleteResult> EmptyCollection<TValue>() where TValue : IBaseItem
     {
-        return await _dataContextService.GetCollection<TValue>()?.DeleteManyAsync(Builders<TValue>.Filter.Empty);
+        return await _dataContextService.GetCollection<TValue>().DeleteManyAsync(Builders<TValue>.Filter.Empty);
     }
 }

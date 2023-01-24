@@ -1,8 +1,9 @@
 ﻿using System.Runtime.Serialization;
 
+using AppContext.Services.Interfaces;
+
 using Matroos.Resources.Classes.Bots;
 using Matroos.Resources.Classes.Commands;
-using Matroos.Resources.Services.Interfaces;
 
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
